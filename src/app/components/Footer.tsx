@@ -1,7 +1,11 @@
-const navigation = [
+const navigation: {
+  name: string;
+  href: string;
+  icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
+}[] = [
   {
     name: 'Facebook',
-    href: '#',
+    href: 'https://www.facebook.com/Cavanagh-Woodcrafts-100057282949202',
     icon: props => (
       <svg
         fill="currentColor"
@@ -19,7 +23,7 @@ const navigation = [
   },
   {
     name: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/cavanagh.woodcrafts/',
     icon: props => (
       <svg
         fill="currentColor"
@@ -38,7 +42,7 @@ const navigation = [
   },
   {
     name: 'TikTok',
-    href: '#',
+    href: 'https://www.tiktok.com/@jules.cavanagh',
     icon: props => (
       <svg
         fill="currentColor"
@@ -62,6 +66,8 @@ function Footer() {
             <a
               key={item.name}
               href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">{item.name}</span>
