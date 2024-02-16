@@ -19,7 +19,7 @@ function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
+        <div className="mx-auto flex min-h-screen max-w-7xl flex-col sm:px-6 lg:px-8">
           <NavBar />
           <main className="flex-1">{children}</main>
           <Footer />
