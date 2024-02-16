@@ -1,3 +1,41 @@
+const footerNavigation = {
+  products: [
+    { name: 'Bags', href: '#' },
+    { name: 'Tees', href: '#' },
+    { name: 'Objects', href: '#' },
+    { name: 'Home Goods', href: '#' },
+    { name: 'Accessories', href: '#' },
+  ],
+  customerService: [
+    { name: 'Contact', href: '#' },
+    { name: 'Shipping', href: '#' },
+    { name: 'Returns', href: '#' },
+    { name: 'Warranty', href: '#' },
+    { name: 'Secure Payments', href: '#' },
+    { name: 'FAQ', href: '#' },
+    { name: 'Find a store', href: '#' },
+  ],
+  company: [
+    { name: 'Who we are', href: '#' },
+    { name: 'Sustainability', href: '#' },
+    { name: 'Press', href: '#' },
+    { name: 'Careers', href: '#' },
+    { name: 'Terms & Conditions', href: '#' },
+    { name: 'Privacy', href: '#' },
+  ],
+  legal: [
+    { name: 'Terms of Service', href: '#' },
+    { name: 'Return Policy', href: '#' },
+    { name: 'Privacy Policy', href: '#' },
+    { name: 'Shipping Policy', href: '#' },
+  ],
+  bottomLinks: [
+    { name: 'Accessibility', href: '#' },
+    { name: 'Privacy', href: '#' },
+    { name: 'Terms', href: '#' },
+  ],
+};
+
 const navigation: {
   name: string;
   href: string;
@@ -60,8 +98,15 @@ const navigation: {
 function Footer() {
   return (
     <footer className="px-6 py-6 sm:p-6">
-      <div className="md:flex md:items-center md:justify-between">
-        <div className="flex justify-center space-x-6 md:order-2">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+        {/* Copywrite Message */}
+        <div className="mb-4 text-center text-sm text-gray-500 md:order-1 md:mb-0 md:text-left">
+          &copy; {new Date().getFullYear()} Cavanagh Woodcrafts. All rights
+          reserved.
+        </div>
+
+        {/* Social Media Icons */}
+        {/* <div className="mb-4 flex justify-center space-x-6 md:order-2 md:mb-0">
           {navigation.map(item => (
             <a
               key={item.name}
@@ -74,12 +119,19 @@ function Footer() {
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
-        </div>
-        <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-center text-xs leading-5 text-gray-500">
-            &copy; {new Date().getFullYear()} Cavanagh Woodcrafts. All rights
-            reserved.
-          </p>
+        </div> */}
+
+        {/* Accessibility - Privacy - Terms */}
+        <div className="flex justify-center space-x-6 md:order-3 md:justify-end md:space-x-8 md:border-gray-200 md:pl-6">
+          {footerNavigation.bottomLinks.map(item => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-sm text-gray-500 hover:text-gray-600"
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
       </div>
     </footer>
