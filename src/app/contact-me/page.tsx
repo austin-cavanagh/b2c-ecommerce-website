@@ -1,27 +1,15 @@
-import { useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
-import { Switch } from '@headlessui/react';
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 function ContactMe() {
   return (
-    <div className="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Contact Me!
+          Contact Me
         </h2>
-        <p className="mt-2 text-lg leading-8 text-gray-600">
+        <p className="mt-2 mt-4 text-lg leading-8 text-gray-600">
           Send me a message if you have any questions or special requests
         </p>
       </div>
-      <form
-        action="#"
-        method="POST"
-        className="mx-auto mt-16 max-w-xl sm:mt-20"
-      >
+      <form action="#" method="POST" className="mx-auto mt-10 max-w-xl">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label
@@ -121,7 +109,7 @@ function ContactMe() {
           </button>
         </div>
       </form>
-    </div>
+    </main>
   );
 }
 
