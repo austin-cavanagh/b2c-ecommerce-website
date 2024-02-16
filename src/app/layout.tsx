@@ -21,7 +21,7 @@ function RootLayout({
       <body className={inter.className}>
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col sm:px-6 lg:px-8">
           <NavBar />
-          <main className="flex-1 px-4 py-5 sm:p-6">{children}</main>
+          <main className="flex flex-1 px-6 py-6 sm:p-6">{children}</main>
           <Footer />
         </div>
       </body>
