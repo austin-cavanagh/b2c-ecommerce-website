@@ -2,13 +2,18 @@
 
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ShoppingCartIcon,
+  UserIcon,
+} from '@heroicons/react/24/outline';
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Home', href: '#' },
+  { name: 'Products', href: '#' },
+  { name: 'About', href: '#' },
+  { name: 'Contact', href: '#' },
 ];
 
 function NavBar2() {
@@ -16,45 +21,51 @@ function NavBar2() {
 
   return (
     <header className="px-6 py-6 sm:p-6">
+      {/* PC */}
       <nav
         className="flex items-center justify-between gap-x-6"
         aria-label="Global"
       >
-        <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              className="h-8 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt=""
-            />
-          </a>
-        </div>
-        <div className="hidden lg:flex lg:gap-x-12">
-          {navigation.map(item => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              {item.name}
+        <div className="flex items-center space-x-8">
+          <div className="flex lg:flex-1">
+            <a href="#" className="-m-1.5 p-1.5">
+              <span className="sr-only">Your Company</span>
+              <img
+                className="h-8 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
             </a>
-          ))}
+          </div>
+
+          <div className="hidden lg:flex lg:gap-x-12">
+            {navigation.map(item => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="text-base font-semibold leading-6 text-gray-900"
+              >
+                {item.name}
+              </a>
+            ))}
+          </div>
         </div>
+
         <div className="flex flex-1 items-center justify-end gap-x-6">
-          <a
+          {/* <a
             href="#"
             className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
           >
             Log in
-          </a>
-          <a
+          </a> */}
+          {/* <a
             href="#"
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
-            Sign up
-          </a>
+            Sign In
+          </a> */}
         </div>
+
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -65,7 +76,48 @@ function NavBar2() {
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
+
+        <div className="flow-root">
+          <a href="#" className="group -m-2 flex items-center p-2">
+            <ShoppingCartIcon
+              className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+              aria-hidden="true"
+            />
+            <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+              0
+            </span>
+            <span className="sr-only">items in cart, view bag</span>
+          </a>
+        </div>
+
+        <span
+          className="mx-1 h-6 w-px bg-gray-200 lg:mx-1"
+          aria-hidden="true"
+        />
+
+        {/* <div className="flex">
+          <a href="#" className="-m-2 p-2 text-gray-400 hover:text-gray-500">
+            <span className="sr-only">Account</span>
+            <UserIcon className="h-6 w-6" aria-hidden="true" />
+          </a>
+        </div> */}
+
+        {/* <a
+            href="#"
+            className="hidden lg:block lg:text-sm lg:font-semibold lg:leading-6 lg:text-gray-900"
+          >
+            Log in
+          </a> */}
+
+        <a
+          href="#"
+          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Sign In
+        </a>
       </nav>
+
+      {/* Mobile */}
       <Dialog
         as="div"
         className="lg:hidden"

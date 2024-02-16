@@ -23,10 +23,7 @@ function RootLayout({
         <div className="mx-auto flex min-h-screen max-w-7xl flex-col sm:px-6 lg:px-8">
           <NavBar2 />
 
-          <br />
-          <br />
-
-          <NavBar />
+          {/* <NavBar /> */}
           {children}
           <Footer />
         </div>

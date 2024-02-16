@@ -32,7 +32,7 @@ const footerNavigation = {
   bottomLinks: [
     { name: 'Accessibility', href: '#' },
     { name: 'Privacy', href: '#' },
-    { name: 'Terms', href: '#' },
+    { name: 'Terms & Conditions', href: '#' },
   ],
 };
 
@@ -98,15 +98,17 @@ const navigation: {
 function Footer() {
   return (
     <footer className="px-6 py-6 sm:p-6">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-        {/* Copywrite Message */}
-        <div className="mb-4 text-center text-sm text-gray-500 md:order-1 md:mb-0 md:text-left">
-          &copy; {new Date().getFullYear()} Cavanagh Woodcrafts. All rights
-          reserved.
+      <div className="md:flex md:items-center md:justify-between">
+        {/* Copywrite */}
+        <div className="md:order-0 mt-8 md:mt-0">
+          <p className="text-center text-sm leading-5 text-gray-500">
+            &copy; {new Date().getFullYear()} Cavanagh Woodcrafts. All rights
+            reserved.
+          </p>
         </div>
 
         {/* Social Media Icons */}
-        {/* <div className="mb-4 flex justify-center space-x-6 md:order-2 md:mb-0">
+        <div className="md:order-0 flex justify-center space-x-6">
           {navigation.map(item => (
             <a
               key={item.name}
@@ -119,10 +121,10 @@ function Footer() {
               <item.icon className="h-6 w-6" aria-hidden="true" />
             </a>
           ))}
-        </div> */}
+        </div>
 
         {/* Accessibility - Privacy - Terms */}
-        <div className="flex justify-center space-x-6 md:order-3 md:justify-end md:space-x-8 md:border-gray-200 md:pl-6">
+        <div className="flex space-x-8 pl-6">
           {footerNavigation.bottomLinks.map(item => (
             <a
               key={item.name}
