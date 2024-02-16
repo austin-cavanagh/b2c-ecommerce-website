@@ -59,8 +59,8 @@ const navigation: {
 
 function Footer() {
   return (
-    <footer className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8">
+    <footer className="px-6 py-6 sm:p-6">
+      <div className="md:flex md:items-center md:justify-between">
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map(item => (
             <a

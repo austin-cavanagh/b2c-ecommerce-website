@@ -15,9 +15,9 @@ function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white">
+    <header className="px-6 py-6 sm:p-6">
       <nav
-        className="mx-auto flex max-w-7xl items-center justify-between gap-x-6 p-6 lg:px-8"
+        className="flex items-center justify-between gap-x-6"
         aria-label="Global"
       >
         <div className="flex lg:flex-1">
