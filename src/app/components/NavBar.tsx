@@ -15,7 +15,14 @@ const navigation = [
   { name: 'Products', href: '/products' },
   { name: 'About', href: '/about-me' },
   { name: 'Contact', href: '/contact-me' },
+  // { name: 'Shopping Cart', href: '/shopping-cart' },
+  // { name: 'Account Information', href: '/account-information' },
+  // { name: 'Sign In', href: '/sign-in' },
 ];
+
+// const navigationLinks = {
+//   shoppingCart: '/shopping-cart'
+// }
 
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -41,14 +48,12 @@ function NavBar() {
 
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map(item => (
-              <Link key={item.name} href={item.href} passHref>
-                {/* <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-base font-semibold leading-6 text-gray-900"
-                > */}
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-base font-semibold leading-6 text-gray-900"
+              >
                 {item.name}
-                {/* </a> */}
               </Link>
             ))}
           </div>
@@ -80,8 +85,8 @@ function NavBar() {
           </button>
         </div>
 
-        <div className="flow-root">
-          <a href="#" className="group -m-2 flex items-center p-2">
+        <div className="">
+          <Link href={'/shopping-cart'} className="flex">
             <ShoppingCartIcon
               className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
               aria-hidden="true"
@@ -90,7 +95,7 @@ function NavBar() {
               0
             </span>
             <span className="sr-only">items in cart, view bag</span>
-          </a>
+          </Link>
         </div>
 
         <span
@@ -105,6 +110,14 @@ function NavBar() {
           </a>
         </div> */}
 
+        <Link
+          href={'/account-information'}
+          className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+        >
+          <span className="sr-only">Account</span>
+          <UserIcon className="h-6 w-6" aria-hidden="true" />{' '}
+        </Link>
+
         {/* <a
           href="#"
           className="hidden lg:block lg:text-base lg:font-semibold lg:leading-6 lg:text-gray-900"
@@ -112,12 +125,12 @@ function NavBar() {
           Log in
         </a> */}
 
-        <a
-          href="#"
+        <Link
+          href={'/sign-in'}
           className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Sign In
-        </a>
+        </Link>
       </nav>
 
       {/* Mobile */}
