@@ -26,17 +26,12 @@ import {
 } from '@heroicons/react/24/outline';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import productsData from './data/productsData';
-
-const breadcrumbs = [
-  { id: 1, name: 'Objects', href: '#' },
-  { id: 2, name: 'Workspace', href: '#' },
-  { id: 3, name: 'Sale', href: '#' },
-];
+import Image from 'next/image';
 
 const sortOptions = [
   // { name: 'Most Popular', href: '#', current: true },
   // { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
+  // { name: 'Newest', href: '#', current: false },
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ];
@@ -371,7 +366,7 @@ function Products() {
           {/* Product grid */}
           <section
             aria-labelledby="products-heading"
-            className="mx-auto max-w-2xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:max-w-7xl lg:px-8"
+            className="mx-auto max-w-2xl p-12 lg:max-w-7xl"
           >
             <h2 id="products-heading" className="sr-only">
               Products
@@ -381,11 +376,7 @@ function Products() {
               {productsData.map(product => (
                 <a key={product.id} href={product.href} className="group">
                   <div className="aspect-h-1 aspect-w-1 xl:aspect-h-8 xl:aspect-w-7 w-full overflow-hidden rounded-lg">
-                    <img
-                      src={product.imageSrc}
-                      alt={product.imageAlt}
-                      className="h-full w-full object-cover object-center group-hover:opacity-75"
-                    />
+                    <Image src={product.imageSrc} alt={product.imageAlt} />
                   </div>
                   <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
                   <p className="mt-1 text-lg font-medium text-gray-900">
@@ -395,6 +386,33 @@ function Products() {
               ))}
             </div>
           </section>
+
+          <nav
+            className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
+            aria-label="Pagination"
+          >
+            <div className="hidden sm:block">
+              <p className="text-sm text-gray-700">
+                Showing <span className="font-medium">1</span> to{' '}
+                <span className="font-medium">10</span> of{' '}
+                <span className="font-medium">20</span> results
+              </p>
+            </div>
+            <div className="flex flex-1 justify-between sm:justify-end">
+              <a
+                href="#"
+                className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
+              >
+                Previous
+              </a>
+              <a
+                href="#"
+                className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
+              >
+                Next
+              </a>
+            </div>
+          </nav>
         </main>
       </div>
     </div>
