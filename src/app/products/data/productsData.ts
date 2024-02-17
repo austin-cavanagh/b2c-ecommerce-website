@@ -45,7 +45,7 @@ const productsData = [
       'Olive drab green insulated bottle with flared screw lid and flat top.',
   },
   {
-    id: 1,
+    id: 5,
     name: 'Stanley 1',
     category: 'stanley nametag',
     href: '#',
@@ -55,7 +55,7 @@ const productsData = [
       'Tall slender porcelain bottle with natural clay textured body and cork stopper.',
   },
   {
-    id: 2,
+    id: 6,
     name: 'Stanley 2',
     category: 'stanley nametag',
     href: '#',
@@ -65,7 +65,7 @@ const productsData = [
       'Olive drab green insulated bottle with flared screw lid and flat top.',
   },
   {
-    id: 3,
+    id: 7,
     name: 'Key Chain 1',
     category: 'key chain',
     href: '#',
@@ -75,7 +75,7 @@ const productsData = [
       'Olive drab green insulated bottle with flared screw lid and flat top.',
   },
   {
-    id: 4,
+    id: 8,
     name: 'Key Chain 2',
     category: 'key chain',
     href: '#',
