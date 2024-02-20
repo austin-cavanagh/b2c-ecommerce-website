@@ -66,11 +66,10 @@ export default async function Home() {
   // const [open, setOpen] = useState(false);
 
   const session = await getServerSession(authOptions);
+  console.log(session);
 
   return (
     <div className="bg-white">
-      <div>{JSON.stringify(session)}</div>
-      <User />
       <header className="relative overflow-hidden">
         {/* Hero section */}
         <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
