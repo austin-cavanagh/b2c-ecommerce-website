@@ -10,15 +10,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// creating a basic user model
+// Creating a basic user model
 model users {
-  id          Int      @id @default(autoincrement())
-  email       String   @unique
-  provider    String
-  name        String?
-  given_name  String?
-  family_name String?
-  picture     String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           Int          @id @default(autoincrement())
+  email        String?      @unique
+  name         String?
+  picture      String?
+  password     String? // For users who sign up via email/password
+  created_at   DateTime     @default(now())
+  updated_at   DateTime     @updatedAt
+  auth_methods user_auths[]
+}
+
+model user_auths {
+  id          Int    @id @default(autoincrement())
+  provider    String // "local" for email/password, or name of OAuth provider
+  provider_id String @unique
+  user_id     Int // Foreign key to User
+  user        users  @relation(fields: [user_id], references: [id])
 }
