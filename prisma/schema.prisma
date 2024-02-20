@@ -11,7 +11,7 @@ datasource db {
 }
 
 // creating a basic user model
-model User {
+model user {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String?
