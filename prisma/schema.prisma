@@ -12,10 +12,13 @@ datasource db {
 
 // creating a basic user model
 model users {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
-  name      String?
-  image     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  provider    String
+  name        String?
+  given_name  String?
+  family_name String?
+  picture     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
