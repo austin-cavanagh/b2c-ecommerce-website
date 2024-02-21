@@ -1,5 +1,9 @@
-async function signIn() {
+import Link from 'next/link';
+
+async function signIn(formData: FormData) {
   'use server';
+
+  console.log(formData);
 }
 
 function SignIn() {
@@ -19,7 +23,7 @@ function SignIn() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action="#" method="POST">
+            <form className="space-y-6" action={signIn} method="POST">
               <div>
                 <label
                   htmlFor="email"
@@ -158,7 +162,7 @@ function SignIn() {
                     />
                   </svg>
                   <span className="text-sm font-semibold leading-6">
-                    GitHub
+                    Facebook
                   </span>
                 </a>
               </div>
@@ -167,12 +171,12 @@ function SignIn() {
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
-            <a
-              href="#"
+            <Link
+              href="/create-account"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Register here
-            </a>
+              Create Account
+            </Link>
           </p>
         </div>
       </div>
