@@ -69,12 +69,7 @@ export default async function createAccount(
   //   },
   // });
 
-  redirect('/');
-  console.log('test');
-
   sendEmailVerification(name, email, verificationToken);
 
-  return {
-    message: 'Account successfully created',
-  };
+  redirect('/sign-in');
 }
