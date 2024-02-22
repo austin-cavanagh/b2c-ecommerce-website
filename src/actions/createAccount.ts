@@ -69,7 +69,9 @@ export default async function createAccount(
   //   },
   // });
 
-  sendEmailVerification(name, email, verificationToken);
+  const verifyUrl = `http://localhost:3000/api/verify-email/${verificationToken}`;
+
+  sendEmailVerification(name, email, verifyUrl);
 
   redirect('/sign-in');
 }
