@@ -5,6 +5,7 @@ import { prisma } from '../../prisma/prisma';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import sendEmailVerification from '@/functions/sendEmailVerification';
+import { randomUUID } from 'crypto';
 
 export default async function createAccount(
   prevState: unknown,
@@ -29,9 +30,15 @@ export default async function createAccount(
     },
   });
 
-  if (existingUser) {
+  if (existingUser && existingUser.verified) {
     return {
       message: 'An account with this email already exists',
+    };
+  }
+
+  if (existingUser && !existingUser.verified) {
+    return {
+      message: 'An account with this email already but is unverified',
     };
   }
 
@@ -46,9 +53,26 @@ export default async function createAccount(
   //   },
   // });
 
-  // redirect('/');
+  const verificationToken = `${randomUUID()}${randomUUID()}`;
 
-  sendEmailVerification(name, email);
+  // Create or update the VerifyUserTokens entry
+  // await prisma.verifyUserTokens.upsert({
+  //   where: {
+  //     userId: newUser.id,
+  //   },
+  //   update: {
+  //     token: verificationToken,
+  //   },
+  //   create: {
+  //     userId: newUser.id,
+  //     token: verificationToken,
+  //   },
+  // });
+
+  redirect('/');
+  console.log('test');
+
+  sendEmailVerification(name, email, verificationToken);
 
   return {
     message: 'Account successfully created',

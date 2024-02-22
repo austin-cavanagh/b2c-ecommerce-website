@@ -7,6 +7,7 @@ require('dotenv').config();
 export default async function sendEmailVerification(
   name: string,
   email: string,
+  verificationToken: string,
 ) {
   const sesClient = new SESClient({
     region: 'us-west-1',
@@ -21,7 +22,11 @@ export default async function sendEmailVerification(
     Destination: { ToAddresses: ['austin.cavanagh.cs@gmail.com'] },
     Message: {
       Subject: { Data: 'Test Email' },
-      Body: { Text: { Data: `Hello ${name}!` } },
+      Body: {
+        Text: {
+          Data: `Hello ${name}! Click this link to verify your account: ${verificationToken}`,
+        },
+      },
     },
   };
 
