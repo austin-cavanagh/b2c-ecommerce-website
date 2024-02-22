@@ -8,6 +8,8 @@ export default async function sendEmailVerification(
   email: string,
   verifyUrl: string,
 ) {
+  const firstName = name.split(' ')[0];
+
   const sesClient = new SESClient({
     region: 'us-west-1',
     credentials: {
@@ -20,37 +22,24 @@ export default async function sendEmailVerification(
     <html>
       <head>
         <style>
-          body { font-family: Arial, sans-serif; }
-          .button {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
+          body { font-family: Arial, sans-serif; font-size: 20px; } /* Increased font size */
+          a {
+            color: #007bff; /* Bootstrap primary blue, for example */
+            text-decoration: underline;
+            font-weight: bold; /* Make the entire link bold */
           }
-
-          .button:hover {background-color: #3e8e41}
-
-          .button:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
+          a:hover {
+            color: #0056b3; /* Darker blue on hover */
           }
         </style>
       </head>
       <body>
-        <h1>Hello, ${name}!</h1>
-        <p>Thank you for signing up with Cavanagh Woodcrafts. We're excited to have you join our community.</p>
-        <p>Please click the button below to verify your email address and activate your account:</p>
-        <a href="${verifyUrl}" target="_blank" class="button">Verify</a>
+        <p>Hi ${firstName}!</p>
+        <p>Thank you for signing up with Cavanagh Woodcrafts. We're excited to have you join our community!</p>
+        <p>Please click <a href="${verifyUrl}" target="_blank"><strong>HERE</strong></a> to verify your email address and activate your account.</p>
         <p>If you did not sign up for a Cavanagh Woodcrafts account, please disregard this email.</p>
+        <p>Thank you,</p>
+        <p>Julie</p>
       </body>
     </html>
   `;
@@ -71,6 +60,6 @@ export default async function sendEmailVerification(
   try {
     await sesClient.send(new SendEmailCommand(params));
   } catch (err) {
-    console.error('Error sending email:', err);
+    console.error('Error sending verification email:', err);
   }
 }

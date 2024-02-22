@@ -1,20 +1,24 @@
 import { NextRequest } from 'next/server';
 import { prisma } from '../../../../../prisma/prisma';
+import { redirect } from 'next/navigation';
 
-export default async function GET(
+export async function GET(
   request: NextRequest,
   { params }: { params: { token: string } },
 ) {
   const { token } = params;
+
+  console.log('IS THIS WORKING', token);
 
   const verificationToken = await prisma.verifyUserTokens.findUnique({
     where: { token },
     include: { user: true },
   });
 
+  console.log('TOKEN', verificationToken);
+
   if (!verificationToken) {
-    // route to different page
-    return;
+    redirect('/create-account/verification-token-expired');
   }
 
   await prisma.users.update({
@@ -28,4 +32,8 @@ export default async function GET(
   });
 
   // route to somewhere
+
+  console.log('verified');
+
+  redirect('/');
 }
