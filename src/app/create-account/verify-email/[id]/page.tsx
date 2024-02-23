@@ -1,5 +1,6 @@
 'use server';
 
+import emailsInLastMinute from '@/functions/emailsInLastMinute';
 import { prisma } from '../../../../../prisma/prisma';
 import ResendEmailButton from '@/components/ResendEmailButton';
 
@@ -8,27 +9,19 @@ export default async function VerifyEmail({
 }: {
   params: { id: string };
 }) {
+  const userId = Number(params.id);
+
   const user = await prisma.users.findUnique({
     where: {
-      id: Number(params.id),
+      id: userId,
     },
     select: {
       email: true,
     },
   });
 
-  const latestToken = await prisma.verifyUserTokens.findFirst({
-    where: {
-      userId: Number(params.id),
-    },
-  });
-
-  let buttonDisabled = true;
-  if (latestToken && latestToken.updatedAt) {
-    const timeSinceLastEmail =
-      new Date().getTime() - new Date(latestToken.updatedAt).getTime();
-    buttonDisabled = timeSinceLastEmail < 30 * 1000; // 30 seconds
-  }
+  const emailCount = await emailsInLastMinute(userId);
+  const buttonDisabled = emailCount > 3;
 
   return (
     <main className="flex flex-1 px-6 py-6 sm:p-6">

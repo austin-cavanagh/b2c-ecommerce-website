@@ -14,33 +14,45 @@ export async function GET(
     include: { user: true },
   });
 
-  // If no token found, it's invalid or expired
+  // Redirect if token does not exist in database
   if (!verificationToken) {
-    redirect('/create-account/verification-token-expired');
+    redirect('/create-account/verification-link-expired');
   }
 
-  // Find the most newest token for the user
+  const ONE_DAY = 24 * 60 * 60 * 1000;
+  const currentTimeUtc = new Date(Date.now());
+  const tokenCreationTimeUtc = new Date(verificationToken.createdAt);
+  const timeSinceCreation =
+    currentTimeUtc.getTime() - tokenCreationTimeUtc.getTime();
+
+  // Redirect if token is older than 24 horus
+  if (timeSinceCreation > ONE_DAY) {
+    return redirect('/create-account/verification-link-expired');
+  }
+
+  // Find the newest token for the user
   const newestToken = await prisma.verifyUserTokens.findFirst({
     where: { userId: verificationToken.userId },
     orderBy: { createdAt: 'desc' },
   });
 
-  // Check if the found token is not the newest
+  // Redicect if token is not the newest created for that user
   if (newestToken && verificationToken.token !== newestToken.token) {
-    redirect('/create-account/verification-token-expired');
+    redirect('/create-account/verification-link-expired');
   }
 
-  // Verify user if token is fresh
+  // Verify user
   await prisma.users.update({
     where: { id: verificationToken.userId },
     data: { verified: true },
   });
 
-  // Verify the token
+  // Verify token
   await prisma.verifyUserTokens.update({
     where: { id: verificationToken.id },
     data: { verifiedAt: new Date() },
   });
 
+  // Redirect to the sign in page
   redirect('/sign-in');
 }

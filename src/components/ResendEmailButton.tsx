@@ -27,7 +27,7 @@ export default function ResendEmailButton({
         disabled={buttonDisabled}
         className={`rounded-md px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ${buttonDisabled ? 'bg-indigo-300' : 'bg-indigo-600 hover:bg-indigo-500'}`}
       >
-        {!isClicked ? 'Email me a new link' : 'Email sent'}
+        {!isClicked ? 'Email New Link' : 'Email Sent'}
       </button>
     </>
   );
