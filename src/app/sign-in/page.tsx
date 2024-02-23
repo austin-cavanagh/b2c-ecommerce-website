@@ -1,12 +1,12 @@
+'use client';
+
 import Link from 'next/link';
-
-async function signIn(formData: FormData) {
-  'use server';
-
-  console.log(formData);
-}
+import signInAction from '@/actions/signInAction';
+import { useFormState } from 'react-dom';
 
 function SignIn() {
+  const [error, action] = useFormState(signInAction, { message: '' });
+
   return (
     <main className="flex w-full flex-1 items-center justify-center px-6 py-6 sm:p-6">
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -17,19 +17,19 @@ function SignIn() {
             alt="Your Company"
           />
           <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Sign in to your account
+            Sign in
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action={signIn} method="POST">
+            <form className="space-y-6" action={action} method="POST">
               <div>
                 <label
                   htmlFor="email"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Email address
+                  Email
                 </label>
                 <div className="mt-2">
                   <input
