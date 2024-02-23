@@ -27,5 +27,5 @@ export async function GET(
     data: { verifiedAt: new Date() },
   });
 
-  redirect('/create-account/email-verified');
+  redirect('/sign-in');
 }

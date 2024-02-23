@@ -12,7 +12,7 @@ export default function Register() {
             alt="Your Company"
           />
           <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-            Create the
+            Create account
           </h2>
         </div>
 
@@ -84,7 +84,7 @@ export default function Register() {
                     />
                   </svg>
                   <span className="text-sm font-semibold leading-6">
-                    GitHub
+                    Facebook
                   </span>
                 </a>
               </div>
@@ -97,7 +97,7 @@ export default function Register() {
               href="/sign-in"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-              Sign in here
+              Sign in
             </Link>
           </p>
         </div>

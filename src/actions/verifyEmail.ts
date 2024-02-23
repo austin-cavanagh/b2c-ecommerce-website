@@ -5,9 +5,8 @@ import { prisma } from '../../prisma/prisma';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import sendEmailVerification from '@/functions/sendEmailVerification';
-import { randomUUID } from 'crypto';
 
-export default async function createAccount(
+export default async function verifyEmail(
   prevState: unknown,
   formData: FormData,
 ) {

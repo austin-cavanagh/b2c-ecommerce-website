@@ -1,4 +1,4 @@
-'use server';
+// 'use server';
 import 'server-only';
 
 import { NextAuthOptions } from 'next-auth';
@@ -35,6 +35,8 @@ export const authOptions: NextAuthOptions = {
         if (!credentials) {
           return null;
         }
+
+        console.log(credentials);
 
         const { email, curPassword } = credentials;
 
@@ -82,6 +84,8 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ account, profile }) {
+      console.log('RUNNING');
+
       console.log(account);
       console.log(profile);
 
@@ -144,6 +148,14 @@ export const authOptions: NextAuthOptions = {
     // Will not be present other logins so check if there is one
     //
     jwt: ({ token, user }) => {
+      if (user) {
+        return {
+          ...token,
+          id: user.id,
+          random: 'test',
+        };
+      }
+
       return token;
     },
   },
