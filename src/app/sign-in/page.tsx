@@ -3,9 +3,32 @@
 import Link from 'next/link';
 import signInAction from '@/actions/signInAction';
 import { useFormState } from 'react-dom';
+import { signIn } from 'next-auth/react';
+import { FormEvent, useRef } from 'react';
 
 function SignIn() {
-  const [error, action] = useFormState(signInAction, { message: '' });
+  // const [error, action] = useFormState(signInAction, { message: '' });
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  const handleGoogleClick = () => {
+    signIn('google');
+  };
+
+  const handleFacebookClick = () => {
+    signIn('facebook');
+  };
+
+  const handleSignIn = async (event: FormEvent) => {
+    event.preventDefault();
+
+    await signIn('credentials', {
+      username: emailRef.current?.value,
+      password: passwordRef.current?.value,
+      redirect: true,
+      callback: 'http://localhost:3000/',
+    });
+  };
 
   return (
     <main className="flex w-full flex-1 items-center justify-center px-6 py-6 sm:p-6">
@@ -23,7 +46,12 @@ function SignIn() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action={action} method="POST">
+            <form
+              className="space-y-6"
+              action="#"
+              method="POST"
+              onSubmit={handleSignIn}
+            >
               <div>
                 <label
                   htmlFor="email"
@@ -38,6 +66,7 @@ function SignIn() {
                     type="email"
                     autoComplete="email"
                     required
+                    ref={emailRef}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -57,6 +86,7 @@ function SignIn() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    ref={passwordRef}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -115,7 +145,8 @@ function SignIn() {
 
               <div className="mt-6 grid grid-cols-2 gap-4">
                 <a
-                  href="#"
+                  onClick={handleGoogleClick}
+                  // href="#"
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent"
                 >
                   <svg
@@ -146,7 +177,8 @@ function SignIn() {
                 </a>
 
                 <a
-                  href="#"
+                  onClick={handleFacebookClick}
+                  // href="#"
                   className="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent"
                 >
                   <svg

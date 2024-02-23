@@ -9,6 +9,7 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from '@heroicons/react/24/outline';
+import SignInButton from './signInButton';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -125,12 +126,21 @@ function NavBar() {
           Log in
         </a> */}
 
-        <Link
+        {/* <Link
           href={'/sign-in'}
           className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Sign In
-        </Link>
+        </Link> */}
+
+        {/* <button
+          onClick={() => signOut()}
+          className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Sign Out
+        </button> */}
+
+        <SignInButton />
       </nav>
 
       {/* Mobile */}

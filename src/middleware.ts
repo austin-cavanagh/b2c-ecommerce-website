@@ -4,4 +4,6 @@ export default withAuth({
   secret: process.env.SECRET,
 });
 
-export const config = { matcher: ['/account-information'] };
+export const config = {
+  matcher: ['/account-information'],
+};
