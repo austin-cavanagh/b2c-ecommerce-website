@@ -6,9 +6,10 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 export default async function sendEmailVerification(
   name: string,
   email: string,
-  verifyUrl: string,
+  verificationToken: string,
 ) {
   const firstName = name.split(' ')[0];
+  const verifyUrl = `http://localhost:3000/api/verify-email/${verificationToken}`;
 
   const sesClient = new SESClient({
     region: 'us-west-1',

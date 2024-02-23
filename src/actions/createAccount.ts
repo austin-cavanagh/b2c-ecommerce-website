@@ -47,22 +47,14 @@ export default async function createAccount(
   const verificationToken = `${randomUUID()}${randomUUID()}`;
 
   // Create or update the VerifyUserTokens entry
-  await prisma.verifyUserTokens.upsert({
-    where: {
-      userId: newUser.id,
-    },
-    update: {
-      token: verificationToken,
-    },
-    create: {
+  await prisma.verifyUserTokens.create({
+    data: {
       userId: newUser.id,
       token: verificationToken,
     },
   });
 
-  const verifyUrl = `http://localhost:3000/api/verify-email/${verificationToken}`;
-
-  sendEmailVerification(name, email, verifyUrl);
+  sendEmailVerification(name, email, verificationToken);
 
   redirect(`/create-account/verify-email/${newUser.id}`);
 }

@@ -1,7 +1,7 @@
 'use server';
 
-import ResendEmailVerification from '@/components/ResendEmailVerification';
 import { prisma } from '../../../../../prisma/prisma';
+import ResendEmailButton from '@/components/ResendEmailButton';
 
 export default async function VerifyEmail({
   params,
@@ -10,12 +10,25 @@ export default async function VerifyEmail({
 }) {
   const user = await prisma.users.findUnique({
     where: {
-      id: parseInt(params.id, 10),
+      id: Number(params.id),
     },
     select: {
       email: true,
     },
   });
+
+  const latestToken = await prisma.verifyUserTokens.findFirst({
+    where: {
+      userId: Number(params.id),
+    },
+  });
+
+  let buttonDisabled = true;
+  if (latestToken && latestToken.updatedAt) {
+    const timeSinceLastEmail =
+      new Date().getTime() - new Date(latestToken.updatedAt).getTime();
+    buttonDisabled = timeSinceLastEmail < 30 * 1000; // 30 seconds
+  }
 
   return (
     <main className="flex flex-1 px-6 py-6 sm:p-6">
@@ -31,7 +44,7 @@ export default async function VerifyEmail({
           If you do not see an email in your inbox you can send a new email
           below.
         </p>
-        <ResendEmailVerification id={params.id} />
+        <ResendEmailButton id={params.id} disabled={buttonDisabled} />
       </div>
     </main>
   );

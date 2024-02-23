@@ -6,8 +6,7 @@ export default function VerificationTokenExpired() {
           Link Expired
         </h1>
         <p className="text-center text-base text-gray-600">
-          You must click on the verification message within 24 hours or it will
-          expire
+          You either requested a new link or it has been longer than 24 hours.
         </p>
         <a
           href="#"

@@ -15,23 +15,19 @@ export default async function verifyEmail(id: string) {
     },
   });
 
+  if (!user) return;
+
   const verificationToken = `${randomUUID()}${randomUUID()}`;
 
-  // Create or update the VerifyUserTokens entry
-  await prisma.verifyUserTokens.upsert({
-    where: {
-      userId: user.id,
-    },
-    update: {
-      token: verificationToken,
-    },
-    create: {
+  // Create a new VerifyUserTokens entry
+  await prisma.verifyUserTokens.create({
+    data: {
       userId: user.id,
       token: verificationToken,
     },
   });
 
-  const verifyUrl = `http://localhost:3000/api/verify-email/${verificationToken}`;
+  sendEmailVerification(user.name, user.email, verificationToken);
 
-  sendEmailVerification(user?.name, user?.email, verifyUrl);
+  console.log('SENT');
 }

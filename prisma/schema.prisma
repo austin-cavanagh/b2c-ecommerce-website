@@ -30,7 +30,7 @@ model VerifyUserTokens {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   user       Users     @relation(fields: [userId], references: [id])
-  userId     Int       @unique
+  userId     Int
 }
 
 model UserAuths {
