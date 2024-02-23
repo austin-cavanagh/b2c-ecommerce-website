@@ -8,14 +8,10 @@ export async function GET(
 ) {
   const { token } = params;
 
-  console.log('IS THIS WORKING', token);
-
   const verificationToken = await prisma.verifyUserTokens.findUnique({
     where: { token },
     include: { user: true },
   });
-
-  console.log('TOKEN', verificationToken);
 
   if (!verificationToken) {
     redirect('/create-account/verification-token-expired');
@@ -31,9 +27,5 @@ export async function GET(
     data: { verifiedAt: new Date() },
   });
 
-  // route to somewhere
-
-  console.log('verified');
-
-  redirect('/');
+  redirect('/create-account/email-verified');
 }

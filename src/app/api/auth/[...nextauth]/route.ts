@@ -1,9 +1,14 @@
+'use server';
+import 'server-only';
+
 import { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth/next';
 import { prisma } from '../../../../../prisma/prisma';
+import { compare } from 'bcrypt';
 
 import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
+import Credentials from 'next-auth/providers/credentials';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -18,6 +23,60 @@ export const authOptions: NextAuthOptions = {
     Facebook({
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
+    }),
+
+    Credentials({
+      name: 'Sign in',
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        curPassword: { label: 'Password', type: 'password' },
+      },
+      async authorize(credentials) {
+        if (!credentials) {
+          return null;
+        }
+
+        const { email, curPassword } = credentials;
+
+        try {
+          // Look up the user by email
+          const user = await prisma.users.findUnique({
+            where: {
+              email: email,
+            },
+          });
+
+          // Check if their is an account associated to that email
+          if (!user) {
+            throw new Error('No user found with the email');
+          }
+
+          // Check if the user has been verified
+          if (!user.verified) {
+            throw new Error(
+              'User account is not verified. Please check your email for the verification link.',
+            );
+          }
+
+          // Compare the provided password with the stored hashed password
+          const isValid = await compare(curPassword, user.password as string);
+
+          if (!isValid) {
+            // Password does not match
+            throw new Error('Password is incorrect');
+          }
+
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            picture: user.picture,
+          };
+        } catch (error) {
+          console.error('Authorization error', error);
+          return null;
+        }
+      },
     }),
   ],
 
@@ -75,6 +134,17 @@ export const authOptions: NextAuthOptions = {
       });
 
       return true;
+    },
+
+    session: ({ session, token }) => {
+      return session;
+    },
+
+    // user is only passed in the first time they login
+    // Will not be present other logins so check if there is one
+    //
+    jwt: ({ token, user }) => {
+      return token;
     },
   },
 };
