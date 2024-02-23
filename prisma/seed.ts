@@ -1,4 +1,4 @@
-// import { PrismaClient } from '@prisma/client';
+// npx prisma db seed
 
 const { PrismaClient } = require('@prisma/client');
 

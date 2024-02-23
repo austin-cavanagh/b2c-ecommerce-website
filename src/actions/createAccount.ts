@@ -64,5 +64,5 @@ export default async function createAccount(
 
   sendEmailVerification(name, email, verifyUrl);
 
-  redirect('/sign-in');
+  redirect(`/create-account/verify-email/${newUser.id}`);
 }
