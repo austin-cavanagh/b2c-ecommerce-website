@@ -57,8 +57,8 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
-      console.log('USER', user);
-      console.log('ACCOUNT', account);
+      // console.log('USER', user);
+      // console.log('ACCOUNT', account);
 
       const dbUser = await prisma.users.findUnique({
         where: {
@@ -68,8 +68,12 @@ export const authOptions: NextAuthOptions = {
 
       // Google sign in
       if (account?.provider === 'google') {
+        console.log('GOOGLE');
+
         // New user
         if (!dbUser) {
+          console.log('GOOGLE - NEW');
+
           // Create user
           const newUser = await prisma.users.create({
             data: {
@@ -81,20 +85,21 @@ export const authOptions: NextAuthOptions = {
           });
 
           // Tie OAuth sign in provider to user
-          await prisma.userAuths.upsert({
-            where: {
-              providerId: `google:${account.providerAccountId}`,
-            },
-            create: {
+          await prisma.userAuths.create({
+            data: {
               userId: newUser.id,
               provider: account.provider,
-              providerId: `google:${account.providerAccountId}`,
+              providerId: `google:${user.id}`,
             },
           });
+
+          return true;
         }
 
         // Returning user
         if (dbUser) {
+          console.log('GOOGLE - RETURNING');
+
           // Check if user has signed in with google before
           const googleAuth = await prisma.userAuths.findFirst({
             where: {
@@ -105,11 +110,15 @@ export const authOptions: NextAuthOptions = {
 
           // Returning user who has not signed in with google before
           if (!googleAuth) {
+            console.log('GOOGLE - NEW GOOGLE');
+
             return false;
           }
 
           // Returning user who has signed in with google before
           if (googleAuth) {
+            console.log('GOOGLE - OLD GOOGLE');
+
             return true;
           }
         }
@@ -117,10 +126,12 @@ export const authOptions: NextAuthOptions = {
 
       // Facebook sign in
       if (account?.provider === 'facebook') {
-        console.log('facebook');
+        console.log('FACEBOOK');
 
         // New user
         if (!dbUser) {
+          console.log('FACEBOOK - NEW');
+
           // Create user
           const newUser = await prisma.users.create({
             data: {
@@ -132,21 +143,22 @@ export const authOptions: NextAuthOptions = {
           });
 
           // Tie OAuth sign in provider to user
-          await prisma.userAuths.upsert({
-            where: {
-              providerId: `facebook:${account.providerAccountId}`,
-            },
-            create: {
+          await prisma.userAuths.create({
+            data: {
               userId: newUser.id,
               provider: account.provider,
-              providerId: `facebook:${account.providerAccountId}`,
+              providerId: `facebook:${user.id}`,
             },
           });
+
+          return true;
         }
 
         // Returning user
         if (dbUser) {
-          // Check if user has signed in with google before
+          console.log('FACEBOOK - RETURNING');
+
+          // Check if user has signed in with facebook before
           const facebookAuth = await prisma.userAuths.findFirst({
             where: {
               userId: dbUser.id,
@@ -154,13 +166,17 @@ export const authOptions: NextAuthOptions = {
             },
           });
 
-          // Returning user who has not signed in with google before
+          // Returning user who has not signed in with facebook before
           if (!facebookAuth) {
+            console.log('FACEBOOK - NEW FACEBOOK');
+
             return false;
           }
 
-          // Returning user who has signed in with google before
+          // Returning user who has signed in with facebook before
           if (facebookAuth) {
+            console.log('FACEBOOK - OLD FACEBOOK');
+
             return true;
           }
         }

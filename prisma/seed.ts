@@ -5,6 +5,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
+  await prisma.userAuths.deleteMany({});
   await prisma.verifyUserTokens.deleteMany({});
   await prisma.users.deleteMany({});
   console.log('Tables cleared');

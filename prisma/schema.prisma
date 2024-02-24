@@ -29,14 +29,14 @@ model VerifyUserTokens {
   verifiedAt DateTime?
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
-  user       Users     @relation(fields: [userId], references: [id])
   userId     Int
+  user       Users     @relation(fields: [userId], references: [id])
 }
 
 model UserAuths {
   id         Int    @id @default(autoincrement())
   provider   String
   providerId String @unique
+  userId     Int
   user       Users  @relation(fields: [userId], references: [id])
-  userId     Int    @unique
 }
