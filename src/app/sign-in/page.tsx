@@ -5,6 +5,7 @@ import signInAction from '@/actions/signInAction';
 import { useFormState } from 'react-dom';
 import { signIn } from 'next-auth/react';
 import { FormEvent, useRef, useState } from 'react';
+import PasswordInput from '@/components/PasswordInput';
 
 function SignIn() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -93,17 +94,7 @@ function SignIn() {
                     </a>
                   </div>
                 </div>
-                <div className="mt-2">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    required
-                    ref={passwordRef}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
+                <PasswordInput passwordRef={passwordRef} />
               </div>
 
               <div>

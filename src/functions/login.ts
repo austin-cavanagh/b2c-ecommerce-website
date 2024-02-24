@@ -2,13 +2,6 @@ import { compare } from 'bcrypt';
 import { prisma } from '../../prisma/prisma';
 
 async function login(email: string, password: string) {
-  console.log(password);
-  console.log(password);
-  console.log(password);
-  console.log(password);
-  console.log(password);
-  console.log(password);
-
   try {
     // Look up the user by email
     const user = await prisma.users.findUnique({
