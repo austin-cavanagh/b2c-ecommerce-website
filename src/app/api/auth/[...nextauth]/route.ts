@@ -186,6 +186,13 @@ export const authOptions: NextAuthOptions = {
         return true;
       }
     },
+
+    async redirect({ url, baseUrl }) {
+      console.log('URL', url);
+      console.log('BASEURL', baseUrl);
+
+      return baseUrl;
+    },
   },
 
   // callbacks: {

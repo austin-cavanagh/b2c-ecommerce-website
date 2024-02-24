@@ -7,7 +7,6 @@ import { signIn } from 'next-auth/react';
 import { FormEvent, useRef, useState } from 'react';
 
 function SignIn() {
-  // const [error, action] = useFormState(signInAction, { message: '' });
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string>('');
@@ -27,7 +26,7 @@ function SignIn() {
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
       redirect: false,
-      callbackUrl: '/',
+      callbackUrl: '/products',
     });
 
     setError(error?.error);

@@ -11,6 +11,8 @@ export default async function createAccount(
   prevState: unknown,
   formData: FormData,
 ) {
+  console.log(formData);
+
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
