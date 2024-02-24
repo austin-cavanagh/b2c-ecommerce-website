@@ -23,10 +23,10 @@ function SignIn() {
     event.preventDefault();
 
     await signIn('credentials', {
-      username: emailRef.current?.value,
+      email: emailRef.current?.value,
       password: passwordRef.current?.value,
       redirect: true,
-      callback: 'http://localhost:3000/',
+      callbackUrl: '/',
     });
   };
 

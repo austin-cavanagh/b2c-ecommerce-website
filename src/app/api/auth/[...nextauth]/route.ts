@@ -3,14 +3,12 @@ import 'server-only';
 
 import { NextAuthOptions } from 'next-auth';
 import NextAuth from 'next-auth/next';
-import { prisma } from '../../../../../prisma/prisma';
-import { compare } from 'bcrypt';
 
 import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import login from '@/functions/login';
-import { request } from 'http';
+import { signIn } from 'next-auth/react';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -23,7 +21,7 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     Facebook({
-      // name: 'Facebook',
+      name: 'Facebook',
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),
@@ -32,27 +30,22 @@ export const authOptions: NextAuthOptions = {
       name: 'Credentials',
 
       credentials: {
-        // email: { label: 'Email', type: 'email' },
-        // curPassword: { label: 'Password', type: 'password' },
-        username: { username: 'Username', type: 'text', placeholder: 'jsmith' },
+        email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
 
-      async authorize(credentials, req) {
-        // console.log('REQUEST', req);
-        console.log('CREDENTIALS', credentials);
+      async authorize(credentials) {
+        // console.log('CREDENTIALS', credentials);
 
         if (!credentials) {
           return null;
         }
 
-        const { username, password } = credentials;
-
-        console.log('USERNAME', username);
-        console.log('PASSWORD', password);
+        const { email, password } = credentials;
 
         try {
-          const user = await login(username, password);
+          const user = await login(email, password);
+          // console.log('USER', user);
           return user;
         } catch (err) {
           console.error(err);
@@ -61,6 +54,126 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
+  callbacks: {
+    async signIn({ user, account }) {
+      console.log('USER', user);
+      console.log('ACCOUNT', account);
+
+      const dbUser = await prisma.users.findUnique({
+        where: {
+          email: user.email,
+        },
+      });
+
+      // Google sign in
+      if (account?.provider === 'google') {
+        // New user
+        if (!dbUser) {
+          // Create user
+          const newUser = await prisma.users.create({
+            data: {
+              name: user.name,
+              email: user.email,
+              picture: user.image,
+              verified: true,
+            },
+          });
+
+          // Tie OAuth sign in provider to user
+          await prisma.userAuths.upsert({
+            where: {
+              providerId: `google:${account.providerAccountId}`,
+            },
+            create: {
+              userId: newUser.id,
+              provider: account.provider,
+              providerId: `google:${account.providerAccountId}`,
+            },
+          });
+        }
+
+        // Returning user
+        if (dbUser) {
+          // Check if user has signed in with google before
+          const googleAuth = await prisma.userAuths.findFirst({
+            where: {
+              userId: dbUser.id,
+              provider: 'google',
+            },
+          });
+
+          // Returning user who has not signed in with google before
+          if (!googleAuth) {
+            return false;
+          }
+
+          // Returning user who has signed in with google before
+          if (googleAuth) {
+            return true;
+          }
+        }
+      }
+
+      // Facebook sign in
+      if (account?.provider === 'facebook') {
+        console.log('facebook');
+
+        // New user
+        if (!dbUser) {
+          // Create user
+          const newUser = await prisma.users.create({
+            data: {
+              name: user.name,
+              email: user.email,
+              picture: user.image,
+              verified: true,
+            },
+          });
+
+          // Tie OAuth sign in provider to user
+          await prisma.userAuths.upsert({
+            where: {
+              providerId: `facebook:${account.providerAccountId}`,
+            },
+            create: {
+              userId: newUser.id,
+              provider: account.provider,
+              providerId: `facebook:${account.providerAccountId}`,
+            },
+          });
+        }
+
+        // Returning user
+        if (dbUser) {
+          // Check if user has signed in with google before
+          const facebookAuth = await prisma.userAuths.findFirst({
+            where: {
+              userId: dbUser.id,
+              provider: 'facebook',
+            },
+          });
+
+          // Returning user who has not signed in with google before
+          if (!facebookAuth) {
+            return false;
+          }
+
+          // Returning user who has signed in with google before
+          if (facebookAuth) {
+            return true;
+          }
+        }
+      }
+
+      // Email sign in
+      if (account?.provider === 'credentials') {
+        console.log('email');
+      }
+
+      return true;
+    },
+  },
 
   // callbacks: {
   //   async signIn({ account, profile }) {

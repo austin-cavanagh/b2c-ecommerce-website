@@ -1,12 +1,12 @@
 import { compare } from 'bcrypt';
 import { prisma } from '../../prisma/prisma';
 
-async function login(username: string, password: string) {
+async function login(email: string, password: string) {
   try {
     // Look up the user by email
     const user = await prisma.users.findUnique({
       where: {
-        email: username,
+        email: email,
       },
     });
 
@@ -31,8 +31,7 @@ async function login(username: string, password: string) {
     }
 
     return {
-      username,
-      password,
+      email,
     };
   } catch (error) {
     console.error('Authorization error', error);
