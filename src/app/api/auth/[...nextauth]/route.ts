@@ -8,7 +8,6 @@ import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import login from '@/functions/login';
-import { signIn } from 'next-auth/react';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -21,14 +20,11 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     Facebook({
-      name: 'Facebook',
       clientId: process.env.FACEBOOK_CLIENT_ID!,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET!,
     }),
 
     Credentials({
-      name: 'Credentials',
-
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
@@ -46,10 +42,14 @@ export const authOptions: NextAuthOptions = {
         try {
           const user = await login(email, password);
           // console.log('USER', user);
+          console.log('WHAT HAPPENING');
+          console.log('WHAT HAPPENING');
+          console.log('WHAT HAPPENING');
+          console.log('USER', user);
           return user;
         } catch (err) {
           console.error(err);
-          return null;
+          throw err;
         }
       },
     }),
@@ -185,9 +185,9 @@ export const authOptions: NextAuthOptions = {
       // Email sign in
       if (account?.provider === 'credentials') {
         console.log('email');
-      }
 
-      return true;
+        return true;
+      }
     },
   },
 

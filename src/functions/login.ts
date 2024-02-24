@@ -12,30 +12,30 @@ async function login(email: string, password: string) {
 
     // Check if their is an account associated to that email
     if (!user) {
-      throw new Error('No user found with the email');
+      throw new Error('Incorrect username or password');
     }
 
     // Check if the user has been verified
     if (!user.verified) {
       throw new Error(
-        'User account is not verified. Please check your email for the verification link.',
+        'Account not verified, please check your email for the verification link to activate your account.',
       );
     }
 
     // Compare the provided password with the stored hashed password
     const isValid = await compare(password, user.password as string);
 
+    // Password does not match
     if (!isValid) {
-      // Password does not match
-      throw new Error('Password is incorrect');
+      throw new Error('Incorrect username or password');
     }
 
     return {
       email,
     };
-  } catch (error) {
-    console.error('Authorization error', error);
-    return null;
+  } catch (err) {
+    console.error('Authorization error', err);
+    throw new Error(err.message);
   }
 }
 
