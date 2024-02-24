@@ -41,11 +41,6 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const user = await login(email, password);
-          // console.log('USER', user);
-          console.log('WHAT HAPPENING');
-          console.log('WHAT HAPPENING');
-          console.log('WHAT HAPPENING');
-          console.log('USER', user);
           return user;
         } catch (err) {
           console.error(err);
@@ -181,6 +176,8 @@ export const authOptions: NextAuthOptions = {
           }
         }
       }
+
+      console.log(account);
 
       // Email sign in
       if (account?.provider === 'credentials') {

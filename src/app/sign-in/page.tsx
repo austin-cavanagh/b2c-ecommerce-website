@@ -4,12 +4,13 @@ import Link from 'next/link';
 import signInAction from '@/actions/signInAction';
 import { useFormState } from 'react-dom';
 import { signIn } from 'next-auth/react';
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 
 function SignIn() {
   // const [error, action] = useFormState(signInAction, { message: '' });
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const [error, setError] = useState<string>('');
 
   const handleGoogleClick = () => {
     signIn('google');
@@ -29,7 +30,7 @@ function SignIn() {
       callbackUrl: '/',
     });
 
-    console.log(error);
+    setError(error?.error);
   };
 
   return (
@@ -47,6 +48,8 @@ function SignIn() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+          <strong>{error}</strong>
+
           <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
             <form
               className="space-y-6"
@@ -98,6 +101,7 @@ function SignIn() {
                     type="password"
                     autoComplete="current-password"
                     required
+                    ref={passwordRef}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -106,7 +110,7 @@ function SignIn() {
               <div>
                 <button
                   type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="mt-14 flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Sign in
                 </button>
