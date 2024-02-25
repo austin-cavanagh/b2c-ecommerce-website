@@ -69,3 +69,63 @@ export async function generateAccessToken() {
     console.error('Failed to generate Access Token:', error);
   }
 }
+
+// CREATE ORDER
+
+export async function createOrderAction(cart) {
+  console.log('CART', cart);
+
+  try {
+    // use the cart information passed from the front-end to calculate the order amount detals
+    // const { cart } = req.body;
+    const { jsonResponse, httpStatusCode } = await createOrder(cart);
+
+    console.log('jsonResponse', jsonResponse);
+    console.log('httpStatusCode', httpStatusCode);
+
+    return jsonResponse;
+    // res.status(httpStatusCode).json(jsonResponse);
+  } catch (err) {
+    console.error('Failed to create order:', err);
+    throw new Error('Failed to create order:', err);
+    // res.status(500).json({ error: 'Failed to create order.' });
+  }
+}
+
+const createOrder = async cart => {
+  // use the cart information passed from the front-end to calculate the purchase unit details
+  console.log(
+    'shopping cart information passed from the frontend createOrder() callback:',
+    cart,
+  );
+
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders`;
+  const payload = {
+    intent: 'CAPTURE',
+    purchase_units: [
+      {
+        amount: {
+          currency_code: 'USD',
+          value: '100.00',
+        },
+      },
+    ],
+  };
+
+  const response = await fetch(url, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+      // Uncomment one of these to force an error for negative testing (in sandbox mode only). Documentation:
+      // https://developer.paypal.com/tools/sandbox/negative-testing/request-headers/
+      // "PayPal-Mock-Response": '{"mock_application_codes": "MISSING_REQUIRED_PARAMETER"}'
+      // "PayPal-Mock-Response": '{"mock_application_codes": "PERMISSION_DENIED"}'
+      // "PayPal-Mock-Response": '{"mock_application_codes": "INTERNAL_SERVER_ERROR"}'
+    },
+    method: 'POST',
+    body: JSON.stringify(payload),
+  });
+
+  return handleResponse(response);
+};

@@ -9,30 +9,36 @@ import {
   PayPalButtons,
   usePayPalHostedFields,
 } from '@paypal/react-paypal-js';
+import { createOrderAction } from '@/actions/getClientToken';
 
 async function createOrderCallback() {
-  console.log('WORKING');
-  console.log('WORKING');
-  console.log('WORKING');
-
   try {
-    const response = await fetch('/api/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    // const response = await fetch('/api/orders', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
 
-      // use the "body" param to optionally pass additional order information
-      // like product ids and quantities
-      body: JSON.stringify({
-        cart: [
-          { id: 'prod_HDjs82kQ90', quantity: 2 },
-          { id: 'prod_JD9dJso12', quantity: 1 },
-        ],
-      }),
-    });
+    //   // use the "body" param to optionally pass additional order information
+    //   // like product ids and quantities
+    //   body: JSON.stringify({
+    //     cart: [
+    //       { id: 'prod_HDjs82kQ90', quantity: 2 },
+    //       { id: 'prod_JD9dJso12', quantity: 1 },
+    //     ],
+    //   }),
+    // });
 
-    const orderData = await response.json();
+    // const orderData = await response.json();
+
+    const cart = {
+      cart: [
+        { id: 'prod_HDjs82kQ90', quantity: 2 },
+        { id: 'prod_JD9dJso12', quantity: 1 },
+      ],
+    };
+
+    const orderData = await createOrderAction(cart);
 
     console.log('ORDER-DATA', orderData);
 
@@ -48,10 +54,6 @@ async function createOrderCallback() {
     }
   } catch (error) {
     console.error(error);
-
-    console.log('ERROR');
-    console.log('ERROR');
-    console.log('ERROR');
 
     return `Could not initiate PayPal Checkout...${error}`;
   }

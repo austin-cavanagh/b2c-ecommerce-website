@@ -24,7 +24,7 @@ export default function PayPalProvider() {
     })();
   }, []);
 
-  console.log(initialOptions);
+  // console.log(initialOptions);
 
   return (
     <>
