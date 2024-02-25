@@ -188,8 +188,8 @@ export const authOptions: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }) {
-      console.log('URL', url);
-      console.log('BASEURL', baseUrl);
+      // console.log('URL', url);
+      // console.log('BASEURL', baseUrl);
 
       return baseUrl;
     },

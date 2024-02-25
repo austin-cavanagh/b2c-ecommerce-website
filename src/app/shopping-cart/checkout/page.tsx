@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
@@ -37,7 +39,7 @@ function classNames(...classes) {
 
 function Checkout() {
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
-    deliveryMethods[0]
+    deliveryMethods[0],
   );
 
   return (
@@ -278,7 +280,7 @@ function Checkout() {
                         classNames(
                           checked ? 'border-transparent' : 'border-gray-300',
                           active ? 'ring-2 ring-indigo-500' : '',
-                          'relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none'
+                          'relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none',
                         )
                       }
                     >
@@ -318,7 +320,7 @@ function Checkout() {
                               checked
                                 ? 'border-indigo-500'
                                 : 'border-transparent',
-                              'pointer-events-none absolute -inset-px rounded-lg'
+                              'pointer-events-none absolute -inset-px rounded-lg',
                             )}
                             aria-hidden="true"
                           />

@@ -7,7 +7,7 @@ import {
 } from '@stripe/react-stripe-js';
 import { FormEvent, useEffect, useState } from 'react';
 
-export default function CheckoutForm() {
+export default function StripeCheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -19,14 +19,16 @@ export default function CheckoutForm() {
       return;
     }
 
+    // Stripe Secret Key
     const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret',
+      process.env.STRIPE_SECRET_KEY!,
     );
 
     if (!clientSecret) {
       return;
     }
 
+    // Payment messages
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
       switch (paymentIntent.status) {
         case 'succeeded':
