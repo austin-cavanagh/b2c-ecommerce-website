@@ -3,28 +3,29 @@
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { useState, useEffect } from 'react';
 import { PaymentForm } from './PayPalCheckout';
+import { getClientToken } from '@/actions/getClientToken';
 
 export default function PayPalProvider() {
-  const [clientToken, setClientToken] = useState(null);
+  const [clientToken, setClientToken] = useState<string>('');
 
   const initialOptions = {
-    'client-id': 'test',
+    clientId: 'test',
     'enable-funding': 'venmo',
     'disable-funding': 'paylater',
     'data-sdk-integration-source': 'integrationbuilder_ac',
-    'data-client-token': clientToken,
+    dataClientToken: clientToken,
     components: 'hosted-fields,buttons',
   };
 
   useEffect(() => {
     (async () => {
-      const response = await fetch('/api/token', {
-        method: 'POST',
-      });
-      const { client_token } = await response.json();
+      const client_token = await getClientToken();
       setClientToken(client_token);
     })();
   }, []);
+
+  console.log(initialOptions);
+
   return (
     <>
       {clientToken ? (

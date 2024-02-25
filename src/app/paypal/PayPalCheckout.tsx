@@ -11,25 +11,30 @@ import {
 } from '@paypal/react-paypal-js';
 
 async function createOrderCallback() {
+  console.log('WORKING');
+  console.log('WORKING');
+  console.log('WORKING');
+
   try {
     const response = await fetch('/api/orders', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+
       // use the "body" param to optionally pass additional order information
       // like product ids and quantities
       body: JSON.stringify({
         cart: [
-          {
-            id: 'YOUR_PRODUCT_ID',
-            quantity: 'YOUR_PRODUCT_QUANTITY',
-          },
+          { id: 'prod_HDjs82kQ90', quantity: 2 },
+          { id: 'prod_JD9dJso12', quantity: 1 },
         ],
       }),
     });
 
     const orderData = await response.json();
+
+    console.log('ORDER-DATA', orderData);
 
     if (orderData.id) {
       return orderData.id;
@@ -43,6 +48,11 @@ async function createOrderCallback() {
     }
   } catch (error) {
     console.error(error);
+
+    console.log('ERROR');
+    console.log('ERROR');
+    console.log('ERROR');
+
     return `Could not initiate PayPal Checkout...${error}`;
   }
 }
@@ -128,7 +138,7 @@ const SubmitPayment = ({ onHandleMessage }) => {
   };
 
   return (
-    <button onClick={submitHandler} className="btn btn-primary">
+    <button onClick={submitHandler} className="btn btn-primary btn-class">
       Pay
     </button>
   );
@@ -138,10 +148,12 @@ const Message = ({ content }) => {
   return <p>{content}</p>;
 };
 
-export function PaymentForm() => {
+export function PaymentForm() {
   const [message, setMessage] = useState('');
+
   return (
     <div className={styles.form}>
+      {/* PayPal - Venmo - Credit or Debit */}
       <PayPalButtons
         style={{
           shape: 'rect',
@@ -201,7 +213,9 @@ export function PaymentForm() => {
           <SubmitPayment onHandleMessage={setMessage} />
         </div>
       </PayPalHostedFieldsProvider>
+
+      {/* Powered by PayPal */}
       <Message content={message} />
     </div>
   );
-};
+}
