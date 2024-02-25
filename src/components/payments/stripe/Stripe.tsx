@@ -11,17 +11,11 @@ const stripePromise = loadStripe(
 );
 
 export default function Stripe() {
-  const [clientSecret, setClientSecret] = useState('');
 
-  useEffect(() => {
-    fetch('/api/checkout_sessions', {
-      method: 'POST',
-    })
-      .then(res => res.json())
-      .then(data => setClientSecret(data.clientSecret));
-  }, [clientSecret]);
-
-  console.log('CLIENT_SECRET', clientSecret);
+    
+    async function newSession() {
+        await 
+    }
 
   return (
     <Elements stripe={stripePromise} options={{ clientSecret }}>
