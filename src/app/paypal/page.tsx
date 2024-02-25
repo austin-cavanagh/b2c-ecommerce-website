@@ -1,12 +1,12 @@
 import { stripeAction } from '@/actions/stripeAction';
-import PayPalCheckoutForm from './checkout/page';
+import PayPalCheckout from './PayPalProvider';
 
-export default async function Stripe() {
+export default async function PayPal() {
   const clientSecret = (await stripeAction()) as string;
 
   return (
     <main className="flex w-full flex-1 items-center justify-center px-6 py-6 sm:p-6">
-      <PayPalCheckoutForm />
+      <PayPalCheckout />
     </main>
   );
 }
