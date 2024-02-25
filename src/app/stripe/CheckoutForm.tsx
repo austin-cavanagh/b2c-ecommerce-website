@@ -17,7 +17,7 @@ export default function CheckoutForm({
   clientSecret: string;
 }) {
   return (
-    <div id="checkout">
+    <div id="checkout" className="w-full">
       {clientSecret && (
         <EmbeddedCheckoutProvider
           stripe={stripePromise}
