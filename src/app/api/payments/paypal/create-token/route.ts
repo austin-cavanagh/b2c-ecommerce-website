@@ -1,9 +1,14 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { generateClientToken } from '@/actions/payPalActions';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST() {
   try {
-    const { jsonResponse, httpStatusCode } = await generateClientToken();
-    res.status(httpStatusCode).json(jsonResponse);
+    const data = await generateClientToken();
+    const client_token = data.jsonResponse.client_token;
+    return Response.json({ client_token });
+
+    // const { jsonResponse, httpStatusCode } = await generateClientToken();
+    // res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
     console.error('Failed to generate client token:', error);
     res.status(500).send({ error: 'Failed to generate client token.' });

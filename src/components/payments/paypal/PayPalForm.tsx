@@ -1,5 +1,7 @@
+'use client';
+
 import { useState, useRef } from 'react';
-import styles from './payPal.css';
+import styles from './payPal.module.css';
 
 import {
   PayPalHostedFieldsProvider,
@@ -126,7 +128,7 @@ const SubmitPayment = ({ onHandleMessage }) => {
   };
 
   return (
-    <button onClick={submitHandler} className="btn btn-primary">
+    <button onClick={submitHandler} className="btn btn-primary btn-class">
       Pay
     </button>
   );
