@@ -32,8 +32,9 @@ async function createOrderCallback() {
 
     // const orderData = await response.json();
 
-    const orderData = await createOrder();
-    console.log('ORDER', orderData);
+    // Either need to send a cart here of have the database query it on the backend
+    const response = await createOrder();
+    const orderData = response.jsonResponse;
 
     if (orderData.id) {
       return orderData.id;
@@ -61,6 +62,9 @@ async function onApproveCallback(data, actions) {
     });
 
     const orderData = await response.json();
+
+    console.log('orderData', orderData);
+
     // Three cases to handle:
     //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
     //   (2) Other non-recoverable errors -> Show a failure message
