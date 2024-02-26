@@ -40,7 +40,7 @@ async function createOrderCallback() {
 
     const orderData = await createOrderAction(cart);
 
-    console.log('ORDER-DATA', orderData);
+    // console.log('ORDER-DATA', orderData);
 
     if (orderData.id) {
       return orderData.id;
