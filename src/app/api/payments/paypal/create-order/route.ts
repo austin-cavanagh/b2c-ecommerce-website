@@ -7,6 +7,8 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     const { cart } = req.body;
     const { jsonResponse, httpStatusCode } = await createOrder(cart);
     res.status(httpStatusCode).json(jsonResponse);
+
+    return Response.json({ client_token });
   } catch (error) {
     console.error('Failed to create order:', error);
     res.status(500).json({ error: 'Failed to create order.' });

@@ -1,9 +1,18 @@
 // import express from 'express';
 // import fetch from 'node-fetch';
-import 'dotenv/config';
-import path from 'path';
+// import 'dotenv/config';
+// import path from 'path';
+
+'use server';
+import 'server-only';
 
 const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
+
+// const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
+// const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+
+console.log(PAYPAL_CLIENT_ID);
+
 const base = 'https://api-m.sandbox.paypal.com';
 // const app = express();
 
@@ -18,6 +27,8 @@ const base = 'https://api-m.sandbox.paypal.com';
 export const generateAccessToken = async () => {
   try {
     if (!PAYPAL_CLIENT_ID || !PAYPAL_CLIENT_SECRET) {
+      console.log('process.env.PAYPAL_CLIENT_ID', PAYPAL_CLIENT_ID);
+
       throw new Error('MISSING_API_CREDENTIALS');
     }
     const auth = Buffer.from(
@@ -32,7 +43,8 @@ export const generateAccessToken = async () => {
     });
 
     const data = await response.json();
-    return data.access_token;
+    const access_token = data.access_token;
+    return access_token;
   } catch (error) {
     console.error('Failed to generate Access Token:', error);
   }
@@ -61,12 +73,12 @@ export const generateClientToken = async () => {
  * Create an order to start the transaction.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
-export const createOrder = async cart => {
+export const createOrder = async () => {
   // use the cart information passed from the front-end to calculate the purchase unit details
-  console.log(
-    'shopping cart information passed from the frontend createOrder() callback:',
-    cart,
-  );
+  // console.log(
+  //   'shopping cart information passed from the frontend createOrder() callback:',
+  //   cart,
+  // );
 
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;

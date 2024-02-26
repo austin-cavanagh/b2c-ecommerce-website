@@ -9,27 +9,31 @@ import {
   PayPalButtons,
   usePayPalHostedFields,
 } from '@paypal/react-paypal-js';
+import { createOrder } from '@/actions/payPalActions';
 
 async function createOrderCallback() {
   try {
-    const response = await fetch('/api/orders', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // use the "body" param to optionally pass additional order information
-      // like product ids and quantities
-      body: JSON.stringify({
-        cart: [
-          {
-            id: 'YOUR_PRODUCT_ID',
-            quantity: 'YOUR_PRODUCT_QUANTITY',
-          },
-        ],
-      }),
-    });
+    // const response = await fetch('/api/orders', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   // use the "body" param to optionally pass additional order information
+    //   // like product ids and quantities
+    //   body: JSON.stringify({
+    //     cart: [
+    //       {
+    //         id: 'YOUR_PRODUCT_ID',
+    //         quantity: 'YOUR_PRODUCT_QUANTITY',
+    //       },
+    //     ],
+    //   }),
+    // });
 
-    const orderData = await response.json();
+    // const orderData = await response.json();
+
+    const orderData = await createOrder();
+    console.log('ORDER', orderData);
 
     if (orderData.id) {
       return orderData.id;
