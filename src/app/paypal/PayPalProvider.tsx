@@ -10,6 +10,7 @@ export default function PayPalProvider() {
 
   const initialOptions = {
     clientId: 'test',
+    'merchant-id': 'sb-ykaq829670763@business.example.com',
     'enable-funding': 'venmo',
     'disable-funding': 'paylater',
     'data-sdk-integration-source': 'integrationbuilder_ac',

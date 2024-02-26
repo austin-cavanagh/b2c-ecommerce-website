@@ -32,20 +32,6 @@ export async function generateClientToken() {
   return handleResponse(response);
 }
 
-export async function handleResponse(response) {
-  try {
-    const jsonResponse = await response.json();
-    return {
-      jsonResponse,
-      httpStatusCode: response.status,
-    };
-  } catch (err) {
-    console.log('handleResponse');
-    const errorMessage = await response.text();
-    throw new Error(errorMessage);
-  }
-}
-
 // Generate an OAuth 2.0 access token for authenticating with PayPal REST APIs
 export async function generateAccessToken() {
   try {
@@ -73,7 +59,7 @@ export async function generateAccessToken() {
 // CREATE ORDER
 
 export async function createOrderAction(cart) {
-  console.log('CART', cart);
+  //   console.log('CART', cart);
 
   try {
     // use the cart information passed from the front-end to calculate the order amount detals
@@ -107,7 +93,7 @@ const createOrder = async cart => {
       {
         amount: {
           currency_code: 'USD',
-          value: '100.00',
+          value: '200.00',
         },
       },
     ],
@@ -129,3 +115,17 @@ const createOrder = async cart => {
 
   return handleResponse(response);
 };
+
+export async function handleResponse(response) {
+  try {
+    const jsonResponse = await response.json();
+    return {
+      jsonResponse,
+      httpStatusCode: response.status,
+    };
+  } catch (err) {
+    console.log('handleResponse');
+    const errorMessage = await response.text();
+    throw new Error(errorMessage);
+  }
+}
