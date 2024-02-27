@@ -4,10 +4,16 @@ import {
   PaymentElement,
   useStripe,
   useElements,
+  CardElement,
 } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
+import { createCheckoutSession } from './stripeActions';
 
-export default function CheckoutForm() {
+export default function CheckoutForm({
+  clientSecret,
+}: {
+  clientSecret: string;
+}) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -79,12 +85,60 @@ export default function CheckoutForm() {
   };
 
   const paymentElementOptions = {
-    layout: 'tabs',
+    layout: {
+      type: 'accordion',
+      defaultCollapsed: true,
+      radios: false,
+      spacedAccordionItems: true,
+    },
+  };
+
+  const handleCheckout = async () => {
+    setIsLoading(true);
+
+    try {
+      const session = await createCheckoutSession();
+
+      console.log(session);
+
+      // Redirect to Stripe Checkout using the session ID
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (session.url) {
+        // Open the Stripe Checkout in a new tab using the session URL
+        window.open(session.url, '_blank');
+      } else {
+        // Handle cases where no session URL is returned
+        console.error('Session URL not provided');
+        setMessage('Failed to initiate payment process.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('An unexpected error occurred.');
+    }
+
+    setIsLoading(false);
   };
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
+      <button
+        disabled={isLoading || !stripe}
+        onClick={handleCheckout}
+        id="checkout-button"
+      >
+        <span id="button-text">
+          {isLoading ? (
+            <div className="spinner" id="spinner"></div>
+          ) : (
+            'Pay with Stripe'
+          )}
+        </span>
+      </button>
       <PaymentElement id="payment-element" options={paymentElementOptions} />
+      {/* <CardElement id="card-element" /> */}
       <button disabled={isLoading || !stripe || !elements} id="submit">
         <span id="button-text">
           {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}

@@ -16,19 +16,6 @@ const STRIPE_PUBLISHABLE_KEY =
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 
 export default function StripeBtns({ clientSecret }: { clientSecret: string }) {
-  //   const [clientSecret, setClientSecret] = useState('');
-
-  //   useEffect(() => {
-  //     // Create PaymentIntent as soon as the page loads
-  //     fetch('/api/create-payment-intent', {
-  //       method: 'POST',
-  //       headers: { 'Content-Type': 'application/json' },
-  //       body: JSON.stringify({ items: [{ id: 'xl-tshirt', amount: 1000 }] }),
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => setClientSecret(data.clientSecret));
-  //   }, []);
-
   const appearance = {
     theme: 'stripe',
   };
@@ -42,7 +29,7 @@ export default function StripeBtns({ clientSecret }: { clientSecret: string }) {
     <div className="App">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm clientSecret={clientSecret} />
         </Elements>
       )}
     </div>
