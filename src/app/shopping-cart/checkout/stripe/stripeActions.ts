@@ -45,8 +45,8 @@ const calculateOrderAmount = (items, taxCalculation) => {
   return orderAmount;
 };
 
-export async function handler(req, res) {
-  const { items } = req.body;
+export async function createPaymentIntent(items) {
+  //   const { items } = req.body;
   const taxCalculation = await calculateTax(items, 'usd');
   const amount = calculateOrderAmount(items, taxCalculation);
 
@@ -63,9 +63,13 @@ export async function handler(req, res) {
     },
   });
 
-  res.send({
-    clientSecret: paymentIntent.client_secret,
-  });
+  //   console.log(paymentIntent);
+
+  return paymentIntent;
+
+  //   res.send({
+  //     clientSecret: paymentIntent.client_secret,
+  //   });
 
   // Invoke this method in your webhook handler when `payment_intent.succeeded` webhook is received
   const handlePaymentIntentSucceeded = async paymentIntent => {
