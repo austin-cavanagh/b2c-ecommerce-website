@@ -9,7 +9,7 @@ import {
   PayPalButtons,
   usePayPalHostedFields,
 } from '@paypal/react-paypal-js';
-import { createOrder } from '@/actions/payPalActions';
+import { captureOrder, createOrder } from '@/actions/payPalActions';
 
 async function createOrderCallback() {
   try {
@@ -54,16 +54,11 @@ async function createOrderCallback() {
 
 async function onApproveCallback(data, actions) {
   try {
-    const response = await fetch(`/api/orders/${data.orderID}/capture`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    // response = { jsonResponse: orderData, httpStatusCode: code }
 
-    const orderData = await response.json();
-
-    console.log('orderData', orderData);
+    const orderId = data.orderID;
+    const response = await captureOrder(orderId);
+    const orderData = response.jsonResponse;
 
     // Three cases to handle:
     //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
@@ -86,6 +81,7 @@ async function onApproveCallback(data, actions) {
       transaction.status === 'DECLINED'
     ) {
       // (2) Other non-recoverable errors -> Show a failure message
+
       let errorMessage;
       if (transaction) {
         errorMessage = `Transaction ${transaction.status}: ${transaction.id}`;
@@ -102,8 +98,9 @@ async function onApproveCallback(data, actions) {
       console.log(
         'Capture result',
         orderData,
-        JSON.stringify(orderData, null, 2),
+        // JSON.stringify(orderData, null, 2),
       );
+
       return `Transaction ${transaction.status}: ${transaction.id}. See console for all available details`;
     }
   } catch (error) {
@@ -119,6 +116,7 @@ const SubmitPayment = ({ onHandleMessage }) => {
   const submitHandler = () => {
     if (typeof cardFields.submit !== 'function') return; // validate that \`submit()\` exists before using it
     //if (errorMsg) showErrorMsg(false);
+
     cardFields
       .submit({
         // The full name as shown in the card and billing addresss
@@ -148,6 +146,7 @@ const Message = ({ content }) => {
 
 export default function PaymentForm() {
   const [message, setMessage] = useState('');
+
   return (
     <div className={styles.form}>
       <PayPalButtons
@@ -209,6 +208,7 @@ export default function PaymentForm() {
           <SubmitPayment onHandleMessage={setMessage} />
         </div>
       </PayPalHostedFieldsProvider>
+
       <Message content={message} />
     </div>
   );

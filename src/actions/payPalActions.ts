@@ -11,8 +11,6 @@ const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } = process.env;
 // const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
 // const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 
-console.log(PAYPAL_CLIENT_ID);
-
 const base = 'https://api-m.sandbox.paypal.com';
 // const app = express();
 
