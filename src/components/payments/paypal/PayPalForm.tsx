@@ -13,25 +13,6 @@ import { captureOrder, createOrder } from '@/actions/payPalActions';
 
 async function createOrderCallback() {
   try {
-    // const response = await fetch('/api/orders', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   // use the "body" param to optionally pass additional order information
-    //   // like product ids and quantities
-    //   body: JSON.stringify({
-    //     cart: [
-    //       {
-    //         id: 'YOUR_PRODUCT_ID',
-    //         quantity: 'YOUR_PRODUCT_QUANTITY',
-    //       },
-    //     ],
-    //   }),
-    // });
-
-    // const orderData = await response.json();
-
     // Either need to send a cart here of have the database query it on the backend
     const response = await createOrder();
     const orderData = response.jsonResponse;
@@ -55,6 +36,8 @@ async function createOrderCallback() {
 async function onApproveCallback(data, actions) {
   try {
     // response = { jsonResponse: orderData, httpStatusCode: code }
+
+    console.log('ACTIONS', actions);
 
     const orderId = data.orderID;
     const response = await captureOrder(orderId);
@@ -140,7 +123,7 @@ const SubmitPayment = ({ onHandleMessage }) => {
   );
 };
 
-const Message = ({ content }) => {
+const Message = ({ content }: { content: string }) => {
   return <p>{content}</p>;
 };
 
@@ -159,7 +142,7 @@ export default function PaymentForm() {
         onApprove={async data => setMessage(await onApproveCallback(data))}
       />
 
-      <PayPalHostedFieldsProvider createOrder={createOrderCallback}>
+      {/* <PayPalHostedFieldsProvider createOrder={createOrderCallback}>
         <div style={{ marginTop: '4px', marginBottom: '4px' }}>
           <PayPalHostedField
             id="card-number"
@@ -207,7 +190,7 @@ export default function PaymentForm() {
           </div>
           <SubmitPayment onHandleMessage={setMessage} />
         </div>
-      </PayPalHostedFieldsProvider>
+      </PayPalHostedFieldsProvider> */}
 
       <Message content={message} />
     </div>
