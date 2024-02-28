@@ -1,3 +1,5 @@
+// For not found pages
+
 function NotFound() {
   return (
     <main className="flex flex-1 px-6 py-6 sm:p-6">
