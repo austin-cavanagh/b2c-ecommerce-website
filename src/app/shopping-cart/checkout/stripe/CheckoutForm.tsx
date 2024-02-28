@@ -60,6 +60,7 @@ export default function CheckoutForm({
       return;
     }
 
+    // For loading
     setIsLoading(true);
 
     const { error } = await stripe.confirmPayment({
