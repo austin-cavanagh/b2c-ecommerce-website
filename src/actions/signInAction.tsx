@@ -1,3 +1,5 @@
+// Signs in user
+
 'use server';
 import { signIn } from 'next-auth/react';
 import 'server-only';

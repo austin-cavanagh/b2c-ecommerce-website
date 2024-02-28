@@ -1,3 +1,5 @@
+// Verifies email
+
 'use server';
 import 'server-only';
 
