@@ -1,7 +1,7 @@
 import StripeBtns from '@/components/payments/stripe/StripeBtns';
 import { createPaymentIntent } from './stripeActions';
 
-export default async function Stripe() {
+export default async function StripeParent() {
   const items = [{ id: 'xl-tshirt', amount: 1000 }];
 
   const paymentIntent = await createPaymentIntent(items);

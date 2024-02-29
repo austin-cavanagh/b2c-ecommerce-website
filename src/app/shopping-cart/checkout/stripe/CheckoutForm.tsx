@@ -129,6 +129,7 @@ export default function CheckoutForm({
         disabled={isLoading || !stripe}
         onClick={handleCheckout}
         id="checkout-button"
+        className={`rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium font-semibold leading-4 text-white shadow-sm hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 ${isLoading || !stripe ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
       >
         <span id="button-text">
           {isLoading ? (
