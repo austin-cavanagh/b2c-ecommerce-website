@@ -18,7 +18,7 @@ export default async function signInAction(
     // callbackUrl: '/',
   });
 
-  console.log('TESTING TESTIN');
+  console.log('TESTING TESTING');
 
   return { message: '' };
 }

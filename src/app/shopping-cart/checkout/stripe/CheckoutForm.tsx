@@ -103,9 +103,9 @@ export default function CheckoutForm({
       console.log(session);
 
       // Redirect to Stripe Checkout using the session ID
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
+      //   const { error } = await stripe.redirectToCheckout({
+      //     sessionId: session.id,
+      //   });
 
       if (session.url) {
         // Open the Stripe Checkout in a new tab using the session URL
