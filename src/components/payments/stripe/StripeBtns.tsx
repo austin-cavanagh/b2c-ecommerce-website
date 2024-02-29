@@ -26,7 +26,7 @@ export default function StripeBtns({ clientSecret }: { clientSecret: string }) {
   };
 
   return (
-    <div className="App">
+    <div className="App w-full">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm clientSecret={clientSecret} />

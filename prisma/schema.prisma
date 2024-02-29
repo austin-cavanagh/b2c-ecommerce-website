@@ -10,33 +10,86 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id               Int                @id @default(autoincrement())
-  email            String?            @unique
+model User {
+  id               Int               @id @default(autoincrement())
+  email            String?           @unique
   name             String?
   picture          String?
   password         String?
-  verified         Boolean            @default(false)
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime           @updatedAt
-  authMethods      UserAuths[]
-  verifyUserTokens VerifyUserTokens[]
+  verified         Boolean           @default(false)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  authMethods      UserAuth[]
+  verifyUserTokens VerifyUserToken[]
+  cart             Cart?             @relation(fields: [cartId], references: [id])
+  cartId           Int?
 }
 
-model VerifyUserTokens {
+model VerifyUserToken {
   id         Int       @id @default(autoincrement())
   token      String    @unique
   verifiedAt DateTime?
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   userId     Int
-  user       Users     @relation(fields: [userId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
 }
 
-model UserAuths {
+model UserAuth {
   id         Int    @id @default(autoincrement())
   provider   String
   providerId String @unique
   userId     Int
-  user       Users  @relation(fields: [userId], references: [id])
+  user       User   @relation(fields: [userId], references: [id])
+}
+
+model Product {
+  id               Int        @id @default(autoincrement())
+  name             String
+  shortDescription String?
+  longDescription  String?
+  imageUrl         String?
+  price            Int?
+  height           Int?
+  width            Int?
+  categoryId       Int?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  Category         Category?  @relation(fields: [categoryId], references: [id])
+  CartItem         CartItem[]
+
+  @@map("products")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+
+  @@map("categories")
+}
+
+model Color {
+  id   Int     @id @default(autoincrement())
+  name String
+  code String? // Optional: Hex code or RGB value for the color
+
+  @@map("colors")
+}
+
+model CartItem {
+  id             Int     @id @default(autoincrement())
+  productId      Int
+  cartId         Int
+  quantity       Int
+  customizations String? @default("") // New field for custom instructions or customizations
+  product        Product @relation(fields: [productId], references: [id])
+  cart           Cart    @relation(fields: [cartId], references: [id])
+}
+
+model Cart {
+  id     Int        @id @default(autoincrement())
+  userId Int
+  items  CartItem[]
+  user   User       @relation(fields: [userId], references: [id])
 }

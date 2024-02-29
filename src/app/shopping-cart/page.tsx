@@ -172,6 +172,7 @@ export default function Example() {
               Checkout With Debit or Credit Card
             </button>
 
+            {/* Debit or Credit Card */}
             <StripeParent />
 
             <div className="h-20 w-full bg-black"></div>
