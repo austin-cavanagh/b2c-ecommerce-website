@@ -34,7 +34,11 @@ const product = {
       bgColor: 'bg-gray-700',
       selectedColor: 'ring-gray-700',
     },
-    { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
+    {
+      name: 'White',
+      bgColor: 'bg-white',
+      selectedColor: 'ring-gray-400',
+    },
     {
       name: 'Washed Gray',
       bgColor: 'bg-gray-500',
@@ -42,7 +46,7 @@ const product = {
     },
   ],
   description: `
-    <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
+    <p>This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below.</p>
   `,
   details: [
     {
@@ -58,6 +62,13 @@ const product = {
       ],
     },
   ],
+  sizes: [
+    { name: 'XXS', inStock: true },
+    { name: 'XS', inStock: true },
+    { name: 'S', inStock: true },
+    { name: 'M', inStock: true },
+    { name: 'L', inStock: true },
+  ],
 };
 
 function classNames(...classes) {
@@ -66,6 +77,7 @@ function classNames(...classes) {
 
 export default function Example({ params }: { params: { product: string } }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedSize, setSelectedSize] = useState(product.colors[0]);
 
   const productName = decodeURIComponent(params.product);
 
@@ -167,6 +179,56 @@ export default function Example({ params }: { params: { product: string } }) {
             </div>
 
             <form className="mt-6">
+              {/* Size picker */}
+              <div className="mt-8">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-sm font-medium text-gray-900">Size</h2>
+                  <a
+                    href="#"
+                    className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                  >
+                    See sizing chart
+                  </a>
+                </div>
+
+                <RadioGroup
+                  value={selectedSize}
+                  onChange={setSelectedSize}
+                  className="mt-2"
+                >
+                  <RadioGroup.Label className="sr-only">
+                    Choose a size
+                  </RadioGroup.Label>
+                  <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
+                    {product.sizes.map(size => (
+                      <RadioGroup.Option
+                        key={size.name}
+                        value={size}
+                        className={({ active, checked }) =>
+                          classNames(
+                            size.inStock
+                              ? 'cursor-pointer focus:outline-none'
+                              : 'cursor-not-allowed opacity-25',
+                            active
+                              ? 'ring-2 ring-indigo-500 ring-offset-2'
+                              : '',
+                            checked
+                              ? 'border-transparent bg-indigo-600 text-white hover:bg-indigo-700'
+                              : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
+                            'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium uppercase sm:flex-1',
+                          )
+                        }
+                        disabled={!size.inStock}
+                      >
+                        <RadioGroup.Label as="span">
+                          {size.name}
+                        </RadioGroup.Label>
+                      </RadioGroup.Option>
+                    ))}
+                  </div>
+                </RadioGroup>
+              </div>
+
               {/* Colors */}
               <div>
                 <h3 className="text-sm text-gray-600">Color</h3>
