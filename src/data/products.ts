@@ -1,7 +1,22 @@
-export const products = [
+export type ProductType = {
+  id: number;
+  name: string;
+  route: string;
+  sortDescription: string;
+  longDescription: string;
+  imageUrl: string[];
+  price: number;
+  dimensions: string;
+  category: string;
+  craftingTime: number;
+  custimizatoinOptions: string;
+};
+
+export const products: ProductType[] = [
   {
     id: 1,
     name: 'Teacher Pencil Sign',
+    route: 'teacher-pencil-sign',
     sortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [

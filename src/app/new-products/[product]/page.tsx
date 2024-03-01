@@ -20,6 +20,8 @@ import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { StarIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
+import { products } from '../../../data/products';
+
 const product = {
   name: 'Zip Tote Basket',
   price: '$140',
@@ -69,8 +71,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
+export default function Example({ params }: { params: { product: string } }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+
+  const productName = decodeURIComponent(params.product);
 
   return (
     <div className="bg-white">
