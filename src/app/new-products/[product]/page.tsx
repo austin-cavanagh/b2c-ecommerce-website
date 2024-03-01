@@ -8,46 +8,36 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { products } from '../../../data/products';
 
 const product = {
-  name: 'Zip Tote Basket',
-  price: '$140',
-  rating: 4,
-  images: [
-    {
-      imageUrl:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-      altText: 'Angled front view with bag zipped and handles upright.',
-    },
-    {
-      imageUrl:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-      altText: 'Angled front view with bag zipped and handles upright.',
-    },
-    {
-      imageUrl:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-      altText: 'Angled front view with bag zipped and handles upright.',
-    },
-  ],
-  colors: [
-    {
-      name: 'Washed Black',
-      bgColor: 'bg-gray-700',
-      selectedColor: 'ring-gray-700',
-    },
-    {
-      name: 'White',
-      bgColor: 'bg-white',
-      selectedColor: 'ring-gray-400',
-    },
-    {
-      name: 'Washed Gray',
-      bgColor: 'bg-gray-500',
-      selectedColor: 'ring-gray-500',
-    },
-  ],
-  description: `
+  id: 1,
+  name: 'Teacher Pencil Sign',
+  route: 'teacher-pencil-sign',
+  sortDescription: 'Short Description',
+  longDescription: `
     <p>This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below.</p>
   `,
+  images: [
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+      alt: 'Description',
+    },
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+      alt: 'Description',
+    },
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      alt: 'Description',
+    },
+  ],
+  price: 100,
+  dimensions: '5x5',
+  category: 'Test',
+  craftingTime: 14,
+  custimizatoinOptions:
+    'Explanation of what can be changed and what should be specified in directions',
   details: [
     {
       name: 'Features',
@@ -71,13 +61,77 @@ const product = {
   ],
 };
 
-function classNames(...classes) {
+// const product = {
+// name: 'Zip Tote Basket',
+// price: 140,
+// rating: 4,
+// images: [
+//   {
+//     imageUrl:
+//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+//     altText: 'Description',
+//   },
+//   {
+//     imageUrl:
+//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+//     altText: 'Description',
+//   },
+//   {
+//     imageUrl:
+//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+//     altText: 'Description',
+//   },
+// ],
+// colors: [
+//   {
+//     name: 'Washed Black',
+//     bgColor: 'bg-gray-700',
+//     selectedColor: 'ring-gray-700',
+//   },
+//   {
+//     name: 'White',
+//     bgColor: 'bg-white',
+//     selectedColor: 'ring-gray-400',
+//   },
+//   {
+//     name: 'Washed Gray',
+//     bgColor: 'bg-gray-500',
+//     selectedColor: 'ring-gray-500',
+//   },
+// ],
+// description: `
+//   <p>This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below.</p>
+// `,
+// details: [
+//   {
+//     name: 'Features',
+//     items: [
+//       'Multiple strap configurations',
+//       'Spacious interior with top zip',
+//       'Leather handle and tabs',
+//       'Interior dividers',
+//       'Stainless strap loops',
+//       'Double stitched construction',
+//       'Water-resistant',
+//     ],
+//   },
+// ],
+// sizes: [
+//   { name: 'XXS', inStock: true },
+//   { name: 'XS', inStock: true },
+//   { name: 'S', inStock: true },
+//   { name: 'M', inStock: true },
+//   { name: 'L', inStock: true },
+// ],
+// };
+
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function Example({ params }: { params: { product: string } }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.colors[0]);
+  // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
 
   const productName = decodeURIComponent(params.product);
 
@@ -92,17 +146,17 @@ export default function Example({ params }: { params: { product: string } }) {
             {/* Image selector */}
             <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
               <Tab.List className="grid grid-cols-4 gap-6">
-                {product.images.map(image => (
+                {product.images.map((image, index) => (
                   <Tab
-                    key={image.id}
+                    key={index}
                     className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
                   >
                     {({ selected }) => (
                       <>
-                        <span className="sr-only">{image.name}</span>
+                        {/* <span className="sr-only">{image.name}</span> */}
                         <span className="absolute inset-0 overflow-hidden rounded-md">
                           <img
-                            src={image.imageUrl}
+                            src={image.image}
                             alt=""
                             className="h-full w-full object-cover object-center"
                           />
@@ -122,11 +176,11 @@ export default function Example({ params }: { params: { product: string } }) {
             </div>
 
             <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
-              {product.images.map(image => (
-                <Tab.Panel key={image.id}>
+              {product.images.map((image, index) => (
+                <Tab.Panel key={index}>
                   <img
-                    src={image.imageUrl}
-                    alt={image.alt}
+                    src={image.image}
+                    // alt={image.alt}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>
@@ -143,12 +197,12 @@ export default function Example({ params }: { params: { product: string } }) {
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                {product.price}
+                ${(product.price / 100).toFixed(2)}
               </p>
             </div>
 
             {/* Reviews */}
-            <div className="mt-3">
+            {/* <div className="mt-3">
               <h3 className="sr-only">Reviews</h3>
               <div className="flex items-center">
                 <div className="flex items-center">
@@ -167,14 +221,14 @@ export default function Example({ params }: { params: { product: string } }) {
                 </div>
                 <p className="sr-only">{product.rating} out of 5 stars</p>
               </div>
-            </div>
+            </div> */}
 
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
 
               <div
                 className="space-y-6 text-base text-gray-700"
-                dangerouslySetInnerHTML={{ __html: product.description }}
+                dangerouslySetInnerHTML={{ __html: product.longDescription }}
               />
             </div>
 
@@ -230,7 +284,7 @@ export default function Example({ params }: { params: { product: string } }) {
               </div>
 
               {/* Colors */}
-              <div>
+              {/* <div>
                 <h3 className="text-sm text-gray-600">Color</h3>
 
                 <RadioGroup
@@ -269,7 +323,7 @@ export default function Example({ params }: { params: { product: string } }) {
                     ))}
                   </span>
                 </RadioGroup>
-              </div>
+              </div> */}
 
               <div className="mt-10 flex">
                 <button
