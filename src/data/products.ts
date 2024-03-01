@@ -1,7 +1,7 @@
 export const products = [
   {
     id: 1,
-    name: 'Product 1',
+    name: 'Teacher Pencil Sign',
     sortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl:
@@ -9,5 +9,6 @@ export const products = [
     price: 100,
     dimensions: '5x5',
     category: 'Test',
+    craftingTime: 14,
   },
 ];
