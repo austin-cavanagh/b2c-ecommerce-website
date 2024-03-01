@@ -1,20 +1,5 @@
 'use client';
 
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/typography'),
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
 import { useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { StarIcon } from '@heroicons/react/20/solid';
@@ -28,12 +13,20 @@ const product = {
   rating: 4,
   images: [
     {
-      id: 1,
-      name: 'Angled view',
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
-      alt: 'Angled front view with bag zipped and handles upright.',
+      imageUrl:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+      altText: 'Angled front view with bag zipped and handles upright.',
     },
-    // More images...
+    {
+      imageUrl:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+      altText: 'Angled front view with bag zipped and handles upright.',
+    },
+    {
+      imageUrl:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      altText: 'Angled front view with bag zipped and handles upright.',
+    },
   ],
   colors: [
     {
@@ -76,6 +69,8 @@ export default function Example({ params }: { params: { product: string } }) {
 
   const productName = decodeURIComponent(params.product);
 
+  // const product =
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -95,7 +90,7 @@ export default function Example({ params }: { params: { product: string } }) {
                         <span className="sr-only">{image.name}</span>
                         <span className="absolute inset-0 overflow-hidden rounded-md">
                           <img
-                            src={image.src}
+                            src={image.imageUrl}
                             alt=""
                             className="h-full w-full object-cover object-center"
                           />
@@ -118,7 +113,7 @@ export default function Example({ params }: { params: { product: string } }) {
               {product.images.map(image => (
                 <Tab.Panel key={image.id}>
                   <img
-                    src={image.src}
+                    src={image.imageUrl}
                     alt={image.alt}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
