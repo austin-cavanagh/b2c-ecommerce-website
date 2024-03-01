@@ -1,3 +1,5 @@
+'use client';
+
 /*
   This example requires some changes to your config:
   
@@ -60,7 +62,6 @@ const product = {
         'Water-resistant',
       ],
     },
-    // More sections...
   ],
 };
 

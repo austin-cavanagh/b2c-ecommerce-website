@@ -1,46 +1,24 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-const products = [
-  //   {
-  //     id: 1,
-  //     name: 'Basic Tee',
-  //     href: '#',
-  //     imageSrc:
-  //       'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-  //     imageAlt: "Front of men's Basic Tee in black.",
-  //     price: '$35',
-  //     color: 'Black',
-  //   },
-  {
-    id: 1,
-    name: 'Teacher Pencil Sign',
-    sortDescription: 'Short Description',
-    longDescription: 'Long Description',
-    imageUrl: [
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-    ],
-    price: 100,
-    dimensions: '5x5',
-    category: 'Test',
-    craftingTime: 14,
-    custimizatoinOptions:
-      'Explanation of what can be changed and what should be specified in directions',
-  },
-];
+// const products = [
+//   {
+//     id: 1,
+//     name: 'Teacher Pencil Sign',
+//     sortDescription: 'Short Description',
+//     longDescription: 'Long Description',
+//     imageUrl: [
+//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
+//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+//     ],
+//     price: 100,
+//     dimensions: '5x5',
+//     category: 'Test',
+//     craftingTime: 14,
+//     custimizatoinOptions:
+//       'Explanation of what can be changed and what should be specified in directions',
+//   },
+// ];
+
+import { products } from '@/data/products';
 
 export default function ProductsGrid() {
   return (
@@ -55,7 +33,7 @@ export default function ProductsGrid() {
             <div key={product.id} className="group relative">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <img
-                  src={product.imageUrl}
+                  src={product.imageUrl[0]}
                   alt={product.name}
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
