@@ -1,8 +1,7 @@
 export type ProductType = {
   id: number;
   name: string;
-  route: string;
-  sortDescription: string;
+  shortDescription: string;
   longDescription: string;
   imageUrl: string[];
   price: number;
@@ -16,8 +15,7 @@ export const products: ProductType[] = [
   {
     id: 1,
     name: 'Teacher Pencil Sign',
-    route: 'teacher-pencil-sign',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description how long is',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
@@ -34,7 +32,7 @@ export const products: ProductType[] = [
   {
     id: 2,
     name: 'Teacher Sticky Note',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
@@ -51,7 +49,7 @@ export const products: ProductType[] = [
   {
     id: 3,
     name: 'Circle Cutting Board',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
@@ -68,7 +66,7 @@ export const products: ProductType[] = [
   {
     id: 4,
     name: 'Baseball Team Sign',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
@@ -83,7 +81,7 @@ export const products: ProductType[] = [
   {
     id: 5,
     name: 'Basketball Team Sign',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
@@ -98,7 +96,7 @@ export const products: ProductType[] = [
   {
     id: 6,
     name: 'Custom Baseball Sign',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
@@ -113,7 +111,7 @@ export const products: ProductType[] = [
   {
     id: 7,
     name: 'Custom Baseball Sign',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
@@ -128,7 +126,7 @@ export const products: ProductType[] = [
   {
     id: 8,
     name: 'Custom Stanley Name Plates',
-    sortDescription: 'Short Description',
+    shortDescription: 'Short Description',
     longDescription: 'Long Description',
     imageUrl: [
       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',

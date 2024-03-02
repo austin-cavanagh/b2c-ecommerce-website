@@ -31,6 +31,11 @@ const product = {
         'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
       alt: 'Description',
     },
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      alt: 'Description',
+    },
   ],
   price: 100,
   dimensions: '5x5',
@@ -38,6 +43,13 @@ const product = {
   craftingTime: 14,
   custimizatoinOptions:
     'Explanation of what can be changed and what should be specified in directions',
+  sizes: [
+    { name: 'XXS', inStock: true },
+    { name: 'XS', inStock: true },
+    { name: 'S', inStock: true },
+    { name: 'M', inStock: true },
+    { name: 'L', inStock: true },
+  ],
   details: [
     {
       name: 'Features',
@@ -51,13 +63,10 @@ const product = {
         'Water-resistant',
       ],
     },
-  ],
-  sizes: [
-    { name: 'XXS', inStock: true },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
+    {
+      name: 'Shipping',
+      items: ['Shipping is free for orders above $50'],
+    },
   ],
 };
 
@@ -133,9 +142,7 @@ export default function Example({ params }: { params: { product: string } }) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
 
-  const productName = decodeURIComponent(params.product);
-
-  // const product =
+  // const productName = decodeURIComponent(params.product);
 
   return (
     <div className="bg-white">
