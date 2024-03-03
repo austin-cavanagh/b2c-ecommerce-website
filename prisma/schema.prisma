@@ -44,51 +44,12 @@ model UserAuth {
   user       User   @relation(fields: [userId], references: [id])
 }
 
-model Product {
-  id               Int            @id @default(autoincrement())
-  name             String
-  shortDescription String?
-  longDescription  String?
-  imageUrl         String?
-  price            Int?
-  height           Int?
-  width            Int?
-  categoryId       Int?
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
-  Category         Category?      @relation(fields: [categoryId], references: [id])
-  OrderItem        OrderItem[] // Can i delete?
-  CartItem         CartItem[] // Can i delete?
-  images           ProductImage[]
-}
-
-model ProductImage {
-  id        Int     @id @default(autoincrement())
-  product   Product @relation(fields: [productId], references: [id])
-  productId Int
-  imageUrl  String
-  altText   String?
-}
-
-model Category {
-  id       Int       @id @default(autoincrement())
-  name     String
-  products Product[]
-}
-
-model Color {
-  id   Int     @id @default(autoincrement())
-  name String
-  code String? // Optional: Hex code or RGB value for the color
-}
-
 model CartItem {
   id             Int     @id @default(autoincrement())
   quantity       Int
   productId      Int
   cartId         Int
   customizations String? @default("")
-  product        Product @relation(fields: [productId], references: [id])
   cart           Cart    @relation(fields: [cartId], references: [id])
 }
 
@@ -114,10 +75,50 @@ model Order {
 }
 
 model OrderItem {
-  id        Int     @id @default(autoincrement())
+  id        Int   @id @default(autoincrement())
   orderId   Int
   productId Int
   price     Int
-  order     Order   @relation(fields: [orderId], references: [id])
+  order     Order @relation(fields: [orderId], references: [id])
+}
+
+model Product {
+  id               Int            @id @default(autoincrement())
+  name             String
+  shortDescription String?
+  longDescription  String?
+  categoryId       Int?
+  prices           ProductPrice[] // Updated relation to product prices
+  Category         Category?      @relation(fields: [categoryId], references: [id])
+  imageUrls        ImageUrl[]
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model ProductPrice {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  dimension String
+  price     Int
   product   Product @relation(fields: [productId], references: [id])
+}
+
+model ImageUrl {
+  id        Int     @id @default(autoincrement())
+  product   Product @relation(fields: [productId], references: [id])
+  productId Int
+  url       String
+  altText   String?
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  products Product[]
+}
+
+model Color {
+  id   Int    @id @default(autoincrement())
+  name String
+  code String
 }

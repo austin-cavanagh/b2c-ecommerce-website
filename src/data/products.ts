@@ -3,13 +3,35 @@ export type ImageType = {
   alt: string;
 };
 
+// model Product {
+//   id               Int            @id @default(autoincrement())
+//   name             String
+//   shortDescription String?
+//   longDescription  String?
+//   categoryId       Int?
+//   prices           ProductPrice[] // Updated relation to product prices
+//   Category         Category?      @relation(fields: [categoryId], references: [id])
+//   imageUrls        ImageUrl[]
+//   createdAt        DateTime       @default(now())
+//   updatedAt        DateTime       @updatedAt
+// }
+
+// categoryId
+
+export type ProductPrice = {
+  id: number;
+  productId: number;
+  dimension: string;
+  price: number;
+};
+
 export type ProductType = {
   id: number;
   name: string;
   shortDescription: string;
   longDescription: string;
   imageUrls: ImageType[];
-  price: number;
+  prices: ProductPrice[];
   dimensions: string;
   category: string;
   craftingTime: number;
@@ -22,6 +44,12 @@ export const products: ProductType[] = [
     name: 'Teacher Pencil Sign',
     shortDescription: 'Short Description how long is',
     longDescription: 'Long Description',
+    price: 100,
+    dimensions: '5x5',
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
     imageUrls: [
       {
         image:
@@ -44,12 +72,6 @@ export const products: ProductType[] = [
         alt: 'Description',
       },
     ],
-    price: 100,
-    dimensions: '5x5',
-    category: 'Test',
-    craftingTime: 14,
-    custimizatoinOptions:
-      'Explanation of what can be changed and what should be specified in directions',
   },
   {
     id: 2,
