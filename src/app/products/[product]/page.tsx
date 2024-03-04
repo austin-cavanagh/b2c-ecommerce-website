@@ -79,7 +79,11 @@ function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Example({ params }: { params: { product: string } }) {
+export default function ProductOverview({
+  params,
+}: {
+  params: { product: string };
+}) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 

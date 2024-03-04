@@ -67,8 +67,8 @@ const prisma = new PrismaClient();
 
 async function main() {
   // await clearUserData();
-  // await addProducts();
-  await clearProducts();
+  await addProducts();
+  // await clearProducts();
   // await addCategories();
   // await clearCategories();
 }
