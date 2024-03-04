@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
-import { ProductType, products } from '../../../data/products';
+import { ProductType } from '../../../data/products';
 
-const product2: ProductType = {
+const product: ProductType = {
   id: 1,
   name: 'Teacher Pencil Sign',
   shortDescription: 'Short Description how long is',
@@ -35,6 +35,24 @@ const product2: ProductType = {
       price: 3000,
     },
   ],
+  details: [
+    {
+      name: 'Features',
+      items: [
+        'Multiple strap configurations',
+        'Spacious interior with top zip',
+        'Leather handle and tabs',
+        'Interior dividers',
+        'Stainless strap loops',
+        'Double stitched construction',
+        'Water-resistant',
+      ],
+    },
+    {
+      name: 'Shipping',
+      items: ['Shipping is free for orders above $50'],
+    },
+  ],
   imageUrls: [
     {
       image:
@@ -59,131 +77,7 @@ const product2: ProductType = {
   ],
 };
 
-const product = {
-  id: 1,
-  name: 'Teacher Pencil Sign',
-  route: 'teacher-pencil-sign',
-  sortDescription: 'Short Description',
-  longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below`,
-  images: [
-    {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-      alt: 'Description',
-    },
-    {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-      alt: 'Description',
-    },
-    {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-      alt: 'Description',
-    },
-    {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-      alt: 'Description',
-    },
-  ],
-  price: 1000,
-  category: 'Test',
-  craftingTime: 14,
-  custimizatoinOptions:
-    'Explanation of what can be changed and what should be specified in directions',
-  prices: [
-    { dimension: 'XXS', price: true },
-    { dimension: 'XS', price: true },
-    { dimension: 'S', price: true },
-    { dimension: 'M', price: true },
-    { dimension: 'L', price: true },
-  ],
-  details: [
-    {
-      name: 'Features',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Shipping',
-      items: ['Shipping is free for orders above $50'],
-    },
-  ],
-};
-
-// const product = {
-// name: 'Zip Tote Basket',
-// price: 140,
-// rating: 4,
-// images: [
-//   {
-//     imageUrl:
-//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//     altText: 'Description',
-//   },
-//   {
-//     imageUrl:
-//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//     altText: 'Description',
-//   },
-//   {
-//     imageUrl:
-//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//     altText: 'Description',
-//   },
-// ],
-// colors: [
-//   {
-//     name: 'Washed Black',
-//     bgColor: 'bg-gray-700',
-//     selectedColor: 'ring-gray-700',
-//   },
-//   {
-//     name: 'White',
-//     bgColor: 'bg-white',
-//     selectedColor: 'ring-gray-400',
-//   },
-//   {
-//     name: 'Washed Gray',
-//     bgColor: 'bg-gray-500',
-//     selectedColor: 'ring-gray-500',
-//   },
-// ],
-// description: `
-//   <p>This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below.</p>
-// `,
-// details: [
-//   {
-//     name: 'Features',
-//     items: [
-//       'Multiple strap configurations',
-//       'Spacious interior with top zip',
-//       'Leather handle and tabs',
-//       'Interior dividers',
-//       'Stainless strap loops',
-//       'Double stitched construction',
-//       'Water-resistant',
-//     ],
-//   },
-// ],
-// sizes: [
-//   { name: 'XXS', inStock: true },
-//   { name: 'XS', inStock: true },
-//   { name: 'S', inStock: true },
-//   { name: 'M', inStock: true },
-//   { name: 'L', inStock: true },
-// ],
-// };
-
-function classNames(...classes: any) {
+function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
@@ -202,7 +96,7 @@ export default function Example({ params }: { params: { product: string } }) {
             {/* Image selector */}
             <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
               <Tab.List className="grid grid-cols-4 gap-6">
-                {product.images.map((image, index) => (
+                {product.imageUrls.map((image, index) => (
                   <Tab
                     key={index}
                     className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
@@ -232,7 +126,7 @@ export default function Example({ params }: { params: { product: string } }) {
             </div>
 
             <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
-              {product.images.map((image, index) => (
+              {product.imageUrls.map((image, index) => (
                 <Tab.Panel key={index}>
                   <img
                     src={image.image}
@@ -253,24 +147,21 @@ export default function Example({ params }: { params: { product: string } }) {
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                ${(product.price / 100).toFixed(2)}
+                {/* ${(product.price / 100).toFixed(2)} */}$
+                {(selectedSize.price / 100).toFixed(2)}
               </p>
             </div>
 
+            {/* Product Description */}
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
-
-              {/* <div
-                className="space-y-6 text-base text-gray-700"
-                dangerouslySetInnerHTML={{ __html: product.longDescription }}
-              /> */}
               <p className="space-y-6 text-base text-gray-700">
                 {product.longDescription}
               </p>
             </div>
 
             <form className="mt-6">
-              {/* Size picker */}
+              {/* Size Picker */}
               <div className="mt-8">
                 <div className="flex items-center justify-between">
                   <h2 className="text-sm font-medium text-gray-900">Size</h2>
@@ -305,7 +196,7 @@ export default function Example({ params }: { params: { product: string } }) {
                             checked
                               ? 'border-transparent bg-indigo-600 text-white hover:bg-indigo-700'
                               : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
-                            'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium uppercase sm:flex-1', // Common styles
+                            'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium sm:flex-1',
                           )
                         }
                       >
@@ -318,7 +209,7 @@ export default function Example({ params }: { params: { product: string } }) {
                 </RadioGroup>
               </div>
 
-              {/* Colors */}
+              {/* Color Picker */}
               {/* <div>
                 <h3 className="text-sm text-gray-600">Color</h3>
 
@@ -387,8 +278,8 @@ export default function Example({ params }: { params: { product: string } }) {
               </h2>
 
               <div className="divide-y divide-gray-200 border-t">
-                {product.details.map(detail => (
-                  <Disclosure as="div" key={detail.name}>
+                {product.details.map((detail, index) => (
+                  <Disclosure as="div" key={index}>
                     {({ open }) => (
                       <>
                         <h3>

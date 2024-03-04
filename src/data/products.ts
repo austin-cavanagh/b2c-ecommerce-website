@@ -18,11 +18,16 @@ export type ImageType = {
 
 // categoryId
 
-export type ProductPrice = {
+export type ProductPriceType = {
   id: number;
   productId: number;
   dimension: string;
   price: number;
+};
+
+export type ProductDetailsType = {
+  name: String;
+  items: string[];
 };
 
 export type ProductType = {
@@ -31,10 +36,11 @@ export type ProductType = {
   shortDescription: string;
   longDescription: string;
   imageUrls: ImageType[];
-  prices: ProductPrice[];
+  prices: ProductPriceType[];
   category: string;
   craftingTime: number;
   custimizatoinOptions: string;
+  details: ProductDetailsType[];
 };
 
 export const products: ProductType[] = [
@@ -87,6 +93,24 @@ export const products: ProductType[] = [
         image:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
         alt: 'Description',
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
       },
     ],
   },
