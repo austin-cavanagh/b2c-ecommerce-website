@@ -56,10 +56,6 @@ const products = [
         url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
         alt: 'Description',
       },
-      {
-        url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-        alt: 'Description',
-      },
     ],
   },
 ];
@@ -71,8 +67,8 @@ const prisma = new PrismaClient();
 
 async function main() {
   // await clearUserData();
-  await addProducts();
-  // await clearProducts();
+  // await addProducts();
+  await clearProducts();
   // await addCategories();
   // await clearCategories();
 }
@@ -139,6 +135,7 @@ async function addProducts() {
 
 async function clearProducts() {
   // Delete related records first to maintain referential integrity
+  await prisma.customizationOption.deleteMany({});
   await prisma.productPrice.deleteMany({});
   await prisma.imageUrl.deleteMany({});
   await prisma.productCategory.deleteMany({});
