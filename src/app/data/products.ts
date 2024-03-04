@@ -1,4 +1,4 @@
-export const productsData = [
+const products = [
   // Teacher Pencil Sign
   {
     name: 'Teacher Pencil Sign',
@@ -84,3 +84,5 @@ export const productsData = [
     ],
   },
 ];
+
+module.exports = { products };

@@ -3,7 +3,8 @@
 
 'use server';
 
-import { productsData } from '../data/products';
+// import { productsData } from '@/app/data/products';
+// import { PrismaClient } from '@prisma/client';
 
 type OptionType = {
   option: string;
@@ -14,9 +15,7 @@ type ImageUrlType = {
   altText: string;
 };
 
-// const productsData = require('../data/products');
-
-console.log('PRODUCTS');
+const productsData = require('../data/products');
 
 const categories = [
   { name: 'Teacher' },
@@ -41,9 +40,9 @@ async function main() {
 }
 
 async function clearUserData() {
-  await prisma.userAuths.deleteMany({});
-  await prisma.verifyUserTokens.deleteMany({});
-  await prisma.users.deleteMany({});
+  await prisma.userAuth.deleteMany({});
+  await prisma.verifyUserToken.deleteMany({});
+  await prisma.user.deleteMany({});
   console.log('Tables cleared');
 }
 
