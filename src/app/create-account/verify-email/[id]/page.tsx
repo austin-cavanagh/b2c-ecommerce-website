@@ -1,7 +1,7 @@
 'use server';
 
 import emailsInLastMinute from '@/functions/emailsInLastMinute';
-import { prisma } from '../../../../../prisma/prisma';
+import { prisma } from '../../../../prisma/prisma';
 import ResendEmailButton from '@/components/ResendEmailButton';
 
 export default async function VerifyEmail({

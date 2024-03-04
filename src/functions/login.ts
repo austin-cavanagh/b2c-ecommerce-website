@@ -1,5 +1,5 @@
 import { compare } from 'bcrypt';
-import { prisma } from '../../prisma/prisma';
+import { prisma } from '../prisma/prisma';
 
 async function login(email: string, password: string) {
   try {

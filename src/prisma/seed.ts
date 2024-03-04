@@ -1,6 +1,22 @@
 // npx prisma db seed
+// npx ts-node src/prisma/seed.ts
 
 'use server';
+
+import { productsData } from '../data/products';
+
+type OptionType = {
+  option: string;
+};
+
+type ImageUrlType = {
+  url: string;
+  altText: string;
+};
+
+// const productsData = require('../data/products');
+
+console.log('PRODUCTS');
 
 const categories = [
   { name: 'Teacher' },
@@ -9,55 +25,6 @@ const categories = [
   { name: 'Gifts' },
   { name: 'Romantic' },
   { name: 'Family' },
-];
-
-const products = [
-  {
-    id: 1,
-    name: 'Teacher Pencil Sign',
-    shortDescription: 'Short Description how long is',
-    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-    categories: ['Teacher', 'Signs', 'Kitchen'],
-    craftingTime: 14,
-    customizationOptions: [
-      {
-        id: 1,
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
-      },
-    ],
-    prices: [
-      {
-        id: 1,
-        dimension: '12x12',
-        price: 1000,
-      },
-      {
-        id: 2,
-        dimension: '15x15',
-        price: 2000,
-      },
-      {
-        id: 3,
-        dimension: '20x20',
-        price: 3000,
-      },
-    ],
-    imageUrls: [
-      {
-        url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-        alt: 'Description',
-      },
-      {
-        url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-        alt: 'Description',
-      },
-      {
-        url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-        alt: 'Description',
-      },
-    ],
-  },
 ];
 
 // const { categories } = require('@/app/data/categories');
@@ -81,7 +48,7 @@ async function clearUserData() {
 }
 
 async function addProducts() {
-  for (const product of products) {
+  for (const product of productsData) {
     // Find or create categories
     const categoryIds = [];
     for (const categoryName of product.categories) {
@@ -104,7 +71,7 @@ async function addProducts() {
         craftingTime: product.craftingTime,
         // Assuming customizationOptions is an array of strings now
         customizationOptions: {
-          create: product.customizationOptions.map(option => ({
+          create: product.customizationOptions.map((option: OptionType) => ({
             option: option.option,
           })),
         },
@@ -112,9 +79,9 @@ async function addProducts() {
           create: product.prices,
         },
         imageUrls: {
-          create: product.imageUrls.map(image => ({
-            url: image.url,
-            altText: image.alt,
+          create: product.imageUrls.map((imageUrl: ImageUrlType) => ({
+            url: imageUrl.url,
+            altText: imageUrl.altText,
           })),
         },
       },
