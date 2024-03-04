@@ -1,9 +1,17 @@
 // npx prisma db seed
 
 'use server';
-import { categories } from '@/app/data/categories';
-import 'server-only';
 
+const categories = [
+  { name: 'Teacher' },
+  { name: 'Signs' },
+  { name: 'Kitchen' },
+  { name: 'Gifts' },
+  { name: 'Romantic' },
+  { name: 'Family' },
+];
+
+// const { categories } = require('@/app/data/categories');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
