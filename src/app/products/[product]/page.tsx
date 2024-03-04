@@ -6,15 +6,20 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 import { ProductType } from '../../../data/products';
 
-const product: ProductType = {
+const product: any = {
   id: 1,
   name: 'Teacher Pencil Sign',
   shortDescription: 'Short Description how long is',
   longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-  category: 'Test',
+  categories: ['One', 'Two', 'Three'],
   craftingTime: 14,
-  custimizatoinOptions:
-    'Explanation of what can be changed and what should be specified in directions',
+  customizationOptions: [
+    {
+      id: 1,
+      option:
+        'Explanation of what can be changed and what should be specified in directions',
+    },
+  ],
   prices: [
     {
       id: 1,
@@ -35,47 +40,43 @@ const product: ProductType = {
       price: 3000,
     },
   ],
-  details: [
-    {
-      name: 'Features',
-      items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant',
-      ],
-    },
-    {
-      name: 'Shipping',
-      items: ['Shipping is free for orders above $50'],
-    },
-  ],
   imageUrls: [
     {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+      url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
       alt: 'Description',
     },
     {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+      url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
       alt: 'Description',
     },
     {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
       alt: 'Description',
     },
     {
-      image:
-        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      url: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
       alt: 'Description',
     },
   ],
 };
+// details: [
+//   {
+//     name: 'Features',
+//     items: [
+//       'Multiple strap configurations',
+//       'Spacious interior with top zip',
+//       'Leather handle and tabs',
+//       'Interior dividers',
+//       'Stainless strap loops',
+//       'Double stitched construction',
+//       'Water-resistant',
+//     ],
+//   },
+//   {
+//     name: 'Shipping',
+//     items: ['Shipping is free for orders above $50'],
+//   },
+// ],
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');

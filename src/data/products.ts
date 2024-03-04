@@ -37,10 +37,10 @@ export type ProductType = {
   longDescription: string;
   imageUrls: ImageType[];
   prices: ProductPriceType[];
-  category: string;
+  categories: string[];
   craftingTime: number;
-  custimizatoinOptions: string;
-  details: ProductDetailsType[];
+  customizationOptions: string;
+  // details: ProductDetailsType[];
 };
 
 export const products: ProductType[] = [
@@ -49,7 +49,7 @@ export const products: ProductType[] = [
     name: 'Teacher Pencil Sign',
     shortDescription: 'Short Description how long is',
     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-    category: 'Test',
+    categories: 'Test',
     craftingTime: 14,
     custimizatoinOptions:
       'Explanation of what can be changed and what should be specified in directions',

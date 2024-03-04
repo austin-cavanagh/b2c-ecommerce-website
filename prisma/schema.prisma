@@ -82,16 +82,39 @@ model OrderItem {
 }
 
 model Product {
-  id               Int            @id @default(autoincrement())
-  name             String
-  shortDescription String?
-  longDescription  String?
-  categoryId       Int?
-  prices           ProductPrice[]
-  Category         Category?      @relation(fields: [categoryId], references: [id])
-  imageUrls        ImageUrl[]
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
+  id                   Int                   @id @default(autoincrement())
+  name                 String
+  shortDescription     String
+  longDescription      String
+  craftingTime         Int
+  customizationOptions CustomizationOption[]
+  prices               ProductPrice[]
+  imageUrls            ImageUrl[]
+  categories           ProductCategory[]
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+}
+
+model Category {
+  id       Int               @id @default(autoincrement())
+  name     String
+  products ProductCategory[]
+}
+
+model ProductCategory {
+  productId  Int
+  categoryId Int
+  product    Product  @relation(fields: [productId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@id([productId, categoryId])
+}
+
+model CustomizationOption {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  option    String
+  product   Product @relation(fields: [productId], references: [id])
 }
 
 model ProductPrice {
@@ -110,14 +133,8 @@ model ImageUrl {
   altText   String?
 }
 
-model Category {
-  id       Int       @id @default(autoincrement())
-  name     String
-  products Product[]
-}
-
-model Color {
-  id   Int    @id @default(autoincrement())
-  name String
-  code String
-}
+// model Color {
+//   id   Int    @id @default(autoincrement())
+//   name String
+//   code String
+// }

@@ -1,3 +1,6 @@
+'use server';
+import 'server-only';
+
 // npx prisma db seed
 
 const { PrismaClient } = require('@prisma/client');
@@ -5,6 +8,10 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
+  await clearDatabase();
+}
+
+async function clearDatabase() {
   await prisma.userAuths.deleteMany({});
   await prisma.verifyUserTokens.deleteMany({});
   await prisma.users.deleteMany({});
@@ -12,9 +19,10 @@ async function main() {
 }
 
 main()
-  .then(() => prisma.$disconnect())
-  .catch(async e => {
+  .catch(e => {
     console.error(e);
-    await prisma.$disconnect();
     process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
   });

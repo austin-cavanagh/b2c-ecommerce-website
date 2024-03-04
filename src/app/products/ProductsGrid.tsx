@@ -25,7 +25,7 @@ const product: ProductType = {
   longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
   category: 'Test',
   craftingTime: 14,
-  custimizatoinOptions:
+  customizationOptions:
     'Explanation of what can be changed and what should be specified in directions',
   prices: [
     {
