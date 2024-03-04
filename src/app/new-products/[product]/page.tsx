@@ -2,19 +2,69 @@
 
 import { useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
-import { StarIcon } from '@heroicons/react/20/solid';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
-import { products } from '../../../data/products';
+import { ProductType, products } from '../../../data/products';
+
+const product2: ProductType = {
+  id: 1,
+  name: 'Teacher Pencil Sign',
+  shortDescription: 'Short Description how long is',
+  longDescription: 'Long Description',
+  category: 'Test',
+  craftingTime: 14,
+  custimizatoinOptions:
+    'Explanation of what can be changed and what should be specified in directions',
+  prices: [
+    {
+      id: 1,
+      productId: 1,
+      dimension: '12x12',
+      price: 1000,
+    },
+    {
+      id: 2,
+      productId: 2,
+      dimension: '15x15',
+      price: 2000,
+    },
+    {
+      id: 3,
+      productId: 3,
+      dimension: '20x20',
+      price: 3000,
+    },
+  ],
+  imageUrls: [
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+      alt: 'Description',
+    },
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+      alt: 'Description',
+    },
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      alt: 'Description',
+    },
+    {
+      image:
+        'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+      alt: 'Description',
+    },
+  ],
+};
 
 const product = {
   id: 1,
   name: 'Teacher Pencil Sign',
   route: 'teacher-pencil-sign',
   sortDescription: 'Short Description',
-  longDescription: `
-    <p>This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below.</p>
-  `,
+  longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white. Please put teacher name in comments below`,
   images: [
     {
       image:
@@ -37,18 +87,17 @@ const product = {
       alt: 'Description',
     },
   ],
-  price: 100,
-  dimensions: '5x5',
+  price: 1000,
   category: 'Test',
   craftingTime: 14,
   custimizatoinOptions:
     'Explanation of what can be changed and what should be specified in directions',
-  sizes: [
-    { name: 'XXS', inStock: true },
-    { name: 'XS', inStock: true },
-    { name: 'S', inStock: true },
-    { name: 'M', inStock: true },
-    { name: 'L', inStock: true },
+  prices: [
+    { dimension: 'XXS', price: true },
+    { dimension: 'XS', price: true },
+    { dimension: 'S', price: true },
+    { dimension: 'M', price: true },
+    { dimension: 'L', price: true },
   ],
   details: [
     {
@@ -140,7 +189,7 @@ function classNames(...classes: any) {
 
 export default function Example({ params }: { params: { product: string } }) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
   // const productName = decodeURIComponent(params.product);
 
@@ -208,35 +257,16 @@ export default function Example({ params }: { params: { product: string } }) {
               </p>
             </div>
 
-            {/* Reviews */}
-            {/* <div className="mt-3">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
-                <div className="flex items-center">
-                  {[0, 1, 2, 3, 4].map(rating => (
-                    <StarIcon
-                      key={rating}
-                      className={classNames(
-                        product.rating > rating
-                          ? 'text-indigo-500'
-                          : 'text-gray-300',
-                        'h-5 w-5 flex-shrink-0',
-                      )}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <p className="sr-only">{product.rating} out of 5 stars</p>
-              </div>
-            </div> */}
-
             <div className="mt-6">
               <h3 className="sr-only">Description</h3>
 
-              <div
+              {/* <div
                 className="space-y-6 text-base text-gray-700"
                 dangerouslySetInnerHTML={{ __html: product.longDescription }}
-              />
+              /> */}
+              <p className="space-y-6 text-base text-gray-700">
+                {product.longDescription}
+              </p>
             </div>
 
             <form className="mt-6">
@@ -261,28 +291,26 @@ export default function Example({ params }: { params: { product: string } }) {
                     Choose a size
                   </RadioGroup.Label>
                   <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
-                    {product.sizes.map(size => (
+                    {product.prices.map((size, index) => (
                       <RadioGroup.Option
-                        key={size.name}
+                        // key={size.name}
+                        key={index}
                         value={size}
                         className={({ active, checked }) =>
                           classNames(
-                            size.inStock
-                              ? 'cursor-pointer focus:outline-none'
-                              : 'cursor-not-allowed opacity-25',
+                            'cursor-pointer focus:outline-none',
                             active
                               ? 'ring-2 ring-indigo-500 ring-offset-2'
                               : '',
                             checked
                               ? 'border-transparent bg-indigo-600 text-white hover:bg-indigo-700'
                               : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
-                            'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium uppercase sm:flex-1',
+                            'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium uppercase sm:flex-1', // Common styles
                           )
                         }
-                        disabled={!size.inStock}
                       >
                         <RadioGroup.Label as="span">
-                          {size.name}
+                          {size.dimension}
                         </RadioGroup.Label>
                       </RadioGroup.Option>
                     ))}

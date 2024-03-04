@@ -32,7 +32,6 @@ export type ProductType = {
   longDescription: string;
   imageUrls: ImageType[];
   prices: ProductPrice[];
-  dimensions: string;
   category: string;
   craftingTime: number;
   custimizatoinOptions: string;
@@ -44,12 +43,30 @@ export const products: ProductType[] = [
     name: 'Teacher Pencil Sign',
     shortDescription: 'Short Description how long is',
     longDescription: 'Long Description',
-    price: 100,
-    dimensions: '5x5',
     category: 'Test',
     craftingTime: 14,
     custimizatoinOptions:
       'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
     imageUrls: [
       {
         image:
