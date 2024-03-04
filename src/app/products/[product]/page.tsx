@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 import { ProductType } from '../../../data/products';
+import { getProduct } from '@/actions/getProduct';
 
 const product: any = {
   id: 1,
@@ -85,10 +86,20 @@ export default function ProductOverview({
   params: { product: string };
 }) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.prices[0]);
+  const [selectedSize, setSelectedSize] = useState('');
+  const [product, setProduct] = useState();
 
-  const productName = decodeURIComponent(params.product);
-  console.log(productName);
+  useEffect(() => {
+    async function test() {
+      const productData = await getProduct(params);
+      console.log(productData);
+      setProduct(productData);
+    }
+
+    test();
+  }, []);
+
+  if (!product) return;
 
   return (
     <div className="bg-white">
@@ -109,7 +120,7 @@ export default function ProductOverview({
                         {/* <span className="sr-only">{image.name}</span> */}
                         <span className="absolute inset-0 overflow-hidden rounded-md">
                           <img
-                            src={image.image}
+                            src={image.url}
                             alt=""
                             className="h-full w-full object-cover object-center"
                           />
@@ -132,7 +143,7 @@ export default function ProductOverview({
               {product.imageUrls.map((image, index) => (
                 <Tab.Panel key={index}>
                   <img
-                    src={image.image}
+                    src={image.url}
                     // alt={image.alt}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
@@ -281,7 +292,7 @@ export default function ProductOverview({
                 Additional details
               </h2>
 
-              <div className="divide-y divide-gray-200 border-t">
+              {/* <div className="divide-y divide-gray-200 border-t">
                 {product.details.map((detail, index) => (
                   <Disclosure as="div" key={index}>
                     {({ open }) => (
@@ -325,7 +336,7 @@ export default function ProductOverview({
                     )}
                   </Disclosure>
                 ))}
-              </div>
+              </div> */}
             </section>
           </div>
         </div>
