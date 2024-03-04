@@ -10,7 +10,7 @@ const product: ProductType = {
   id: 1,
   name: 'Teacher Pencil Sign',
   shortDescription: 'Short Description how long is',
-  longDescription: 'Long Description',
+  longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
   category: 'Test',
   craftingTime: 14,
   custimizatoinOptions:
@@ -85,7 +85,8 @@ export default function Example({ params }: { params: { product: string } }) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  // const productName = decodeURIComponent(params.product);
+  const productName = decodeURIComponent(params.product);
+  console.log(productName);
 
   return (
     <div className="bg-white">
@@ -147,8 +148,7 @@ export default function Example({ params }: { params: { product: string } }) {
             <div className="mt-3">
               <h2 className="sr-only">Product information</h2>
               <p className="text-3xl tracking-tight text-gray-900">
-                {/* ${(product.price / 100).toFixed(2)} */}$
-                {(selectedSize.price / 100).toFixed(2)}
+                ${selectedSize.price / 100}
               </p>
             </div>
 
@@ -164,13 +164,15 @@ export default function Example({ params }: { params: { product: string } }) {
               {/* Size Picker */}
               <div className="mt-8">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-medium text-gray-900">Size</h2>
-                  <a
+                  <h2 className="text-sm font-medium text-gray-900">
+                    Dimensions
+                  </h2>
+                  {/* <a
                     href="#"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                   >
                     See sizing chart
-                  </a>
+                  </a> */}
                 </div>
 
                 <RadioGroup
@@ -259,7 +261,7 @@ export default function Example({ params }: { params: { product: string } }) {
                   Add to bag
                 </button>
 
-                <button
+                {/* <button
                   type="button"
                   className="ml-4 flex items-center justify-center rounded-md px-3 py-3 text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                 >
@@ -268,7 +270,7 @@ export default function Example({ params }: { params: { product: string } }) {
                     aria-hidden="true"
                   />
                   <span className="sr-only">Add to favorites</span>
-                </button>
+                </button> */}
               </div>
             </form>
 

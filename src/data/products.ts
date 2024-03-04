@@ -48,6 +48,569 @@ export const products: ProductType[] = [
     id: 1,
     name: 'Teacher Pencil Sign',
     shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
+    longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
+    category: 'Test',
+    craftingTime: 14,
+    custimizatoinOptions:
+      'Explanation of what can be changed and what should be specified in directions',
+    prices: [
+      {
+        id: 1,
+        productId: 1,
+        dimension: '12x12',
+        price: 1000,
+      },
+      {
+        id: 2,
+        productId: 2,
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        id: 3,
+        productId: 3,
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    details: [
+      {
+        name: 'Features',
+        items: [
+          'Multiple strap configurations',
+          'Spacious interior with top zip',
+          'Leather handle and tabs',
+          'Interior dividers',
+          'Stainless strap loops',
+          'Double stitched construction',
+          'Water-resistant',
+        ],
+      },
+      {
+        name: 'Shipping',
+        items: ['Shipping is free for orders above $50'],
+      },
+    ],
+    imageUrls: [
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+      {
+        image:
+          'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
+        alt: 'Description',
+      },
+    ],
+  },
+];
+
+export const products1: ProductType[] = [
+  {
+    id: 1,
+    name: 'Teacher Pencil Sign',
+    shortDescription: 'Short Description how long is',
     longDescription: 'Long Description',
     category: 'Test',
     craftingTime: 14,

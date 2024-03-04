@@ -46,7 +46,6 @@ model UserAuth {
 
 model CartItem {
   id             Int     @id @default(autoincrement())
-  quantity       Int
   productId      Int
   cartId         Int
   customizations String? @default("")
@@ -88,7 +87,7 @@ model Product {
   shortDescription String?
   longDescription  String?
   categoryId       Int?
-  prices           ProductPrice[] // Updated relation to product prices
+  prices           ProductPrice[]
   Category         Category?      @relation(fields: [categoryId], references: [id])
   imageUrls        ImageUrl[]
   createdAt        DateTime       @default(now())
