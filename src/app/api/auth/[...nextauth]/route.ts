@@ -9,6 +9,7 @@ import Facebook from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import login from '@/functions/login';
 import { prisma } from '@/prisma/prisma';
+import { User } from '@prisma/client';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -42,7 +43,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const user = await login(email, password);
-          console.log('AUTHORIZE', user);
+          // console.log('AUTHORIZE', user);
           return user;
         } catch (err) {
           console.error(err);
@@ -232,13 +233,18 @@ export const authOptions: NextAuthOptions = {
       console.log('JWT - ACCOUNT', account);
       console.log('JWT - PROFILE', profile);
 
+      const newUser: Partial<User> = user;
+
+      // User, account, and profile are only returned at the start of the session
       if (user) {
         return {
           ...token,
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          image: user.image,
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          picture: newUser.picture,
+          cartId: newUser.cartId,
+          verified: newUser.verified,
         };
       }
 
@@ -255,7 +261,8 @@ export const authOptions: NextAuthOptions = {
 
       if (token?.id) {
         session.user.id = token.id;
-        session.user.test = 'test';
+        session.user.verified = token.verified;
+        session.user.picture = token.picture;
       }
 
       // session.user;

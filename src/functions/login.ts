@@ -34,6 +34,15 @@ async function login(email: string, password: string) {
     const name = user.name;
     const cartId = user.cartId;
     const verified = user.verified;
+    const picture = user.picture;
+
+    // const userData = {
+    //   email: email,
+    //   id: user.id,
+    //   name: user.name,
+    //   cardId: user.cartId
+
+    // }
 
     return {
       email,
@@ -41,6 +50,7 @@ async function login(email: string, password: string) {
       name,
       cartId,
       verified,
+      picture,
     };
   } catch (err) {
     console.error('Authorization error:', (err as Error).message);
