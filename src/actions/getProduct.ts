@@ -21,7 +21,7 @@ export async function getProduct(params: { product: string }) {
         categories: true,
         prices: true,
         imageUrls: true,
-        customizationOptions: true,
+        // customizationOptions: true,
       },
     });
 

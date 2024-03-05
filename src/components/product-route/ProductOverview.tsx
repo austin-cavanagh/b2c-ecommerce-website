@@ -6,6 +6,8 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
 import { getProduct } from '@/actions/getProduct';
 import { Product } from '@prisma/client';
+import { redirect } from 'next/navigation';
+import addToCart from '@/actions/addToCart';
 
 // details: [
 //   {
@@ -33,22 +35,7 @@ function classNames(...classes: string[]): string {
 export default function ProductOverview({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  const addToCart = (event: FormEvent) => {
-    event.preventDefault();
-
-    const cartItem = {
-      productId: product.id,
-      price: selectedSize.price,
-      dimension: selectedSize.dimension,
-      customizations: JSON.stringify({
-        name: 'John Smith',
-        team: 'Dodgers',
-        color: 'Blue',
-      }),
-    };
-
-    console.log(cartItem);
-  };
+  console.log(selectedSize);
 
   return (
     <div className="bg-white">
@@ -122,13 +109,11 @@ export default function ProductOverview({ product }: { product: Product }) {
               </p>
             </div>
 
-            <form className="mt-6" onSubmit={addToCart}>
+            <form className="mt-6" action={addToCart}>
               {/* Size Picker */}
               <div className="mt-8">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-medium text-gray-900">
-                    Dimensions
-                  </h2>
+                  <h2 className="text-sm font-medium text-gray-900">Size</h2>
                   {/* <a
                     href="#"
                     className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
@@ -138,6 +123,7 @@ export default function ProductOverview({ product }: { product: Product }) {
                 </div>
 
                 <RadioGroup
+                  name="size"
                   value={selectedSize}
                   onChange={setSelectedSize}
                   className="mt-2"
@@ -148,7 +134,6 @@ export default function ProductOverview({ product }: { product: Product }) {
                   <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
                     {product.prices.map((size, index) => (
                       <RadioGroup.Option
-                        // key={size.name}
                         key={index}
                         value={size}
                         className={({ active, checked }) =>
