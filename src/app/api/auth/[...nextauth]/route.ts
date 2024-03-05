@@ -65,7 +65,7 @@ export const authOptions: NextAuthOptions = {
 
       // Google sign in
       if (account?.provider === 'google') {
-        console.log('GOOGLE');
+        console.log('GOOGLE SIGNIN');
 
         // New user
         if (!dbUser) {
@@ -86,6 +86,12 @@ export const authOptions: NextAuthOptions = {
             data: {
               user: { connect: { id: newUser.id } },
             },
+          });
+
+          // Add cartId to the user data
+          const userWithCart = await prisma.user.update({
+            where: { id: newUser.id },
+            data: { cartId: cart.id },
           });
 
           // Tie OAuth sign in provider to user
@@ -130,7 +136,7 @@ export const authOptions: NextAuthOptions = {
 
       // Facebook sign in
       if (account?.provider === 'facebook') {
-        console.log('FACEBOOK');
+        console.log('FACEBOOK SIGNIN');
 
         // New user
         if (!dbUser) {
@@ -151,6 +157,12 @@ export const authOptions: NextAuthOptions = {
             data: {
               user: { connect: { id: newUser.id } },
             },
+          });
+
+          // Add cartId to the user data
+          const userWithCart = await prisma.user.update({
+            where: { id: newUser.id },
+            data: { cartId: cart.id },
           });
 
           // Tie OAuth sign in provider to user
@@ -193,14 +205,15 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-      // console.log(account);
-
       // Email sign in
       if (account?.provider === 'credentials') {
-        console.log('email');
+        console.log('EMAIL SIGNIN');
 
         return true;
       }
+
+      // If none of 3 methods above deny signin
+      return false;
     },
 
     async redirect({ url, baseUrl }) {
@@ -242,7 +255,10 @@ export const authOptions: NextAuthOptions = {
 
       if (token?.id) {
         session.user.id = token.id;
+        session.user.test = 'test';
       }
+
+      // session.user;
 
       console.log('SESSION AFTER - SESSION', session);
 

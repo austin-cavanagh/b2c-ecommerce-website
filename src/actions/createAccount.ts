@@ -48,12 +48,22 @@ export default async function createAccount(
       },
     });
 
-    // Create shopping cart and tie to new user
+    // Create unique cart tied to the user
     const cart = await prisma.cart.create({
       data: {
         user: { connect: { id: newUser.id } },
       },
     });
+
+    // Add cartId to the user data
+    const userWithCart = await prisma.user.update({
+      where: { id: newUser.id },
+      data: { cartId: cart.id },
+    });
+
+    // console.log('userWithCart:', userWithCart);
+    // console.log('CART:', cart);
+    // console.log('CART:', cart);
 
     const verificationToken = `${randomUUID()}${randomUUID()}`;
 
