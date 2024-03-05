@@ -8,26 +8,31 @@ export default async function addToCart(formData: FormData) {
   const price = formData.get('size[price]') as string;
   const size = formData.get('size[dimension]') as string;
 
-  let formObject = Object.fromEntries(formData);
+  const standardData = [
+    'size[productId]',
+    'size[price]',
+    'size[dimension]',
+    '$ACTION_ID_6119eab06d45b529606f64ba108a3caa62cc1dd4',
+    'size[id]',
+  ];
+  const customizations = [];
+  const formObject = Object.fromEntries(formData);
 
-  for (let [name, value] of Object.entries(formObject)) {
-    console.log('NAME:', name);
-    console.log('VALUE:', value);
+  for (const [label, value] of Object.entries(formObject)) {
+    if (!standardData.includes(label)) {
+      customizations.push({ [label]: value });
+    }
   }
 
   const cartItem = {
     productId: productId,
     price: price,
     dimension: size,
-    // customizations: JSON.stringify({
-    //   name: 'John Smith',
-    //   team: 'Dodgers',
-    //   color: 'Blue',
-    // }),
+    customizations: customizations,
   };
 
-  //   console.log('cartItem', cartItem);
+  console.log('cartItem', cartItem);
   //   console.log('formData', formData);
 
-  redirect('/cart');
+  //   redirect('/cart');
 }
