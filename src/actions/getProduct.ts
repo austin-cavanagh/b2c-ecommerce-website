@@ -1,4 +1,6 @@
 'use server';
+
+import { prisma } from '@/prisma/prisma';
 import 'server-only';
 
 function capitalizeWords(str: string) {
@@ -9,7 +11,7 @@ function capitalizeWords(str: string) {
     .join(' ');
 }
 
-export async function getProduct(params: { product: string }) {
+export default async function getProduct(params: { product: string }) {
   const productName = capitalizeWords(decodeURIComponent(params.product));
 
   try {
@@ -21,7 +23,6 @@ export async function getProduct(params: { product: string }) {
         categories: true,
         prices: true,
         imageUrls: true,
-        // customizationOptions: true,
       },
     });
 

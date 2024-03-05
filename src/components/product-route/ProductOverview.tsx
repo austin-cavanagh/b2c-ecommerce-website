@@ -4,9 +4,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
-import { getProduct } from '@/actions/getProduct';
 import { Product } from '@prisma/client';
-import { redirect } from 'next/navigation';
 import addToCart from '@/actions/addToCart';
 
 // details: [

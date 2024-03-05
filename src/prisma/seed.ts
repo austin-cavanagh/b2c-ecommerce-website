@@ -74,13 +74,7 @@ async function addProducts() {
         shortDescription: product.shortDescription,
         longDescription: product.longDescription,
         craftingTime: product.craftingTime,
-        customizationOptions: product.customizationOptions, // Directly assign the JSON object/array
-
-        // customizationOptions: {
-        //   create: product.customizationOptions.map((option: OptionType) => ({
-        //     option: option.option,
-        //   })),
-        // },
+        customizationOptions: product.customizationOptions,
         prices: {
           create: product.prices,
         },

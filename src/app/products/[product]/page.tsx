@@ -1,4 +1,4 @@
-import { getProduct } from '@/actions/getProduct';
+import getProduct from '@/actions/getProduct';
 import ProductOverview from '@/components/product-route/ProductOverview';
 import { Product } from '@prisma/client';
 
