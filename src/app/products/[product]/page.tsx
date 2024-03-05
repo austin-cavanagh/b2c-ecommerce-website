@@ -1,5 +1,5 @@
 import { getProduct } from '@/actions/getProduct';
-import ProductOverview from '@/components/ProductOverview';
+import ProductOverview from '@/components/product-route/ProductOverview';
 import { Product } from '@prisma/client';
 
 export default async function ProductRoute({

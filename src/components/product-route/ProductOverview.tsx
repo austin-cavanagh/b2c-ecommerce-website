@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
@@ -33,7 +33,9 @@ function classNames(...classes: string[]): string {
 export default function ProductOverview({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  if (!product) return;
+  const addToCart = (event: FormEvent) => {
+    event.preventDefault();
+  };
 
   return (
     <div className="bg-white">
@@ -107,7 +109,7 @@ export default function ProductOverview({ product }: { product: Product }) {
               </p>
             </div>
 
-            <form className="mt-6">
+            <form className="mt-6" onSubmit={addToCart}>
               {/* Size Picker */}
               <div className="mt-8">
                 <div className="flex items-center justify-between">
@@ -205,7 +207,7 @@ export default function ProductOverview({ product }: { product: Product }) {
                   type="submit"
                   className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                 >
-                  Add to bag
+                  Add to cart
                 </button>
 
                 {/* <button
