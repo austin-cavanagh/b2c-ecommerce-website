@@ -35,18 +35,19 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  // await clearUserData();
-  await addProducts();
+  await clearUserData();
+  // await addProducts();
   // await addCategories();
   // await clearProducts();
   // await clearCategories();
 }
 
 async function clearUserData() {
+  await prisma.cart.deleteMany({});
   await prisma.userAuth.deleteMany({});
   await prisma.verifyUserToken.deleteMany({});
   await prisma.user.deleteMany({});
-  // console.log('Tables cleared');
+  console.log('USER DATA CLEARED');
 }
 
 async function addProducts() {

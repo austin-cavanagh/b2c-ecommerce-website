@@ -9,7 +9,7 @@ export async function GET(
   const { token } = params;
 
   // Find the token record based on the provided token
-  const verificationToken = await prisma.verifyUserTokens.findUnique({
+  const verificationToken = await prisma.verifyUserToken.findUnique({
     where: { token },
     include: { user: true },
   });
@@ -31,7 +31,7 @@ export async function GET(
   }
 
   // Find the newest token for the user
-  const newestToken = await prisma.verifyUserTokens.findFirst({
+  const newestToken = await prisma.verifyUserToken.findFirst({
     where: { userId: verificationToken.userId },
     orderBy: { createdAt: 'desc' },
   });
@@ -42,17 +42,18 @@ export async function GET(
   }
 
   // Verify user
-  await prisma.users.update({
+  await prisma.user.update({
     where: { id: verificationToken.userId },
     data: { verified: true },
   });
 
   // Verify token
-  await prisma.verifyUserTokens.update({
+  await prisma.verifyUserToken.update({
     where: { id: verificationToken.id },
     data: { verifiedAt: new Date() },
   });
 
   // Redirect to the sign in page
+  console.log('I GOT ALL THE WAY HERE 1');
   redirect('/sign-in');
 }

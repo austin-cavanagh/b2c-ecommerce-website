@@ -8,15 +8,16 @@ import sendEmailVerification from '@/functions/sendEmailVerification';
 import { randomUUID } from 'crypto';
 
 export default async function createAccount(
-  prevState: unknown,
+  // prevState: unknown,
   formData: FormData,
 ) {
-  console.log(formData);
+  // console.log(formData);
 
   const name = formData.get('name') as string;
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
   const hashedPassword = await hash(password, 12);
+  let newUser;
 
   try {
     // Check if there is already an account with that email
@@ -39,7 +40,7 @@ export default async function createAccount(
     }
 
     // Create new user
-    const newUser = await prisma.user.create({
+    newUser = await prisma.user.create({
       data: {
         name: name,
         email: email,
@@ -64,11 +65,15 @@ export default async function createAccount(
       },
     });
 
-    sendEmailVerification(name, email, verificationToken);
+    // was not awaiting
+    await sendEmailVerification(name, email, verificationToken);
 
-    redirect(`/create-account/verify-email/${newUser.id}`);
+    // redirect(`/create-account/verify-email/${newUser.id}`);
   } catch (err) {
     console.error('Error Creating Account:', err);
+    // redirect('/');
     throw new Error(err.message);
   }
+
+  redirect(`/create-account/verify-email/${newUser.id}`);
 }

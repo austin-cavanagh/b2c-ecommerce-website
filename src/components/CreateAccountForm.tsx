@@ -5,11 +5,12 @@ import { useFormState } from 'react-dom';
 import PasswordInput from './PasswordInput';
 
 export default function CreateAccountForm() {
-  const [error, action] = useFormState(createAccount, { message: '' });
+  // const [error, action] = useFormState(createAccount, { message: '' });
 
   return (
-    <form className="space-y-6" action={action} method="POST">
-      <div>{error.message}</div>
+    // method="POST" <- look into what this was
+    <form className="space-y-6" action={createAccount}>
+      {/* <div>{error.message}</div> */}
 
       <div>
         <label
