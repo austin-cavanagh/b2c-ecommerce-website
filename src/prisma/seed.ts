@@ -1,7 +1,7 @@
 // npx prisma db seed
-// npx ts-node src/prisma/seed.ts
 
 'use server';
+// require('server-only');
 
 // import { productsData } from '@/app/data/products';
 // import { PrismaClient } from '@prisma/client';
@@ -15,7 +15,10 @@ type ImageUrlType = {
   altText: string;
 };
 
-const productsData = require('../data/products');
+const data = require('../data/products');
+const productsData = data.products;
+
+// console.log(productsData);
 
 const categories = [
   { name: 'Teacher' },
@@ -43,13 +46,17 @@ async function clearUserData() {
   await prisma.userAuth.deleteMany({});
   await prisma.verifyUserToken.deleteMany({});
   await prisma.user.deleteMany({});
-  console.log('Tables cleared');
+  // console.log('Tables cleared');
 }
 
 async function addProducts() {
+  // console.log(productsData);
   for (const product of productsData) {
     // Find or create categories
     const categoryIds = [];
+
+    // console.log('CATEGORIES', product.categories);
+
     for (const categoryName of product.categories) {
       const category =
         (await prisma.category.findUnique({
