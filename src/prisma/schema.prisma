@@ -92,7 +92,7 @@ model Product {
   shortDescription     String
   longDescription      String
   craftingTime         Int
-  customizationOptions Json?
+  customizationOptions Json
   prices               ProductPrice[]
   imageUrls            ImageUrl[]
   categories           ProductCategory[]

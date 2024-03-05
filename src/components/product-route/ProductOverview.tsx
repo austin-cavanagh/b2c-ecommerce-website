@@ -190,17 +190,17 @@ export default function ProductOverview({
               </div> */}
 
               {/* Customizations */}
-              <div className="mt-6">
+              <div className="mt-6 flex flex-col space-y-4">
                 {/* Text Input */}
                 {product.customizationOptions &&
-                  product.customizationOptions.map((image, index) => {
+                  product.customizationOptions.map((option, index) => {
                     return (
                       <div key={index}>
                         <label
                           htmlFor="email"
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
-                          Email
+                          {option.option}
                         </label>
                         <div className="mt-2">
                           <input
@@ -208,7 +208,7 @@ export default function ProductOverview({
                             name="email"
                             id="email"
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="you@example.com"
+                            placeholder="Placeholder"
                             aria-describedby="email-description"
                           />
                         </div>
@@ -216,14 +216,14 @@ export default function ProductOverview({
                           className="mt-2 text-sm text-gray-500"
                           id="email-description"
                         >
-                          We'll only use this for spam.
+                          {option.description}
                         </p>
                       </div>
                     );
                   })}
 
                 {/* Error Text Input */}
-                <div>
+                {/* <div>
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -251,7 +251,7 @@ export default function ProductOverview({
                   <p className="mt-2 text-sm text-red-600" id="email-error">
                     Not a valid email address.
                   </p>
-                </div>
+                </div> */}
               </div>
 
               <div className="mt-10 flex">

@@ -2,7 +2,7 @@
 
 import { prisma } from '@/prisma/prisma';
 import { ImageUrl, Prisma, Product, ProductPrice } from '@prisma/client';
-import { JsonValue } from '@prisma/client/runtime/library';
+import { JsonArray, JsonValue } from '@prisma/client/runtime/library';
 import 'server-only';
 
 export type CustomizationOption = {
@@ -16,7 +16,7 @@ export type CustomizationOption = {
 export type ExtendedProduct = Product & {
   imageUrls: ImageUrl[];
   prices: ProductPrice[];
-  customizationOptions: CustomizationOption[] | null;
+  customizationOptions: CustomizationOption[];
 };
 
 function capitalizeWords(str: string) {
@@ -42,27 +42,22 @@ export default async function getProduct(params: { product: string }) {
       },
     });
 
-    if (!productData) {
-      return null;
+    // In your getProduct function
+    if (productData && typeof productData.customizationOptions === 'object') {
+      const extendedProduct: ExtendedProduct = {
+        ...productData,
+        customizationOptions: Array.isArray(productData.customizationOptions)
+          ? (productData.customizationOptions as CustomizationOption[])
+          : [],
+      };
+      return extendedProduct;
+    } else {
+      // Handle cases where customizationOptions is not an array
+      return {
+        ...productData,
+        customizationOptions: [],
+      } as ExtendedProduct;
     }
-
-    // Assuming customizationOptions is a JSON string, parse it
-    // If productData.customizationOptions is not a string, adjust accordingly
-    // const customizationOptions: CustomizationOption[] | null =
-    //   productData.customizationOptions
-    //     ? JSON.parse(productData.customizationOptions as string)
-    //     : null;
-
-    const customizationOptions =
-      productData.customizationOptions as CustomizationOption[];
-
-    // Construct the extended product object with parsed customization options
-    const extendedProduct: ExtendedProduct = {
-      ...productData,
-      customizationOptions, // Add parsed customization options to the product object
-    };
-
-    return productData;
   } catch (error) {
     console.error('Error fetching product:', error);
     throw error;

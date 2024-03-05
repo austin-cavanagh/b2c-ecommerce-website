@@ -8,19 +8,19 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option: 'Background Color',
+        label: 'Background Color',
         description: 'Choose from available colors: Red, Blue, Green',
         inputType: 'dropdown',
         choices: ['Red', 'Blue', 'Green'],
       },
       {
-        option: 'Name Color',
+        label: 'Name Color',
         description: 'Specify the size of the sign',
         inputType: 'dropdown',
         choices: ['Red', 'Blue', 'Green'],
       },
       {
-        option: 'Name',
+        label: 'Name',
         description: 'Add a personalized message or name',
         inputType: 'textfield',
         maxLength: 20,
