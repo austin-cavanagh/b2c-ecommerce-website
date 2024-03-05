@@ -4,7 +4,7 @@ import { prisma } from '../prisma/prisma';
 async function login(email: string, password: string) {
   try {
     // Look up the user by email
-    const user = await prisma.users.findUnique({
+    const user = await prisma.user.findUnique({
       where: {
         email: email,
       },

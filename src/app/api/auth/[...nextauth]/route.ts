@@ -8,6 +8,7 @@ import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import login from '@/functions/login';
+import { prisma } from '@/prisma/prisma';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -55,7 +56,7 @@ export const authOptions: NextAuthOptions = {
       // console.log('USER', user);
       // console.log('ACCOUNT', account);
 
-      const dbUser = await prisma.users.findUnique({
+      const dbUser = await prisma.user.findUnique({
         where: {
           email: user.email,
         },
@@ -70,7 +71,7 @@ export const authOptions: NextAuthOptions = {
           console.log('GOOGLE - NEW');
 
           // Create user
-          const newUser = await prisma.users.create({
+          const newUser = await prisma.user.create({
             data: {
               name: user.name,
               email: user.email,
@@ -79,8 +80,15 @@ export const authOptions: NextAuthOptions = {
             },
           });
 
+          // Create shopping cart and tie to new user
+          await prisma.cart.create({
+            data: {
+              user: { connect: { id: newUser.id } },
+            },
+          });
+
           // Tie OAuth sign in provider to user
-          await prisma.userAuths.create({
+          await prisma.userAuth.create({
             data: {
               userId: newUser.id,
               provider: account.provider,
@@ -96,7 +104,7 @@ export const authOptions: NextAuthOptions = {
           console.log('GOOGLE - RETURNING');
 
           // Check if user has signed in with google before
-          const googleAuth = await prisma.userAuths.findFirst({
+          const googleAuth = await prisma.userAuth.findFirst({
             where: {
               userId: dbUser.id,
               provider: 'google',
@@ -128,7 +136,7 @@ export const authOptions: NextAuthOptions = {
           console.log('FACEBOOK - NEW');
 
           // Create user
-          const newUser = await prisma.users.create({
+          const newUser = await prisma.user.create({
             data: {
               name: user.name,
               email: user.email,
@@ -137,8 +145,15 @@ export const authOptions: NextAuthOptions = {
             },
           });
 
+          // Create shopping cart and tie to new user
+          await prisma.cart.create({
+            data: {
+              user: { connect: { id: newUser.id } },
+            },
+          });
+
           // Tie OAuth sign in provider to user
-          await prisma.userAuths.create({
+          await prisma.userAuth.create({
             data: {
               userId: newUser.id,
               provider: account.provider,
@@ -154,7 +169,7 @@ export const authOptions: NextAuthOptions = {
           console.log('FACEBOOK - RETURNING');
 
           // Check if user has signed in with facebook before
-          const facebookAuth = await prisma.userAuths.findFirst({
+          const facebookAuth = await prisma.userAuth.findFirst({
             where: {
               userId: dbUser.id,
               provider: 'facebook',
