@@ -4,33 +4,23 @@ import { FormEvent, useEffect, useState } from 'react';
 import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline';
 
-import { Product } from '@prisma/client';
+import { ImageUrl, Product, ProductPrice } from '@prisma/client';
 import addToCart from '@/actions/addToCart';
 
-// details: [
-//   {
-//     name: 'Features',
-//     items: [
-//       'Multiple strap configurations',
-//       'Spacious interior with top zip',
-//       'Leather handle and tabs',
-//       'Interior dividers',
-//       'Stainless strap loops',
-//       'Double stitched construction',
-//       'Water-resistant',
-//     ],
-//   },
-//   {
-//     name: 'Shipping',
-//     items: ['Shipping is free for orders above $50'],
-//   },
-// ],
+export type ExtendedProduct = Product & {
+  imageUrls: ImageUrl[];
+  prices: ProductPrice[];
+};
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ProductOverview({ product }: { product: Product }) {
+export default function ProductOverview({
+  product,
+}: {
+  product: ExtendedProduct;
+}) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
   console.log(product);
