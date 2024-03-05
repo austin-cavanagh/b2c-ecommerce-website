@@ -24,7 +24,7 @@ export default function ProductOverview({
 }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  // console.log(product);
+  console.log('smh');
 
   return (
     <div className="bg-white">
@@ -197,19 +197,19 @@ export default function ProductOverview({
                     return (
                       <div key={index}>
                         <label
-                          htmlFor="email"
+                          htmlFor={option.label}
                           className="block text-sm font-medium leading-6 text-gray-900"
                         >
-                          {option.option}
+                          {option.label}
                         </label>
                         <div className="mt-2">
                           <input
-                            type="email"
-                            name="email"
-                            id="email"
+                            type="text"
+                            name={option.label}
+                            id={option.label}
                             className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                            placeholder="Placeholder"
-                            aria-describedby="email-description"
+                            placeholder={option.description}
+                            aria-describedby={`${option.label}-description`}
                           />
                         </div>
                         <p

@@ -6,7 +6,7 @@ import { JsonArray, JsonValue } from '@prisma/client/runtime/library';
 import 'server-only';
 
 export type CustomizationOption = {
-  option: string;
+  label: string;
   description: string;
   inputType: 'dropdown' | 'textfield';
   choices?: string[];
@@ -42,7 +42,6 @@ export default async function getProduct(params: { product: string }) {
       },
     });
 
-    // In your getProduct function
     if (productData && typeof productData.customizationOptions === 'object') {
       const extendedProduct: ExtendedProduct = {
         ...productData,
@@ -52,7 +51,6 @@ export default async function getProduct(params: { product: string }) {
       };
       return extendedProduct;
     } else {
-      // Handle cases where customizationOptions is not an array
       return {
         ...productData,
         customizationOptions: [],

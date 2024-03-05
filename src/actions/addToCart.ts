@@ -8,6 +8,13 @@ export default async function addToCart(formData: FormData) {
   const price = formData.get('size[price]') as string;
   const size = formData.get('size[dimension]') as string;
 
+  let formObject = Object.fromEntries(formData);
+
+  for (let [name, value] of Object.entries(formObject)) {
+    console.log('NAME:', name);
+    console.log('VALUE:', value);
+  }
+
   const cartItem = {
     productId: productId,
     price: price,
@@ -19,8 +26,8 @@ export default async function addToCart(formData: FormData) {
     // }),
   };
 
-  console.log(size);
-  console.log(formData);
+  //   console.log('cartItem', cartItem);
+  //   console.log('formData', formData);
 
   redirect('/cart');
 }
