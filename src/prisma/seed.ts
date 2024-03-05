@@ -108,7 +108,7 @@ async function addProducts() {
 
 async function clearProducts() {
   // Delete related records first to maintain referential integrity
-  await prisma.customizationOption.deleteMany({});
+  // await prisma.customizationOption.deleteMany({});
   await prisma.productPrice.deleteMany({});
   await prisma.imageUrl.deleteMany({});
   await prisma.productCategory.deleteMany({});

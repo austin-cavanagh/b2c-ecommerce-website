@@ -40,6 +40,11 @@ export default function ProductOverview({ product }: { product: Product }) {
       productId: product.id,
       price: selectedSize.price,
       dimension: selectedSize.dimension,
+      customizations: JSON.stringify({
+        name: 'John Smith',
+        team: 'Dodgers',
+        color: 'Blue',
+      }),
     };
 
     console.log(cartItem);
