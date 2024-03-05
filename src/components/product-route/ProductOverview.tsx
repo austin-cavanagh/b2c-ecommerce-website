@@ -24,8 +24,6 @@ export default function ProductOverview({
 }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  console.log('smh');
-
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -42,7 +40,7 @@ export default function ProductOverview({
                   >
                     {({ selected }) => (
                       <>
-                        {/* <span className="sr-only">{image.name}</span> */}
+                        <span className="sr-only">{image.altText}</span>
                         <span className="absolute inset-0 overflow-hidden rounded-md">
                           <img
                             src={image.url}
@@ -69,7 +67,7 @@ export default function ProductOverview({
                 <Tab.Panel key={index}>
                   <img
                     src={image.url}
-                    // alt={image.alt}
+                    alt={image.altText}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>

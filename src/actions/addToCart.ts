@@ -1,9 +1,16 @@
 'use server';
 
+import { getServerSession } from 'next-auth';
+import { getSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { FormEvent } from 'react';
 
 export default async function addToCart(formData: FormData) {
+  const session = await getServerSession();
+  // const session = await getServerSession(authOptions);
+
+  console.log(session);
+
   const standardData = [
     'size[productId]',
     'size[price]',
@@ -34,7 +41,7 @@ export default async function addToCart(formData: FormData) {
   };
 
   //   console.log('formData', formData);
-  console.log('cartItem', cartItem);
+  // console.log('cartItem', cartItem);
 
   //   redirect('/cart');
 }

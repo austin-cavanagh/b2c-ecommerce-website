@@ -42,6 +42,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const user = await login(email, password);
+          console.log('AUTHORIZE', user);
           return user;
         } catch (err) {
           console.error(err);
@@ -81,7 +82,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           // Create shopping cart and tie to new user
-          await prisma.cart.create({
+          const cart = await prisma.cart.create({
             data: {
               user: { connect: { id: newUser.id } },
             },
@@ -146,7 +147,7 @@ export const authOptions: NextAuthOptions = {
           });
 
           // Create shopping cart and tie to new user
-          await prisma.cart.create({
+          const cart = await prisma.cart.create({
             data: {
               user: { connect: { id: newUser.id } },
             },
@@ -192,7 +193,7 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-      console.log(account);
+      // console.log(account);
 
       // Email sign in
       if (account?.provider === 'credentials') {
@@ -208,6 +209,58 @@ export const authOptions: NextAuthOptions = {
 
       return baseUrl;
     },
+
+    // The arguments user, account, profile and isNewUser are only passed the first time this
+    // callback is called on a new session, after the user signs in. In subsequent calls, only
+    // token will be available
+    async jwt({ token, user, account, profile }) {
+      console.log('JWT - TOKEN', token);
+      console.log('JWT - USER', user);
+      console.log('JWT - ACCOUNT', account);
+      console.log('JWT - PROFILE', profile);
+
+      if (user) {
+        return {
+          ...token,
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+        };
+      }
+
+      return token;
+    },
+
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token and user id from a provider.
+      // session.accessToken = token.accessToken;
+      // session.user.id = token.id;
+
+      console.log('SESSION BEFORE - SESSION', session);
+      console.log('SESSION - TOKEN', token);
+
+      if (token?.id) {
+        session.user.id = token.id;
+      }
+
+      console.log('SESSION AFTER - SESSION', session);
+
+      return session;
+    },
+
+    // session: ({ session, token }) => {
+    //   console.log('SESSION - SESSION', session);
+    //   console.log('SESSION - TOKEN', token);
+
+    //   if (token?.id) {
+    //     console.log('I am so smart');
+    //   }
+
+    //   return session;
+    // },
+    // user is only passed in the first time they login
+    // Will not be present other logins so check if there is one
   },
 
   // callbacks: {
@@ -276,6 +329,17 @@ export const authOptions: NextAuthOptions = {
   //   //   }
   //   //   return token;
   //   // },
+  // },
+
+  // jwt: ({ token, user }) => {
+  //   if (user) {
+  //     return {
+  //       ...token,
+  //       id: user.id,
+  //       random: 'test',
+  //     };
+  //   }
+  //   return token;
   // },
 
   pages: {

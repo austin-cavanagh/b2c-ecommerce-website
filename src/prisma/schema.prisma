@@ -136,7 +136,7 @@ model ImageUrl {
   product   Product @relation(fields: [productId], references: [id])
   productId Int
   url       String
-  altText   String?
+  altText   String
 }
 
 // model Color {

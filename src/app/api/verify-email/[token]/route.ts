@@ -53,7 +53,5 @@ export async function GET(
     data: { verifiedAt: new Date() },
   });
 
-  // Redirect to the sign in page
-  console.log('I GOT ALL THE WAY HERE 1');
   redirect('/sign-in');
 }

@@ -25,23 +25,26 @@ async function login(email: string, password: string) {
     // Compare the provided password with the stored hashed password
     const isValid = await compare(password, user.password as string);
 
-    console.log('VALID', isValid);
-    console.log('VALID', isValid);
-    console.log('VALID', isValid);
-    console.log('VALID', isValid);
-    console.log('VALID', isValid);
-
     // Password does not match
     if (!isValid) {
       throw new Error('Incorrect email or password');
     }
 
+    const id = user.id;
+    const name = user.name;
+    const cartId = user.cartId;
+    const verified = user.verified;
+
     return {
       email,
+      id,
+      name,
+      cartId,
+      verified,
     };
   } catch (err) {
-    console.error('Authorization error', err);
-    throw new Error(err.message);
+    console.error('Authorization error:', (err as Error).message);
+    throw new Error((err as Error).message);
   }
 }
 

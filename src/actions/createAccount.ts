@@ -65,14 +65,16 @@ export default async function createAccount(
       },
     });
 
-    // was not awaiting
     await sendEmailVerification(name, email, verificationToken);
-
-    // redirect(`/create-account/verify-email/${newUser.id}`);
   } catch (err) {
-    console.error('Error Creating Account:', err);
-    // redirect('/');
-    throw new Error(err.message);
+    if (err instanceof Error) {
+      console.error('Error Creating Account:', err.message);
+      throw new Error(err.message);
+    } else {
+      // Handle the case where err is not an Error object
+      console.error('An unexpected error occurred:', err);
+      throw new Error('An unexpected error occurred');
+    }
   }
 
   redirect(`/create-account/verify-email/${newUser.id}`);
