@@ -45,11 +45,11 @@ model UserAuth {
 }
 
 model CartItem {
-  id             Int     @id @default(autoincrement())
+  id             Int   @id @default(autoincrement())
   productId      Int
   cartId         Int
-  customizations String? @default("")
-  cart           Cart    @relation(fields: [cartId], references: [id])
+  customizations Json?
+  cart           Cart  @relation(fields: [cartId], references: [id])
 }
 
 model Cart {
@@ -62,10 +62,10 @@ model Cart {
 model Order {
   id              Int         @id @default(autoincrement())
   userId          Int
-  status          String // For example, "pending", "paid", "shipped", "completed"
-  paymentMethod   String // For example, "Stripe", "PayPal"
-  total           Int // Total amount charged
-  shippingMethod  String // e.g., "pickup", "delivery"
+  status          String
+  paymentMethod   String
+  total           Int
+  shippingMethod  String
   shippingAddress String?
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt

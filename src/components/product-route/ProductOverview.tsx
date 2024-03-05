@@ -35,6 +35,14 @@ export default function ProductOverview({ product }: { product: Product }) {
 
   const addToCart = (event: FormEvent) => {
     event.preventDefault();
+
+    const cartItem = {
+      productId: product.id,
+      price: selectedSize.price,
+      dimension: selectedSize.dimension,
+    };
+
+    console.log(cartItem);
   };
 
   return (
