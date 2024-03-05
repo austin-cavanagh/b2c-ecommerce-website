@@ -8,8 +8,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -50,8 +64,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -92,8 +120,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -134,8 +176,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -168,8 +224,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -202,8 +272,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -236,8 +320,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [
@@ -270,8 +368,22 @@ const products = [
     craftingTime: 14,
     customizationOptions: [
       {
-        option:
-          'Explanation of what can be changed and what should be specified in directions',
+        option: 'Background Color',
+        description: 'Choose from available colors: Red, Blue, Green',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name Color',
+        description: 'Specify the size of the sign',
+        inputType: 'dropdown',
+        choices: ['Red', 'Blue', 'Green'],
+      },
+      {
+        option: 'Name',
+        description: 'Add a personalized message or name',
+        inputType: 'textfield',
+        maxLength: 20,
       },
     ],
     prices: [

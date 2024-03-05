@@ -19,7 +19,7 @@ export default async function createAccount(
   const hashedPassword = await hash(password, 12);
 
   // Check if there is already an account with that email
-  const existingUser = await prisma.users.findUnique({
+  const existingUser = await prisma.user.findUnique({
     where: {
       email: email,
     },
@@ -38,7 +38,7 @@ export default async function createAccount(
   }
 
   // Create new user
-  const newUser = await prisma.users.create({
+  const newUser = await prisma.user.create({
     data: {
       name: name,
       email: email,
@@ -49,7 +49,7 @@ export default async function createAccount(
   const verificationToken = `${randomUUID()}${randomUUID()}`;
 
   // Create or update the VerifyUserTokens entry
-  await prisma.verifyUserTokens.create({
+  await prisma.verifyUserToken.create({
     data: {
       userId: newUser.id,
       token: verificationToken,

@@ -37,8 +37,8 @@ const prisma = new PrismaClient();
 async function main() {
   // await clearUserData();
   await addProducts();
-  // await clearProducts();
   // await addCategories();
+  // await clearProducts();
   // await clearCategories();
 }
 
@@ -55,8 +55,7 @@ async function addProducts() {
     // Find or create categories
     const categoryIds = [];
 
-    // console.log('CATEGORIES', product.categories);
-
+    // Categories
     for (const categoryName of product.categories) {
       const category =
         (await prisma.category.findUnique({
@@ -68,19 +67,20 @@ async function addProducts() {
       categoryIds.push(category.id);
     }
 
-    // Create the product without categories
+    // Create Products
     const createdProduct = await prisma.product.create({
       data: {
         name: product.name,
         shortDescription: product.shortDescription,
         longDescription: product.longDescription,
         craftingTime: product.craftingTime,
-        // Assuming customizationOptions is an array of strings now
-        customizationOptions: {
-          create: product.customizationOptions.map((option: OptionType) => ({
-            option: option.option,
-          })),
-        },
+        customizationOptions: product.customizationOptions, // Directly assign the JSON object/array
+
+        // customizationOptions: {
+        //   create: product.customizationOptions.map((option: OptionType) => ({
+        //     option: option.option,
+        //   })),
+        // },
         prices: {
           create: product.prices,
         },

@@ -35,7 +35,7 @@ function classNames(...classes: string[]): string {
 export default function ProductOverview({ product }: { product: Product }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  console.log(selectedSize);
+  console.log(product);
 
   return (
     <div className="bg-white">
