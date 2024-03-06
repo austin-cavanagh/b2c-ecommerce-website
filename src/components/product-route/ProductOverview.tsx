@@ -12,6 +12,7 @@ import {
 import { ImageUrl, Product, ProductPrice } from '@prisma/client';
 import addToCart from '@/actions/addToCart';
 import { ExtendedProduct } from '@/actions/getProduct';
+import { useSession } from 'next-auth/react';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -23,6 +24,9 @@ export default function ProductOverview({
   product: ExtendedProduct;
 }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
+
+  // const session = useSession();
+  // console.log(session);
 
   return (
     <div className="bg-white">

@@ -1,15 +1,18 @@
 'use server';
+import 'server-only';
 
 import { getServerSession } from 'next-auth';
 import { getSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { FormEvent } from 'react';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { prisma } from '@/prisma/prisma';
 
 export default async function addToCart(formData: FormData) {
-  const session = await getServerSession();
-  // const session = await getServerSession(authOptions);
+  //   console.log('formData', formData);
 
-  console.log(session);
+  const session = await getServerSession(authOptions);
+  const cartId = session?.user?.cartId;
 
   const standardData = [
     'size[productId]',
@@ -34,13 +37,27 @@ export default async function addToCart(formData: FormData) {
   }
 
   const cartItem = {
+    cartId: cartId,
     productId: Number(productId),
     price: Number(price),
-    dimension: size,
-    customizationOptions: customizationOptions,
+    dimensions: size,
+    // customizations: customizationOptions,
+    customizations: JSON.stringify(customizationOptions),
   };
 
-  //   console.log('formData', formData);
+  try {
+    const newCartItem = await prisma.cartItem.create({
+      data: cartItem,
+    });
+    console.log('Added cart item:', newCartItem);
+
+    // Optionally, redirect the user or handle the response as needed
+    // redirect('/cart'); // Uncomment and use as needed
+  } catch (error) {
+    console.error('Error adding cart item:', error);
+    // Handle the error, e.g., return an error message or redirect
+  }
+
   // console.log('cartItem', cartItem);
 
   //   redirect('/cart');

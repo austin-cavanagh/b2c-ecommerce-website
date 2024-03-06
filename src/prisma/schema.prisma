@@ -19,7 +19,7 @@ model User {
   name             String?
   picture          String?
   password         String?
-  cartId           Int? // @unique
+  cartId           Int?              @unique
   verified         Boolean           @default(false)
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
@@ -47,21 +47,21 @@ model UserAuth {
   user       User   @relation(fields: [userId], references: [id])
 }
 
-model CartItem {
-  id             Int    @id @default(autoincrement())
-  productId      Int
-  cartId         Int
-  price          Int
-  dimensions     String
-  customizations Json?
-  cart           Cart   @relation(fields: [cartId], references: [id])
-}
-
 model Cart {
   id     Int        @id @default(autoincrement())
   userId Int        @unique
   items  CartItem[]
   user   User       @relation(fields: [userId], references: [id])
+}
+
+model CartItem {
+  id             Int    @id @default(autoincrement())
+  cartId         Int
+  productId      Int
+  price          Int
+  dimensions     String
+  customizations Json?
+  cart           Cart   @relation(fields: [cartId], references: [id])
 }
 
 model Order {

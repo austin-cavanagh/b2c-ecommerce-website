@@ -52,7 +52,7 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials) {
-        console.log('AUTHORIZE');
+        // console.log('AUTHORIZE');
 
         // console.log('CREDENTIALS', credentials);
 
@@ -76,7 +76,7 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
-      console.log('SIGNIN CALLBACK');
+      // console.log('SIGNIN CALLBACK');
 
       // Email sign in
       if (account?.provider === 'credentials') {
@@ -240,7 +240,7 @@ export const authOptions: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }) {
-      console.log('REDIRECT CALLBACK');
+      // console.log('REDIRECT CALLBACK');
 
       // console.log('URL', url);
       // console.log('BASEURL', baseUrl);
@@ -262,7 +262,7 @@ export const authOptions: NextAuthOptions = {
       // account: Account;
       // profile?: Profile;
     }) {
-      console.log('JWT CALLBACK');
+      // console.log('JWT CALLBACK');
 
       // console.log('JWT - TOKEN', token);
       // console.log('JWT - USER', user);
@@ -292,7 +292,7 @@ export const authOptions: NextAuthOptions = {
       session: ExtendSession;
       token: ExtendJWT;
     }) {
-      console.log('SESSION CALLBACK');
+      // console.log('SESSION CALLBACK');
 
       // console.log('SESSION BEFORE - SESSION', session);
       // console.log('SESSION - TOKEN', token);
@@ -301,10 +301,10 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email;
-        session.user.image = token.picture;
+        // session.user.image = token.picture;
         session.user.userId = token.userId;
         session.user.cartId = token.cartId;
-        session.user.verified = token.verified;
+        // session.user.verified = token.verified;
       }
 
       // console.log('SESSION AFTER - SESSION', session);
