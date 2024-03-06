@@ -1,4 +1,4 @@
-import CartOverview from '@/components/cart-route/CartOverview';
+import CartOverview from '@/components/cart/CartOverview';
 
 export default async function CartRoute() {
   return (

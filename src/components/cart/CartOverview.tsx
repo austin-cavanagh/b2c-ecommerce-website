@@ -3,7 +3,7 @@ import { prisma } from '@/prisma/prisma';
 import { CheckIcon, ClockIcon } from '@heroicons/react/20/solid';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
-import { useMemo } from 'react';
+import RemoveFromCartButton from './RemoveFromCartButton';
 
 // const cartItems = {
 //   id: 7,
@@ -140,12 +140,14 @@ export default async function CartOverview() {
 
                       {/* Remove Buttom */}
                       <div className="ml-4">
-                        <button
+                        {/* <button
                           type="button"
                           className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
                         >
                           <span>Remove</span>
-                        </button>
+                        </button> */}
+
+                        <RemoveFromCartButton itemId={item.id} />
                       </div>
                     </div>
                   </div>
