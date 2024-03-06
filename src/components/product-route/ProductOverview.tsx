@@ -44,10 +44,10 @@ export default function ProductOverview({
                   >
                     {({ selected }) => (
                       <>
-                        <span className="sr-only">{image.altText}</span>
+                        <span className="sr-only">{image.imageAlt}</span>
                         <span className="absolute inset-0 overflow-hidden rounded-md">
                           <img
-                            src={image.url}
+                            src={image.imageSrc}
                             alt=""
                             className="h-full w-full object-cover object-center"
                           />
@@ -70,8 +70,8 @@ export default function ProductOverview({
               {product.imageUrls.map((image, index) => (
                 <Tab.Panel key={index}>
                   <img
-                    src={image.url}
-                    alt={image.altText}
+                    src={image.imageSrc}
+                    alt={image.imageAlt}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>

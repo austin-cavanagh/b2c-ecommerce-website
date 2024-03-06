@@ -1,5 +1,6 @@
 'use server';
 
+import { prisma } from '@/prisma/prisma';
 // const products = [
 //   {
 //     id: 1,
@@ -91,7 +92,7 @@
 //   ],
 // };
 
-import { products, ProductType } from '@/data/products';
+// import { products, ProductType } from '@/data/products';
 import Link from 'next/link';
 
 export async function getProducts() {
@@ -128,8 +129,8 @@ export default async function ProductsGrid() {
               <div key={product.id} className="group relative">
                 <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
-                    src={product.imageUrls[0].url}
-                    alt={product.name}
+                    src={product.imageUrls[0].imageSrc}
+                    alt={product.imageUrls[0].imageAlt}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>

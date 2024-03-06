@@ -11,7 +11,7 @@ type OptionType = {
 };
 
 type ImageUrlType = {
-  imageUrl: string;
+  imageSrc: string;
   imageAlt: string;
 };
 
@@ -82,7 +82,7 @@ async function addProducts() {
         },
         imageUrls: {
           create: product.imageUrls.map((imageUrl: ImageUrlType) => ({
-            imageUrl: imageUrl.imageUrl,
+            imageSrc: imageUrl.imageSrc,
             imageAlt: imageUrl.imageAlt,
           })),
         },

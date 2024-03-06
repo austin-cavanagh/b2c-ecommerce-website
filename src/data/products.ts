@@ -42,17 +42,17 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
         imageAlt: 'Description',
       },
@@ -101,17 +101,17 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-2.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-3.JPG',
         imageAlt: 'Description',
       },
@@ -160,17 +160,17 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-2.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-3.JPG',
         imageAlt: 'Description',
       },
@@ -219,7 +219,7 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
         imageAlt: 'Description',
       },
@@ -268,7 +268,7 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
         imageAlt: 'Description',
       },
@@ -317,7 +317,7 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
         imageAlt: 'Description',
       },
@@ -366,7 +366,7 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
         imageAlt: 'Description',
       },
@@ -415,17 +415,17 @@ const products = [
     ],
     imageUrls: [
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-2.JPG',
         imageAlt: 'Description',
       },
       {
-        imageUrl:
+        imageSrc:
           'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-3.JPG',
         imageAlt: 'Description',
       },

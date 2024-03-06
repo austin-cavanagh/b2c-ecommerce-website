@@ -1,4 +1,7 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { prisma } from '@/prisma/prisma';
 import { CheckIcon, ClockIcon } from '@heroicons/react/20/solid';
+import { getServerSession } from 'next-auth';
 
 const cartItems = {
   id: 7,
@@ -7,15 +10,16 @@ const cartItems = {
   price: 1000,
   dimensions: '12x12',
   customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]',
-  // imageUrl
-  // altText
+  // imageSrc - need only the first picture
+  // imageAlt - need only the first picture
+  // craftingTime
 };
 
 const products = [
   {
     id: 1,
     name: 'Artwork Tee',
-    href: '#',
+    href: `/`,
     price: '$32.00',
     dimensions: '12x12',
     // size: 'Medium',
@@ -26,7 +30,31 @@ const products = [
   },
 ];
 
-export default function CartOverview() {
+export default async function CartOverview() {
+  const session = await getServerSession(authOptions);
+
+  // Redirect to login if not authenticated
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/auth/login',
+        permanent: false,
+      },
+    };
+  }
+
+  const cartId = session.user.cartId;
+
+  const cartItems = await prisma.cartItem.findMany({
+    where: {
+      cartId: cartId,
+    },
+    include: {
+      cart: true,
+      product: true,
+    },
+  });
+
   return (
     <div className="w-full bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:px-0">
