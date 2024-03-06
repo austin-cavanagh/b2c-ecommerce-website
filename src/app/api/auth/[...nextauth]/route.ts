@@ -9,7 +9,6 @@ import Facebook from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import login from '@/functions/login';
 import { prisma } from '@/prisma/prisma';
-// import { User } from '@prisma/client';
 import { JWT } from 'next-auth/jwt';
 
 interface ExtendUser extends User {
@@ -53,6 +52,8 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials) {
+        console.log('AUTHORIZE');
+
         // console.log('CREDENTIALS', credentials);
 
         if (!credentials) {
@@ -75,6 +76,14 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
+      console.log('SIGNIN CALLBACK');
+
+      // Email sign in
+      if (account?.provider === 'credentials') {
+        // console.log('EMAIL SIGNIN');
+        return true;
+      }
+
       // console.log('USER', user);
       // console.log('ACCOUNT', account);
 
@@ -226,18 +235,13 @@ export const authOptions: NextAuthOptions = {
         }
       }
 
-      // Email sign in
-      if (account?.provider === 'credentials') {
-        console.log('EMAIL SIGNIN');
-
-        return true;
-      }
-
       // If none of 3 methods above deny signin
       return false;
     },
 
     async redirect({ url, baseUrl }) {
+      console.log('REDIRECT CALLBACK');
+
       // console.log('URL', url);
       // console.log('BASEURL', baseUrl);
 
@@ -258,7 +262,9 @@ export const authOptions: NextAuthOptions = {
       // account: Account;
       // profile?: Profile;
     }) {
-      console.log('JWT - TOKEN', token);
+      console.log('JWT CALLBACK');
+
+      // console.log('JWT - TOKEN', token);
       // console.log('JWT - USER', user);
       // console.log('JWT - ACCOUNT', account);
       // console.log('JWT - PROFILE', profile);
@@ -286,6 +292,8 @@ export const authOptions: NextAuthOptions = {
       session: ExtendSession;
       token: ExtendJWT;
     }) {
+      console.log('SESSION CALLBACK');
+
       // console.log('SESSION BEFORE - SESSION', session);
       // console.log('SESSION - TOKEN', token);
       // console.log('SESSION - USER', user);
@@ -304,57 +312,6 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-
-  // callbacks: {
-  //   async signIn({ account, profile }) {
-  //     console.log('SIGNIN CALLBACK');
-  //     console.log(account);
-  //     console.log(profile);
-  //     let userPicture: string;
-  //     if (account?.provider === 'facebook' && 'picture' in profile!) {
-  //       userPicture = (profile as any).picture.data.url || '';
-  //     } else {
-  //       userPicture = (profile as any).picture || '';
-  //     }
-  //     let userEmail: string;
-  //     if (profile?.email) {
-  //       userEmail = profile?.email!;
-  //     } else {
-  //       const randomString = Math.random().toString(36).substring(2, 15);
-  //       userEmail = `placeholder_${randomString}@example.com`;
-  //     }
-  //     // Upsert user information
-  //     const user = await prisma.users.upsert({
-  //       where: { email: profile?.email },
-  //       create: {
-  //         email: userEmail,
-  //         name: profile?.name,
-  //         picture: userPicture,
-  //         // More fields can be added here as needed
-  //       },
-  //       update: {
-  //         name: profile?.name,
-  //         picture: userPicture,
-  //         // Other fields to update
-  //       },
-  //     });
-  //     // Upsert user authentication method
-  //     // Ensure the providerId is available and construct a unique identifier for OAuth accounts
-  //     const providerId = `${account?.provider}:${account?.providerAccountId}`;
-  //     await prisma.userAuths.upsert({
-  //       where: { providerId: providerId },
-  //       create: {
-  //         provider: account?.provider!,
-  //         providerId: providerId,
-  //         userId: user.id, // Link to the upserted user
-  //         // Omitting password field as it's not relevant for OAuth
-  //       },
-  //       update: {
-  //         // No fields to update in this case, but this block is required for upsert operation
-  //       },
-  //     });
-  //     return true;
-  //   },
 
   pages: {
     signIn: '/sign-in',

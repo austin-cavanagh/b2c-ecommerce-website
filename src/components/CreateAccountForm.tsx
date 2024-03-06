@@ -3,9 +3,13 @@
 import createAccount from '@/actions/createAccount';
 import { useFormState } from 'react-dom';
 import PasswordInput from './PasswordInput';
+import { useSession } from 'next-auth/react';
 
 export default function CreateAccountForm() {
   // const [error, action] = useFormState(createAccount, { message: '' });
+
+  const session = useSession();
+  console.log(session);
 
   return (
     // method="POST" <- look into what this was

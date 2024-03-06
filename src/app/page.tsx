@@ -65,8 +65,8 @@ const favorites = [
 export default async function Home() {
   // const [open, setOpen] = useState(false);
 
-  // const session = await getServerSession(authOptions);
-  // console.log(session);
+  const session = await getServerSession(authOptions);
+  console.log(session);
 
   return (
     <div className="bg-white">
