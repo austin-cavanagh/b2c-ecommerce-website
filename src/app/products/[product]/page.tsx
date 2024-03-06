@@ -1,5 +1,5 @@
 import getProduct, { ExtendedProduct } from '@/actions/getProduct';
-import ProductOverview from '@/components/product-route/ProductOverview';
+import ProductOverview from '@/components/product/ProductOverview';
 
 export default async function ProductRoute({
   params,

@@ -87,7 +87,7 @@ function NavBar() {
         </div>
 
         <div className="">
-          <Link href={'/shopping-cart'} className="flex">
+          <Link href={'/cart'} className="flex">
             <ShoppingCartIcon
               className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
               aria-hidden="true"

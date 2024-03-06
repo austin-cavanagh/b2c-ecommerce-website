@@ -52,7 +52,7 @@ export default async function addToCart(formData: FormData) {
     console.log('Added cart item:', newCartItem);
 
     // Optionally, redirect the user or handle the response as needed
-    // redirect('/cart'); // Uncomment and use as needed
+    // redirect('/cart');
   } catch (error) {
     console.error('Error adding cart item:', error);
     // Handle the error, e.g., return an error message or redirect
@@ -60,5 +60,5 @@ export default async function addToCart(formData: FormData) {
 
   // console.log('cartItem', cartItem);
 
-  //   redirect('/cart');
+  redirect('/cart');
 }

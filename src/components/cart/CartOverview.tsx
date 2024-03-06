@@ -1,36 +1,9 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
-import { CheckIcon, ClockIcon } from '@heroicons/react/20/solid';
+import { ClockIcon } from '@heroicons/react/20/solid';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import RemoveFromCartButton from './RemoveFromCartButton';
-
-// const cartItems = {
-//   id: 7,
-//   cartId: 24,
-//   productId: 93,
-//   price: 1000,
-//   dimensions: '12x12',
-//   customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]',
-//   // imageSrc - need only the first picture
-//   // imageAlt - need only the first picture
-//   // craftingTime
-// };
-
-// const products = [
-//   {
-//     id: 1,
-//     name: 'Artwork Tee',
-//     href: `/`,
-//     price: '$32.00',
-//     dimensions: '12x12',
-//     // size: 'Medium',
-//     imageSrc:
-//       'https://tailwindui.com/img/ecommerce-images/checkout-page-03-product-04.jpg',
-//     imageAlt: 'Front side of mint cotton t-shirt with wavey lines pattern.',
-//     craftingTime: 10,
-//   },
-// ];
 
 export default async function CartOverview() {
   const session = await getServerSession(authOptions);
