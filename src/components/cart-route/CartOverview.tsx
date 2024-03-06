@@ -2,6 +2,8 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
 import { CheckIcon, ClockIcon } from '@heroicons/react/20/solid';
 import { getServerSession } from 'next-auth';
+import Link from 'next/link';
+import { useMemo } from 'react';
 
 // const cartItems = {
 //   id: 7,
@@ -15,20 +17,20 @@ import { getServerSession } from 'next-auth';
 //   // craftingTime
 // };
 
-const products = [
-  {
-    id: 1,
-    name: 'Artwork Tee',
-    href: `/`,
-    price: '$32.00',
-    dimensions: '12x12',
-    // size: 'Medium',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/checkout-page-03-product-04.jpg',
-    imageAlt: 'Front side of mint cotton t-shirt with wavey lines pattern.',
-    craftingTime: 10,
-  },
-];
+// const products = [
+//   {
+//     id: 1,
+//     name: 'Artwork Tee',
+//     href: `/`,
+//     price: '$32.00',
+//     dimensions: '12x12',
+//     // size: 'Medium',
+//     imageSrc:
+//       'https://tailwindui.com/img/ecommerce-images/checkout-page-03-product-04.jpg',
+//     imageAlt: 'Front side of mint cotton t-shirt with wavey lines pattern.',
+//     craftingTime: 10,
+//   },
+// ];
 
 export default async function CartOverview() {
   const session = await getServerSession(authOptions);
@@ -42,8 +44,6 @@ export default async function CartOverview() {
       },
     };
   }
-
-  //   console.log(session.user);
 
   const cartId = session.user.cartId;
 
@@ -67,6 +67,10 @@ export default async function CartOverview() {
     },
   });
 
+  const subtotal = cartItems.reduce((total, item) => {
+    return total + item.price;
+  }, 0);
+
   console.log(cartItems);
 
   return (
@@ -88,35 +92,31 @@ export default async function CartOverview() {
             >
               {cartItems.map(item => (
                 <li key={item.id} className="flex py-6">
-                  <div className="flex-shrink-0">
-                    <img
-                      src={cartItems[0].product.imageUrls[0].imageSrc}
-                      alt={cartItems[0].product.imageUrls[0].imageAlt}
-                      className="h-24 w-24 rounded-md object-cover object-center sm:h-32 sm:w-32"
-                    />
-                  </div>
+                  <Link
+                    href={`/products/${item.product.name.toLocaleLowerCase()}`}
+                  >
+                    <div className="flex-shrink-0">
+                      <img
+                        src={item.product.imageUrls[0].imageSrc}
+                        alt={item.product.imageUrls[0].imageAlt}
+                        className="h-24 w-24 rounded-md object-cover object-center sm:h-32 sm:w-32"
+                      />
+                    </div>
+                  </Link>
 
                   <div className="ml-4 flex flex-1 flex-col sm:ml-6">
                     <div>
                       <div className="flex justify-between">
                         <h4 className="text-sm">
-                          {/* <a
-                            href={item.href}
-                            className="font-medium text-gray-700 hover:text-gray-800"
-                          >
-                            {item.product.name}
-                          </a> */}
-
-                          {/* <Link
-                            key={item.name}
-                            href={item.href}
+                          <Link
+                            href={`/products/${item.product.name.toLocaleLowerCase()}`}
                             className="text-base font-semibold leading-6 text-gray-900"
                           >
-                            {item.name}
-                          </Link> */}
+                            {item.product.name}
+                          </Link>
                         </h4>
                         <p className="ml-4 text-sm font-medium text-gray-900">
-                          {item.price}
+                          ${(item.price / 100).toFixed(2)}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">
@@ -167,7 +167,7 @@ export default async function CartOverview() {
                     Subtotal
                   </dt>
                   <dd className="ml-4 text-base font-medium text-gray-900">
-                    $96.00
+                    ${(subtotal / 100).toFixed(2)}
                   </dd>
                 </div>
               </dl>
