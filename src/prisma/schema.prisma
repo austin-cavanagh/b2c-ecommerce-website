@@ -55,13 +55,16 @@ model Cart {
 }
 
 model CartItem {
-  id             Int    @id @default(autoincrement())
+  id             Int     @id @default(autoincrement())
   cartId         Int
   productId      Int
   price          Int
   dimensions     String
   customizations Json
-  cart           Cart   @relation(fields: [cartId], references: [id])
+  cart           Cart    @relation(fields: [cartId], references: [id])
+  product        Product @relation(fields: [productId], references: [id])
+
+  @@index([productId], name: "idx_cart_item_productId")
 }
 
 model Order {
@@ -93,11 +96,20 @@ model Product {
   longDescription      String
   craftingTime         Int
   customizationOptions Json
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
   prices               ProductPrice[]
   imageUrls            ImageUrl[]
   categories           ProductCategory[]
-  createdAt            DateTime          @default(now())
-  updatedAt            DateTime          @updatedAt
+  CartItem             CartItem[]
+}
+
+model ImageUrl {
+  id        Int     @id @default(autoincrement())
+  productId Int
+  imageSrc  String
+  imageAlt  String
+  product   Product @relation(fields: [productId], references: [id])
 }
 
 model Category {
@@ -128,14 +140,6 @@ model ProductPrice {
   productId Int
   dimension String
   price     Int
-  product   Product @relation(fields: [productId], references: [id])
-}
-
-model ImageUrl {
-  id        Int     @id @default(autoincrement())
-  productId Int
-  imageSrc  String
-  imageAlt  String
   product   Product @relation(fields: [productId], references: [id])
 }
 

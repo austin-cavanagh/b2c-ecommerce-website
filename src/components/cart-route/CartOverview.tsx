@@ -43,17 +43,68 @@ export default async function CartOverview() {
     };
   }
 
+  //   console.log(session.user);
+
   const cartId = session.user.cartId;
+
+  //   {
+  //     id: 15,
+  //     cartId: 24,
+  //     productId: 108,
+  //     price: 3000,
+  //     dimensions: '20x20',
+  //     customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]'
+  //   }
+
+  //   const cartItems = await prisma.cartItem.findMany({
+  //     where: {
+  //       cartId: cartId,
+  //     },
+  //   });
+
+  //   console.log(cartItems);
+
+  //   {
+  //     id: 15,
+  //     cartId: 24,
+  //     productId: 108,
+  //     price: 3000,
+  //     dimensions: '20x20',
+  //     customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]',
+  //     cart: { id: 24, userId: 25 }
+  //   }
+
+  //   const cartItemsWithImages = await prisma.cartItem.findMany({
+  //     where: {
+  //       cartId: cartId,
+  //     },
+  //     include: {
+  //       cart: true,
+  //     },
+  //   });
+
+  //   console.log(cartItemsWithImages);
 
   const cartItems = await prisma.cartItem.findMany({
     where: {
       cartId: cartId,
     },
     include: {
-      cart: true,
-      product: true,
+      product: {
+        select: {
+          craftingTime: true,
+          imageUrls: {
+            select: {
+              imageSrc: true,
+              imageAlt: true,
+            },
+          },
+        },
+      },
     },
   });
+
+  console.log(cartItems);
 
   return (
     <div className="w-full bg-white">
