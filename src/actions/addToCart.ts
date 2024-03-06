@@ -5,14 +5,15 @@ import { getServerSession } from 'next-auth';
 import { getSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { FormEvent } from 'react';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
 
 export default async function addToCart(formData: FormData) {
   //   console.log('formData', formData);
 
-  const session = await getServerSession(authOptions);
+  const session: ExtendSession | null = await getServerSession(authOptions);
   const cartId = session?.user?.cartId;
+  if (!cartId) return;
 
   const standardData = [
     'size[productId]',
@@ -41,7 +42,6 @@ export default async function addToCart(formData: FormData) {
     productId: Number(productId),
     price: Number(price),
     dimensions: size,
-    // customizations: customizationOptions,
     customizations: JSON.stringify(customizationOptions),
   };
 

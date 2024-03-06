@@ -40,6 +40,7 @@ async function main() {
   // await addCategories();
   // await clearProducts();
   // await clearCategories();
+  await clearCartItems();
 }
 
 async function clearUserData() {
@@ -123,6 +124,11 @@ async function addCategories() {
 async function clearCategories() {
   await prisma.category.deleteMany({});
   console.log('Cleared all categories');
+}
+
+async function clearCartItems() {
+  const result = await prisma.cartItem.deleteMany({});
+  console.log(`CLEARED ${result.count} CART ITEMS`);
 }
 
 main()

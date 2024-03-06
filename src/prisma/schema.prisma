@@ -60,7 +60,7 @@ model CartItem {
   productId      Int
   price          Int
   dimensions     String
-  customizations Json?
+  customizations Json
   cart           Cart   @relation(fields: [cartId], references: [id])
 }
 

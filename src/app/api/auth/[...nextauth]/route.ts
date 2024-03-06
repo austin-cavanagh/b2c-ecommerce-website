@@ -16,7 +16,7 @@ interface ExtendUser extends User {
   verified?: boolean;
 }
 
-interface ExtendSession extends Session {
+export interface ExtendSession extends Session {
   user?: {
     userId?: number;
     cartId?: number;
