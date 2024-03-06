@@ -3,17 +3,17 @@ import { prisma } from '@/prisma/prisma';
 import { CheckIcon, ClockIcon } from '@heroicons/react/20/solid';
 import { getServerSession } from 'next-auth';
 
-const cartItems = {
-  id: 7,
-  cartId: 24,
-  productId: 93,
-  price: 1000,
-  dimensions: '12x12',
-  customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]',
-  // imageSrc - need only the first picture
-  // imageAlt - need only the first picture
-  // craftingTime
-};
+// const cartItems = {
+//   id: 7,
+//   cartId: 24,
+//   productId: 93,
+//   price: 1000,
+//   dimensions: '12x12',
+//   customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]',
+//   // imageSrc - need only the first picture
+//   // imageAlt - need only the first picture
+//   // craftingTime
+// };
 
 const products = [
   {
@@ -47,44 +47,6 @@ export default async function CartOverview() {
 
   const cartId = session.user.cartId;
 
-  //   {
-  //     id: 15,
-  //     cartId: 24,
-  //     productId: 108,
-  //     price: 3000,
-  //     dimensions: '20x20',
-  //     customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]'
-  //   }
-
-  //   const cartItems = await prisma.cartItem.findMany({
-  //     where: {
-  //       cartId: cartId,
-  //     },
-  //   });
-
-  //   console.log(cartItems);
-
-  //   {
-  //     id: 15,
-  //     cartId: 24,
-  //     productId: 108,
-  //     price: 3000,
-  //     dimensions: '20x20',
-  //     customizations: '[{"Background Color":""},{"Name Color":""},{"Name":""}]',
-  //     cart: { id: 24, userId: 25 }
-  //   }
-
-  //   const cartItemsWithImages = await prisma.cartItem.findMany({
-  //     where: {
-  //       cartId: cartId,
-  //     },
-  //     include: {
-  //       cart: true,
-  //     },
-  //   });
-
-  //   console.log(cartItemsWithImages);
-
   const cartItems = await prisma.cartItem.findMany({
     where: {
       cartId: cartId,
@@ -93,6 +55,7 @@ export default async function CartOverview() {
       product: {
         select: {
           craftingTime: true,
+          name: true,
           imageUrls: {
             select: {
               imageSrc: true,
@@ -123,12 +86,12 @@ export default async function CartOverview() {
               role="list"
               className="divide-y divide-gray-200 border-b border-t border-gray-200"
             >
-              {products.map(product => (
-                <li key={product.id} className="flex py-6">
+              {cartItems.map(item => (
+                <li key={item.id} className="flex py-6">
                   <div className="flex-shrink-0">
                     <img
-                      src={product.imageSrc}
-                      alt={product.imageAlt}
+                      src={cartItems[0].product.imageUrls[0].imageSrc}
+                      alt={cartItems[0].product.imageUrls[0].imageAlt}
                       className="h-24 w-24 rounded-md object-cover object-center sm:h-32 sm:w-32"
                     />
                   </div>
@@ -137,12 +100,12 @@ export default async function CartOverview() {
                     <div>
                       <div className="flex justify-between">
                         <h4 className="text-sm">
-                          <a
-                            href={product.href}
+                          {/* <a
+                            href={item.href}
                             className="font-medium text-gray-700 hover:text-gray-800"
                           >
-                            {product.name}
-                          </a>
+                            {item.product.name}
+                          </a> */}
 
                           {/* <Link
                             key={item.name}
@@ -153,11 +116,11 @@ export default async function CartOverview() {
                           </Link> */}
                         </h4>
                         <p className="ml-4 text-sm font-medium text-gray-900">
-                          {product.price}
+                          {item.price}
                         </p>
                       </div>
                       <p className="mt-1 text-sm text-gray-500">
-                        {product.dimensions}
+                        {item.dimensions}
                       </p>
                       {/* <p className="mt-1 text-sm text-gray-500">
                         {product.size}
@@ -172,7 +135,7 @@ export default async function CartOverview() {
                           aria-hidden="true"
                         />
 
-                        <span>{`${product.craftingTime} days + shipping`}</span>
+                        <span>{`${item.product.craftingTime} days + shipping`}</span>
                       </p>
 
                       {/* Remove Buttom */}
