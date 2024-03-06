@@ -1,7 +1,7 @@
 // 'use server';
 import 'server-only';
 
-import { NextAuthOptions } from 'next-auth';
+import { Account, NextAuthOptions, Profile, Session, User } from 'next-auth';
 import NextAuth from 'next-auth/next';
 
 import Google from 'next-auth/providers/google';
@@ -9,7 +9,27 @@ import Facebook from 'next-auth/providers/facebook';
 import Credentials from 'next-auth/providers/credentials';
 import login from '@/functions/login';
 import { prisma } from '@/prisma/prisma';
-import { User } from '@prisma/client';
+// import { User } from '@prisma/client';
+import { JWT } from 'next-auth/jwt';
+
+interface ExtendUser extends User {
+  cartId?: number;
+  verified?: boolean;
+}
+
+interface ExtendSession extends Session {
+  user?: {
+    userId?: number;
+    cartId?: number;
+    verified?: boolean;
+  } & Session['user'];
+}
+
+interface ExtendJWT extends JWT {
+  userId?: number;
+  cartId?: number;
+  verified?: boolean;
+}
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -60,7 +80,7 @@ export const authOptions: NextAuthOptions = {
 
       const dbUser = await prisma.user.findUnique({
         where: {
-          email: user.email,
+          email: user.email!,
         },
       });
 
@@ -227,63 +247,62 @@ export const authOptions: NextAuthOptions = {
     // The arguments user, account, profile and isNewUser are only passed the first time this
     // callback is called on a new session, after the user signs in. In subsequent calls, only
     // token will be available
-    async jwt({ token, user, account, profile }) {
+    async jwt({
+      token,
+      user,
+      // account,
+      // profile,
+    }: {
+      token: ExtendJWT;
+      user: ExtendUser;
+      // account: Account;
+      // profile?: Profile;
+    }) {
       console.log('JWT - TOKEN', token);
-      console.log('JWT - USER', user);
-      console.log('JWT - ACCOUNT', account);
-      console.log('JWT - PROFILE', profile);
+      // console.log('JWT - USER', user);
+      // console.log('JWT - ACCOUNT', account);
+      // console.log('JWT - PROFILE', profile);
 
-      const newUser: Partial<User> = user;
+      // const provider = account.provider;
 
       // User, account, and profile are only returned at the start of the session
       if (user) {
-        return {
-          ...token,
-          id: newUser.id,
-          name: newUser.name,
-          email: newUser.email,
-          picture: newUser.picture,
-          cartId: newUser.cartId,
-          verified: newUser.verified,
-        };
+        token.userId = Number(user.id);
+        token.name = user.name;
+        token.email = user.email;
+        token.picture = user.image;
+        token.cartId = user.cartId;
+        token.verified = user.verified;
       }
 
       return token;
     },
 
-    async session({ session, token, user }) {
-      // Send properties to the client, like an access_token and user id from a provider.
-      // session.accessToken = token.accessToken;
-      // session.user.id = token.id;
+    async session({
+      session,
+      token,
+      // user,
+    }: {
+      session: ExtendSession;
+      token: ExtendJWT;
+    }) {
+      // console.log('SESSION BEFORE - SESSION', session);
+      // console.log('SESSION - TOKEN', token);
+      // console.log('SESSION - USER', user);
 
-      console.log('SESSION BEFORE - SESSION', session);
-      console.log('SESSION - TOKEN', token);
-
-      if (token?.id) {
-        session.user.id = token.id;
+      if (session.user) {
+        session.user.name = token.name;
+        session.user.email = token.email;
+        session.user.image = token.picture;
+        session.user.userId = token.userId;
+        session.user.cartId = token.cartId;
         session.user.verified = token.verified;
-        session.user.picture = token.picture;
       }
 
-      // session.user;
-
-      console.log('SESSION AFTER - SESSION', session);
+      // console.log('SESSION AFTER - SESSION', session);
 
       return session;
     },
-
-    // session: ({ session, token }) => {
-    //   console.log('SESSION - SESSION', session);
-    //   console.log('SESSION - TOKEN', token);
-
-    //   if (token?.id) {
-    //     console.log('I am so smart');
-    //   }
-
-    //   return session;
-    // },
-    // user is only passed in the first time they login
-    // Will not be present other logins so check if there is one
   },
 
   // callbacks: {
@@ -336,34 +355,6 @@ export const authOptions: NextAuthOptions = {
   //     });
   //     return true;
   //   },
-  //   // session: ({ session, token }) => {
-  //   //   return session;
-  //   // },
-  //   // user is only passed in the first time they login
-  //   // Will not be present other logins so check if there is one
-  //   //
-  //   // jwt: ({ token, user }) => {
-  //   //   if (user) {
-  //   //     return {
-  //   //       ...token,
-  //   //       id: user.id,
-  //   //       random: 'test',
-  //   //     };
-  //   //   }
-  //   //   return token;
-  //   // },
-  // },
-
-  // jwt: ({ token, user }) => {
-  //   if (user) {
-  //     return {
-  //       ...token,
-  //       id: user.id,
-  //       random: 'test',
-  //     };
-  //   }
-  //   return token;
-  // },
 
   pages: {
     signIn: '/sign-in',

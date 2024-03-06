@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import signInAction from '@/actions/signInAction';
 import { useFormState } from 'react-dom';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { FormEvent, useRef, useState } from 'react';
 import PasswordInput from '@/components/PasswordInput';
 
@@ -11,6 +11,9 @@ function SignIn() {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string>('');
+
+  // const session = useSession();
+  // console.log(session);
 
   const handleGoogleClick = () => {
     signIn('google');

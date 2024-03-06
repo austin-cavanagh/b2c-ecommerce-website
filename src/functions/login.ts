@@ -30,7 +30,7 @@ async function login(email: string, password: string) {
       throw new Error('Incorrect email or password');
     }
 
-    const id = user.id;
+    const id = String(user.id);
     const name = user.name;
     const cartId = user.cartId;
     const verified = user.verified;
