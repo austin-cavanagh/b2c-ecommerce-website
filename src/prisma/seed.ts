@@ -11,8 +11,8 @@ type OptionType = {
 };
 
 type ImageUrlType = {
-  url: string;
-  altText: string;
+  imageUrl: string;
+  imageAlt: string;
 };
 
 const data = require('../data/products');
@@ -35,12 +35,12 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  // await clearUserData();
-  // await addProducts();
-  // await addCategories();
+  // await clearCartItems();
   // await clearProducts();
+  // await clearUserData();
+  await addProducts();
+  // await addCategories();
   // await clearCategories();
-  await clearCartItems();
 }
 
 async function clearUserData() {
@@ -82,8 +82,8 @@ async function addProducts() {
         },
         imageUrls: {
           create: product.imageUrls.map((imageUrl: ImageUrlType) => ({
-            url: imageUrl.url,
-            altText: imageUrl.altText,
+            imageUrl: imageUrl.imageUrl,
+            imageAlt: imageUrl.imageAlt,
           })),
         },
       },
