@@ -4,6 +4,7 @@ import {
   QuestionMarkCircleIcon,
   XMarkIcon,
 } from '@heroicons/react/20/solid';
+import DeliveryMethods from './DeliveryMethods';
 
 const products = [
   {
@@ -168,12 +169,14 @@ export default function CartPage() {
               Order summary
             </h2>
 
+            <DeliveryMethods />
+
             <dl className="mt-6 space-y-4">
-              <div className="flex items-center justify-between">
+              {/* <div className="flex items-center justify-between">
                 <dt className="text-sm text-gray-600">Subtotal</dt>
                 <dd className="text-sm font-medium text-gray-900">$99.00</dd>
-              </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+              </div> */}
+              {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="flex items-center text-sm text-gray-600">
                   <span>Shipping estimate</span>
                   <a
@@ -190,8 +193,8 @@ export default function CartPage() {
                   </a>
                 </dt>
                 <dd className="text-sm font-medium text-gray-900">$5.00</dd>
-              </div>
-              <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+              </div> */}
+              {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="flex text-sm text-gray-600">
                   <span>Tax estimate</span>
                   <a
@@ -208,12 +211,12 @@ export default function CartPage() {
                   </a>
                 </dt>
                 <dd className="text-sm font-medium text-gray-900">$8.32</dd>
-              </div>
+              </div> */}
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="text-base font-medium text-gray-900">
-                  Order total
+                  Subtotal
                 </dt>
-                <dd className="text-base font-medium text-gray-900">$112.32</dd>
+                <dd className="text-base font-medium text-gray-900">$100.00</dd>
               </div>
             </dl>
 
