@@ -13,6 +13,7 @@ export default function CheckoutForm({
   clientSecret,
 }: {
   clientSecret: string;
+  deliveryMethod: string;
 }) {
   const stripe = useStripe();
   const elements = useElements();

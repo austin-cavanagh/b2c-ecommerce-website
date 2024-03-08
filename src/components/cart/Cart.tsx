@@ -14,13 +14,15 @@ import StripeBtns from '../payments/stripe/StripeBtns';
 const deliveryMethods = [
   {
     id: 1,
-    title: 'Pickup in Eastvale CA',
-    turnaround: 'Address will be sent after your purchase',
+    title: 'Pickup',
+    description:
+      'Pickup in Eastvale CA when your product is ready. Address will be sent after your purchase.',
   },
   {
     id: 2,
-    title: 'Deliver to you',
-    turnaround: 'Free for orders above $50',
+    title: 'Delivery',
+    description:
+      'Free shipping for orders above $50. Shipping prices will vary based on product size.',
   },
 ];
 
@@ -156,7 +158,7 @@ export default function Cart({ cartItems, clientSecret }) {
                                 className="text-gray-500"
                               >
                                 <span className="block sm:inline">
-                                  {method.turnaround}
+                                  {method.description}
                                 </span>
                               </RadioGroup.Description>
                             </span>
@@ -353,7 +355,10 @@ export default function Cart({ cartItems, clientSecret }) {
             </div>
           </div>
         </form>
-        <StripeBtns clientSecret={clientSecret} />
+        <StripeBtns
+          clientSecret={clientSecret}
+          deliveryMethod={deliveryMethod.title}
+        />
       </div>
     </div>
   );

@@ -15,7 +15,13 @@ const STRIPE_PUBLISHABLE_KEY =
 
 const stripePromise = loadStripe(STRIPE_PUBLISHABLE_KEY);
 
-export default function StripeBtns({ clientSecret }: { clientSecret: string }) {
+export default function StripeBtns({
+  clientSecret,
+  deliveryMethod,
+}: {
+  clientSecret: string;
+  deliveryMethod: string;
+}) {
   const appearance = {
     theme: 'stripe',
   };
@@ -29,7 +35,10 @@ export default function StripeBtns({ clientSecret }: { clientSecret: string }) {
     <div className="App w-full">
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm clientSecret={clientSecret} />
+          <CheckoutForm
+            clientSecret={clientSecret}
+            deliveryMethod={deliveryMethod}
+          />
         </Elements>
       )}
     </div>
