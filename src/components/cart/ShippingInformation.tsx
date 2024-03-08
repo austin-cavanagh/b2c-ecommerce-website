@@ -5,35 +5,11 @@ import { RadioGroup } from '@headlessui/react';
 import {
   CheckCircleIcon,
   ClockIcon,
-  TrashIcon,
   XMarkIcon,
 } from '@heroicons/react/20/solid';
 import DeliveryMethods from './DeliveryMethods';
+import RemoveFromCartButton from './RemoveFromCartButton';
 
-const products = [
-  {
-    id: 1,
-    title: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    size: 'Large',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-  },
-  {
-    id: 2,
-    title: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    size: 'Large',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in black.",
-  },
-];
 const deliveryMethods = [
   {
     id: 1,
@@ -47,12 +23,16 @@ const deliveryMethods = [
   },
 ];
 
-function classNames(...classes: any) {
+function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function ShippingInformation({ cartItems }) {
   const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
+
+  const subtotal = cartItems.reduce((total, item) => {
+    return total + item.price;
+  }, 0);
 
   console.log(cartItems);
 
@@ -70,12 +50,12 @@ export default function ShippingInformation({ cartItems }) {
               {/* Cart Items */}
               <h3 className="sr-only">Items in your cart</h3>
               <ul role="list" className="divide-y divide-gray-200">
-                {products.map(product => (
-                  <li key={product.id} className="flex px-4 py-6 sm:px-6">
+                {cartItems.map(item => (
+                  <li key={item.id} className="flex px-4 py-6 sm:px-6">
                     <div className="flex-shrink-0">
                       <img
-                        src={product.imageSrc}
-                        alt={product.imageAlt}
+                        src={item.product.imageUrls[0].imageSrc}
+                        alt={item.product.imageUrls[0].imageAlt}
                         className="h-24 w-24 rounded-md object-cover object-center sm:h-40 sm:w-40"
                       />
                     </div>
@@ -85,31 +65,32 @@ export default function ShippingInformation({ cartItems }) {
                         <div className="min-w-0 flex-1">
                           <h4 className="text-sm">
                             <a
-                              href={product.href}
+                              href={item.href}
                               className="font-medium text-gray-700 hover:text-gray-800"
                             >
-                              {product.title}
+                              {item.product.name}
                             </a>
                           </h4>
                           <p className="mt-1 text-sm text-gray-500">
-                            {product.color}
+                            {item.dimensions}
                           </p>
                           <p className="mt-1 text-sm text-gray-500">
-                            {product.size}
+                            {item.size}
                           </p>
                         </div>
 
                         {/* Remove Item Button */}
-                        <div className="ml-4 flow-root flex-shrink-0">
+                        {/* <div className="ml-4 flow-root flex-shrink-0">
                           <button
                             type="button"
                             className="-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
                           >
                             <span className="sr-only">Remove</span>
-                            {/* <TrashIcon className="h-5 w-5" aria-hidden="true" /> */}
                             <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                           </button>
-                        </div>
+                        </div> */}
+
+                        <RemoveFromCartButton itemId={item.id} />
                       </div>
 
                       <div className="flex flex-1 items-end justify-between pt-2">
@@ -124,7 +105,7 @@ export default function ShippingInformation({ cartItems }) {
 
                         {/* Price */}
                         <p className="mt-1 text-sm font-medium text-gray-900">
-                          {product.price}
+                          ${(item.price / 100).toFixed(2)}
                         </p>
                       </div>
                     </div>

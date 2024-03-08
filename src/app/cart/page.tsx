@@ -40,10 +40,6 @@ export default async function CartRoute() {
     },
   });
 
-  const subtotal = cartItems.reduce((total, item) => {
-    return total + item.price;
-  }, 0);
-
   // console.log(cartItems);
 
   return (
