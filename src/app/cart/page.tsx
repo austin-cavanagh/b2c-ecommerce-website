@@ -1,14 +1,11 @@
 'use server';
 import 'server-only';
 
-import CartOverview from '@/components/cart/CartOverview';
-import CartPage from '@/components/cart/CartPage';
-import DeliveryMethods from '@/components/cart/DeliveryMethods';
-import Example from '@/components/cart/DeliveryMethods';
-import ShippingInformation from '@/components/cart/ShippingInformation';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
+import Cart from '@/components/cart/Cart';
+import { createPaymentIntent } from '../shopping-cart/checkout/stripe/stripeActions';
 
 export default async function CartRoute() {
   const session = await getServerSession(authOptions);
@@ -42,12 +39,14 @@ export default async function CartRoute() {
 
   // console.log(cartItems);
 
+  // Stripe
+  const items = [{ id: 'xl-tshirt', amount: 1000 }];
+  const paymentIntent = await createPaymentIntent(items);
+  const clientSecret = paymentIntent.client_secret;
+
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
-      {/* <CartPage /> */}
-      <ShippingInformation cartItems={cartItems} />
-      {/* <CartOverview /> */}
-      {/* <DeliveryOptions /> */}
+      <Cart cartItems={cartItems} clientSecret={clientSecret} />
     </main>
   );
 }

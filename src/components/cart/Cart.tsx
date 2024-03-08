@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import {
   CheckCircleIcon,
@@ -9,16 +9,17 @@ import {
 } from '@heroicons/react/20/solid';
 import DeliveryMethods from './DeliveryMethods';
 import RemoveFromCartButton from './RemoveFromCartButton';
+import StripeBtns from '../payments/stripe/StripeBtns';
 
 const deliveryMethods = [
   {
     id: 1,
-    title: 'Pickup',
-    turnaround: 'Eastvale, CA, address will be sent after your purchase',
+    title: 'Pickup in Eastvale CA',
+    turnaround: 'Address will be sent after your purchase',
   },
   {
     id: 2,
-    title: 'Delivery',
+    title: 'Deliver to you',
     turnaround: 'Free for orders above $50',
   },
 ];
@@ -27,23 +28,23 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ShippingInformation({ cartItems }) {
+export default function Cart({ cartItems, clientSecret }) {
   const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
 
   const subtotal = cartItems.reduce((total, item) => {
     return total + item.price;
   }, 0);
 
-  console.log(cartItems);
+  // console.log(cartItems);
 
   return (
-    <div className="bg-gray-50">
+    <div className="w-full">
       <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Checkout</h2>
 
-        <form className="lg:grid lg:grid-cols-7 lg:gap-x-12 xl:gap-x-16">
+        <form className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16">
           {/* Order summary */}
-          <div className="mt-10 lg:col-span-4 lg:mt-0">
+          <div className="mt-10 lg:col-span-3 lg:mt-0">
             <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
 
             <div className="mt-5 rounded-lg border border-gray-200 bg-white shadow-sm">
@@ -104,19 +105,22 @@ export default function ShippingInformation({ cartItems }) {
                 ))}
               </ul>
 
-              <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
+              <dl className="space-y-2 border-t border-gray-200 px-4 py-6 sm:px-6">
                 <div className="flex items-center justify-between">
                   <dt className="text-base font-medium">Subtotal</dt>
                   <dd className="text-base font-medium text-gray-900">
                     ${(subtotal / 100).toFixed(2)}
                   </dd>
                 </div>
+                {/* <p className="text-gray-500">
+                  Taxes and shipping will be calculated at checkout
+                </p> */}
               </dl>
             </div>
           </div>
 
           {/* Right Side */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             {/* Delivery Mehtod */}
             <div className="">
               <RadioGroup value={deliveryMethod} onChange={setDeliveryMehtod}>
@@ -315,6 +319,20 @@ export default function ShippingInformation({ cartItems }) {
             <div className="mt-10 border-t border-gray-200 pt-10">
               <h2 className="text-lg font-medium text-gray-900">Payment</h2>
 
+              {/* <div className="relative">
+                <div
+                  className="absolute inset-0 flex items-center"
+                  aria-hidden="true"
+                >
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="bg-white px-2 text-sm text-gray-500">
+                    Checkout with
+                  </span>
+                </div>
+              </div> */}
+
               <div className="mt-5">
                 <button
                   type="submit"
@@ -335,6 +353,7 @@ export default function ShippingInformation({ cartItems }) {
             </div>
           </div>
         </form>
+        <StripeBtns clientSecret={clientSecret} />
       </div>
     </div>
   );
