@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { CheckCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
+import DeliveryMethods from './DeliveryMethods';
 
 const products = [
   {
@@ -20,38 +21,37 @@ const products = [
 const deliveryMethods = [
   {
     id: 1,
-    title: 'Standard',
-    turnaround: '4–10 business days',
-    price: '$5.00',
+    title: 'Pickup',
+    turnaround: 'Eastvale, CA, address will be sent after your purchase',
   },
-  { id: 2, title: 'Express', turnaround: '2–5 business days', price: '$16.00' },
-];
-const paymentMethods = [
-  { id: 'credit-card', title: 'Credit card' },
-  { id: 'paypal', title: 'PayPal' },
-  { id: 'etransfer', title: 'eTransfer' },
+  {
+    id: 2,
+    title: 'Delivery',
+    turnaround: 'Free for orders above $50',
+  },
 ];
 
-function classNames(...classes: anyu) {
+function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 
 export default function ShippingInformation() {
-  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
-    deliveryMethods[0],
-  );
+  const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
+
+  console.log(deliveryMethod);
 
   return (
     <div className="bg-gray-50">
       <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Checkout</h2>
 
-        <form className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+        <form className="lg:grid lg:grid-cols-7 lg:gap-x-12 xl:gap-x-16">
           {/* Order summary */}
-          <div className="mt-10 lg:mt-0">
+          <div className="mt-10 lg:col-span-4 lg:mt-0">
             <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
 
             <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
+              {/* Cart Items */}
               <h3 className="sr-only">Items in your cart</h3>
               <ul role="list" className="divide-y divide-gray-200">
                 {products.map(product => (
@@ -125,18 +125,6 @@ export default function ShippingInformation() {
               </ul>
 
               <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
-                {/* <div className="flex items-center justify-between">
-                  <dt className="text-sm">Subtotal</dt>
-                  <dd className="text-sm font-medium text-gray-900">$64.00</dd>
-                </div>
-                <div className="flex items-center justify-between">
-                  <dt className="text-sm">Shipping</dt>
-                  <dd className="text-sm font-medium text-gray-900">$5.00</dd>
-                </div>
-                <div className="flex items-center justify-between">
-                  <dt className="text-sm">Taxes</dt>
-                  <dd className="text-sm font-medium text-gray-900">$5.52</dd>
-                </div> */}
                 <div className="flex items-center justify-between">
                   <dt className="text-base font-medium">Subtotal</dt>
                   <dd className="text-base font-medium text-gray-900">
@@ -144,26 +132,14 @@ export default function ShippingInformation() {
                   </dd>
                 </div>
               </dl>
-
-              {/* <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                <button
-                  type="submit"
-                  className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-                >
-                  Confirm order
-                </button>
-              </div> */}
             </div>
           </div>
 
-          {/* Left Side */}
-          <div>
+          {/* Right Side */}
+          <div className="lg:col-span-3">
             {/* Delivery Mehtod */}
             <div className="">
-              <RadioGroup
-                value={selectedDeliveryMethod}
-                onChange={setSelectedDeliveryMethod}
-              >
+              <RadioGroup value={deliveryMethod} onChange={setDeliveryMehtod}>
                 <RadioGroup.Label className="text-lg font-medium text-gray-900">
                   Delivery method
                 </RadioGroup.Label>
@@ -196,12 +172,6 @@ export default function ShippingInformation() {
                                 className="mt-1 flex items-center text-sm text-gray-500"
                               >
                                 {deliveryMethod.turnaround}
-                              </RadioGroup.Description>
-                              <RadioGroup.Description
-                                as="span"
-                                className="mt-6 text-sm font-medium text-gray-900"
-                              >
-                                {deliveryMethod.price}
                               </RadioGroup.Description>
                             </span>
                           </span>
