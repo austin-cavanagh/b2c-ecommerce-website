@@ -2,6 +2,7 @@ import CartOverview from '@/components/cart/CartOverview';
 import CartPage from '@/components/cart/CartPage';
 import DeliveryMethods from '@/components/cart/DeliveryMethods';
 import Example from '@/components/cart/DeliveryMethods';
+import ShippingInformation from '@/components/cart/ShippingInformation';
 
 export default async function CartRoute() {
   return (
@@ -9,7 +10,7 @@ export default async function CartRoute() {
       {/* <CartOverview /> */}
       <CartPage />
       {/* <DeliveryOptions /> */}
-      {/* <DeliveryMethods /> */}
+      {/* <ShippingInformation /> */}
     </main>
   );
 }

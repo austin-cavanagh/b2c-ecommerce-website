@@ -103,7 +103,6 @@ export default async function CartOverview() {
                           className="h-5 w-5 flex-shrink-0 text-gray-300"
                           aria-hidden="true"
                         />
-
                         <span>{`${item.product.craftingTime} days + shipping`}</span>
                       </p>
 

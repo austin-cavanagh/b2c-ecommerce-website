@@ -132,24 +132,13 @@ export default function CartPage() {
                       </div>
                     </div>
 
-                    <p className="mt-4 flex space-x-2 text-sm text-gray-700">
-                      {product.inStock ? (
-                        <CheckIcon
-                          className="h-5 w-5 flex-shrink-0 text-green-500"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <ClockIcon
-                          className="h-5 w-5 flex-shrink-0 text-gray-300"
-                          aria-hidden="true"
-                        />
-                      )}
-
-                      <span>
-                        {product.inStock
-                          ? 'In stock'
-                          : `Ships in ${product.leadTime}`}
-                      </span>
+                    {/* Crafting Time */}
+                    <p className="flex items-center space-x-2 text-sm text-gray-700">
+                      <ClockIcon
+                        className="h-5 w-5 flex-shrink-0 text-gray-300"
+                        aria-hidden="true"
+                      />
+                      <span>{`10 days`}</span>
                     </p>
                   </div>
                 </li>
@@ -157,11 +146,12 @@ export default function CartPage() {
             </ul>
           </section>
 
-          {/* Order summary */}
+          {/* Order Summary Section */}
           <section
             aria-labelledby="summary-heading"
             className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
           >
+            {/* Title */}
             <h2
               id="summary-heading"
               className="text-lg font-medium text-gray-900"
@@ -169,49 +159,11 @@ export default function CartPage() {
               Order summary
             </h2>
 
+            {/* Delivery Methods */}
             <DeliveryMethods />
 
+            {/* Subtotal Price */}
             <dl className="mt-6 space-y-4">
-              {/* <div className="flex items-center justify-between">
-                <dt className="text-sm text-gray-600">Subtotal</dt>
-                <dd className="text-sm font-medium text-gray-900">$99.00</dd>
-              </div> */}
-              {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt className="flex items-center text-sm text-gray-600">
-                  <span>Shipping estimate</span>
-                  <a
-                    href="#"
-                    className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">
-                      Learn more about how shipping is calculated
-                    </span>
-                    <QuestionMarkCircleIcon
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  </a>
-                </dt>
-                <dd className="text-sm font-medium text-gray-900">$5.00</dd>
-              </div> */}
-              {/* <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-                <dt className="flex text-sm text-gray-600">
-                  <span>Tax estimate</span>
-                  <a
-                    href="#"
-                    className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">
-                      Learn more about how tax is calculated
-                    </span>
-                    <QuestionMarkCircleIcon
-                      className="h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  </a>
-                </dt>
-                <dd className="text-sm font-medium text-gray-900">$8.32</dd>
-              </div> */}
               <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                 <dt className="text-base font-medium text-gray-900">
                   Subtotal
@@ -220,6 +172,7 @@ export default function CartPage() {
               </div>
             </dl>
 
+            {/* Payment Buttons */}
             <div className="mt-6">
               <button
                 type="submit"
