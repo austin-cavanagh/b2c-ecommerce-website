@@ -4,18 +4,14 @@ import { ClockIcon } from '@heroicons/react/20/solid';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import RemoveFromCartButton from './RemoveFromCartButton';
+import { redirect } from 'next/navigation';
 
 export default async function CartOverview() {
   const session = await getServerSession(authOptions);
 
   // Redirect to login if not authenticated
   if (!session) {
-    return {
-      redirect: {
-        destination: '/auth/login',
-        permanent: false,
-      },
-    };
+    redirect('/sign-in');
   }
 
   const cartId = session.user.cartId;
@@ -163,13 +159,20 @@ export default async function CartOverview() {
             <div className="mt-6 text-center text-sm">
               <p>
                 or{' '}
-                <a
+                {/* <a
                   href="#"
                   className="font-medium text-indigo-600 hover:text-indigo-500"
                 >
                   Continue Shopping
                   <span aria-hidden="true"> &rarr;</span>
-                </a>
+                </a> */}
+                <Link
+                  href={'/products'}
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Continue Shopping
+                  <span aria-hidden="true"> &rarr;</span>{' '}
+                </Link>
               </p>
             </div>
           </section>
