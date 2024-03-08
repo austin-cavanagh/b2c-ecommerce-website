@@ -46,12 +46,13 @@ export default function ShippingInformation({ cartItems }) {
           <div className="mt-10 lg:col-span-4 lg:mt-0">
             <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
 
-            <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
+            <div className="mt-5 rounded-lg border border-gray-200 bg-white shadow-sm">
               {/* Cart Items */}
               <h3 className="sr-only">Items in your cart</h3>
               <ul role="list" className="divide-y divide-gray-200">
                 {cartItems.map(item => (
                   <li key={item.id} className="flex px-4 py-6 sm:px-6">
+                    {/* Image */}
                     <div className="flex-shrink-0">
                       <img
                         src={item.product.imageUrls[0].imageSrc}
@@ -79,18 +80,10 @@ export default function ShippingInformation({ cartItems }) {
                           </p>
                         </div>
 
-                        {/* Remove Item Button */}
-                        {/* <div className="ml-4 flow-root flex-shrink-0">
-                          <button
-                            type="button"
-                            className="-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
-                          >
-                            <span className="sr-only">Remove</span>
-                            <XMarkIcon className="h-5 w-5" aria-hidden="true" />
-                          </button>
-                        </div> */}
-
-                        <RemoveFromCartButton itemId={item.id} />
+                        {/* Price */}
+                        <p className="mt-1 text-sm font-medium text-gray-900">
+                          ${(item.price / 100).toFixed(2)}
+                        </p>
                       </div>
 
                       <div className="flex flex-1 items-end justify-between pt-2">
@@ -103,10 +96,8 @@ export default function ShippingInformation({ cartItems }) {
                           <span>{`10 days`}</span>
                         </p>
 
-                        {/* Price */}
-                        <p className="mt-1 text-sm font-medium text-gray-900">
-                          ${(item.price / 100).toFixed(2)}
-                        </p>
+                        {/* Remove Item Button */}
+                        <RemoveFromCartButton itemId={item.id} />
                       </div>
                     </div>
                   </li>
@@ -117,7 +108,7 @@ export default function ShippingInformation({ cartItems }) {
                 <div className="flex items-center justify-between">
                   <dt className="text-base font-medium">Subtotal</dt>
                   <dd className="text-base font-medium text-gray-900">
-                    $100.00
+                    ${(subtotal / 100).toFixed(2)}
                   </dd>
                 </div>
               </dl>
@@ -132,49 +123,51 @@ export default function ShippingInformation({ cartItems }) {
                 <RadioGroup.Label className="text-lg font-medium text-gray-900">
                   Delivery method
                 </RadioGroup.Label>
-
-                <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                  {deliveryMethods.map(deliveryMethod => (
+                <div className="mt-5 space-y-4">
+                  {deliveryMethods.map(method => (
                     <RadioGroup.Option
-                      key={deliveryMethod.id}
-                      value={deliveryMethod}
-                      className={({ checked, active }) =>
+                      key={method.id}
+                      value={method}
+                      className={({ active }) =>
                         classNames(
-                          checked ? 'border-transparent' : 'border-gray-300',
-                          active ? 'ring-2 ring-indigo-500' : '',
-                          'relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none',
+                          active
+                            ? 'border-indigo-600 ring-2 ring-indigo-600'
+                            : 'border-gray-300',
+                          'relative block cursor-pointer rounded-lg border bg-white px-6 py-4 shadow-sm focus:outline-none sm:flex sm:justify-between',
                         )
                       }
                     >
-                      {({ checked, active }) => (
+                      {({ active, checked }) => (
                         <>
-                          <span className="flex flex-1">
-                            <span className="flex flex-col">
+                          <span className="flex items-center">
+                            <span className="flex flex-col text-sm">
                               <RadioGroup.Label
                                 as="span"
-                                className="block text-sm font-medium text-gray-900"
+                                className="mb-1 font-medium text-gray-900"
                               >
-                                {deliveryMethod.title}
+                                {method.title}
                               </RadioGroup.Label>
                               <RadioGroup.Description
                                 as="span"
-                                className="mt-1 flex items-center text-sm text-gray-500"
+                                className="text-gray-500"
                               >
-                                {deliveryMethod.turnaround}
+                                <span className="block sm:inline">
+                                  {method.turnaround}
+                                </span>
                               </RadioGroup.Description>
                             </span>
                           </span>
-                          {checked ? (
+                          {/* {checked ? (
                             <CheckCircleIcon
                               className="h-5 w-5 text-indigo-600"
                               aria-hidden="true"
                             />
-                          ) : null}
+                          ) : null} */}
                           <span
                             className={classNames(
                               active ? 'border' : 'border-2',
                               checked
-                                ? 'border-indigo-500'
+                                ? 'border-indigo-600'
                                 : 'border-transparent',
                               'pointer-events-none absolute -inset-px rounded-lg',
                             )}
@@ -189,13 +182,12 @@ export default function ShippingInformation({ cartItems }) {
             </div>
 
             {/* Shipping Information */}
-            <div className="mt-10 border-t border-gray-200 pt-10">
+            {/* <div className="mt-10 border-t border-gray-200 pt-10">
               <h2 className="text-lg font-medium text-gray-900">
                 Shipping information
               </h2>
 
               <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                {/* First Name */}
                 <div>
                   <label
                     htmlFor="first-name"
@@ -213,7 +205,6 @@ export default function ShippingInformation({ cartItems }) {
                     />
                   </div>
                 </div>
-                {/* Last Name */}
                 <div>
                   <label
                     htmlFor="last-name"
@@ -231,7 +222,6 @@ export default function ShippingInformation({ cartItems }) {
                     />
                   </div>
                 </div>
-                {/* Address */}
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="address"
@@ -249,7 +239,6 @@ export default function ShippingInformation({ cartItems }) {
                     />
                   </div>
                 </div>
-                {/* Appartment */}
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="apartment"
@@ -268,7 +257,6 @@ export default function ShippingInformation({ cartItems }) {
                 </div>
               </div>
               <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-                {/* City */}
                 <div>
                   <label
                     htmlFor="city"
@@ -286,7 +274,6 @@ export default function ShippingInformation({ cartItems }) {
                     />
                   </div>
                 </div>
-                {/* State */}
                 <div>
                   <label
                     htmlFor="region"
@@ -304,7 +291,6 @@ export default function ShippingInformation({ cartItems }) {
                     />
                   </div>
                 </div>
-                {/* Postal Code */}
                 <div>
                   <label
                     htmlFor="postal-code"
@@ -323,7 +309,7 @@ export default function ShippingInformation({ cartItems }) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             {/* Payment */}
             <div className="mt-10 border-t border-gray-200 pt-10">
