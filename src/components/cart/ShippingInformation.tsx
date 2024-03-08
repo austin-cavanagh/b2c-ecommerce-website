@@ -2,12 +2,28 @@
 
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import { CheckCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
+import {
+  CheckCircleIcon,
+  ClockIcon,
+  TrashIcon,
+  XMarkIcon,
+} from '@heroicons/react/20/solid';
 import DeliveryMethods from './DeliveryMethods';
 
 const products = [
   {
     id: 1,
+    title: 'Basic Tee',
+    href: '#',
+    price: '$32.00',
+    color: 'Black',
+    size: 'Large',
+    imageSrc:
+      'https://tailwindui.com/img/ecommerce-images/checkout-page-02-product-01.jpg',
+    imageAlt: "Front of men's Basic Tee in black.",
+  },
+  {
+    id: 2,
     title: 'Basic Tee',
     href: '#',
     price: '$32.00',
@@ -35,10 +51,10 @@ function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function ShippingInformation() {
+export default function ShippingInformation({ cartItems }) {
   const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
 
-  console.log(deliveryMethod);
+  console.log(cartItems);
 
   return (
     <div className="bg-gray-50">
@@ -60,7 +76,7 @@ export default function ShippingInformation() {
                       <img
                         src={product.imageSrc}
                         alt={product.imageAlt}
-                        className="w-20 rounded-md"
+                        className="h-24 w-24 rounded-md object-cover object-center sm:h-40 sm:w-40"
                       />
                     </div>
 
@@ -83,41 +99,33 @@ export default function ShippingInformation() {
                           </p>
                         </div>
 
+                        {/* Remove Item Button */}
                         <div className="ml-4 flow-root flex-shrink-0">
                           <button
                             type="button"
                             className="-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
                           >
                             <span className="sr-only">Remove</span>
-                            <TrashIcon className="h-5 w-5" aria-hidden="true" />
+                            {/* <TrashIcon className="h-5 w-5" aria-hidden="true" /> */}
+                            <XMarkIcon className="h-5 w-5" aria-hidden="true" />
                           </button>
                         </div>
                       </div>
 
                       <div className="flex flex-1 items-end justify-between pt-2">
+                        {/* Crafting Time */}
+                        <p className="flex items-center space-x-2 text-sm text-gray-700">
+                          <ClockIcon
+                            className="h-5 w-5 flex-shrink-0 text-gray-300"
+                            aria-hidden="true"
+                          />
+                          <span>{`10 days`}</span>
+                        </p>
+
+                        {/* Price */}
                         <p className="mt-1 text-sm font-medium text-gray-900">
                           {product.price}
                         </p>
-
-                        <div className="ml-4">
-                          <label htmlFor="quantity" className="sr-only">
-                            Quantity
-                          </label>
-                          <select
-                            id="quantity"
-                            name="quantity"
-                            className="rounded-md border border-gray-300 text-left text-base font-medium text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                          >
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                            <option value={6}>6</option>
-                            <option value={7}>7</option>
-                            <option value={8}>8</option>
-                          </select>
-                        </div>
                       </div>
                     </div>
                   </li>
