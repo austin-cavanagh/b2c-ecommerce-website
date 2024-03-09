@@ -114,9 +114,9 @@ export default function Cart({ cartItems, clientSecret }) {
                     ${(subtotal / 100).toFixed(2)}
                   </dd>
                 </div>
-                <p className="text-gray-500">
+                {/* <p className="text-gray-500">
                   Taxes and shipping will be calculated at checkout
-                </p>
+                </p> */}
               </dl>
             </div>
           </div>

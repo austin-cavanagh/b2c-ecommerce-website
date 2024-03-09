@@ -8,12 +8,14 @@ import Cart from '@/components/cart/Cart';
 import { createPaymentIntent } from '../shopping-cart/checkout/stripe/stripeActions';
 
 export default async function CartRoute() {
-  const session = await getServerSession(authOptions);
+  const session: any = await getServerSession(authOptions);
 
   // Redirect to login if not authenticated
   if (!session) {
     redirect('/sign-in');
   }
+
+  if (session!) return;
 
   const cartId = session.user.cartId;
 

@@ -3,9 +3,7 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
-import { useEffect, useState } from 'react';
 import CheckoutForm from '@/app/shopping-cart/checkout/stripe/CheckoutForm';
-import { createPaymentIntent } from '@/app/shopping-cart/checkout/stripe/stripeActions';
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
