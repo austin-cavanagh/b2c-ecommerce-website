@@ -1,10 +1,6 @@
 // 'use client';
 
 import { getServerSession } from 'next-auth';
-import { authOptions } from './api/auth/[...nextauth]/route';
-import { User } from '@/components/User';
-
-// import { useState } from 'react';
 
 const testimonials = [
   {

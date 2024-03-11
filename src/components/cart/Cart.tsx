@@ -1,15 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import {
-  CheckCircleIcon,
-  ClockIcon,
-  XMarkIcon,
-} from '@heroicons/react/20/solid';
+import { ClockIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import DeliveryMethods from './DeliveryMethods';
 import RemoveFromCartButton from './RemoveFromCartButton';
 import StripeBtns from '../payments/stripe/StripeBtns';
+import { CartItem } from '@prisma/client';
 
 const deliveryMethods = [
   {
@@ -30,10 +27,15 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Cart({ cartItems, clientSecret }) {
+type CartProps = {
+  cartItems: CartItem[];
+  clientSecret: string;
+};
+
+export default function Cart({ cartItems, clientSecret }: CartProps) {
   const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
 
-  const subtotal = cartItems.reduce((total, item) => {
+  const subtotal = cartItems.reduce((total: number, item) => {
     return total + item.price;
   }, 0);
 
