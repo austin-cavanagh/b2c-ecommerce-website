@@ -14,16 +14,12 @@ import SignInButton from './signInButton';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
-  { name: 'About', href: '/about-me' },
+  // { name: 'About', href: '/about-me' },
   { name: 'Contact', href: '/contact' },
   // { name: 'Shopping Cart', href: '/shopping-cart' },
   // { name: 'Account Information', href: '/account-information' },
   // { name: 'Sign In', href: '/sign-in' },
 ];
-
-// const navigationLinks = {
-//   shoppingCart: '/shopping-cart'
-// }
 
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
