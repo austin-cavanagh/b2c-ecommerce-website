@@ -1,6 +1,6 @@
-function ContactMe() {
+export default async function ContactForm() {
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
+    <div>
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Contact Me
@@ -70,15 +70,12 @@ function ContactMe() {
               Phone number
             </label>
             <div className="relative mt-2.5">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-4">
-                <span className="text-gray-500 sm:text-sm">US</span>
-              </div>
               <input
                 type="tel"
                 name="phone-number"
                 id="phone-number"
                 autoComplete="tel"
-                className="block w-full rounded-md border-0 px-3.5 py-2 pl-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -109,8 +106,6 @@ function ContactMe() {
           </button>
         </div>
       </form>
-    </main>
+    </div>
   );
 }
-
-export default ContactMe;

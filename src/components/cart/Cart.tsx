@@ -7,6 +7,7 @@ import DeliveryMethods from './DeliveryMethods';
 import RemoveFromCartButton from './RemoveFromCartButton';
 import StripeBtns from '../payments/stripe/StripeBtns';
 import { CartItem } from '@prisma/client';
+import { classNames } from '@/functions/classNames';
 
 const deliveryMethods = [
   {
@@ -22,10 +23,6 @@ const deliveryMethods = [
       'Free shipping for orders above $50. Shipping prices will vary based on product size.',
   },
 ];
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 type CartProps = {
   cartItems: CartItem[];

@@ -1,3 +1,5 @@
+import { classNames } from '@/functions/classNames';
+
 const products = [
   {
     id: 1,
