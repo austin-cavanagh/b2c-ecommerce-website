@@ -15,7 +15,7 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
   { name: 'About', href: '/about-me' },
-  { name: 'Contact', href: '/contact-me' },
+  { name: 'Contact', href: '/contact' },
   // { name: 'Shopping Cart', href: '/shopping-cart' },
   // { name: 'Account Information', href: '/account-information' },
   // { name: 'Sign In', href: '/sign-in' },
