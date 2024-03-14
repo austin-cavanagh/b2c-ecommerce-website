@@ -18,10 +18,10 @@ const calculateTax = async (items: itemType[], currency: string) => {
     currency,
     customer_details: {
       address: {
-        line1: '920 5th Ave',
-        city: 'Seattle',
-        state: 'WA',
-        postal_code: '98104',
+        line1: '13740 Great Falls St',
+        city: 'Eastvale',
+        state: 'CA',
+        postal_code: '92880',
         country: 'US',
       },
       address_source: 'shipping',
@@ -54,6 +54,9 @@ const calculateOrderAmount = (
 
 export async function createPaymentIntent(items: itemType[]) {
   const taxCalculation = await calculateTax(items, 'usd');
+
+  console.log('TAX_CALCULATION', taxCalculation);
+
   const amount = calculateOrderAmount(items, taxCalculation);
 
   // Create a PaymentIntent with the order amount and currency
@@ -69,6 +72,8 @@ export async function createPaymentIntent(items: itemType[]) {
     },
   });
 
+  //   console.log('PAYMENT_INTENT', paymentIntent);
+
   return paymentIntent.client_secret;
 
   //   // Invoke this method in your webhook handler when `payment_intent.succeeded` webhook is received
@@ -80,35 +85,3 @@ export async function createPaymentIntent(items: itemType[]) {
   //     });
   //   };
 }
-
-// export default async function handler(req, res) {
-//   const { items } = req.body;
-//   const taxCalculation = await calculateTax(items, 'eur');
-//   const amount = await calculateOrderAmount(items, taxCalculation);
-
-//   // Create a PaymentIntent with the order amount and currency
-//   const paymentIntent = await stripe.paymentIntents.create({
-//     amount: amount,
-//     currency: 'eur',
-//     // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-//     automatic_payment_methods: {
-//       enabled: true,
-//     },
-//     metadata: {
-//       tax_calculation: taxCalculation.id,
-//     },
-//   });
-
-//   res.send({
-//     clientSecret: paymentIntent.client_secret,
-//   });
-
-//   // Invoke this method in your webhook handler when `payment_intent.succeeded` webhook is received
-//   const handlePaymentIntentSucceeded = async paymentIntent => {
-//     // Create a Tax Transaction for the successful payment
-//     stripe.tax.transactions.createFromCalculation({
-//       calculation: paymentIntent.metadata['tax_calculation'],
-//       reference: 'myOrder_123', // Replace with a unique reference from your checkout/order system
-//     });
-//   };
-// }
