@@ -6,9 +6,12 @@
 // import { productsData } from '@/app/data/products';
 // import { PrismaClient } from '@prisma/client';
 
-import Stripe from 'stripe';
+// import Stripe from 'stripe';
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+require('dotenv').config();
+
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY!);
 
 type OptionType = {
   option: string;
@@ -115,6 +118,32 @@ async function addProducts() {
 }
 
 async function clearProducts() {
+  // Fetch all products that have a Stripe product ID
+  const productsWithStripeId = await prisma.product.findMany({
+    where: {
+      stripeId: {
+        not: null,
+      },
+    },
+    select: {
+      id: true,
+      stripeId: true,
+    },
+  });
+
+  // Delete each corresponding Stripe product
+  for (const product of productsWithStripeId) {
+    try {
+      await stripe.products.del(product.stripeId);
+      console.log(`Deleted Stripe product with ID: ${product.stripeId}`);
+    } catch (error) {
+      console.error(
+        `Error deleting Stripe product with ID: ${product.stripeId}`,
+        error,
+      );
+    }
+  }
+
   // Delete related records first to maintain referential integrity
   // await prisma.customizationOption.deleteMany({});
   await prisma.productPrice.deleteMany({});
