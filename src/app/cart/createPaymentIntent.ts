@@ -55,7 +55,7 @@ const calculateOrderAmount = (
 export async function createPaymentIntent(items: itemType[]) {
   const taxCalculation = await calculateTax(items, 'usd');
 
-  console.log('TAX_CALCULATION', taxCalculation);
+  //   console.log('TAX_CALCULATION', taxCalculation);
 
   const amount = calculateOrderAmount(items, taxCalculation);
 

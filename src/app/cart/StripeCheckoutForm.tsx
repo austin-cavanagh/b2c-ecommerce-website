@@ -13,6 +13,7 @@ import {
   StripeAddressElement,
   StripePaymentElementOptions,
 } from '@stripe/stripe-js';
+import { createCheckoutSession } from './createCheckoutSession';
 
 export default function StripeCheckoutForm() {
   const stripe = useStripe();
@@ -96,6 +97,11 @@ export default function StripeCheckoutForm() {
     },
   };
 
+  const handleCheckout = async () => {
+    const checkoutSessionUrl = await createCheckoutSession();
+    console.log('checkoutSessionUrl', checkoutSessionUrl);
+  };
+
   return (
     // <form id="payment-form" onSubmit={handleSubmit}>
     //   <PaymentElement id="payment-element" options={paymentElementOptions} />
@@ -108,6 +114,7 @@ export default function StripeCheckoutForm() {
     //   {/* Show any error or success messages */}
     //   {message && <div id="payment-message">{message}</div>}
     // </form>
+
     <button
       disabled={isLoading || !stripe}
       onClick={handleCheckout}
