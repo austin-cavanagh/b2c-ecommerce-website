@@ -2,18 +2,19 @@
 
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import {
   PaymentElement,
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
+import { StripePaymentElementOptions } from '@stripe/stripe-js';
 
 export default function StripeCheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = useState(null);
+  const [message, setMessage] = useState<null | undefined | string>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -25,14 +26,12 @@ export default function StripeCheckoutForm() {
       'payment_intent_client_secret',
     );
 
-    console.log('CHECKOUT_FORM', clientSecret);
-
     if (!clientSecret) {
       return;
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
+      switch (paymentIntent?.status) {
         case 'succeeded':
           setMessage('Payment succeeded!');
           break;
@@ -49,8 +48,8 @@ export default function StripeCheckoutForm() {
     });
   }, [stripe]);
 
-  const handleSubmit = async e => {
-    e.preventDefault();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
 
     if (!stripe || !elements) {
       // Stripe.js hasn't yet loaded.
@@ -82,8 +81,13 @@ export default function StripeCheckoutForm() {
     setIsLoading(false);
   };
 
-  const paymentElementOptions = {
-    layout: 'tabs',
+  const paymentElementOptions: StripePaymentElementOptions = {
+    layout: {
+      type: 'accordion',
+      defaultCollapsed: true,
+      radios: false,
+      spacedAccordionItems: true,
+    },
   };
 
   return (
@@ -94,6 +98,7 @@ export default function StripeCheckoutForm() {
           {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
         </span>
       </button>
+
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>

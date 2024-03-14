@@ -5,6 +5,10 @@ import 'server-only';
 import Stripe from 'stripe';
 import { itemType } from './Stripe';
 
+type TaxCalculation = {
+  tax_amount_exclusive: number;
+};
+
 // This is your test secret API key.
 // const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -36,7 +40,10 @@ const buildLineItem = (item: itemType) => {
 };
 
 // Securely calculate the order amount, including tax
-const calculateOrderAmount = (items: itemType[], taxCalculation) => {
+const calculateOrderAmount = (
+  items: itemType[],
+  taxCalculation: TaxCalculation,
+) => {
   // Replace this constant with a calculation of the order's amount
   // Calculate the order total with any exclusive taxes on the server to prevent
   // people from directly manipulating the amount on the client
