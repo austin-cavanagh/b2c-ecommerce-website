@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation';
 import Cart from '@/components/cart/Cart';
 import { createPaymentIntent } from '../shopping-cart/checkout/stripe/stripeActions';
 import { CartItem } from '@prisma/client';
+import Stripe from './Stripe';
 
 export default async function CartRoute() {
   const session: any = await getServerSession(authOptions);
@@ -16,10 +17,8 @@ export default async function CartRoute() {
     redirect('/sign-in');
   }
 
-  if (session!) return;
-
+  // Get customer cart information
   const cartId = session.user.cartId;
-
   const cartItems: CartItem[] = await prisma.cartItem.findMany({
     where: {
       cartId: cartId,
@@ -40,8 +39,6 @@ export default async function CartRoute() {
     },
   });
 
-  // console.log(cartItems);
-
   // Stripe
   const items = [{ id: 'xl-tshirt', amount: 1000 }];
   const paymentIntent = await createPaymentIntent(items);
@@ -49,7 +46,9 @@ export default async function CartRoute() {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
-      <Cart cartItems={cartItems} clientSecret={clientSecret} />
+      {/* <Cart cartItems={cartItems} clientSecret={clientSecret} /> */}
+
+      <Stripe />
     </main>
   );
 }

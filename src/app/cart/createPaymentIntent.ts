@@ -1,12 +1,11 @@
-// This is your test secret API key.
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+// STRIPE DOCS - CUSTOM PAYMENT FLOW
 
 'use server';
 import 'server-only';
-
 import Stripe from 'stripe';
 
-// const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+// This is your test secret API key.
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 const calculateTax = async (items, currency) => {
@@ -45,15 +44,15 @@ const calculateOrderAmount = (items, taxCalculation) => {
   return orderAmount;
 };
 
-export async function createPaymentIntent(items) {
-  //   const { items } = req.body;
-  const taxCalculation = await calculateTax(items, 'usd');
-  const amount = calculateOrderAmount(items, taxCalculation);
+export default async function handler(req, res) {
+  const { items } = req.body;
+  const taxCalculation = await calculateTax(items, 'eur');
+  const amount = await calculateOrderAmount(items, taxCalculation);
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount,
-    currency: 'usd',
+    currency: 'eur',
     // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
     automatic_payment_methods: {
       enabled: true,
@@ -63,13 +62,9 @@ export async function createPaymentIntent(items) {
     },
   });
 
-  //   console.log(paymentIntent);
-
-  return paymentIntent;
-
-  //   res.send({
-  //     clientSecret: paymentIntent.client_secret,
-  //   });
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
 
   // Invoke this method in your webhook handler when `payment_intent.succeeded` webhook is received
   const handlePaymentIntentSucceeded = async paymentIntent => {
@@ -79,30 +74,4 @@ export async function createPaymentIntent(items) {
       reference: 'myOrder_123', // Replace with a unique reference from your checkout/order system
     });
   };
-}
-
-export async function createCheckoutSession() {
-  const product = await stripe.products.create({
-    name: 'Custom Product Name',
-    description: 'Custom Product Description', // Optional
-  });
-
-  const price = await stripe.prices.create({
-    product: product.id,
-    unit_amount: 2000,
-    currency: 'usd',
-  });
-
-  const session = await stripe.checkout.sessions.create({
-    success_url: 'https://example.com/success',
-    line_items: [
-      {
-        price: price.id,
-        quantity: 5,
-      },
-    ],
-    mode: 'payment',
-  });
-
-  return session;
 }

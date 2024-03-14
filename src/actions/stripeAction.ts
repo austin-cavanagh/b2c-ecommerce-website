@@ -16,7 +16,7 @@ export async function stripeAction() {
       line_items: [
         {
           price: 'price_1OnarCJwHQ2aHYX9FEq6gqGi',
-          quantity: 10,
+          quantity: 100,
         },
       ],
       mode: 'payment',

@@ -8,6 +8,7 @@ import RemoveFromCartButton from './RemoveFromCartButton';
 import StripeBtns from '../payments/stripe/StripeBtns';
 import { CartItem } from '@prisma/client';
 import { classNames } from '@/functions/classNames';
+import PreviewPage from './PreviewPage';
 
 const deliveryMethods = [
   {
@@ -358,6 +359,8 @@ export default function Cart({ cartItems, clientSecret }: CartProps) {
           clientSecret={clientSecret}
           deliveryMethod={deliveryMethod.title}
         />
+
+        {/* <PreviewPage /> */}
       </div>
     </div>
   );
