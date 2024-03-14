@@ -96,13 +96,22 @@ model Product {
   longDescription      String
   craftingTime         Int
   customizationOptions Json
-  stripeId             String?
+  stripeId             String
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt
   prices               ProductPrice[]
   imageUrls            ImageUrl[]
   categories           ProductCategory[]
   CartItem             CartItem[]
+}
+
+model ProductPrice {
+  id            Int     @id @default(autoincrement())
+  productId     Int
+  dimension     String
+  price         Int
+  stripePriceId String
+  product       Product @relation(fields: [productId], references: [id])
 }
 
 model ImageUrl {
@@ -135,14 +144,6 @@ model ProductCategory {
 //   option    String
 //   product   Product @relation(fields: [productId], references: [id])
 // }
-
-model ProductPrice {
-  id        Int     @id @default(autoincrement())
-  productId Int
-  dimension String
-  price     Int
-  product   Product @relation(fields: [productId], references: [id])
-}
 
 model Color {
   id   Int    @id @default(autoincrement())

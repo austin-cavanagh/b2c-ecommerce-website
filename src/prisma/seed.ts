@@ -10,7 +10,6 @@
 // const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 require('dotenv').config();
-
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY!);
 
 type OptionType = {
@@ -20,6 +19,17 @@ type OptionType = {
 type ImageUrlType = {
   imageSrc: string;
   imageAlt: string;
+};
+
+type PriceCreationResult = {
+  dimension: string;
+  price: number;
+  stripePriceId: string;
+};
+
+type PriceInfo = {
+  dimension: string;
+  price: number;
 };
 
 const data = require('../data/products');
@@ -76,12 +86,41 @@ async function addProducts() {
       categoryIds.push(category.id);
     }
 
-    // Stripe Product Creation
+    // Create stripe product to get product id
     const stripeProduct = await stripe.products.create({
       name: product.name,
       description: product.shortDescription,
       images: [product.imageUrls[0].imageSrc],
     });
+
+    // Initialize an array to hold price creation promises
+    let priceCreatePromises: Promise<PriceCreationResult>[] = [];
+
+    // Create a price id for each dimension we are offering for the product
+    // Assuming product.prices is an array where each item has dimension and price properties
+    product.prices.forEach((priceInfo: PriceInfo) => {
+      // Create a Stripe price for each product variant
+      const priceCreatePromise = stripe.prices
+        .create({
+          product: stripeProduct.id,
+          unit_amount: priceInfo.price * 100, // Convert price to cents
+          currency: 'usd',
+        })
+        .then((stripePrice: { id: string }) => {
+          // Return an object containing the necessary price information
+          // Including the Stripe price ID and product dimension
+          return {
+            dimension: priceInfo.dimension,
+            price: priceInfo.price,
+            stripePriceId: stripePrice.id,
+          };
+        });
+
+      priceCreatePromises.push(priceCreatePromise);
+    });
+
+    // Wait for all Stripe prices to be created
+    const pricesWithStripeIds = await Promise.all(priceCreatePromises);
 
     // Create products
     const createdProduct = await prisma.product.create({
@@ -93,7 +132,11 @@ async function addProducts() {
         customizationOptions: product.customizationOptions,
         stripeId: stripeProduct.id,
         prices: {
-          create: product.prices,
+          create: pricesWithStripeIds.map(price => ({
+            dimension: price.dimension,
+            price: price.price,
+            stripePriceId: price.stripePriceId,
+          })),
         },
         imageUrls: {
           create: product.imageUrls.map((imageUrl: ImageUrlType) => ({
@@ -114,6 +157,7 @@ async function addProducts() {
       });
     }
   }
+
   console.log('Added products');
 }
 
