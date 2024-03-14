@@ -1,6 +1,8 @@
 // STRIPE DOCS - CUSTOM PAYMENT FLOW
 
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import {
   PaymentElement,
   useStripe,
@@ -11,10 +13,10 @@ export default function StripeCheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [message, setMessage] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [message, setMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!stripe) {
       return;
     }
@@ -22,6 +24,8 @@ export default function StripeCheckoutForm() {
     const clientSecret = new URLSearchParams(window.location.search).get(
       'payment_intent_client_secret',
     );
+
+    console.log('CHECKOUT_FORM', clientSecret);
 
     if (!clientSecret) {
       return;
