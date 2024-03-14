@@ -6,6 +6,10 @@
 // import { productsData } from '@/app/data/products';
 // import { PrismaClient } from '@prisma/client';
 
+import Stripe from 'stripe';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
 type OptionType = {
   option: string;
 };
@@ -57,7 +61,7 @@ async function addProducts() {
     // Find or create categories
     const categoryIds = [];
 
-    // Categories
+    // Create categories for products
     for (const categoryName of product.categories) {
       const category =
         (await prisma.category.findUnique({
@@ -69,7 +73,14 @@ async function addProducts() {
       categoryIds.push(category.id);
     }
 
-    // Create Products
+    // Stripe Product Creation
+    const stripeProduct = await stripe.products.create({
+      name: product.name,
+      description: product.shortDescription,
+      images: [product.imageUrls[0].imageSrc],
+    });
+
+    // Create products
     const createdProduct = await prisma.product.create({
       data: {
         name: product.name,
@@ -77,6 +88,7 @@ async function addProducts() {
         longDescription: product.longDescription,
         craftingTime: product.craftingTime,
         customizationOptions: product.customizationOptions,
+        stripeId: stripeProduct.id,
         prices: {
           create: product.prices,
         },

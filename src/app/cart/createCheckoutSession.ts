@@ -30,14 +30,20 @@ export async function createCheckoutSession() {
 
     sessionUrl = session.url;
   } catch (error) {
-    if (error instanceof Error) {
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      'statusCode' in error &&
+      'message' in error
+    ) {
+      const stripeError = error as { statusCode: number; message: string };
       console.error(
         'Error: Failed to create a stripe checkout session:',
-        error.message,
+        stripeError.message,
       );
       return {
-        status: 'Error',
-        message: error.message,
+        status: stripeError.statusCode,
+        message: stripeError.message,
       };
     } else {
       console.error('Unexpected error:', error);
@@ -46,5 +52,9 @@ export async function createCheckoutSession() {
         message: 'An unexpected error occurred',
       };
     }
+  }
+
+  if (typeof sessionUrl === 'string') {
+    redirect(sessionUrl);
   }
 }

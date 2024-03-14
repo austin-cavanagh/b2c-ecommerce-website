@@ -96,6 +96,7 @@ model Product {
   longDescription      String
   craftingTime         Int
   customizationOptions Json
+  stripeId             String?
   createdAt            DateTime          @default(now())
   updatedAt            DateTime          @updatedAt
   prices               ProductPrice[]
