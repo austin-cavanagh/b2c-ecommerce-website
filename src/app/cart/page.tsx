@@ -4,7 +4,7 @@ import 'server-only';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
-import Cart from '@/components/cart/Cart';
+import Cart, { CartProps } from '@/components/cart/Cart';
 import { createPaymentIntent } from '../shopping-cart/checkout/stripe/stripeActions';
 import { CartItem } from '@prisma/client';
 // import Stripe from './Stripe';
@@ -19,7 +19,7 @@ export default async function CartRoute() {
 
   // Get customer cart information
   const cartId = session.user.cartId;
-  const cartItems: CartItem[] = await prisma.cartItem.findMany({
+  const cartItems = await prisma.cartItem.findMany({
     where: {
       cartId: cartId,
     },

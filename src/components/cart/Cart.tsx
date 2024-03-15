@@ -2,11 +2,12 @@
 
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import { ClockIcon, XMarkIcon } from '@heroicons/react/20/solid';
+import { ClockIcon } from '@heroicons/react/20/solid';
 import RemoveFromCartButton from './RemoveFromCartButton';
-import { CartItem } from '@prisma/client';
+import { CartItem, ImageUrl, Product } from '@prisma/client';
 import { classNames } from '@/functions/classNames';
 import { createCheckoutSession } from '@/actions/createCheckoutSession';
+import Link from 'next/link';
 
 const deliveryMethods = [
   {
@@ -23,13 +24,21 @@ const deliveryMethods = [
   },
 ];
 
-type CartProps = {
-  cartItems: CartItem[];
-};
-
 export type CartItemIds = {
   productId: number;
   stripePriceId: string;
+};
+
+type ExtendedProduct = Product & {
+  imageUrls: ImageUrl[];
+};
+
+type ExtendedCartItem = CartItem & {
+  product: ExtendedProduct;
+};
+
+export type CartProps = {
+  cartItems: ExtendedCartItem[];
 };
 
 export default function Cart({ cartItems }: CartProps) {
@@ -38,8 +47,6 @@ export default function Cart({ cartItems }: CartProps) {
   const subtotal = cartItems.reduce((total: number, item) => {
     return total + item.price;
   }, 0);
-
-  console.log(cartItems);
 
   const handleCheckout = async () => {
     const cartItemIds: CartItemIds[] = cartItems.map(item => {
@@ -53,6 +60,7 @@ export default function Cart({ cartItems }: CartProps) {
       deliveryMethod.title,
       cartItemIds,
     );
+
     console.log('checkoutSessionUrl', checkoutSessionUrl);
   };
 
@@ -61,7 +69,8 @@ export default function Cart({ cartItems }: CartProps) {
       <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Checkout</h2>
 
-        <form className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16">
+        {/* <form className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16"> */}
+        <div className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16">
           {/* Order summary */}
           <div className="mt-10 lg:col-span-3 lg:mt-0">
             <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
@@ -73,31 +82,43 @@ export default function Cart({ cartItems }: CartProps) {
                 {cartItems.map(item => (
                   <li key={item.id} className="flex px-4 py-6 sm:px-6">
                     {/* Image */}
-                    <div className="flex-shrink-0">
-                      <img
-                        src={item.product.imageUrls[0].imageSrc}
-                        alt={item.product.imageUrls[0].imageAlt}
-                        className="h-24 w-24 rounded-md object-cover object-center sm:h-40 sm:w-40"
-                      />
-                    </div>
+
+                    <Link
+                      href={`/products/${item.product.name}`}
+                      className="font-medium text-gray-700 hover:text-gray-800"
+                    >
+                      <div className="flex-shrink-0">
+                        <img
+                          src={item.product.imageUrls[0].imageSrc}
+                          alt={item.product.imageUrls[0].imageAlt}
+                          className="h-24 w-24 rounded-md object-cover object-center sm:h-40 sm:w-40"
+                        />
+                      </div>
+                    </Link>
 
                     <div className="ml-6 flex flex-1 flex-col">
                       <div className="flex">
                         <div className="min-w-0 flex-1">
                           <h4 className="text-sm">
-                            <a
+                            <Link
+                              href={`/products/${item.product.name}`}
+                              className="font-medium text-gray-700 hover:text-gray-800"
+                            >
+                              {item.product.name}
+                            </Link>
+                            {/* <a
                               href={item.href}
                               className="font-medium text-gray-700 hover:text-gray-800"
                             >
                               {item.product.name}
-                            </a>
+                            </a> */}
                           </h4>
                           <p className="mt-1 text-sm text-gray-500">
                             {item.dimensions}
                           </p>
-                          <p className="mt-1 text-sm text-gray-500">
+                          {/* <p className="mt-1 text-sm text-gray-500">
                             {item.size}
-                          </p>
+                          </p> */}
                         </div>
 
                         {/* Price */}
@@ -219,7 +240,8 @@ export default function Cart({ cartItems }: CartProps) {
 
               <div className="mt-5">
                 <button
-                  type="submit"
+                  // type="submit"
+                  onClick={handleCheckout}
                   className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
                   Stripe
@@ -228,7 +250,7 @@ export default function Cart({ cartItems }: CartProps) {
 
               <div className="mt-5">
                 <button
-                  type="submit"
+                  // type="submit"
                   className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
                   PayPal
@@ -236,15 +258,8 @@ export default function Cart({ cartItems }: CartProps) {
               </div>
             </div>
           </div>
-        </form>
-
-        <button
-          onClick={handleCheckout}
-          id="checkout-button"
-          className={`w-full rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium font-semibold leading-4 text-white shadow-sm hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 `}
-        >
-          Checkout with Stripe
-        </button>
+        </div>
+        {/* </form> */}
       </div>
     </div>
   );
