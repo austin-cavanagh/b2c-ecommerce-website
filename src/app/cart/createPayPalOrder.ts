@@ -3,6 +3,11 @@ import 'server-only';
 
 import { PayPalCartItem } from './PayPal';
 
+const base = 'https://api-m.sandbox.paypal.com';
+
+const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
+const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
+
 export async function createPayPalOrder(cart: PayPalCartItem[]) {
   try {
     const { jsonResponse, httpStatusCode } = await createOrder(cart);
@@ -29,10 +34,10 @@ export async function createPayPalOrder(cart: PayPalCartItem[]) {
  */
 async function createOrder(cart: PayPalCartItem[]) {
   // use the cart information passed from the front-end to calculate the purchase unit details
-  console.log(
-    'shopping cart information passed from the frontend createOrder() callback:',
-    cart,
-  );
+  //   console.log(
+  //     'shopping cart information passed from the frontend createOrder() callback:',
+  //     cart,
+  //   );
 
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;

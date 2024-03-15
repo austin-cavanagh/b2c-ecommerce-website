@@ -6,7 +6,7 @@ import {
   PayPalButtons,
   ReactPayPalScriptOptions,
 } from '@paypal/react-paypal-js';
-import { createPayPalOrder } from './payPalActions';
+import { createPayPalOrder } from './createPayPalOrder';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {
@@ -38,32 +38,18 @@ export default function PayPal() {
           }}
           createOrder={async () => {
             try {
-              // const response = await fetch('/api/orders', {
-              //   method: 'POST',
-              //   headers: {
-              //     'Content-Type': 'application/json',
-              //   },
-              //   // use the "body" param to optionally pass additional order information
-              //   // like product ids and quantities
-              //   body: JSON.stringify({
-              //     cart: [
-              //       {
-              //         id: 'YOUR_PRODUCT_ID',
-              //         quantity: 1,
-              //       },
-              //     ],
-              //   }),
-              // });
-
-              // const orderData = await response.json();
-
               const cart: PayPalCartItem[] = [
                 {
                   id: 'YOUR_PRODUCT_ID',
                   quantity: 1,
                 },
               ];
-              const orderData = createPayPalOrder(cart);
+
+              const response = await createPayPalOrder(cart);
+              const status = response.status;
+              const orderData = response.jsonResponse;
+
+              console.log(orderData);
 
               if (orderData.id) {
                 return orderData.id;
