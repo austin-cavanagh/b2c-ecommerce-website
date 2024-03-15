@@ -9,8 +9,6 @@ import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
 
 export default async function addToCart(formData: FormData) {
-  console.log('formData', formData);
-
   const session: ExtendSession | null = await getServerSession(authOptions);
   const cartId = session?.user?.cartId;
   if (!cartId) return;
@@ -52,7 +50,6 @@ export default async function addToCart(formData: FormData) {
     const newCartItem = await prisma.cartItem.create({
       data: cartItem,
     });
-    console.log('Added cart item:', newCartItem);
 
     // Optionally, redirect the user or handle the response as needed
     // redirect('/cart');
@@ -60,8 +57,6 @@ export default async function addToCart(formData: FormData) {
     console.error('Error adding cart item:', error);
     // Handle the error, e.g., return an error message or redirect
   }
-
-  // console.log('cartItem', cartItem);
 
   redirect('/cart');
 }
