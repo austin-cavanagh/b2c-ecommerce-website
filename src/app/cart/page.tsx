@@ -7,6 +7,7 @@ import { redirect } from 'next/navigation';
 import Cart, { CartProps } from '@/components/cart/Cart';
 import { createPaymentIntent } from '../shopping-cart/checkout/stripe/stripeActions';
 import { CartItem } from '@prisma/client';
+import PayPal from './PayPal';
 // import Stripe from './Stripe';
 
 export default async function CartRoute() {
@@ -41,9 +42,10 @@ export default async function CartRoute() {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
-      <Cart cartItems={cartItems} />
+      {/* <Cart cartItems={cartItems} /> */}
 
       {/* <Stripe /> */}
+      <PayPal />
     </main>
   );
 }

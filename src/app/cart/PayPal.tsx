@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 
 // Renders errors or successfull transactions on the screen.
-function Message({ content }) {
+function Message({ content }: { content: string }) {
   return <p>{content}</p>;
 }
 
-export default function App() {
+export default function PayPal() {
   const initialOptions = {
     'client-id': 'test',
     'enable-funding': 'venmo',

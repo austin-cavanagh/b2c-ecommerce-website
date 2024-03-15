@@ -1,17 +1,20 @@
+'use server';
+import 'server-only';
+
 // import express from 'express';
 // import fetch from 'node-fetch';
 // import 'dotenv/config';
 // import path from 'path';
 
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = process.env;
+// const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = process.env;
 const base = 'https://api-m.sandbox.paypal.com';
-const app = express();
+// const app = express();
 
 // host static files
-app.use(express.static('client'));
+// app.use(express.static('client'));
 
 // parse post params sent in body in json format
-app.use(express.json());
+// app.use(express.json());
 
 /**
  * Generate an OAuth 2.0 access token for authenticating with PayPal REST APIs.
@@ -119,17 +122,33 @@ async function handleResponse(response) {
   }
 }
 
-app.post('/api/orders', async (req, res) => {
+export async function createPayPalOrder(cart) {
   try {
-    // use the cart information passed from the front-end to calculate the order amount detals
-    const { cart } = req.body;
     const { jsonResponse, httpStatusCode } = await createOrder(cart);
-    res.status(httpStatusCode).json(jsonResponse);
+    return {
+      status: httpStatusCode,
+      jsonResponse: jsonResponse,
+    };
   } catch (error) {
-    console.error('Failed to create order:', error);
-    res.status(500).json({ error: 'Failed to create order.' });
+    console.error('Failed to create paypal order:', error);
+    return {
+      status: 500,
+      message: 'Failed to create paypal order',
+    };
   }
-});
+}
+
+// app.post('/api/orders', async (req, res) => {
+//   try {
+//     // use the cart information passed from the front-end to calculate the order amount detals
+//     const { cart } = req.body;
+//     const { jsonResponse, httpStatusCode } = await createOrder(cart);
+//     res.status(httpStatusCode).json(jsonResponse);
+//   } catch (error) {
+//     console.error('Failed to create order:', error);
+//     res.status(500).json({ error: 'Failed to create order.' });
+//   }
+// });
 
 app.post('/api/orders/:orderID/capture', async (req, res) => {
   try {
@@ -143,10 +162,10 @@ app.post('/api/orders/:orderID/capture', async (req, res) => {
 });
 
 // serve index.html
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve('./client/checkout.html'));
-});
+// app.get('/', (req, res) => {
+//   res.sendFile(path.resolve('./client/checkout.html'));
+// });
 
-app.listen(PORT, () => {
-  console.log(`Node server listening at http://localhost:${PORT}/`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Node server listening at http://localhost:${PORT}/`);
+// });
