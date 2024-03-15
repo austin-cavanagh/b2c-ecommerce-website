@@ -98,24 +98,12 @@ export default function StripeCheckoutForm() {
   };
 
   const handleCheckout = async () => {
-    const delivery = true;
+    const delivery = false;
     const checkoutSessionUrl = await createCheckoutSession(delivery);
     console.log('checkoutSessionUrl', checkoutSessionUrl);
   };
 
   return (
-    // <form id="payment-form" onSubmit={handleSubmit}>
-    //   <PaymentElement id="payment-element" options={paymentElementOptions} />
-    //   <button disabled={isLoading || !stripe || !elements} id="submit">
-    //     <span id="button-text">
-    //       {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
-    //     </span>
-    //   </button>
-
-    //   {/* Show any error or success messages */}
-    //   {message && <div id="payment-message">{message}</div>}
-    // </form>
-
     <button
       disabled={isLoading || !stripe}
       onClick={handleCheckout}
