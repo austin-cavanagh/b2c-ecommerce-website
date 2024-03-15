@@ -21,29 +21,47 @@ export async function POST(request: Request, response: Response) {
       stripeSignature,
       endpointSecret,
     );
-
-    console.log('STRIPE_EVENT:', event);
   } catch (err) {
-    console.log('ERROR', err);
-    return new Response(`Stripe webhook error: ${err.message}`, {
-      status: 400,
-    });
+    if (err instanceof Error) {
+      console.log('ERROR', err.message);
+      return new Response(`Stripe webhook error: ${err.message}`, {
+        status: 400,
+      });
+    } else {
+      console.log('An unexpected error occurred');
+      return new Response('An unexpected error occurred', {
+        status: 400,
+      });
+    }
   }
-
-  console.log(`EVENT ${event.type}`);
 
   // Handle the event
   switch (event.type) {
+    case 'checkout.session.completed':
+      const checkoutSession = event.data.object;
+      console.log(checkoutSession);
+
+      const customerDetails = checkoutSession.customer_details;
+      const totalAmount = checkoutSession.amount_total;
+
+      if (checkoutSession.shipping_address_collection) {
+        // delivery
+      } else {
+        // pickup
+      }
+
+      break;
     case 'payment_intent.succeeded':
       const paymentIntentSucceeded = event.data.object;
       // Then define and call a function to handle the event payment_intent.succeeded
       break;
-    // ... handle other event types
     default:
-      console.log(`Unhandled event type ${event.type}`);
+    //   console.log(`Unhandled event type ${event.type}`);
   }
 
   return new Response('Success!', {
     status: 200,
   });
 }
+
+export async function handleCheckoutSessionCompleted() {}
