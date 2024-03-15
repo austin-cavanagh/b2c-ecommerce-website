@@ -5,10 +5,9 @@ import { RadioGroup } from '@headlessui/react';
 import { ClockIcon, XMarkIcon } from '@heroicons/react/20/solid';
 import DeliveryMethods from './DeliveryMethods';
 import RemoveFromCartButton from './RemoveFromCartButton';
-import StripeBtns from '../payments/stripe/StripeBtns';
 import { CartItem } from '@prisma/client';
 import { classNames } from '@/functions/classNames';
-import PreviewPage from './PreviewPage';
+import StripeCheckoutButton from './StripeCheckoutButton';
 
 const deliveryMethods = [
   {
@@ -355,12 +354,8 @@ export default function Cart({ cartItems, clientSecret }: CartProps) {
             </div>
           </div>
         </form>
-        <StripeBtns
-          clientSecret={clientSecret}
-          deliveryMethod={deliveryMethod.title}
-        />
 
-        {/* <PreviewPage /> */}
+        <StripeCheckoutButton />
       </div>
     </div>
   );

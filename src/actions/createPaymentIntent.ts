@@ -3,7 +3,7 @@
 'use server';
 import 'server-only';
 import Stripe from 'stripe';
-import { itemType } from './Stripe';
+import { itemType } from '../app/cart/Stripe';
 
 type TaxCalculation = {
   tax_amount_exclusive: number;

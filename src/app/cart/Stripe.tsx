@@ -14,7 +14,7 @@ import {
 import { Elements } from '@stripe/react-stripe-js';
 
 import StripeCheckoutForm from './StripeCheckoutForm';
-import { createPaymentIntent } from './createPaymentIntent';
+import { createPaymentIntent } from '../../actions/createPaymentIntent';
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 // recreating the Stripe object on every render.
