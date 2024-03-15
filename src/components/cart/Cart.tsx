@@ -27,6 +27,11 @@ type CartProps = {
   cartItems: CartItem[];
 };
 
+export type CartItemIds = {
+  productId: number;
+  stripePriceId: string;
+};
+
 export default function Cart({ cartItems }: CartProps) {
   const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
 
@@ -37,15 +42,16 @@ export default function Cart({ cartItems }: CartProps) {
   console.log(cartItems);
 
   const handleCheckout = async () => {
-    // const cartItemProductIds = cartItems.map(item => {
-    //   return {
-    //     productId: item.productId,
-    //     priceId: item.
-    //   }
-    // })
+    const cartItemIds: CartItemIds[] = cartItems.map(item => {
+      return {
+        productId: item.productId,
+        stripePriceId: item.stripePriceId,
+      };
+    });
 
     const checkoutSessionUrl = await createCheckoutSession(
       deliveryMethod.title,
+      cartItemIds,
     );
     console.log('checkoutSessionUrl', checkoutSessionUrl);
   };
@@ -174,12 +180,6 @@ export default function Cart({ cartItems }: CartProps) {
                               </RadioGroup.Description>
                             </span>
                           </span>
-                          {/* {checked ? (
-                            <CheckCircleIcon
-                              className="h-5 w-5 text-indigo-600"
-                              aria-hidden="true"
-                            />
-                          ) : null} */}
                           <span
                             className={classNames(
                               active ? 'border' : 'border-2',
@@ -198,140 +198,11 @@ export default function Cart({ cartItems }: CartProps) {
               </RadioGroup>
             </div>
 
-            {/* Shipping Information */}
-            {/* <div className="mt-10 border-t border-gray-200 pt-10">
-              <h2 className="text-lg font-medium text-gray-900">
-                Shipping information
-              </h2>
-
-              <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
-                <div>
-                  <label
-                    htmlFor="first-name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    First name
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="first-name"
-                      name="first-name"
-                      autoComplete="given-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="last-name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Last name
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="last-name"
-                      name="last-name"
-                      autoComplete="family-name"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="address"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Address
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="address"
-                      id="address"
-                      autoComplete="street-address"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="apartment"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Apartment, suite, etc.
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      name="apartment"
-                      id="apartment"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-                <div>
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    City
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      autoComplete="address-level2"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="region"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    State
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="region"
-                      name="region"
-                      autoComplete="address-level1"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="postal-code"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Postal code
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="text"
-                      id="postal-code"
-                      name="postal-code"
-                      autoComplete="postal-code"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div> */}
-
             {/* Payment */}
             <div className="mt-10 border-t border-gray-200 pt-10">
               <h2 className="text-lg font-medium text-gray-900">Payment</h2>
 
+              {/* Gray Line To Seperate Checkout */}
               {/* <div className="relative">
                 <div
                   className="absolute inset-0 flex items-center"

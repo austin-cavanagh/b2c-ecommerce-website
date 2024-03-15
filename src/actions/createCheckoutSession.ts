@@ -1,6 +1,7 @@
 // STRIPE DOCS - STRIPE HOSTED PAGE
 
 'use server';
+import { CartItemIds } from '@/components/cart/Cart';
 import { redirect } from 'next/navigation';
 import 'server-only';
 
@@ -13,8 +14,18 @@ interface CustomSessionConfig extends Stripe.Checkout.SessionCreateParams {
   shipping_options?: Stripe.Checkout.SessionCreateParams.ShippingOption[];
 }
 
-export async function createCheckoutSession(deliveryMethod: string) {
+export async function createCheckoutSession(
+  deliveryMethod: string,
+  cartItemIds: CartItemIds[],
+) {
   let sessionUrl;
+
+  const lineItems = cartItemIds.map(itemIds => {
+    return {
+      price: itemIds.stripePriceId,
+      quantity: 1,
+    };
+  });
 
   const sessionConfig: CustomSessionConfig = {
     // payment_method_types: ['card'],
@@ -23,13 +34,8 @@ export async function createCheckoutSession(deliveryMethod: string) {
     client_reference_id: '25',
     customer_email: 'austin.cavanagh.cs@gmail.com',
     success_url: 'http://localhost:3000/products',
-    cancel_url: 'http://localhost:3000/',
-    line_items: [
-      {
-        price: 'price_1OuMKkJwHQ2aHYX97V5Bq3R7',
-        quantity: 1,
-      },
-    ],
+    cancel_url: 'http://localhost:3000/cart',
+    line_items: lineItems,
   };
 
   // Add delivery options if selected
