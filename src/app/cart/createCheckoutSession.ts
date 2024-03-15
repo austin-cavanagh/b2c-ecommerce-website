@@ -8,10 +8,15 @@ import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
+interface CustomSessionConfig extends Stripe.Checkout.SessionCreateParams {
+  shipping_address_collection?: Stripe.Checkout.SessionCreateParams.ShippingAddressCollection;
+  shipping_options?: Stripe.Checkout.SessionCreateParams.ShippingOption[];
+}
+
 export async function createCheckoutSession(delivery: boolean) {
   let sessionUrl;
 
-  const sessionConfig = {
+  const sessionConfig: CustomSessionConfig = {
     // payment_method_types: ['card'],
     mode: 'payment',
     client_reference_id: '25',
@@ -36,26 +41,7 @@ export async function createCheckoutSession(delivery: boolean) {
   }
 
   try {
-    // const session = await stripe.checkout.sessions.create({
-    //   customer_email: 'austin.cavanagh.cs@gmail.com',
-    //   client_reference_id: '25',
-    //   line_items: [
-    //     {
-    //       price: 'price_1OuMKkJwHQ2aHYX97V5Bq3R7',
-    //       quantity: 1,
-    //     },
-    //   ],
-    //   mode: 'payment',
-    //   success_url: 'http://localhost:3000/products',
-    //   cancel_url: 'http://localhost:3000/',
-    //   automatic_tax: { enabled: true },
-
-    //   shipping_address_collection: { allowed_countries: ['US'] },
-    //   shipping_options: [{ shipping_rate: 'shr_1OuOOUJwHQ2aHYX93s0Wqofe' }],
-    // });
-
     const session = await stripe.checkout.sessions.create(sessionConfig);
-
     sessionUrl = session.url;
   } catch (error) {
     if (

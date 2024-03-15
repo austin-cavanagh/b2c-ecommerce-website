@@ -104,20 +104,23 @@ export default function StripeCheckoutForm() {
   };
 
   return (
-    <button
-      disabled={isLoading || !stripe}
-      onClick={handleCheckout}
-      id="checkout-button"
-      className={`w-full rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium font-semibold leading-4 text-white shadow-sm hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 ${isLoading || !stripe ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
-    >
-      {/* <span id="button-text">
-      {isLoading ? (
-        <div className="spinner" id="spinner"></div>
-      ) : (
-        'Pay with Stripe'
-      )}
-    </span> */}
-      Checkout with Stripe
-    </button>
+    <form id="payment-form" onSubmit={handleSubmit}>
+      <PaymentElement id="payment-element" options={paymentElementOptions} />
+      <button disabled={isLoading || !stripe || !elements} id="submit">
+        <span id="button-text">
+          {isLoading ? <div className="spinner" id="spinner"></div> : 'Pay now'}
+        </span>
+      </button>
+      {/* Show any error or success messages */}
+      {message && <div id="payment-message">{message}</div>}
+    </form>
+    // <button
+    //   disabled={isLoading || !stripe}
+    //   onClick={handleCheckout}
+    //   id="checkout-button"
+    //   className={`w-full rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium font-semibold leading-4 text-white shadow-sm hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 ${isLoading || !stripe ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+    // >
+    //   Checkout with Stripe
+    // </button>
   );
 }
