@@ -59,6 +59,7 @@ model CartItem {
   cartId         Int
   productId      Int
   price          Int
+  stripePriceId  String
   dimensions     String
   customizations Json
   cart           Cart    @relation(fields: [cartId], references: [id])
@@ -108,8 +109,8 @@ model Product {
 model ProductPrice {
   id            Int     @id @default(autoincrement())
   productId     Int
-  dimension     String
   price         Int
+  dimension     String
   stripePriceId String
   product       Product @relation(fields: [productId], references: [id])
 }

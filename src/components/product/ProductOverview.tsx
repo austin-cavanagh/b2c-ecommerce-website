@@ -25,6 +25,8 @@ export default function ProductOverview({
 }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
+  // console.log(product);
+
   // const session = useSession();
   // console.log(session);
 

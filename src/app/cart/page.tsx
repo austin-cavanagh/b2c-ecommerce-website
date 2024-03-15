@@ -39,14 +39,9 @@ export default async function CartRoute() {
     },
   });
 
-  // Stripe
-  const items = [{ id: 'xl-tshirt', amount: 1000 }];
-  const paymentIntent = await createPaymentIntent(items);
-  const clientSecret = paymentIntent.client_secret;
-
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
-      <Cart cartItems={cartItems} clientSecret={clientSecret} />
+      <Cart cartItems={cartItems} />
 
       {/* <Stripe /> */}
     </main>

@@ -3,11 +3,10 @@
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { ClockIcon, XMarkIcon } from '@heroicons/react/20/solid';
-import DeliveryMethods from './DeliveryMethods';
 import RemoveFromCartButton from './RemoveFromCartButton';
 import { CartItem } from '@prisma/client';
 import { classNames } from '@/functions/classNames';
-import StripeCheckoutButton from './StripeCheckoutButton';
+import { createCheckoutSession } from '@/actions/createCheckoutSession';
 
 const deliveryMethods = [
   {
@@ -26,17 +25,30 @@ const deliveryMethods = [
 
 type CartProps = {
   cartItems: CartItem[];
-  clientSecret: string;
 };
 
-export default function Cart({ cartItems, clientSecret }: CartProps) {
+export default function Cart({ cartItems }: CartProps) {
   const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
 
   const subtotal = cartItems.reduce((total: number, item) => {
     return total + item.price;
   }, 0);
 
-  // console.log(cartItems);
+  console.log(cartItems);
+
+  const handleCheckout = async () => {
+    // const cartItemProductIds = cartItems.map(item => {
+    //   return {
+    //     productId: item.productId,
+    //     priceId: item.
+    //   }
+    // })
+
+    const checkoutSessionUrl = await createCheckoutSession(
+      deliveryMethod.title,
+    );
+    console.log('checkoutSessionUrl', checkoutSessionUrl);
+  };
 
   return (
     <div className="w-full">
@@ -355,7 +367,13 @@ export default function Cart({ cartItems, clientSecret }: CartProps) {
           </div>
         </form>
 
-        <StripeCheckoutButton />
+        <button
+          onClick={handleCheckout}
+          id="checkout-button"
+          className={`w-full rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium font-semibold leading-4 text-white shadow-sm hover:bg-opacity-80 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 `}
+        >
+          Checkout with Stripe
+        </button>
       </div>
     </div>
   );

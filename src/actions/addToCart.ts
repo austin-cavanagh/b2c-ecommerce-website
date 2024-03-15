@@ -9,7 +9,7 @@ import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
 
 export default async function addToCart(formData: FormData) {
-  //   console.log('formData', formData);
+  console.log('formData', formData);
 
   const session: ExtendSession | null = await getServerSession(authOptions);
   const cartId = session?.user?.cartId;
@@ -21,10 +21,12 @@ export default async function addToCart(formData: FormData) {
     'size[dimension]',
     '$ACTION_ID_6119eab06d45b529606f64ba108a3caa62cc1dd4',
     'size[id]',
+    'size[stripePriceId]',
   ];
 
   const productId = formData.get('size[productId]') as string;
   const price = formData.get('size[price]') as string;
+  const stripePriceId = formData.get('size[stripePriceId]') as string;
   const size = formData.get('size[dimension]') as string;
 
   const customizationOptions = [];
@@ -41,6 +43,7 @@ export default async function addToCart(formData: FormData) {
     cartId: cartId,
     productId: Number(productId),
     price: Number(price),
+    stripePriceId: stripePriceId,
     dimensions: size,
     customizations: JSON.stringify(customizationOptions),
   };

@@ -13,17 +13,17 @@ interface CustomSessionConfig extends Stripe.Checkout.SessionCreateParams {
   shipping_options?: Stripe.Checkout.SessionCreateParams.ShippingOption[];
 }
 
-export async function createCheckoutSession(delivery: boolean) {
+export async function createCheckoutSession(deliveryMethod: string) {
   let sessionUrl;
 
   const sessionConfig: CustomSessionConfig = {
     // payment_method_types: ['card'],
+    // automatic_tax: { enabled: true },
     mode: 'payment',
     client_reference_id: '25',
     customer_email: 'austin.cavanagh.cs@gmail.com',
     success_url: 'http://localhost:3000/products',
     cancel_url: 'http://localhost:3000/',
-    automatic_tax: { enabled: true },
     line_items: [
       {
         price: 'price_1OuMKkJwHQ2aHYX97V5Bq3R7',
@@ -33,7 +33,7 @@ export async function createCheckoutSession(delivery: boolean) {
   };
 
   // Add delivery options if selected
-  if (delivery) {
+  if (deliveryMethod === 'Delivery') {
     sessionConfig.shipping_address_collection = { allowed_countries: ['US'] };
     sessionConfig.shipping_options = [
       { shipping_rate: 'shr_1OuOOUJwHQ2aHYX93s0Wqofe' },

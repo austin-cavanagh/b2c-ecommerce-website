@@ -52,10 +52,10 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  // await clearCartItems();
+  await clearCartItems();
   // await clearProducts();
   // await clearUserData();
-  await addProducts();
+  // await addProducts();
   // await addCategories();
   // await clearCategories();
 }
