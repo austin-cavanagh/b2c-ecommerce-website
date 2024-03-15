@@ -1,7 +1,7 @@
 // npx prisma db seed
 
 'use server';
-// require('server-only');
+require('server-only');
 
 // import { productsData } from '@/app/data/products';
 // import { PrismaClient } from '@prisma/client';
@@ -103,7 +103,7 @@ async function addProducts() {
       const priceCreatePromise = stripe.prices
         .create({
           product: stripeProduct.id,
-          unit_amount: priceInfo.price * 100, // Convert price to cents
+          unit_amount: priceInfo.price,
           currency: 'usd',
         })
         .then((stripePrice: { id: string }) => {
@@ -164,11 +164,6 @@ async function addProducts() {
 async function clearProducts() {
   // Fetch all products that have a Stripe product ID
   const productsWithStripeId = await prisma.product.findMany({
-    where: {
-      stripeId: {
-        not: null,
-      },
-    },
     select: {
       id: true,
       stripeId: true,
@@ -178,6 +173,17 @@ async function clearProducts() {
   // Delete each corresponding Stripe product
   for (const product of productsWithStripeId) {
     try {
+      // Fetch all prices associated with the stripe product
+      const prices = await stripe.prices.list({
+        product: product.stripeId,
+      });
+
+      // Delete each price
+      for (const price of prices.data) {
+        await stripe.prices.update(price.id, { active: false });
+        console.log(`Deactivated Stripe price with ID: ${price.id}`);
+      }
+
       await stripe.products.del(product.stripeId);
       console.log(`Deleted Stripe product with ID: ${product.stripeId}`);
     } catch (error) {

@@ -98,7 +98,8 @@ export default function StripeCheckoutForm() {
   };
 
   const handleCheckout = async () => {
-    const checkoutSessionUrl = await createCheckoutSession();
+    const delivery = true;
+    const checkoutSessionUrl = await createCheckoutSession(delivery);
     console.log('checkoutSessionUrl', checkoutSessionUrl);
   };
 
