@@ -1,16 +1,26 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
+import {
+  PayPalScriptProvider,
+  PayPalButtons,
+  ReactPayPalScriptOptions,
+} from '@paypal/react-paypal-js';
+import { createPayPalOrder } from './payPalActions';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {
   return <p>{content}</p>;
 }
 
+export type PayPalCartItem = {
+  id: string;
+  quantity: number;
+};
+
 export default function PayPal() {
-  const initialOptions = {
-    'client-id': 'test',
+  const initialOptions: ReactPayPalScriptOptions = {
+    clientId: 'test',
     'enable-funding': 'venmo',
     'disable-funding': 'paylater,card',
     'data-sdk-integration-source': 'integrationbuilder_sc',
@@ -28,24 +38,32 @@ export default function PayPal() {
           }}
           createOrder={async () => {
             try {
-              const response = await fetch('/api/orders', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                // use the "body" param to optionally pass additional order information
-                // like product ids and quantities
-                body: JSON.stringify({
-                  cart: [
-                    {
-                      id: 'YOUR_PRODUCT_ID',
-                      quantity: 'YOUR_PRODUCT_QUANTITY',
-                    },
-                  ],
-                }),
-              });
+              // const response = await fetch('/api/orders', {
+              //   method: 'POST',
+              //   headers: {
+              //     'Content-Type': 'application/json',
+              //   },
+              //   // use the "body" param to optionally pass additional order information
+              //   // like product ids and quantities
+              //   body: JSON.stringify({
+              //     cart: [
+              //       {
+              //         id: 'YOUR_PRODUCT_ID',
+              //         quantity: 1,
+              //       },
+              //     ],
+              //   }),
+              // });
 
-              const orderData = await response.json();
+              // const orderData = await response.json();
+
+              const cart: PayPalCartItem[] = [
+                {
+                  id: 'YOUR_PRODUCT_ID',
+                  quantity: 1,
+                },
+              ];
+              const orderData = createPayPalOrder(cart);
 
               if (orderData.id) {
                 return orderData.id;

@@ -1,5 +1,6 @@
 'use server';
 import 'server-only';
+import { PayPalCartItem } from './PayPal';
 
 // import express from 'express';
 // import fetch from 'node-fetch';
@@ -122,22 +123,6 @@ async function handleResponse(response) {
   }
 }
 
-export async function createPayPalOrder(cart) {
-  try {
-    const { jsonResponse, httpStatusCode } = await createOrder(cart);
-    return {
-      status: httpStatusCode,
-      jsonResponse: jsonResponse,
-    };
-  } catch (error) {
-    console.error('Failed to create paypal order:', error);
-    return {
-      status: 500,
-      message: 'Failed to create paypal order',
-    };
-  }
-}
-
 // app.post('/api/orders', async (req, res) => {
 //   try {
 //     // use the cart information passed from the front-end to calculate the order amount detals
@@ -150,16 +135,16 @@ export async function createPayPalOrder(cart) {
 //   }
 // });
 
-app.post('/api/orders/:orderID/capture', async (req, res) => {
-  try {
-    const { orderID } = req.params;
-    const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
-    res.status(httpStatusCode).json(jsonResponse);
-  } catch (error) {
-    console.error('Failed to create order:', error);
-    res.status(500).json({ error: 'Failed to capture order.' });
-  }
-});
+// app.post('/api/orders/:orderID/capture', async (req, res) => {
+//   try {
+//     const { orderID } = req.params;
+//     const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
+//     res.status(httpStatusCode).json(jsonResponse);
+//   } catch (error) {
+//     console.error('Failed to create order:', error);
+//     res.status(500).json({ error: 'Failed to capture order.' });
+//   }
+// });
 
 // serve index.html
 // app.get('/', (req, res) => {
