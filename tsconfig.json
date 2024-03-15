@@ -27,7 +27,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/prisma/edits.mjs",
-    "src/app/account/new-password"
+    "src/app/account/new-password",
+    "src/app/order/success"
   ],
   "exclude": ["node_modules"]
 }

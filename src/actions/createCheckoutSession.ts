@@ -33,7 +33,7 @@ export async function createCheckoutSession(
     mode: 'payment',
     client_reference_id: '25',
     customer_email: 'austin.cavanagh.cs@gmail.com',
-    success_url: 'http://localhost:3000/products',
+    success_url: 'http://localhost:3000/order/success',
     cancel_url: 'http://localhost:3000/cart',
     line_items: lineItems,
   };
