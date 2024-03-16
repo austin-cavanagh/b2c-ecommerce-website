@@ -7,6 +7,7 @@ import {
   ReactPayPalScriptOptions,
 } from '@paypal/react-paypal-js';
 import { createPayPalOrder } from './createPayPalOrder';
+import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {
@@ -20,7 +21,8 @@ export type PayPalCartItem = {
 
 export default function PayPal() {
   const initialOptions: ReactPayPalScriptOptions = {
-    clientId: 'test',
+    clientId:
+      'Ab2QuptRuIu2i6LW7NhlMk6lPDXB5cWocgYkyZ7thBaQf-ZO_1iEOUvEZdPFWvLEWLrIv-VZBx4Bw9wJ',
     'enable-funding': 'venmo',
     'disable-funding': 'paylater,card',
     'data-sdk-integration-source': 'integrationbuilder_sc',
@@ -68,17 +70,21 @@ export default function PayPal() {
           }}
           onApprove={async (data, actions) => {
             try {
-              const response = await fetch(
-                `/api/orders/${data.orderID}/capture`,
-                {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                },
-              );
+              //   const response = await fetch(
+              //     `/api/orders/${data.orderID}/capture`,
+              //     {
+              //       method: 'POST',
+              //       headers: {
+              //         'Content-Type': 'application/json',
+              //       },
+              //     },
+              //   );
 
-              const orderData = await response.json();
+              const response = capturePayPalOrder(data.orderID);
+              const status = response.status;
+              const orderData = response.orderData;
+
+              //   const orderData = await response.json();
               // Three cases to handle:
               //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
               //   (2) Other non-recoverable errors -> Show a failure message
