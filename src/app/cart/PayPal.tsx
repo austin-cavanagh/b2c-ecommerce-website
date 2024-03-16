@@ -25,7 +25,7 @@ export type PayPalProps = {
   deliveryMethod: string;
 };
 
-export default function PayPal({ cart, deliveryMethod }) {
+export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
   const initialOptions: ReactPayPalScriptOptions = {
     clientId:
       'Ab2QuptRuIu2i6LW7NhlMk6lPDXB5cWocgYkyZ7thBaQf-ZO_1iEOUvEZdPFWvLEWLrIv-VZBx4Bw9wJ',
@@ -35,6 +35,8 @@ export default function PayPal({ cart, deliveryMethod }) {
   };
 
   const [message, setMessage] = useState('');
+
+  console.log(cart);
 
   return (
     <div className="App">
@@ -53,7 +55,7 @@ export default function PayPal({ cart, deliveryMethod }) {
                 },
               ];
 
-              const response = await createPayPalOrder(cart);
+              const response = await createPayPalOrder(cart, deliveryMethod);
               const status = response.status;
               const orderData = response.message;
 
