@@ -3,7 +3,7 @@ import 'server-only';
 
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
-import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
+import { ExtendedCartItem } from '@/components/cart/Cart';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
@@ -35,6 +35,15 @@ export async function createPayPalOrder(
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
+  const timestamp = new Date()
+    .toISOString()
+    .replace(/[-:.T]/g, '')
+    .slice(0, 14);
+  const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+  const orderId = `${timestamp}-${randomPart}`;
+
+  console.log('ORDER_ID', orderId);
+
   const itemTotal = cart.reduce((acc, item) => {
     const itemPrice = item.price / 100;
     const total = acc + itemPrice;
@@ -67,6 +76,7 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
     intent: 'CAPTURE',
     purchase_units: [
       {
+        reference_id: orderId,
         amount: {
           currency_code: 'USD',
           value: totalPriceString,

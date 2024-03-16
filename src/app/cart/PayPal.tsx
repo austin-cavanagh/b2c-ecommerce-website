@@ -48,8 +48,6 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
 
   const [message, setMessage] = useState('');
 
-  console.log('PAYPAL', deliveryMethod);
-
   return (
     <div className="App">
       <PayPalScriptProvider options={initialOptions}>

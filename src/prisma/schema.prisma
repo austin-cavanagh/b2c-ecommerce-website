@@ -71,7 +71,8 @@ model CartItem {
 model Order {
   id              Int         @id @default(autoincrement())
   userId          Int
-  status          String
+  orderStatus     String
+  paymentStatus   String
   paymentProvider String
   paymentMethod   String
   total           Int
