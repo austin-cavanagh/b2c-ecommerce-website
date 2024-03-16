@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import { ClockIcon } from '@heroicons/react/20/solid';
 import RemoveFromCartButton from './RemoveFromCartButton';
@@ -10,7 +10,13 @@ import { createCheckoutSession } from '@/actions/createCheckoutSession';
 import Link from 'next/link';
 import PayPal from '@/app/cart/PayPal';
 
-const deliveryMethods = [
+export type DeliveryMethod = {
+  id: number;
+  title: string;
+  description: string;
+};
+
+const deliveryMethods: DeliveryMethod[] = [
   {
     id: 1,
     title: 'Pickup',
@@ -30,11 +36,11 @@ export type CartItemIds = {
   stripePriceId: string;
 };
 
-type ExtendedProduct = Product & {
+export type ExtendedProduct = Product & {
   imageUrls: ImageUrl[];
 };
 
-type ExtendedCartItem = CartItem & {
+export type ExtendedCartItem = CartItem & {
   product: ExtendedProduct;
 };
 
@@ -43,13 +49,13 @@ export type CartProps = {
 };
 
 export default function Cart({ cart }: CartProps) {
-  const [deliveryMethod, setDeliveryMehtod] = useState(deliveryMethods[0]);
+  const [deliveryMethod, setDeliveryMethod] = useState(deliveryMethods[0]);
 
   const subtotal = cart.reduce((total: number, item) => {
     return total + item.price;
   }, 0);
 
-  const handleCheckout = async () => {
+  const handleStripeCheckout = async () => {
     const cartItemIds: CartItemIds[] = cart.map(item => {
       return {
         productId: item.productId,
@@ -164,7 +170,7 @@ export default function Cart({ cart }: CartProps) {
           <div className="lg:col-span-2">
             {/* Delivery Mehtod */}
             <div className="">
-              <RadioGroup value={deliveryMethod} onChange={setDeliveryMehtod}>
+              <RadioGroup value={deliveryMethod} onChange={setDeliveryMethod}>
                 <RadioGroup.Label className="text-lg font-medium text-gray-900">
                   Delivery method
                 </RadioGroup.Label>
@@ -241,7 +247,7 @@ export default function Cart({ cart }: CartProps) {
 
               <div className="mt-5">
                 <button
-                  onClick={handleCheckout}
+                  onClick={handleStripeCheckout}
                   className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#635bff] text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                 >
                   <div className="w-22">
@@ -249,7 +255,7 @@ export default function Cart({ cart }: CartProps) {
                       xmlns="http://www.w3.org/2000/svg"
                       // width="120"
                       // height="60"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       fill="white"
                       viewBox="0 0 120 60"
                     >

@@ -72,6 +72,7 @@ model Order {
   id              Int         @id @default(autoincrement())
   userId          Int
   status          String
+  paymentProvider String
   paymentMethod   String
   total           Int
   shippingMethod  String
@@ -129,7 +130,6 @@ model Category {
   products ProductCategory[]
 }
 
-// Join Table
 model ProductCategory {
   productId  Int
   categoryId Int
@@ -138,13 +138,6 @@ model ProductCategory {
 
   @@id([productId, categoryId])
 }
-
-// model CustomizationOption {
-//   id        Int     @id @default(autoincrement())
-//   productId Int
-//   option    String
-//   product   Product @relation(fields: [productId], references: [id])
-// }
 
 model Color {
   id   Int    @id @default(autoincrement())

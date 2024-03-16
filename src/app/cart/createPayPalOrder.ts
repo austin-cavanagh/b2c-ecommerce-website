@@ -1,14 +1,14 @@
 'use server';
 import 'server-only';
 
-import { PayPalCartItem } from './PayPal';
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
+import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
 export async function createPayPalOrder(
-  cart: PayPalCartItem[],
+  cart: ExtendedCartItem[],
   deliveryMethod: string,
 ) {
   try {
@@ -16,8 +16,6 @@ export async function createPayPalOrder(
       cart,
       deliveryMethod,
     );
-
-    console.log(jsonResponse);
 
     return {
       status: httpStatusCode,
@@ -36,15 +34,32 @@ export async function createPayPalOrder(
  * Create an order to start the transaction.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
-async function createOrder(cart: PayPalCartItem[], deliveryMethod: string) {
-  // use the cart information passed from the front-end to calculate the purchase unit details
-  //   console.log(
-  //     'shopping cart information passed from the frontend createOrder() callback:',
-  //     cart,
-  //   );
+async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
+  const itemTotal = cart.reduce((acc, item) => {
+    const itemPrice = item.price / 100;
+    const total = acc + itemPrice;
+    return total;
+  }, 0);
+  const itemTotalString = itemTotal.toFixed(2);
 
   const shippingPreference =
     deliveryMethod === 'Pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
+
+  const shippingPrice = deliveryMethod === 'Pickup' ? 0 : 1500;
+  const shippingPriceString = (shippingPrice / 100).toFixed(2);
+
+  const totalPriceString = (itemTotal + shippingPrice / 100).toFixed(2);
+
+  const itemsArray = cart.map(item => {
+    return {
+      name: item.product.name,
+      quantity: '1',
+      unit_amount: {
+        currency_code: 'USD',
+        value: (item.price / 100).toFixed(2),
+      },
+    };
+  });
 
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
@@ -54,36 +69,21 @@ async function createOrder(cart: PayPalCartItem[], deliveryMethod: string) {
       {
         amount: {
           currency_code: 'USD',
-          value: '150.00',
+          value: totalPriceString,
           breakdown: {
             item_total: {
               currency_code: 'USD',
-              value: '100.00',
+              value: itemTotalString,
             },
-            shipping: {
-              currency_code: 'USD',
-              value: '50.00',
-            },
+            ...(deliveryMethod !== 'Pickup' && {
+              shipping: {
+                currency_code: 'USD',
+                value: shippingPriceString,
+              },
+            }),
           },
         },
-        items: [
-          {
-            name: 'Product 1',
-            quantity: '1',
-            unit_amount: {
-              currency_code: 'USD',
-              value: '50.00',
-            },
-          },
-          {
-            name: 'Product 2',
-            quantity: '1',
-            unit_amount: {
-              currency_code: 'USD',
-              value: '50.00',
-            },
-          },
-        ],
+        items: itemsArray,
       },
     ],
     application_context: {

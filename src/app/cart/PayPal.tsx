@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   PayPalScriptProvider,
   PayPalButtons,
@@ -9,6 +9,7 @@ import {
 import { createPayPalOrder } from './createPayPalOrder';
 import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { CartItem } from '@prisma/client';
+import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {
@@ -21,11 +22,22 @@ export type PayPalCartItem = {
 };
 
 export type PayPalProps = {
-  cart: CartItem[];
+  cart: ExtendedCartItem[];
   deliveryMethod: string;
 };
 
 export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
+  const deliveryMethodRef = useRef<string>(deliveryMethod);
+  const cartRef = useRef<ExtendedCartItem[]>(cart);
+
+  useEffect(() => {
+    deliveryMethodRef.current = deliveryMethod;
+  }, [deliveryMethod]);
+
+  useEffect(() => {
+    cartRef.current = cart;
+  }, [cart]);
+
   const initialOptions: ReactPayPalScriptOptions = {
     clientId:
       'Ab2QuptRuIu2i6LW7NhlMk6lPDXB5cWocgYkyZ7thBaQf-ZO_1iEOUvEZdPFWvLEWLrIv-VZBx4Bw9wJ',
@@ -36,26 +48,22 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
 
   const [message, setMessage] = useState('');
 
-  console.log(cart);
+  console.log('PAYPAL', deliveryMethod);
 
   return (
     <div className="App">
       <PayPalScriptProvider options={initialOptions}>
-        {/* <PayPalButtons
+        <PayPalButtons
           style={{
             shape: 'rect',
             layout: 'vertical',
           }}
           createOrder={async () => {
             try {
-              const cart: PayPalCartItem[] = [
-                {
-                  id: 'YOUR_PRODUCT_ID',
-                  quantity: 1,
-                },
-              ];
-
-              const response = await createPayPalOrder(cart, deliveryMethod);
+              const response = await createPayPalOrder(
+                cartRef.current,
+                deliveryMethodRef.current,
+              );
               const status = response.status;
               const orderData = response.message;
 
@@ -117,9 +125,9 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
               );
             }
           }}
-        /> */}
+        />
 
-        <PayPalButtons
+        {/* <PayPalButtons
           style={{ layout: 'vertical', color: 'gold' }}
           fundingSource="paypal"
           createOrder={(data, actions) => {
@@ -128,10 +136,10 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
           onApprove={(data, actions) => {
             // Handle approval for PayPal
           }}
-        />
+        /> */}
 
         {/* Venmo Button */}
-        <PayPalButtons
+        {/* <PayPalButtons
           style={{ layout: 'vertical', color: 'blue' }}
           fundingSource="venmo"
           createOrder={(data, actions) => {
@@ -140,7 +148,7 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
           onApprove={(data, actions) => {
             // Handle approval for Venmo
           }}
-        />
+        /> */}
       </PayPalScriptProvider>
       <Message content={message} />
     </div>
