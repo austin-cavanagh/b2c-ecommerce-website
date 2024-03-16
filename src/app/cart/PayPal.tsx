@@ -41,7 +41,7 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
   return (
     <div className="App">
       <PayPalScriptProvider options={initialOptions}>
-        <PayPalButtons
+        {/* <PayPalButtons
           style={{
             shape: 'rect',
             layout: 'vertical',
@@ -116,6 +116,29 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
                 `Sorry, your transaction could not be processed...${error}`,
               );
             }
+          }}
+        /> */}
+
+        <PayPalButtons
+          style={{ layout: 'vertical', color: 'gold' }}
+          fundingSource="paypal"
+          createOrder={(data, actions) => {
+            // Create order logic for PayPal
+          }}
+          onApprove={(data, actions) => {
+            // Handle approval for PayPal
+          }}
+        />
+
+        {/* Venmo Button */}
+        <PayPalButtons
+          style={{ layout: 'vertical', color: 'blue' }}
+          fundingSource="venmo"
+          createOrder={(data, actions) => {
+            // Create order logic for Venmo
+          }}
+          onApprove={(data, actions) => {
+            // Handle approval for Venmo
           }}
         />
       </PayPalScriptProvider>
