@@ -42,7 +42,11 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
   const orderId = `${timestamp}-${randomPart}`;
 
-  console.log('ORDER_ID', orderId);
+  console.log('CART', cart);
+
+  // BREAK
+  // BREAK
+  // BREAK
 
   const itemTotal = cart.reduce((acc, item) => {
     const itemPrice = item.price / 100;
