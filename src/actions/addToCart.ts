@@ -2,7 +2,6 @@
 import 'server-only';
 
 import { getServerSession } from 'next-auth';
-import { getSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import { FormEvent } from 'react';
 import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
@@ -23,26 +22,39 @@ export default async function addToCart(formData: FormData) {
   ];
 
   const productId = formData.get('size[productId]') as string;
-  const price = formData.get('size[price]') as string;
-  const stripePriceId = formData.get('size[stripePriceId]') as string;
-  const size = formData.get('size[dimension]') as string;
+  // const price = formData.get('size[price]') as string;
+  // const stripePriceId = formData.get('size[stripePriceId]') as string;
+  const dimensions = formData.get('size[dimension]') as string;
 
+  // Format the customers chosen customizaion options
   const customizationOptions = [];
-
   const formObject = Object.fromEntries(formData);
-
   for (const [label, value] of Object.entries(formObject)) {
     if (!standardData.includes(label)) {
       customizationOptions.push({ [label]: value });
     }
   }
 
+  // Retrieve the price and stripePriceId based on productId and dimension
+  const productPrice = await prisma.productPrice.findFirst({
+    where: {
+      productId: Number(productId),
+      dimension: dimensions,
+    },
+  });
+
+  if (!productPrice) {
+    // Handle case where price is not found
+    console.error('Price not found for the given productId and dimension');
+    return; // Make sure to handle this case in your application logic
+  }
+
   const cartItem = {
     cartId: cartId,
     productId: Number(productId),
-    price: Number(price),
-    stripePriceId: stripePriceId,
-    dimensions: size,
+    price: productPrice.price,
+    stripePriceId: productPrice.stripePriceId,
+    dimensions: dimensions,
     customizations: JSON.stringify(customizationOptions),
   };
 
