@@ -8,6 +8,7 @@ import {
 } from '@paypal/react-paypal-js';
 import { createPayPalOrder } from './createPayPalOrder';
 import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
+import { CartItem } from '@prisma/client';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {
@@ -19,7 +20,12 @@ export type PayPalCartItem = {
   quantity: number;
 };
 
-export default function PayPal() {
+export type PayPalProps = {
+  cart: CartItem[];
+  deliveryMethod: string;
+};
+
+export default function PayPal({ cart, deliveryMethod }) {
   const initialOptions: ReactPayPalScriptOptions = {
     clientId:
       'Ab2QuptRuIu2i6LW7NhlMk6lPDXB5cWocgYkyZ7thBaQf-ZO_1iEOUvEZdPFWvLEWLrIv-VZBx4Bw9wJ',

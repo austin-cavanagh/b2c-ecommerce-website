@@ -7,9 +7,15 @@ import { handleResponse } from '@/functions/handleResponse';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
-export async function createPayPalOrder(cart: PayPalCartItem[]) {
+export async function createPayPalOrder(
+  cart: PayPalCartItem[],
+  deliveryMethod: string,
+) {
   try {
-    const { jsonResponse, httpStatusCode } = await createOrder(cart);
+    const { jsonResponse, httpStatusCode } = await createOrder(
+      cart,
+      deliveryMethod,
+    );
 
     console.log(jsonResponse);
 
@@ -30,16 +36,15 @@ export async function createPayPalOrder(cart: PayPalCartItem[]) {
  * Create an order to start the transaction.
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
-async function createOrder(cart: PayPalCartItem[]) {
+async function createOrder(cart: PayPalCartItem[], deliveryMethod: string) {
   // use the cart information passed from the front-end to calculate the purchase unit details
   //   console.log(
   //     'shopping cart information passed from the frontend createOrder() callback:',
   //     cart,
   //   );
 
-  const deliveryMethod = 'pickup';
   const shippingPreference =
-    deliveryMethod === 'pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
+    deliveryMethod === 'Pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
 
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
