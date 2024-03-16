@@ -37,6 +37,10 @@ async function createOrder(cart: PayPalCartItem[]) {
   //     cart,
   //   );
 
+  const deliveryMethod = 'pickup';
+  const shippingPreference =
+    deliveryMethod === 'pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
+
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
   const payload = {
@@ -45,10 +49,41 @@ async function createOrder(cart: PayPalCartItem[]) {
       {
         amount: {
           currency_code: 'USD',
-          value: '100.00',
+          value: '150.00',
+          breakdown: {
+            item_total: {
+              currency_code: 'USD',
+              value: '100.00',
+            },
+            shipping: {
+              currency_code: 'USD',
+              value: '50.00',
+            },
+          },
         },
+        items: [
+          {
+            name: 'Product 1',
+            quantity: '1',
+            unit_amount: {
+              currency_code: 'USD',
+              value: '50.00',
+            },
+          },
+          {
+            name: 'Product 2',
+            quantity: '1',
+            unit_amount: {
+              currency_code: 'USD',
+              value: '50.00',
+            },
+          },
+        ],
       },
     ],
+    application_context: {
+      shipping_preference: shippingPreference,
+    },
   };
 
   const response = await fetch(url, {
