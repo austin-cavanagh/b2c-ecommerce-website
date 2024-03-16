@@ -2,11 +2,10 @@
 import 'server-only';
 
 import { PayPalCartItem } from './PayPal';
+import { generateAccessToken } from '@/functions/generateAccessToken';
+import { handleResponse } from '@/functions/handleResponse';
 
 const base = 'https://api-m.sandbox.paypal.com';
-
-const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
-const PAYPAL_CLIENT_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 
 export async function createPayPalOrder(cart: PayPalCartItem[]) {
   try {
@@ -16,7 +15,7 @@ export async function createPayPalOrder(cart: PayPalCartItem[]) {
 
     return {
       status: httpStatusCode,
-      jsonResponse: jsonResponse,
+      message: jsonResponse,
     };
   } catch (error) {
     console.error('Failed to create paypal order:', error);
@@ -67,17 +66,4 @@ async function createOrder(cart: PayPalCartItem[]) {
   });
 
   return handleResponse(response);
-}
-
-async function handleResponse(response: Response) {
-  try {
-    const jsonResponse = await response.json();
-    return {
-      jsonResponse,
-      httpStatusCode: response.status,
-    };
-  } catch (err) {
-    const errorMessage = await response.text();
-    throw new Error(errorMessage);
-  }
 }

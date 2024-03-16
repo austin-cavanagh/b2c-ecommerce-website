@@ -49,9 +49,7 @@ export default function PayPal() {
 
               const response = await createPayPalOrder(cart);
               const status = response.status;
-              const orderData = response.jsonResponse;
-
-              console.log(orderData);
+              const orderData = response.message;
 
               if (orderData.id) {
                 return orderData.id;
@@ -70,21 +68,10 @@ export default function PayPal() {
           }}
           onApprove={async (data, actions) => {
             try {
-              //   const response = await fetch(
-              //     `/api/orders/${data.orderID}/capture`,
-              //     {
-              //       method: 'POST',
-              //       headers: {
-              //         'Content-Type': 'application/json',
-              //       },
-              //     },
-              //   );
-
-              const response = capturePayPalOrder(data.orderID);
+              const response = await capturePayPalOrder(data.orderID);
               const status = response.status;
-              const orderData = response.orderData;
+              const orderData = response.message;
 
-              //   const orderData = await response.json();
               // Three cases to handle:
               //   (1) Recoverable INSTRUMENT_DECLINED -> call actions.restart()
               //   (2) Other non-recoverable errors -> Show a failure message

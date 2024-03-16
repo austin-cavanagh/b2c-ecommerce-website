@@ -1,7 +1,10 @@
 'use server';
+import 'server-only';
+
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
-import 'server-only';
+
+const base = 'https://api-m.sandbox.paypal.com';
 
 export async function capturePayPalOrder(orderID: string) {
   try {
