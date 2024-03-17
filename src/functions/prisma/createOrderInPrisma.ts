@@ -1,7 +1,6 @@
 'use server';
 import 'server-only';
 
-import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 import { CartItem } from '@prisma/client';
 import { prisma } from '@/prisma/prisma';
 
@@ -33,31 +32,52 @@ export async function createOrderInPrisma(
     return acc + item.price;
   }, 0);
 
-  // Create order in prisma
-  const newOrder = await prisma.order.create({
-    data: {
-      orderId: orderId,
-      userId: userId,
-      orderStatus: 'pending',
-      paymentStatus: 'pending',
-      paymentProvider: paymentProvider,
-      deliveryMethod: deliveryMethod,
-      shippingCost: shippingCost,
-      taxCost: taxCost,
-      totalCost: itemsCost + shippingCost,
-    },
-  });
+  // Prepare data for the order
+  const orderData = {
+    orderId: orderId,
+    userId: userId,
+    orderStatus: 'pending',
+    paymentStatus: 'pending',
+    paymentProvider: paymentProvider,
+    deliveryMethod: deliveryMethod,
+    shippingCost: shippingCost,
+    taxCost: taxCost,
+    totalCost: itemsCost + shippingCost,
+  };
 
-  console.log('NEW_ORDER', newOrder);
+  // Prepare data for the order items
+  const orderItemsData = cart.map(item => ({
+    orderId: orderId,
+    productId: item.productId,
+    price: item.price,
+    stripePriceId: item.stripePriceId,
+  }));
 
-  // cart.forEach(async item => {
-  //   await prisma.orderItem.create({
-  //     data: {
-  //       orderId: newOrder.id,
-  //       productId: item.productId,
-  //       price: item.price,
-  //       stripePriceId: item.stripePriceId,
-  //     },
-  //   });
-  // });
+  // Create order and order items in a transation
+  try {
+    const newOrderData = await prisma.$transaction(async transaction => {
+      // Create the order
+      const newOrder = await transaction.order.create({ data: orderData });
+
+      // Replace placeholder orderId with the id from the new order not the orderId
+      const updatedOrderItemsData = orderItemsData.map(item => ({
+        ...item,
+        orderId: newOrder.id,
+      }));
+
+      // Create the order items
+      const newOrderItemsPromises = updatedOrderItemsData.map(itemData =>
+        transaction.orderItem.create({ data: itemData }),
+      );
+
+      const newOrderItems = await Promise.all(newOrderItemsPromises);
+
+      return { newOrder, newOrderItems };
+    });
+
+    console.log('Transaction succeeded:', newOrderData);
+  } catch (error) {
+    console.error('Failed to create an order in prisma:', error);
+    throw new Error('Failed to create an order');
+  }
 }
