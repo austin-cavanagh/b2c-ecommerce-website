@@ -30,8 +30,6 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
   const deliveryMethodRef = useRef<string>(deliveryMethod);
   const cartRef = useRef<ExtendedCartItem[]>(cart);
 
-  console.log(cart);
-
   useEffect(() => {
     deliveryMethodRef.current = deliveryMethod;
   }, [deliveryMethod]);

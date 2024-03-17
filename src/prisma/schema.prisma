@@ -78,7 +78,7 @@ model Order {
   paymentStatus   String
   paymentProvider String
   providerOrderId String?
-  tax             Int
+  taxCost         Int
   shippingCost    Int
   totalCost       Int
   deliveryMethod  String

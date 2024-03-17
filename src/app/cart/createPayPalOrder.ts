@@ -6,6 +6,7 @@ import { handleResponse } from '@/functions/handleResponse';
 import { ExtendedCartItem } from '@/components/cart/Cart';
 import { getServerSession } from 'next-auth';
 import { ExtendSession, authOptions } from '../api/auth/[...nextauth]/route';
+import { createOrderInPrisma } from '@/functions/prisma/createOrderInPrisma';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
@@ -38,9 +39,13 @@ export async function createPayPalOrder(
  */
 async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   const session: ExtendSession | null = await getServerSession(authOptions);
-  console.log('SESSION', session);
 
-  if (!session || !session.user) {
+  if (
+    !session ||
+    !session.user ||
+    !session.user.userId ||
+    !session.user.cartId
+  ) {
     console.error('Session not present in createPayPalOrder.ts');
     return {
       httpStatusCode: 401,
@@ -54,11 +59,11 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
 
   // Calculate the cost of all items in the cart
   const itemsTotal = cart.reduce((acc, item) => {
-    const itemPrice = item.price / 100;
+    const itemPrice = item.price;
     const total = acc + itemPrice;
     return total;
   }, 0);
-  const itemsTotalString = itemsTotal.toFixed(2);
+  const itemsTotalString = (itemsTotal / 100).toFixed(2);
 
   // Calculate the cost of shipping
   const shippingPreference =
@@ -67,7 +72,7 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   const shippingPriceString = (shippingPrice / 100).toFixed(2);
 
   // Calculate the total price
-  const totalPriceString = (itemsTotal + shippingPrice / 100).toFixed(2);
+  const totalPriceString = ((itemsTotal + shippingPrice) / 100).toFixed(2);
 
   // Create an array of items to pass to paypal for itemized checkout
   const itemsArray = cart.map(item => {
@@ -85,62 +90,22 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   // CALCULATE COSTS
   // CALCULATE COSTS
 
-  // ADD ORDER TO DATABASE
-  // ADD ORDER TO DATABASE
-  // ADD ORDER TO DATABASE
+  const ORDER_ID = '1';
 
-  //   orderId         String      @unique
-  //   userId          Int
-  //   orderStatus     String
-  //   paymentStatus   String
-  //   paymentProvider String
-  //   shippingCost    Int
-  //   deliveryMethod  String
-
-  const timestamp = new Date()
-    .toISOString()
-    .replace(/[-:.T]/g, '')
-    .slice(0, 14);
-  const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-  const orderId = `${timestamp}-${randomPart}`;
-
-  const newOrder = await prisma.order.create({
-    data: {
-      orderId: orderId,
-      userId: session.user.userId,
-      orderStatus: 'pending',
-      paymentStatus: 'pending',
-      paymentProvider: 'paypal',
-      shippingCost: shippingPrice,
-      deliveryMethod: deliveryMethod,
-    },
-  });
-
-  //   orderId       Int
-  //   productId     Int
-  //   price         Int
-  //   stripePriceId String
-
-  cart.forEach(async item => {
-    await prisma.orderItem.create({
-      data: {
-        orderId: newOrder.id,
-        productId: item.productId,
-        price: item.price,
-        stripePriceId: item.stripePriceId,
-      },
-    });
-  });
-
-  // ADD ORDER TO DATABASE
-  // ADD ORDER TO DATABASE
-  // ADD ORDER TO DATABASE
+  const userId: number = session.user.userId;
+  const cartId: number = session.user.cartId;
+  const prismaOrder = createOrderInPrisma(
+    userId,
+    cartId,
+    'paypal',
+    deliveryMethod,
+  );
 
   const payload = {
     intent: 'CAPTURE',
     purchase_units: [
       {
-        reference_id: orderId,
+        reference_id: ORDER_ID,
         amount: {
           currency_code: 'USD',
           value: totalPriceString,
