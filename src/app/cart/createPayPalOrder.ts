@@ -136,8 +136,6 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   // ADD ORDER TO DATABASE
   // ADD ORDER TO DATABASE
 
-  const accessToken = await generateAccessToken();
-  const url = `${base}/v2/checkout/orders`;
   const payload = {
     intent: 'CAPTURE',
     purchase_units: [
@@ -167,6 +165,8 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
     },
   };
 
+  const accessToken = await generateAccessToken();
+  const url = `${base}/v2/checkout/orders`;
   const response = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
