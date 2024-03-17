@@ -91,6 +91,7 @@ model Order {
 
 model OrderItem {
   id            Int    @id @default(autoincrement())
+  name          String
   orderId       Int
   productId     Int
   price         Int

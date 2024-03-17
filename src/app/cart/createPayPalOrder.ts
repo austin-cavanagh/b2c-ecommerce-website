@@ -38,6 +38,7 @@ export async function createPayPalOrder(
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
+  // Get the session to ensure the user is authenticated
   const session: ExtendSession | null = await getServerSession(authOptions);
 
   if (
@@ -53,12 +54,22 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
     };
   }
 
-  // CALCULATE COSTS
-  // CALCULATE COSTS
-  // CALCULATE COSTS
+  // Create order and order items in prisma
+  const { newOrder, newOrderItems } = await createOrderInPrisma(
+    session.user.userId,
+    session.user.cartId,
+    'paypal',
+    deliveryMethod,
+  );
+
+  console.log('NEW_ORDER', newOrder);
+  console.log('NEW_ORDER_ITEMS', newOrderItems);
+
+  // CREATE ORDER IN PRISMA
+  // CREATE ORDER IN PRISMA
 
   // Calculate the cost of all items in the cart
-  const itemsTotal = cart.reduce((acc, item) => {
+  const itemsTotal = newOrderItems.reduce((acc, item) => {
     const itemPrice = item.price;
     const total = acc + itemPrice;
     return total;
@@ -67,17 +78,21 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
 
   // Calculate the cost of shipping
   const shippingPreference =
-    deliveryMethod === 'Pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
-  const shippingPrice = deliveryMethod === 'Pickup' ? 0 : 1500;
-  const shippingPriceString = (shippingPrice / 100).toFixed(2);
+    newOrder.deliveryMethod === 'Pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
+  const shippingCost = newOrder.shippingCost;
+  const shippingCostString = (newOrder.shippingCost / 100).toFixed(2);
 
   // Calculate the total price
-  const totalPriceString = ((itemsTotal + shippingPrice) / 100).toFixed(2);
+  const totalCostString = ((itemsTotal + shippingCost) / 100).toFixed(2);
+
+  // CALCULATE COSTS
+  // CALCULATE COSTS
+  // CALCULATE COSTS
 
   // Create an array of items to pass to paypal for itemized checkout
-  const itemsArray = cart.map(item => {
+  const itemsArray = newOrderItems.map(item => {
     return {
-      name: item.product.name,
+      name: item.name,
       quantity: '1',
       unit_amount: {
         currency_code: 'USD',
@@ -90,25 +105,14 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   // CALCULATE COSTS
   // CALCULATE COSTS
 
-  const ORDER_ID = '1';
-
-  const userId: number = session.user.userId;
-  const cartId: number = session.user.cartId;
-  const prismaOrder = createOrderInPrisma(
-    userId,
-    cartId,
-    'paypal',
-    deliveryMethod,
-  );
-
   const payload = {
     intent: 'CAPTURE',
     purchase_units: [
       {
-        reference_id: ORDER_ID,
+        reference_id: newOrder.orderId,
         amount: {
           currency_code: 'USD',
-          value: totalPriceString,
+          value: totalCostString,
           breakdown: {
             item_total: {
               currency_code: 'USD',
@@ -117,7 +121,7 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
             ...(deliveryMethod !== 'Pickup' && {
               shipping: {
                 currency_code: 'USD',
-                value: shippingPriceString,
+                value: shippingCostString,
               },
             }),
           },
