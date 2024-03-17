@@ -78,8 +78,8 @@ model Order {
   paymentStatus   String
   paymentProvider String
   providerOrderId String?
-  paymentMethod   String
-  tax             Int
+  paymentMethod   String?
+  tax             Int?
   shippingCost    Int
   shippingMethod  String
   shippingAddress String?

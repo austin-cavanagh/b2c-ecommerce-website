@@ -5,7 +5,7 @@ import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
 import { ExtendedCartItem } from '@/components/cart/Cart';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+import { ExtendSession, authOptions } from '../api/auth/[...nextauth]/route';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
@@ -37,28 +37,39 @@ export async function createPayPalOrder(
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
-  const session = await getServerSession(authOptions);
+  const session: ExtendSession | null = await getServerSession(authOptions);
   console.log('SESSION', session);
 
+  if (!session || !session.user) {
+    console.error('Session not present in createPayPalOrder.ts');
+    return {
+      httpStatusCode: 401,
+      jsonResponse: 'You must be logged in to perform this action',
+    };
+  }
+
   // CALCULATE COSTS
   // CALCULATE COSTS
   // CALCULATE COSTS
 
-  const itemTotal = cart.reduce((acc, item) => {
+  // Calculate the cost of all items in the cart
+  const itemsTotal = cart.reduce((acc, item) => {
     const itemPrice = item.price / 100;
     const total = acc + itemPrice;
     return total;
   }, 0);
-  const itemTotalString = itemTotal.toFixed(2);
+  const itemsTotalString = itemsTotal.toFixed(2);
 
+  // Calculate the cost of shipping
   const shippingPreference =
     deliveryMethod === 'Pickup' ? 'NO_SHIPPING' : 'GET_FROM_FILE';
-
   const shippingPrice = deliveryMethod === 'Pickup' ? 0 : 1500;
   const shippingPriceString = (shippingPrice / 100).toFixed(2);
 
-  const totalPriceString = (itemTotal + shippingPrice / 100).toFixed(2);
+  // Calculate the total price
+  const totalPriceString = (itemsTotal + shippingPrice / 100).toFixed(2);
 
+  // Create an array of items to pass to paypal for itemized checkout
   const itemsArray = cart.map(item => {
     return {
       name: item.product.name,
@@ -70,12 +81,37 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
     };
   });
 
+  // CALCULATE COSTS
+  // CALCULATE COSTS
+  // CALCULATE COSTS
+
+  // ADD ORDER TO DATABASE
+  // ADD ORDER TO DATABASE
+  // ADD ORDER TO DATABASE
+
   //   orderId         String      @unique
+  const timestamp = new Date()
+    .toISOString()
+    .replace(/[-:.T]/g, '')
+    .slice(0, 14);
+  const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+  const orderId = `${timestamp}-${randomPart}`;
+
   //   userId          Int
+  const userId = session.user.userId;
+
   //   orderStatus     String
+  const orderStatus = 'checkout';
+
   //   paymentStatus   String
+  const paymentStatus = 'checkout';
+
   //   paymentProvider String
+  const paymentProvider = 'paypal';
+
   //   paymentMethod   String
+  const paymentMethod = '';
+
   //   tax             Int
   //   shippingCost    Int
   //   shippingMethod  String
@@ -85,16 +121,9 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   //   price         Int
   //   stripePriceId String
 
-  const timestamp = new Date()
-    .toISOString()
-    .replace(/[-:.T]/g, '')
-    .slice(0, 14);
-  const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-  const orderId = `${timestamp}-${randomPart}`;
-
-  // BREAK
-  // BREAK
-  // BREAK
+  // ADD ORDER TO DATABASE
+  // ADD ORDER TO DATABASE
+  // ADD ORDER TO DATABASE
 
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;
@@ -109,7 +138,7 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
           breakdown: {
             item_total: {
               currency_code: 'USD',
-              value: itemTotalString,
+              value: itemsTotalString,
             },
             ...(deliveryMethod !== 'Pickup' && {
               shipping: {
