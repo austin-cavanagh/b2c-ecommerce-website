@@ -1,7 +1,7 @@
 // npx prisma db seed
 
 'use server';
-require('server-only');
+// require('server-only');
 
 // import { productsData } from '@/app/data/products';
 // import { PrismaClient } from '@prisma/client';
@@ -52,9 +52,9 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-  await clearCartItems();
+  // await clearCartItems();
   // await clearProducts();
-  // await clearUserData();
+  await clearUserData();
   // await addProducts();
   // await addCategories();
   // await clearCategories();

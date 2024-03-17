@@ -4,6 +4,8 @@ import 'server-only';
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
 import { ExtendedCartItem } from '@/components/cart/Cart';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
@@ -35,18 +37,12 @@ export async function createPayPalOrder(
  * @see https://developer.paypal.com/docs/api/orders/v2/#orders_create
  */
 async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
-  const timestamp = new Date()
-    .toISOString()
-    .replace(/[-:.T]/g, '')
-    .slice(0, 14);
-  const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-  const orderId = `${timestamp}-${randomPart}`;
+  const session = await getServerSession(authOptions);
+  console.log('SESSION', session);
 
-  console.log('CART', cart);
-
-  // BREAK
-  // BREAK
-  // BREAK
+  // CALCULATE COSTS
+  // CALCULATE COSTS
+  // CALCULATE COSTS
 
   const itemTotal = cart.reduce((acc, item) => {
     const itemPrice = item.price / 100;
@@ -73,6 +69,32 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
       },
     };
   });
+
+  //   orderId         String      @unique
+  //   userId          Int
+  //   orderStatus     String
+  //   paymentStatus   String
+  //   paymentProvider String
+  //   paymentMethod   String
+  //   tax             Int
+  //   shippingCost    Int
+  //   shippingMethod  String
+
+  //   orderId       Int
+  //   productId     Int
+  //   price         Int
+  //   stripePriceId String
+
+  const timestamp = new Date()
+    .toISOString()
+    .replace(/[-:.T]/g, '')
+    .slice(0, 14);
+  const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
+  const orderId = `${timestamp}-${randomPart}`;
+
+  // BREAK
+  // BREAK
+  // BREAK
 
   const accessToken = await generateAccessToken();
   const url = `${base}/v2/checkout/orders`;

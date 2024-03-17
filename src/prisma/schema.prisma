@@ -72,12 +72,15 @@ model CartItem {
 
 model Order {
   id              Int         @id @default(autoincrement())
+  orderId         String      @unique
   userId          Int
   orderStatus     String
   paymentStatus   String
   paymentProvider String
+  providerOrderId String?
   paymentMethod   String
-  total           Int
+  tax             Int
+  shippingCost    Int
   shippingMethod  String
   shippingAddress String?
   createdAt       DateTime    @default(now())
@@ -87,11 +90,12 @@ model Order {
 }
 
 model OrderItem {
-  id        Int   @id @default(autoincrement())
-  orderId   Int
-  productId Int
-  price     Int
-  order     Order @relation(fields: [orderId], references: [id])
+  id            Int    @id @default(autoincrement())
+  orderId       Int
+  productId     Int
+  price         Int
+  stripePriceId String
+  order         Order  @relation(fields: [orderId], references: [id])
 }
 
 model Product {
