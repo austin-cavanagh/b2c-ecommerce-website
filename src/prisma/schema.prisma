@@ -78,10 +78,9 @@ model Order {
   paymentStatus   String
   paymentProvider String
   providerOrderId String?
-  paymentMethod   String?
   tax             Int?
+  deliveryMethod  String
   shippingCost    Int
-  shippingMethod  String
   shippingAddress String?
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt

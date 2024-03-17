@@ -90,6 +90,13 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   // ADD ORDER TO DATABASE
 
   //   orderId         String      @unique
+  //   userId          Int
+  //   orderStatus     String
+  //   paymentStatus   String
+  //   paymentProvider String
+  //   shippingCost    Int
+  //   deliveryMethod  String
+
   const timestamp = new Date()
     .toISOString()
     .replace(/[-:.T]/g, '')
@@ -97,29 +104,33 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
   const orderId = `${timestamp}-${randomPart}`;
 
-  //   userId          Int
-  const userId = session.user.userId;
-
-  //   orderStatus     String
-  const orderStatus = 'checkout';
-
-  //   paymentStatus   String
-  const paymentStatus = 'checkout';
-
-  //   paymentProvider String
-  const paymentProvider = 'paypal';
-
-  //   paymentMethod   String
-  const paymentMethod = '';
-
-  //   tax             Int
-  //   shippingCost    Int
-  //   shippingMethod  String
+  const newOrder = await prisma.order.create({
+    data: {
+      orderId: orderId,
+      userId: session.user.userId,
+      orderStatus: 'pending',
+      paymentStatus: 'pending',
+      paymentProvider: 'paypal',
+      shippingCost: shippingPrice,
+      deliveryMethod: deliveryMethod,
+    },
+  });
 
   //   orderId       Int
   //   productId     Int
   //   price         Int
   //   stripePriceId String
+
+  cart.forEach(async item => {
+    await prisma.orderItem.create({
+      data: {
+        orderId: newOrder.id,
+        productId: item.productId,
+        price: item.price,
+        stripePriceId: item.stripePriceId,
+      },
+    });
+  });
 
   // ADD ORDER TO DATABASE
   // ADD ORDER TO DATABASE

@@ -54,10 +54,11 @@ const prisma = new PrismaClient();
 async function main() {
   // await clearCartItems();
   // await clearProducts();
-  await clearUserData();
+  // await clearUserData();
   // await addProducts();
   // await addCategories();
   // await clearCategories();
+  await clearOrders();
 }
 
 async function clearUserData() {
@@ -220,6 +221,13 @@ async function clearCategories() {
 async function clearCartItems() {
   const result = await prisma.cartItem.deleteMany({});
   console.log(`CLEARED ${result.count} CART ITEMS`);
+}
+
+async function clearOrders() {
+  const orderItems = await prisma.orderItem.deleteMany({});
+  console.log(`Cleared ${orderItems.count} order items`);
+  const orders = await prisma.order.deleteMany({});
+  console.log(`Cleared ${orders.count} orders`);
 }
 
 main()
