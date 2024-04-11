@@ -6,7 +6,7 @@ import {
   PayPalButtons,
   ReactPayPalScriptOptions,
 } from '@paypal/react-paypal-js';
-import { createPayPalOrder } from './createPayPalOrder';
+import { createPayPalOrder } from '../../functions/createPayPalOrder';
 import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { CartItem } from '@prisma/client';
 import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
@@ -105,8 +105,31 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
               } else {
                 // (3) Successful transaction -> Show confirmation or thank you message
                 // Or go to another URL:  actions.redirect('thank_you.html');
+
+                // orderStatus
+                // paymentStatus
+                // shippingAddress
+                // providerOrderId
+
                 const transaction =
                   orderData.purchase_units[0].payments.captures[0];
+
+                const orderId = orderData.purchase_units[0].reference_id;
+
+                const paymentProviderOrderId = orderData.id;
+                console.log('PROVIDER_ORDER_ID', paymentProviderOrderId);
+
+                const orderStatus =
+                  orderData.status === 'COMPLETED' ? 'processing' : 'pending';
+                console.log('ORDER_STATUS', orderStatus);
+
+                const paymentStatus =
+                  orderData.status === 'COMPLETED' ? 'paid' : 'pending';
+                console.log('PAYMENT_STATUS', paymentStatus);
+
+                const shippingAddress = orderData.purchase_units[0].shipping;
+                console.log('SHIPPING_ADDRESS', shippingAddress);
+
                 setMessage(
                   `Transaction ${transaction.status}: ${transaction.id}. See console for all available details`,
                 );

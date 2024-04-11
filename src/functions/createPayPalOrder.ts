@@ -5,7 +5,10 @@ import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
 import { ExtendedCartItem } from '@/components/cart/Cart';
 import { getServerSession } from 'next-auth';
-import { ExtendSession, authOptions } from '../api/auth/[...nextauth]/route';
+import {
+  ExtendSession,
+  authOptions,
+} from '../app/api/auth/[...nextauth]/route';
 import { createOrderInPrisma } from '@/functions/prisma/createOrderInPrisma';
 
 const base = 'https://api-m.sandbox.paypal.com';
@@ -61,9 +64,6 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
     'paypal',
     deliveryMethod,
   );
-
-  console.log('NEW_ORDER', newOrder);
-  console.log('NEW_ORDER_ITEMS', newOrderItems);
 
   // CREATE ORDER IN PRISMA
   // CREATE ORDER IN PRISMA
