@@ -5,6 +5,18 @@ import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { classNames } from '@/functions/classNames';
 
+type Option = {
+  value: string;
+  label: string;
+  checked: boolean;
+};
+
+type Filter = {
+  id: string;
+  name: string;
+  options: Option[];
+};
+
 const sortOptions = [
   { name: 'Newest', href: '#', current: true },
   { name: 'Oldest', href: '#', current: false },
@@ -12,7 +24,7 @@ const sortOptions = [
   { name: 'Price: High to Low', href: '#', current: false },
 ];
 
-const filters = [
+const initialFilters: Filter[] = [
   {
     id: 'size',
     name: 'Size',
@@ -82,21 +94,63 @@ const products = [
 ];
 
 export default function ProductsOverview() {
-  const [activeFilters, setActiveFilters] = useState([
-    { value: 'objects', label: 'Objects' },
-  ]);
-
-  const addFilter = filter => {
-    console.log(filter);
-  };
+  const [activeFilters, setActiveFilters] = useState<Option[]>([]);
+  const [filters, setFilters] = useState<Filter[]>(initialFilters);
 
   // Filter out the clicked filter by its value and update the active filters state
-  const removeFilter = (filterValue: string) => {
+  const handleRemoveFilter = (filterValue: string) => {
+    // Update activeFilters by removing the selected filter
     const newActiveFilters = activeFilters.filter(
       filter => filter.value !== filterValue,
     );
     setActiveFilters(newActiveFilters);
+
+    // Also update the `checked` state of the corresponding filter option in all filters
+    const newFilters = filters.map(section => ({
+      ...section,
+      options: section.options.map(option => ({
+        ...option,
+        checked: option.value === filterValue ? false : option.checked,
+      })),
+    }));
+
+    setFilters(newFilters);
   };
+
+  // Update or remove active filter based on checkbox state
+  const handleCheckboxChange = (sectionId: string, optionValue: string) => {
+    const newFilters = filters.map(section => {
+      if (section.id === sectionId) {
+        const newOptions = section.options.map(option => {
+          if (option.value === optionValue) {
+            const newChecked = !option.checked;
+            const activeOption = {
+              value: option.value,
+              label: option.label,
+              checked: newChecked,
+            };
+            // Add or remove from activeFilterws based on the checkbox state
+            if (newChecked) {
+              setActiveFilters(prev => [...prev, activeOption]);
+            } else {
+              setActiveFilters(prev =>
+                prev.filter(item => item.value !== option.value),
+              );
+            }
+            return { ...option, checked: newChecked };
+          }
+          return option;
+        });
+        return { ...section, options: newOptions };
+      }
+      return section;
+    });
+
+    setFilters(newFilters);
+  };
+
+  const countSelectedOptions = (options: Option[]) =>
+    options.filter(option => option.checked).length;
 
   return (
     <div className="bg-gray-50">
@@ -121,6 +175,7 @@ export default function ProductsOverview() {
             {/* Filter Selectors */}
             <div className="border-b border-gray-200 bg-white pb-4">
               <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+                {/* Sort Dropdown */}
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
@@ -176,11 +231,11 @@ export default function ProductsOverview() {
                         >
                           <Popover.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                             <span>{section.name}</span>
-                            {sectionIdx === 0 ? (
+                            {
                               <span className="ml-1.5 rounded bg-gray-200 px-1.5 py-0.5 text-xs font-semibold tabular-nums text-gray-700">
-                                1
+                                {countSelectedOptions(section.options)}
                               </span>
-                            ) : null}
+                            }
                             <ChevronDownIcon
                               className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                               aria-hidden="true"
@@ -208,7 +263,13 @@ export default function ProductsOverview() {
                                       name={`${section.id}[]`}
                                       defaultValue={option.value}
                                       type="checkbox"
-                                      defaultChecked={option.checked}
+                                      checked={option.checked}
+                                      onChange={() =>
+                                        handleCheckboxChange(
+                                          section.id,
+                                          option.value,
+                                        )
+                                      }
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
@@ -253,7 +314,7 @@ export default function ProductsOverview() {
                         <span>{activeFilter.label}</span>
                         <button
                           type="button"
-                          onClick={() => removeFilter(activeFilter.value)}
+                          onClick={() => handleRemoveFilter(activeFilter.value)}
                           className="ml-1 inline-flex h-4 w-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
                         >
                           <span className="sr-only">
