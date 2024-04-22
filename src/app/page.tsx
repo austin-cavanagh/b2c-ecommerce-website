@@ -1,5 +1,6 @@
 // 'use client';
 
+import HeroParallax from '@/components/home/HereParallax';
 import Hero from '@/components/home/Hero';
 import { getServerSession } from 'next-auth';
 
@@ -67,6 +68,8 @@ export default async function Home() {
 
   return (
     <div className="bg-white">
+      <HeroParallax />
+
       <Hero />
 
       <main>
