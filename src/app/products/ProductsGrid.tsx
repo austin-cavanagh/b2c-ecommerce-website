@@ -1,27 +1,30 @@
 'use client';
 
-import { getProducts, getProductsAction } from '@/actions/getProductsAction';
-// import { products, ProductType } from '@/data/products';
+import { getProductsAction } from '@/actions/getProductsAction';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export default function ProductsGrid() {
-  // const products = await getProducts();
-  // console.log(products[0].imageUrls[0].url);
+type ProductType = {
+  id: string;
+  name: string;
+  shortDescription: string;
+  prices: Array<{ price: number }>;
+  imageUrls: Array<{ imageSrc: string; imageAlt: string }>;
+};
 
-  const [products, setProducts] = useState();
+export default function ProductsGrid() {
+  const [products, setProducts] = useState<ProductType[]>([]);
 
   useEffect(() => {
     async function getProductsData() {
       const productsData = await getProductsAction();
-      console.log(productsData);
       setProducts(productsData);
     }
 
     getProductsData(); // Correctly call the async function inside useEffect
   }, []);
 
-  if (!products?.length) {
+  if (!products.length) {
     return <div>Loading...</div>; // Added loading state for better UX
   }
 
