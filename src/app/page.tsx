@@ -68,11 +68,9 @@ export default async function Home() {
 
   return (
     <div className="bg-white">
-      <HeroParallax />
-
-      {/* <Hero /> */}
-
       <main>
+        <HeroParallax />
+
         {/* Category Section */}
         <section aria-labelledby="category-heading" className="">
           <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">

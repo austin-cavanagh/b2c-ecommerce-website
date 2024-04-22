@@ -49,7 +49,7 @@ export default function HeroParallax() {
   return (
     <div
       ref={ref}
-      className="relative flex h-[300vh]  flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      className="relative flex flex-col self-auto overflow-hidden py-10 antialiased [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
 
@@ -143,7 +143,7 @@ export const ProductCard = ({
           alt={product.title}
         />
       </Link>
-      <div className="pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-80"></div>
+      <div className="pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-50"></div>
       <h2 className="absolute bottom-4 left-4 text-white opacity-0 group-hover/product:opacity-100">
         {product.title}
       </h2>
