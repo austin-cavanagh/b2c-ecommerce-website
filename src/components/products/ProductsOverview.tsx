@@ -11,6 +11,7 @@ const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ];
+
 const filters = [
   {
     id: 'size',
@@ -30,13 +31,13 @@ const filters = [
     options: [
       { value: 'new-arrivals', label: 'All New Arrivals', checked: false },
       { value: 'tees', label: 'Tees', checked: false },
-      { value: 'objects', label: 'Objects', checked: true },
+      { value: 'objects', label: 'Objects', checked: false },
       { value: 'sweatshirts', label: 'Sweatshirts', checked: false },
       { value: 'pants-shorts', label: 'Pants & Shorts', checked: false },
     ],
   },
 ];
-const activeFilters = [{ value: 'objects', label: 'Objects' }];
+
 const products = [
   {
     id: 1,
@@ -81,7 +82,21 @@ const products = [
 ];
 
 export default function ProductsOverview() {
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [activeFilters, setActiveFilters] = useState([
+    { value: 'objects', label: 'Objects' },
+  ]);
+
+  const addFilter = filter => {
+    console.log(filter);
+  };
+
+  // Filter out the clicked filter by its value and update the active filters state
+  const removeFilter = (filterValue: string) => {
+    const newActiveFilters = activeFilters.filter(
+      filter => filter.value !== filterValue,
+    );
+    setActiveFilters(newActiveFilters);
+  };
 
   return (
     <div className="bg-gray-50">
@@ -103,6 +118,7 @@ export default function ProductsOverview() {
               Filters
             </h2>
 
+            {/* Filter Selectors */}
             <div className="border-b border-gray-200 bg-white pb-4">
               <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Menu as="div" className="relative inline-block text-left">
@@ -214,7 +230,7 @@ export default function ProductsOverview() {
               </div>
             </div>
 
-            {/* Active filters */}
+            {/* Active Filters */}
             <div className="bg-gray-100">
               <div className="mx-auto max-w-7xl px-4 py-3 sm:flex sm:items-center sm:px-6 lg:px-8">
                 <h3 className="text-sm font-medium text-gray-500">
@@ -237,6 +253,7 @@ export default function ProductsOverview() {
                         <span>{activeFilter.label}</span>
                         <button
                           type="button"
+                          onClick={() => removeFilter(activeFilter.value)}
                           className="ml-1 inline-flex h-4 w-4 flex-shrink-0 rounded-full p-1 text-gray-400 hover:bg-gray-200 hover:text-gray-500"
                         >
                           <span className="sr-only">
