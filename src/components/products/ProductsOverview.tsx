@@ -4,6 +4,7 @@ import { Fragment, useState } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { classNames } from '@/functions/classNames';
+import ProductsGrid from '@/app/products/ProductsGrid';
 
 type Option = {
   value: string;
@@ -342,7 +343,7 @@ export default function ProductsOverview() {
           </section>
 
           {/* Product grid */}
-          <section
+          {/* <section
             aria-labelledby="products-heading"
             className="mx-auto max-w-2xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:max-w-7xl lg:px-8"
           >
@@ -367,7 +368,9 @@ export default function ProductsOverview() {
                 </a>
               ))}
             </div>
-          </section>
+          </section> */}
+
+          <ProductsGrid />
         </main>
       </div>
     </div>

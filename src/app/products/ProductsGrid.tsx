@@ -1,116 +1,29 @@
-'use server';
+'use client';
 
-import { prisma } from '@/prisma/prisma';
-// const products = [
-//   {
-//     id: 1,
-//     name: 'Teacher Pencil Sign',
-//     sortDescription: 'Short Description',
-//     longDescription: 'Long Description',
-//     imageUrl: [
-//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//       'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//     ],
-//     price: 100,
-//     dimensions: '5x5',
-//     category: 'Test',
-//     craftingTime: 14,
-//     custimizatoinOptions:
-//       'Explanation of what can be changed and what should be specified in directions',
-//   },
-// ];
-
-// const product: ProductType = {
-//   id: 1,
-//   name: 'Teacher Pencil Sign',
-//   shortDescription: 'Short Description how long is',
-//   longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//   category: 'Test',
-//   craftingTime: 14,
-//   customizationOptions:
-//     'Explanation of what can be changed and what should be specified in directions',
-//   prices: [
-//     {
-//       id: 1,
-//       productId: 1,
-//       dimension: '12x12',
-//       price: 1000,
-//     },
-//     {
-//       id: 2,
-//       productId: 2,
-//       dimension: '15x15',
-//       price: 2000,
-//     },
-//     {
-//       id: 3,
-//       productId: 3,
-//       dimension: '20x20',
-//       price: 3000,
-//     },
-//   ],
-//   details: [
-//     {
-//       name: 'Features',
-//       items: [
-//         'Multiple strap configurations',
-//         'Spacious interior with top zip',
-//         'Leather handle and tabs',
-//         'Interior dividers',
-//         'Stainless strap loops',
-//         'Double stitched construction',
-//         'Water-resistant',
-//       ],
-//     },
-//     {
-//       name: 'Shipping',
-//       items: ['Shipping is free for orders above $50'],
-//     },
-//   ],
-//   imageUrls: [
-//     {
-//       image:
-//         'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//       alt: 'Description',
-//     },
-//     {
-//       image:
-//         'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//       alt: 'Description',
-//     },
-//     {
-//       image:
-//         'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//       alt: 'Description',
-//     },
-//     {
-//       image:
-//         'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//       alt: 'Description',
-//     },
-//   ],
-// };
-
+import { getProducts, getProductsAction } from '@/actions/getProductsAction';
 // import { products, ProductType } from '@/data/products';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-export async function getProducts() {
-  // Fetch products from the database
-  const products = await prisma.product.findMany({
-    include: {
-      imageUrls: true, // Assuming you have a relation for imageUrls
-      prices: true, // Assuming you have a relation for prices
-      // Add other relations as needed
-    },
-  });
-
-  return products;
-}
-
-export default async function ProductsGrid() {
-  const products = await getProducts();
+export default function ProductsGrid() {
+  // const products = await getProducts();
   // console.log(products[0].imageUrls[0].url);
+
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    async function getProductsData() {
+      const productsData = await getProductsAction();
+      console.log(productsData);
+      setProducts(productsData);
+    }
+
+    getProductsData(); // Correctly call the async function inside useEffect
+  }, []);
+
+  if (!products?.length) {
+    return <div>Loading...</div>; // Added loading state for better UX
+  }
 
   return (
     <div className="bg-white">
