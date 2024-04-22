@@ -70,7 +70,7 @@ export default async function Home() {
     <div className="bg-white">
       <HeroParallax />
 
-      <Hero />
+      {/* <Hero /> */}
 
       <main>
         {/* Category Section */}

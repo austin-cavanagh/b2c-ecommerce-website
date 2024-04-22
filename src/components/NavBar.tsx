@@ -10,6 +10,7 @@ import {
   UserIcon,
 } from '@heroicons/react/24/outline';
 import SignInButton from './signInButton';
+import ToggleThemeButton from './navbar/ToggleThemeButton';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -137,6 +138,8 @@ function NavBar() {
         </button> */}
 
         <SignInButton />
+
+        <ToggleThemeButton />
       </nav>
 
       {/* Mobile */}

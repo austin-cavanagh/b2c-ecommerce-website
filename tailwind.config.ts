@@ -7,6 +7,7 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    darkMode: 'class',
     extend: {
       width: {
         '22': '5.5rem',
