@@ -1,43 +1,8 @@
 'use client';
 
-import { Fragment, useState } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
-import {
-  ChartBarSquareIcon,
-  Cog6ToothIcon,
-  FolderIcon,
-  GlobeAltIcon,
-  ServerIcon,
-  SignalIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
-import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { classNames } from '@/functions/classNames';
-
-const navigation = [
-  { name: 'Projects', href: '#', icon: FolderIcon, current: false },
-  { name: 'Deployments', href: '#', icon: ServerIcon, current: false },
-  { name: 'Activity', href: '#', icon: SignalIcon, current: false },
-  { name: 'Domains', href: '#', icon: GlobeAltIcon, current: false },
-  { name: 'Usage', href: '#', icon: ChartBarSquareIcon, current: false },
-  { name: 'Settings', href: '#', icon: Cog6ToothIcon, current: true },
-];
-const teams = [
-  { id: 1, name: 'Planetaria', href: '#', initial: 'P', current: false },
-  { id: 2, name: 'Protocol', href: '#', initial: 'P', current: false },
-  { id: 3, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-];
-const secondaryNavigation = [
-  { name: 'Account', href: '#', current: true },
-  { name: 'Notifications', href: '#', current: false },
-  { name: 'Billing', href: '#', current: false },
-  { name: 'Teams', href: '#', current: false },
-  { name: 'Integrations', href: '#', current: false },
-];
+import Link from 'next/link';
 
 export default function AccountInformation() {
-  //   const [sidebarOpen, setSidebarOpen] = useState(false);
-
   return (
     <>
       {/*
@@ -186,23 +151,24 @@ export default function AccountInformation() {
           <main>
             <h1 className="sr-only">Account Settings</h1>
 
+            {/* Navigation Bar */}
             <header className="border-b border-white/5">
-              {/* Secondary navigation */}
               <nav className="flex overflow-x-auto py-4">
                 <ul
                   role="list"
                   className="flex min-w-full flex-none gap-x-6 px-4 text-sm font-semibold leading-6 text-gray-400 sm:px-6 lg:px-8"
                 >
-                  {secondaryNavigation.map(item => (
-                    <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className={item.current ? 'text-indigo-400' : ''}
-                      >
-                        {item.name}
-                      </a>
-                    </li>
-                  ))}
+                  <li>
+                    <Link href="/account/settings" className="text-indigo-400">
+                      Settings
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/account/orders">Orders</Link>
+                  </li>
+                  <li>
+                    <Link href="/account/integrations">Integrations</Link>
+                  </li>
                 </ul>
               </nav>
             </header>
