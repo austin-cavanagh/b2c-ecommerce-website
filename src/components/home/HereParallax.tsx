@@ -10,13 +10,10 @@ import {
 } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { products } from '@/data/heroParallaxImages';
 import { useTheme } from 'next-themes';
+import { firstRow, secondRow, thirdRow } from '@/data/heroParallaxImages';
 
 export default function HeroParallax() {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -66,30 +63,24 @@ export default function HeroParallax() {
         className=""
       >
         <motion.div className="mb-20 flex flex-row-reverse space-x-20 space-x-reverse">
-          {firstRow.map(product => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
+          {firstRow.map((product, index) => (
+            <ProductCard product={product} translate={translateX} key={index} />
           ))}
         </motion.div>
+
         <motion.div className="mb-20 flex  flex-row space-x-20 ">
-          {secondRow.map(product => (
+          {secondRow.map((product, index) => (
             <ProductCard
               product={product}
               translate={translateXReverse}
-              key={product.title}
+              key={index}
             />
           ))}
         </motion.div>
+
         <motion.div className="flex flex-row-reverse space-x-20 space-x-reverse">
-          {thirdRow.map(product => (
-            <ProductCard
-              product={product}
-              translate={translateX}
-              key={product.title}
-            />
+          {thirdRow.map((product, index) => (
+            <ProductCard product={product} translate={translateX} key={index} />
           ))}
         </motion.div>
       </motion.div>

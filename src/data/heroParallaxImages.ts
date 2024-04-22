@@ -1,3 +1,102 @@
+export const firstRow = [
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+];
+
+export const secondRow = [
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+];
+
+export const thirdRow = [
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+  {
+    title: 'Teacher Sticky Note',
+    link: 'http://localhost:3000/products/teacher%20sticky%20note',
+    thumbnail:
+      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  },
+];
+
 export const products = [
   {
     title: 'Moonbeam',
@@ -30,13 +129,13 @@ export const products = [
     thumbnail:
       'https://aceternity.com/images/products/thumbnails/new/editrix.png',
   },
+
   {
     title: 'Pixel Perfect',
     link: 'https://app.pixelperfect.quest',
     thumbnail:
       'https://aceternity.com/images/products/thumbnails/new/pixelperfect.png',
   },
-
   {
     title: 'Algochurn',
     link: 'https://algochurn.com',
@@ -61,13 +160,13 @@ export const products = [
     thumbnail:
       'https://aceternity.com/images/products/thumbnails/new/smartbridge.png',
   },
+
   {
     title: 'Renderwork Studio',
     link: 'https://renderwork.studio',
     thumbnail:
       'https://aceternity.com/images/products/thumbnails/new/renderwork.png',
   },
-
   {
     title: 'Creme Digital',
     link: 'https://cremedigital.com',
