@@ -46,7 +46,7 @@ export default function HeroParallax() {
     springConfig,
   );
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    useTransform(scrollYProgress, [0, 0.2], [-700, 0]),
     springConfig,
   );
   return (
@@ -100,25 +100,16 @@ export default function HeroParallax() {
 export const Header = () => {
   const { theme } = useTheme();
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains('dark');
-    setIsDarkMode(isDark);
-  }, []);
-
-  useEffect(() => {
-    console.log('isDarkMode', isDarkMode);
-  }, [isDarkMode]);
-
   return (
     <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40">
       <h1
-        className={`text-2xl font-bold md:text-7xl ${theme === 'dark' ? 'text-white' : 'text-blue-900'}`}
+        className={`text-2xl font-bold md:text-7xl ${theme === 'dark' ? 'text-white' : 'text-black'}`}
       >
         The Ultimate <br /> development studio
       </h1>
-      <p className="mt-8 max-w-2xl text-base md:text-xl dark:text-neutral-200">
+      <p
+        className={`mt-8 max-w-2xl text-base md:text-xl ${theme === 'dark' ? 'text-neutral-200' : 'text-black'}`}
+      >
         We build beautiful products with the latest technologies and frameworks.
         We are a team of passionate developers and designers that love to build
         amazing products.
