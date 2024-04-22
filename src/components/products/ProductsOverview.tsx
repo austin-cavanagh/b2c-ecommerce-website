@@ -1,102 +1,29 @@
 'use client';
 
 import { Fragment, useState } from 'react';
-import {
-  Dialog,
-  Disclosure,
-  Menu,
-  Popover,
-  Tab,
-  Transition,
-} from '@headlessui/react';
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingCartIcon,
-  UserIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { classNames } from '@/functions/classNames';
 
-const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP'];
-const navigation = {
-  categories: [
-    {
-      name: 'Women',
-      featured: [
-        { name: 'Sleep', href: '#' },
-        { name: 'Swimwear', href: '#' },
-        { name: 'Underwear', href: '#' },
-      ],
-      collection: [
-        { name: 'Everything', href: '#' },
-        { name: 'Core', href: '#' },
-        { name: 'New Arrivals', href: '#' },
-        { name: 'Sale', href: '#' },
-      ],
-      categories: [
-        { name: 'Basic Tees', href: '#' },
-        { name: 'Artwork Tees', href: '#' },
-        { name: 'Bottoms', href: '#' },
-        { name: 'Underwear', href: '#' },
-        { name: 'Accessories', href: '#' },
-      ],
-      brands: [
-        { name: 'Full Nelson', href: '#' },
-        { name: 'My Way', href: '#' },
-        { name: 'Re-Arranged', href: '#' },
-        { name: 'Counterfeit', href: '#' },
-        { name: 'Significant Other', href: '#' },
-      ],
-    },
-    {
-      name: 'Men',
-      featured: [
-        { name: 'Casual', href: '#' },
-        { name: 'Boxers', href: '#' },
-        { name: 'Outdoor', href: '#' },
-      ],
-      collection: [
-        { name: 'Everything', href: '#' },
-        { name: 'Core', href: '#' },
-        { name: 'New Arrivals', href: '#' },
-        { name: 'Sale', href: '#' },
-      ],
-      categories: [
-        { name: 'Artwork Tees', href: '#' },
-        { name: 'Pants', href: '#' },
-        { name: 'Accessories', href: '#' },
-        { name: 'Boxers', href: '#' },
-        { name: 'Basic Tees', href: '#' },
-      ],
-      brands: [
-        { name: 'Significant Other', href: '#' },
-        { name: 'My Way', href: '#' },
-        { name: 'Counterfeit', href: '#' },
-        { name: 'Re-Arranged', href: '#' },
-        { name: 'Full Nelson', href: '#' },
-      ],
-    },
-  ],
-  pages: [
-    { name: 'Company', href: '#' },
-    { name: 'Stores', href: '#' },
-  ],
-};
-const breadcrumbs = [
-  { id: 1, name: 'Objects', href: '#' },
-  { id: 2, name: 'Workspace', href: '#' },
-  { id: 3, name: 'Sale', href: '#' },
-];
 const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
+  { name: 'Newest', href: '#', current: true },
+  { name: 'Oldest', href: '#', current: false },
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ];
 const filters = [
+  {
+    id: 'size',
+    name: 'Size',
+    options: [
+      { value: 'xs', label: 'XS', checked: false },
+      { value: 's', label: 'S', checked: false },
+      { value: 'm', label: 'M', checked: false },
+      { value: 'l', label: 'L', checked: false },
+      { value: 'xl', label: 'XL', checked: false },
+      { value: '2xl', label: '2XL', checked: false },
+    ],
+  },
   {
     id: 'category',
     name: 'Category',
@@ -106,30 +33,6 @@ const filters = [
       { value: 'objects', label: 'Objects', checked: true },
       { value: 'sweatshirts', label: 'Sweatshirts', checked: false },
       { value: 'pants-shorts', label: 'Pants & Shorts', checked: false },
-    ],
-  },
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: false },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-    ],
-  },
-  {
-    id: 'sizes',
-    name: 'Sizes',
-    options: [
-      { value: 'xs', label: 'XS', checked: false },
-      { value: 's', label: 'S', checked: false },
-      { value: 'm', label: 'M', checked: false },
-      { value: 'l', label: 'L', checked: false },
-      { value: 'xl', label: 'XL', checked: false },
-      { value: '2xl', label: '2XL', checked: false },
     ],
   },
 ];
@@ -175,160 +78,23 @@ const products = [
     imageAlt:
       'Hand holding black machined steel mechanical pencil with brass tip and top.',
   },
-  // More products...
 ];
-const footerNavigation = {
-  products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
-  ],
-  company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
-  ],
-  customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
-  ],
-};
 
 export default function ProductsOverview() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   return (
     <div className="bg-gray-50">
       <div>
-        {/* Mobile filter dialog */}
-        <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-          <Dialog
-            as="div"
-            className="relative z-40 sm:hidden"
-            onClose={setMobileFiltersOpen}
-          >
-            <Transition.Child
-              as={Fragment}
-              enter="transition-opacity ease-linear duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity ease-linear duration-300"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <div className="fixed inset-0 bg-black bg-opacity-25" />
-            </Transition.Child>
-
-            <div className="fixed inset-0 z-40 flex">
-              <Transition.Child
-                as={Fragment}
-                enter="transition ease-in-out duration-300 transform"
-                enterFrom="translate-x-full"
-                enterTo="translate-x-0"
-                leave="transition ease-in-out duration-300 transform"
-                leaveFrom="translate-x-0"
-                leaveTo="translate-x-full"
-              >
-                <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
-                  <div className="flex items-center justify-between px-4">
-                    <h2 className="text-lg font-medium text-gray-900">
-                      Filters
-                    </h2>
-                    <button
-                      type="button"
-                      className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
-                      onClick={() => setMobileFiltersOpen(false)}
-                    >
-                      <span className="sr-only">Close menu</span>
-                      <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                  </div>
-
-                  {/* Filters */}
-                  <form className="mt-4">
-                    {filters.map(section => (
-                      <Disclosure
-                        as="div"
-                        key={section.name}
-                        className="border-t border-gray-200 px-4 py-6"
-                      >
-                        {({ open }) => (
-                          <>
-                            <h3 className="-mx-2 -my-3 flow-root">
-                              <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400">
-                                <span className="font-medium text-gray-900">
-                                  {section.name}
-                                </span>
-                                <span className="ml-6 flex items-center">
-                                  <ChevronDownIcon
-                                    className={classNames(
-                                      open ? '-rotate-180' : 'rotate-0',
-                                      'h-5 w-5 transform',
-                                    )}
-                                    aria-hidden="true"
-                                  />
-                                </span>
-                              </Disclosure.Button>
-                            </h3>
-                            <Disclosure.Panel className="pt-6">
-                              <div className="space-y-6">
-                                {section.options.map((option, optionIdx) => (
-                                  <div
-                                    key={option.value}
-                                    className="flex items-center"
-                                  >
-                                    <input
-                                      id={`filter-mobile-${section.id}-${optionIdx}`}
-                                      name={`${section.id}[]`}
-                                      defaultValue={option.value}
-                                      type="checkbox"
-                                      defaultChecked={option.checked}
-                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                    />
-                                    <label
-                                      htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                                      className="ml-3 text-sm text-gray-500"
-                                    >
-                                      {option.label}
-                                    </label>
-                                  </div>
-                                ))}
-                              </div>
-                            </Disclosure.Panel>
-                          </>
-                        )}
-                      </Disclosure>
-                    ))}
-                  </form>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </Dialog>
-        </Transition.Root>
-
         <main>
-          <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
-                Workspace sale
-              </h1>
-              <p className="mt-4 max-w-xl text-sm text-gray-700">
-                Our thoughtfully designed workspace objects are crafted in
-                limited runs. Improve your productivity and organization with
-                these sale items before we run out.
-              </p>
-            </div>
+          {/* Heading */}
+          <div className="py-24 text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              Crafts
+            </h1>
+            <p className="mx-auto mt-4 max-w-3xl text-base text-gray-500">
+              Thoughtfully designed objects for the workspace, home, and travel.
+            </p>
           </div>
 
           {/* Filters */}
@@ -384,15 +150,7 @@ export default function ProductsOverview() {
                   </Transition>
                 </Menu>
 
-                <button
-                  type="button"
-                  className="inline-block text-sm font-medium text-gray-700 hover:text-gray-900 sm:hidden"
-                  onClick={() => setMobileFiltersOpen(true)}
-                >
-                  Filters
-                </button>
-
-                <div className="hidden sm:block">
+                <div className="sm:block">
                   <div className="flow-root">
                     <Popover.Group className="-mx-4 flex items-center divide-x divide-gray-200">
                       {filters.map((section, sectionIdx) => (
@@ -533,122 +291,6 @@ export default function ProductsOverview() {
             </div>
           </section>
         </main>
-
-        <footer
-          aria-labelledby="footer-heading"
-          className="border-t border-gray-200 bg-white"
-        >
-          <h2 id="footer-heading" className="sr-only">
-            Footer
-          </h2>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="py-20">
-              <div className="grid grid-cols-1 md:grid-flow-col md:auto-rows-min md:grid-cols-12 md:gap-x-8 md:gap-y-16">
-                {/* Image section */}
-                <div className="col-span-1 md:col-span-2 lg:col-start-1 lg:row-start-1">
-                  <img
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt=""
-                    className="h-8 w-auto"
-                  />
-                </div>
-
-                {/* Sitemap sections */}
-                <div className="col-span-6 mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-8 md:col-start-3 md:row-start-1 md:mt-0 lg:col-span-6 lg:col-start-2">
-                  <div className="grid grid-cols-1 gap-y-12 sm:col-span-2 sm:grid-cols-2 sm:gap-x-8">
-                    <div>
-                      <h3 className="text-sm font-medium text-gray-900">
-                        Products
-                      </h3>
-                      <ul role="list" className="mt-6 space-y-6">
-                        {footerNavigation.products.map(item => (
-                          <li key={item.name} className="text-sm">
-                            <a
-                              href={item.href}
-                              className="text-gray-500 hover:text-gray-600"
-                            >
-                              {item.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-medium text-gray-900">
-                        Company
-                      </h3>
-                      <ul role="list" className="mt-6 space-y-6">
-                        {footerNavigation.company.map(item => (
-                          <li key={item.name} className="text-sm">
-                            <a
-                              href={item.href}
-                              className="text-gray-500 hover:text-gray-600"
-                            >
-                              {item.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-gray-900">
-                      Customer Service
-                    </h3>
-                    <ul role="list" className="mt-6 space-y-6">
-                      {footerNavigation.customerService.map(item => (
-                        <li key={item.name} className="text-sm">
-                          <a
-                            href={item.href}
-                            className="text-gray-500 hover:text-gray-600"
-                          >
-                            {item.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Newsletter section */}
-                <div className="mt-12 md:col-span-8 md:col-start-3 md:row-start-2 md:mt-0 lg:col-span-4 lg:col-start-9 lg:row-start-1">
-                  <h3 className="text-sm font-medium text-gray-900">
-                    Sign up for our newsletter
-                  </h3>
-                  <p className="mt-6 text-sm text-gray-500">
-                    The latest deals and savings, sent to your inbox weekly.
-                  </p>
-                  <form className="mt-2 flex sm:max-w-md">
-                    <label htmlFor="email-address" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="email-address"
-                      type="text"
-                      autoComplete="email"
-                      required
-                      className="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                    />
-                    <div className="ml-4 flex-shrink-0">
-                      <button
-                        type="submit"
-                        className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                      >
-                        Sign up
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-gray-100 py-10 text-center">
-              <p className="text-sm text-gray-500">
-                &copy; 2021 Your Company, Inc. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </footer>
       </div>
     </div>
   );
