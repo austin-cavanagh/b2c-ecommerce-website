@@ -1,27 +1,35 @@
+'use client';
+
+import { useTheme } from 'next-themes';
 import React, { useEffect, useState } from 'react';
 
 export default function ToggleThemeButton() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { theme, setTheme } = useTheme();
 
-  //   useEffect(() => {
-  //     document.body.classList.add('dark');
-  //   }, []);
-
-  useEffect(() => {
-    console.log('isDarkMode', isDarkMode);
-  }, [isDarkMode]);
+  const isLightMode = theme === 'light';
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark', !isDarkMode);
+    // Toggles the theme between 'light' and 'dark'
+    setTheme(isLightMode ? 'dark' : 'light');
   };
+
+  //   Below adjusts based on system preferences
+  //   const { theme, setTheme, systemTheme } = useTheme();
+
+  //   const toggleTheme = () => {
+  //     setTheme(
+  //       theme === 'dark' || (theme === 'system' && systemTheme === 'dark')
+  //         ? 'light'
+  //         : 'dark',
+  //     );
+  //   };
 
   return (
     <label className="relative flex h-10 w-10 cursor-pointer items-center justify-center rounded-full">
       <input
         type="checkbox"
         className="input-class absolute h-full w-full cursor-pointer opacity-0"
-        checked={!isDarkMode}
+        checked={theme === 'dark' ? false : true}
         onChange={toggleTheme}
       />
 

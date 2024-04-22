@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -11,6 +11,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { products } from '@/data/heroParallaxImages';
+import { useTheme } from 'next-themes';
 
 export default function HeroParallax() {
   const firstRow = products.slice(0, 5);
@@ -97,9 +98,24 @@ export default function HeroParallax() {
 }
 
 export const Header = () => {
+  const { theme } = useTheme();
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains('dark');
+    setIsDarkMode(isDark);
+  }, []);
+
+  useEffect(() => {
+    console.log('isDarkMode', isDarkMode);
+  }, [isDarkMode]);
+
   return (
-    <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4  py-20 md:py-40">
-      <h1 className="text-2xl font-bold md:text-7xl dark:text-white">
+    <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40">
+      <h1
+        className={`text-2xl font-bold md:text-7xl ${theme === 'dark' ? 'text-white' : 'text-blue-900'}`}
+      >
         The Ultimate <br /> development studio
       </h1>
       <p className="mt-8 max-w-2xl text-base md:text-xl dark:text-neutral-200">
