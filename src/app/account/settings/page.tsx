@@ -1,4 +1,20 @@
+import { changePassword } from '@/actions/changePassword';
+import { deleteAccount } from '@/actions/deleteAccount';
+import { updatePersonalInformation } from '@/actions/updatePersonalInformation';
+
 export default function SettingsRoute() {
+  const handlePersonalInformation = () => {
+    console.log('personal information');
+  };
+
+  const handleChangePassword = () => {
+    console.log('change password');
+  };
+
+  const handleDeleteAccount = () => {
+    console.log('delete account');
+  };
+
   return (
     <div className="divide-y divide-white/5">
       {/* Personal Information */}
@@ -12,7 +28,7 @@ export default function SettingsRoute() {
           </p>
         </div>
 
-        <form className="md:col-span-2">
+        <form className="md:col-span-2" action={updatePersonalInformation}>
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
             <div className="col-span-full">
               <label
@@ -75,7 +91,7 @@ export default function SettingsRoute() {
           </p>
         </div>
 
-        <form className="md:col-span-2">
+        <form className="md:col-span-2" action={changePassword}>
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:max-w-xl sm:grid-cols-6">
             <div className="col-span-full">
               <label
@@ -156,12 +172,12 @@ export default function SettingsRoute() {
           </p>
         </div>
 
-        <form className="flex items-start md:col-span-2">
+        <form className="flex items-start md:col-span-2" action={deleteAccount}>
           <button
             type="submit"
             className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
           >
-            Yes, delete my account
+            Delete my account
           </button>
         </form>
       </div>

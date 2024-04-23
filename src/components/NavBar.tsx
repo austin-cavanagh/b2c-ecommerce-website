@@ -109,7 +109,7 @@ function NavBar() {
         </div> */}
 
         <Link
-          href={'/account'}
+          href={'/account/settings'}
           className="-m-2 p-2 text-gray-400 hover:text-gray-500"
         >
           <span className="sr-only">Account</span>
