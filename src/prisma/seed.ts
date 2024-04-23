@@ -58,7 +58,7 @@ async function main() {
   // await addProducts();
   // await addCategories();
   // await clearCategories();
-  // await clearOrders();
+  await clearOrders();
 }
 
 async function clearUserData() {

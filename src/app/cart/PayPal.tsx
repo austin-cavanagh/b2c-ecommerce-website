@@ -6,10 +6,10 @@ import {
   PayPalButtons,
   ReactPayPalScriptOptions,
 } from '@paypal/react-paypal-js';
-import { createPayPalOrder } from '../../functions/createPayPalOrder';
 import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { CartItem } from '@prisma/client';
 import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
+import { createPayPalOrder } from '@/actions/createPayPalOrder';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {

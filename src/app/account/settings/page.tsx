@@ -177,7 +177,7 @@ export default function SettingsRoute() {
             type="submit"
             className="rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400"
           >
-            Delete my account
+            Delete account
           </button>
         </form>
       </div>
