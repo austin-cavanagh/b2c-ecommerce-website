@@ -1,8 +1,17 @@
 import { changePassword } from '@/actions/changePassword';
 import { deleteAccount } from '@/actions/deleteAccount';
 import { updatePersonalInformation } from '@/actions/updatePersonalInformation';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth';
+import { useTheme } from 'next-themes';
 
-export default function SettingsRoute() {
+export default async function SettingsRoute() {
+  // const { theme, setTheme } = useTheme();
+
+  const session = await getServerSession(authOptions);
+  const name = session?.user?.name;
+  const email = session?.user?.email;
+
   const handlePersonalInformation = () => {
     console.log('personal information');
   };
@@ -20,10 +29,10 @@ export default function SettingsRoute() {
       {/* Personal Information */}
       <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
         <div>
-          <h2 className="text-base font-semibold leading-7 text-white">
+          <h2 className="text-base font-semibold leading-7 text-white dark:text-red-800">
             Personal Information
           </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-400">
+          <p className="mt-1 text-sm leading-6 text-gray-400 dark:text-blue-900">
             Use a permanent address where you can receive mail.
           </p>
         </div>
@@ -43,7 +52,7 @@ export default function SettingsRoute() {
                   name="full-name"
                   type="text"
                   autoComplete="name"
-                  placeholder="Austin Cavanagh"
+                  placeholder={name || ''}
                   className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -62,8 +71,28 @@ export default function SettingsRoute() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="austin.cavanagh.cs@gmail.com"
+                  placeholder={email || ''}
                   className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Email
+              </label>
+              <div className="mt-2">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  defaultValue="you@example.com"
+                  disabled
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500 disabled:ring-gray-200 sm:text-sm sm:leading-6"
+                  placeholder="you@example.com"
                 />
               </div>
             </div>

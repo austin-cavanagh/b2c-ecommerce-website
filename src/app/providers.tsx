@@ -1,7 +1,7 @@
 'use client';
 
 import { SessionProvider } from 'next-auth/react';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { ThemeProvider } from 'next-themes';
 
 type Props = {
@@ -10,14 +10,17 @@ type Props = {
 
 function Providers({ children }: Props) {
   return (
-    <ThemeProvider
-      attribute="class"
-      defaultTheme="light"
-      // enableSystem={true}
-      // enableColorScheme={true}
-    >
-      <SessionProvider>{children}</SessionProvider>
-    </ThemeProvider>
+    <SessionProvider>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="light"
+        enableSystem={false} // Uncomment if you want to support system theme preference
+        // enableColorScheme
+        // disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
 

@@ -18,7 +18,7 @@ function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
+    <html lang="en" className="" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
           <div className="mx-auto flex min-h-screen max-w-7xl flex-col sm:px-6 lg:px-8">
