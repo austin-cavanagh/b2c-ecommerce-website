@@ -10,6 +10,8 @@ import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { CartItem } from '@prisma/client';
 import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
 import { createPayPalOrder } from '@/actions/createPayPalOrder';
+import { updatePayPalOrder } from '@/actions/prisma/updatePayPalOrder';
+import { redirect } from 'next/navigation';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {
@@ -83,7 +85,6 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
           onApprove={async (data, actions) => {
             try {
               const response = await capturePayPalOrder(data.orderID);
-              const status = response.status;
               const orderData = response.message;
 
               // Three cases to handle:
@@ -105,19 +106,9 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
               } else {
                 // (3) Successful transaction -> Show confirmation or thank you message
                 // Or go to another URL:  actions.redirect('thank_you.html');
-
-                // orderStatus
-                // paymentStatus
-                // shippingAddress
-                // providerOrderId
-
+                // updatePayPalOrder(orderData);
                 const transaction =
                   orderData.purchase_units[0].payments.captures[0];
-                console.log('TRANSACTION', transaction);
-
-                const shippingAddress = orderData.purchase_units[0].shipping;
-                console.log('SHIPPING_ADDRESS', shippingAddress);
-
                 setMessage(
                   `Transaction ${transaction.status}: ${transaction.id}. See console for all available details`,
                 );
@@ -126,21 +117,6 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
                   orderData,
                   JSON.stringify(orderData, null, 2),
                 );
-
-                // If the transaction is successful store the order data in prisma
-                const orderId = orderData.purchase_units[0].reference_id;
-                console.log('ORDER_ID', orderId);
-
-                const paymentProviderOrderId = orderData.id;
-                console.log('PROVIDER_ORDER_ID', paymentProviderOrderId);
-
-                const orderStatus =
-                  orderData.status === 'COMPLETED' ? 'paid' : 'pending';
-                console.log('ORDER_STATUS', orderStatus);
-
-                const paymentStatus =
-                  transaction.status === 'COMPLETED' ? 'paid' : 'pending';
-                console.log('PAYMENT_STATUS', paymentStatus);
               }
             } catch (error) {
               console.error(error);

@@ -4,6 +4,7 @@ import 'server-only';
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
 import { prisma } from '@/prisma/prisma';
+import { updatePayPalOrder } from './prisma/updatePayPalOrder';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
@@ -12,40 +13,12 @@ export async function capturePayPalOrder(orderID: string) {
     // jsonResponse is the order data
     const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
 
-    if (jsonResponse.status === 'COMPLETED') {
-      const orderId = jsonResponse.purchase_units[0].reference_id;
-      const providerOrderId = jsonResponse.id;
-
-      const transaction = jsonResponse.purchase_units[0].payments.captures[0];
-      const paymentStatus =
-        transaction.status === 'COMPLETED' ? 'paid' : 'pending';
-
-      // Shipping will only be inside the purchase_units array if we collect it
-      const shippingAddress = jsonResponse.purchase_units[0].shipping;
-      // console.log('SHIPPING_ADDRESS', shippingAddress);
-
-      // Begin a transaction to update both the order and its items atomically
-      await prisma.$transaction(async prisma => {
-        // Update the order
-        const updatedOrder = await prisma.order.update({
-          where: { orderId: orderId },
-          data: {
-            paymentStatus: paymentStatus,
-            providerOrderId: providerOrderId,
-            shippingAddress: shippingAddress
-              ? JSON.stringify(shippingAddress)
-              : undefined,
-          },
-        });
-
-        // Update the order items
-        await prisma.orderItem.updateMany({
-          where: { orderId: updatedOrder.id },
-          data: {
-            orderItemStatus: 'crafting',
-          },
-        });
-      });
+    // If the transaction is successul update the order in prisma
+    if (
+      jsonResponse.status === 'COMPLETED' &&
+      jsonResponse.purchase_units[0].payments.captures[0].status === 'COMPLETED'
+    ) {
+      updatePayPalOrder(jsonResponse);
     }
 
     return {
