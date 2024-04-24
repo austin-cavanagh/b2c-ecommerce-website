@@ -62,9 +62,7 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
 
   // Create order and order items in prisma
   const { newOrder, newOrderItems } = await createOrderInPrisma(
-    session.user.userId,
-    session.user.cartId,
-    'paypal',
+    'PayPal',
     deliveryMethod,
   );
 
