@@ -49,7 +49,7 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
   const [message, setMessage] = useState('');
 
   return (
-    <div className="App">
+    <div className="">
       <PayPalScriptProvider options={initialOptions}>
         <PayPalButtons
           style={{

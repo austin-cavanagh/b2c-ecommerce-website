@@ -8,7 +8,7 @@ import { CartItem, ImageUrl, Product } from '@prisma/client';
 import { classNames } from '@/functions/classNames';
 import { createCheckoutSession } from '@/actions/createCheckoutSession';
 import Link from 'next/link';
-import PayPal from '@/app/cart/PayPal';
+import PayPal from '@/components/cart/PayPal';
 
 export type DeliveryMethod = {
   id: number;

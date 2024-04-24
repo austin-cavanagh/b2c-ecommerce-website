@@ -1,6 +1,6 @@
 'use server';
 import 'server-only';
-import { PayPalCartItem } from './PayPal';
+import { PayPalCartItem } from '../../components/cart/PayPal';
 
 // import express from 'express';
 // import fetch from 'node-fetch';

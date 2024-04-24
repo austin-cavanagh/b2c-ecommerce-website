@@ -3,11 +3,8 @@ import { deleteAccount } from '@/actions/deleteAccount';
 import { updatePersonalInformation } from '@/actions/updatePersonalInformation';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getServerSession } from 'next-auth';
-import { useTheme } from 'next-themes';
 
 export default async function SettingsRoute() {
-  // const { theme, setTheme } = useTheme();
-
   const session = await getServerSession(authOptions);
   const name = session?.user?.name;
   const email = session?.user?.email;

@@ -4,7 +4,7 @@ import { Fragment, useState } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { classNames } from '@/functions/classNames';
-import ProductsGrid from '@/app/products/ProductsGrid';
+import ProductsGrid from '@/components/products/ProductsGrid';
 import Pagination from './Pagination';
 
 type Option = {
@@ -155,7 +155,7 @@ export default function ProductsOverview() {
     options.filter(option => option.checked).length;
 
   return (
-    <div className="bg-gray-50">
+    <div className="">
       <div>
         <main>
           {/* Heading */}
@@ -175,7 +175,7 @@ export default function ProductsOverview() {
             </h2>
 
             {/* Filter Selectors */}
-            <div className="border-b border-gray-200 bg-white pb-4">
+            <div className="border-b border-gray-200 pb-4">
               <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Sort Dropdown */}
                 <Menu as="div" className="relative inline-block text-left">
@@ -294,7 +294,7 @@ export default function ProductsOverview() {
             </div>
 
             {/* Active Filters */}
-            <div className="bg-gray-100">
+            <div className="">
               <div className="mx-auto max-w-7xl px-4 py-3 sm:flex sm:items-center sm:px-6 lg:px-8">
                 <h3 className="text-sm font-medium text-gray-500">
                   Filters

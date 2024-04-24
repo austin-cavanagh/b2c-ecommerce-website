@@ -18,7 +18,7 @@ export default async function OrdersRoute() {
   // console.log('ORDERS', orders[0]);
 
   return (
-    <div className="bg-white">
+    <div className="">
       <div className="py-16 sm:py-24">
         {/* Header */}
         {/* <div className="mx-auto max-w-7xl sm:px-2 lg:px-8">
