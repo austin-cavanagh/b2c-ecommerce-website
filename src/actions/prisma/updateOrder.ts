@@ -105,17 +105,18 @@ export type Address = {
   [key: string]: string;
 };
 
+export type ShippingAddress = {
+  address: {
+    [key: string]: string | null;
+  };
+};
+
 export async function updateOrder(
   orderId: string,
   providerOrderId: string,
-  shippingAddress: Address | undefined | null,
-  name: string | undefined | null,
+  shippingAddress: ShippingAddress | undefined | null,
 ) {
   try {
-    // const orderId = orderData.purchase_units[0].reference_id;
-    // const providerOrderId = orderData.id;
-    // const shippingAddress = orderData.purchase_units[0].shipping;
-
     // Begin a transaction to update both the order and its items atomically
     await prisma.$transaction(async prisma => {
       // Update the order

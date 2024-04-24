@@ -1,5 +1,9 @@
 'use server';
-import { Address, updateOrder } from '@/actions/prisma/updateOrder';
+import {
+  Address,
+  ShippingAddress,
+  updateOrder,
+} from '@/actions/prisma/updateOrder';
 import 'server-only';
 
 import Stripe from 'stripe';
@@ -39,31 +43,31 @@ export async function POST(request: Request, response: Response) {
   switch (event.type) {
     case 'checkout.session.completed':
       const checkoutSession = event.data.object;
-      console.log(checkoutSession);
+      console.log('WTF', checkoutSession);
 
-      const customerDetails = checkoutSession.customer_details;
-      const totalAmount = checkoutSession.amount_total;
+      // const customerDetails = checkoutSession.customer_details;
+      // const totalAmount = checkoutSession.amount_total;
 
-      if (checkoutSession.shipping_address_collection) {
-        // delivery
-      } else {
-        // pickup
-      }
+      // if (checkoutSession.shipping_address_collection) {
+      //   // delivery
+      // } else {
+      //   // pickup
+      // }
 
       // Update the incomplete order in the database with the completed transation details
-      const orderId = '1234';
+      const orderId = checkoutSession.metadata.orderId;
       const providerOrderId = checkoutSession.id;
-      console.log('PROVIDER_ORDER_ID', providerOrderId);
-      const shippingAddress = checkoutSession.customer_details?.address as
-        | Address
-        | undefined
-        | null;
+      // console.log('PROVIDER_ORDER_ID', providerOrderId);
+
+      const shippingAddress: ShippingAddress | null =
+        checkoutSession.shipping_details;
+
       console.log('SHIPPING_ADDRESS', shippingAddress);
       const name: string | undefined | null =
         checkoutSession.customer_details?.name;
-      console.log('NAME', name);
+      // console.log('NAME', name);
 
-      await updateOrder(orderId, providerOrderId, shippingAddress, name);
+      await updateOrder(orderId, providerOrderId, shippingAddress);
 
       break;
     // case 'payment_intent.succeeded':

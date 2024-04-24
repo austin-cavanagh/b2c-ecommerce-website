@@ -136,12 +136,7 @@ export default function Example() {
                   </div>
                 </div>
 
-                {/* <div className="border-t border-gray-200 px-4 py-6 sm:px-6 lg:p-8">
-                  <h4 className="sr-only">Status</h4>
-                  <p className="text-sm font-medium text-gray-900">
-                    {product.status} on{' '}
-                    <time dateTime={product.datetime}>{product.date}</time>
-                  </p>
+                <div className="border-t border-gray-200 px-4 py-6 sm:px-6 lg:p-8">
                   <div className="mt-6" aria-hidden="true">
                     <div className="overflow-hidden rounded-full bg-gray-200">
                       <div
@@ -159,7 +154,7 @@ export default function Example() {
                           'text-center',
                         )}
                       >
-                        Processing
+                        Crafting
                       </div>
                       <div
                         className={classNames(
@@ -167,7 +162,7 @@ export default function Example() {
                           'text-center',
                         )}
                       >
-                        Shipped
+                        Ready for pickup
                       </div>
                       <div
                         className={classNames(
@@ -175,11 +170,11 @@ export default function Example() {
                           'text-right',
                         )}
                       >
-                        Delivered
+                        Picked up
                       </div>
                     </div>
                   </div>
-                </div> */}
+                </div>
               </div>
             ))}
           </div>
