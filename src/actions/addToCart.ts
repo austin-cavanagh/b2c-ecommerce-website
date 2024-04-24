@@ -31,7 +31,7 @@ export default async function addToCart(formData: FormData) {
   const formObject = Object.fromEntries(formData);
   for (const [label, value] of Object.entries(formObject)) {
     if (!standardData.includes(label)) {
-      customizationOptions.push({ [label]: value });
+      customizationOptions.push({ [label]: value as string });
     }
   }
 
@@ -55,7 +55,7 @@ export default async function addToCart(formData: FormData) {
     price: productPrice.price,
     stripePriceId: productPrice.stripePriceId,
     dimensions: dimensions,
-    customizations: JSON.stringify(customizationOptions),
+    customizations: customizationOptions,
   };
 
   try {

@@ -204,7 +204,7 @@ export default async function OrdersRoute() {
                               <>
                                 {/* Crafting Icon */}
                                 <EllipsisHorizontalCircleIcon
-                                  className="h-5 w-5 text-yellow-400"
+                                  className="h-5 w-5 text-green-500"
                                   aria-hidden="true"
                                 />
                                 <p className="ml-2 text-sm font-medium text-gray-500">

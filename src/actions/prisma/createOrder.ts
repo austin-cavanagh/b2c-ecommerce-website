@@ -47,6 +47,8 @@ export async function createOrderInPrisma(
       return acc + item.price;
     }, 0);
 
+    console.log('CART:', cart);
+
     // Prepare data for the order
     const orderData = {
       orderId: orderId,
