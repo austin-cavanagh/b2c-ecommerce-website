@@ -51,13 +51,15 @@ export async function POST(request: Request, response: Response) {
       }
 
       // Update the incomplete order in the database with the completed transation details
-      const orderId = 1234;
+      const orderId = '1234';
       const providerOrderId = checkoutSession.id;
       console.log('PROVIDER_ORDER_ID', providerOrderId);
       const shippingAddress = checkoutSession.customer_details?.address;
       console.log('SHIPPING_ADDRESS', shippingAddress);
+      const name = checkoutSession.customer_details?.name;
+      console.log('NAME', name);
 
-      await updateOrder(orderId);
+      await updateOrder(orderId, providerOrderId, shippingAddress, name);
 
       break;
     case 'payment_intent.succeeded':
