@@ -10,7 +10,7 @@ import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { CartItem } from '@prisma/client';
 import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
 import { createPayPalOrder } from '@/actions/createPayPalOrder';
-import { updatePayPalOrder } from '@/actions/prisma/updatePayPalOrder';
+import { updatePayPalOrder } from '@/actions/prisma/updateOrder';
 import { redirect } from 'next/navigation';
 
 // Renders errors or successfull transactions on the screen.

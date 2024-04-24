@@ -92,11 +92,23 @@ type PayPalOrder = {
   }>;
 };
 
-export async function updatePayPalOrder(orderData: PayPalOrder) {
+type FlexibleAddress = {
+  [key: string]: string | null;
+};
+
+// orderId
+// providerOrderId
+// shippingAddress
+
+export async function updateOrder(
+  orderId: string,
+  providerOrderId: string,
+  shippingAddress: FlexibleAddress,
+) {
   try {
-    const orderId = orderData.purchase_units[0].reference_id;
-    const providerOrderId = orderData.id;
-    const shippingAddress = orderData.purchase_units[0].shipping;
+    // const orderId = orderData.purchase_units[0].reference_id;
+    // const providerOrderId = orderData.id;
+    // const shippingAddress = orderData.purchase_units[0].shipping;
 
     // Begin a transaction to update both the order and its items atomically
     await prisma.$transaction(async prisma => {

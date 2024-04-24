@@ -1,4 +1,5 @@
 'use server';
+import { updateOrder } from '@/actions/prisma/updateOrder';
 import 'server-only';
 
 import Stripe from 'stripe';
@@ -48,6 +49,15 @@ export async function POST(request: Request, response: Response) {
       } else {
         // pickup
       }
+
+      // Update the incomplete order in the database with the completed transation details
+      const orderId = 1234;
+      const providerOrderId = checkoutSession.id;
+      console.log('PROVIDER_ORDER_ID', providerOrderId);
+      const shippingAddress = checkoutSession.customer_details?.address;
+      console.log('SHIPPING_ADDRESS', shippingAddress);
+
+      await updateOrder(orderId);
 
       break;
     case 'payment_intent.succeeded':

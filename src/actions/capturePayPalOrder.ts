@@ -4,7 +4,7 @@ import 'server-only';
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
 import { prisma } from '@/prisma/prisma';
-import { updatePayPalOrder } from './prisma/updatePayPalOrder';
+import { updatePayPalOrder } from './prisma/updateOrder';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
