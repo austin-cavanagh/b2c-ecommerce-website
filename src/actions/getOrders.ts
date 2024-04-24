@@ -13,7 +13,12 @@ export async function getOrders() {
     const orders = await prisma.order.findMany({
       where: {
         userId: userId,
-        // DO NOT INCLUDE PENDING
+        paymentStatus: {
+          not: 'pending', // Exclude orders where paymentStatus is "pending"
+        },
+      },
+      orderBy: {
+        craftingStarted: 'desc',
       },
       include: {
         // Optional: Include user details if needed

@@ -1,9 +1,6 @@
 'use server';
 import 'server-only';
 
-import { Fragment } from 'react';
-import { Menu, Transition } from '@headlessui/react';
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 import {
   ArrowRightCircleIcon,
   CheckCircleIcon,
@@ -15,7 +12,6 @@ import MobilePopupMenu from '@/components/orders/MobilePopupMenu';
 
 export default async function OrdersRoute() {
   const orders = await getOrders();
-  // console.log('ORDERS', orders[0]);
 
   return (
     <div className="">
@@ -44,9 +40,6 @@ export default async function OrdersRoute() {
                 >
                   <h3 className="sr-only">
                     Order placed on{' '}
-                    {/* <time dateTime={order.createdDatetime}>
-                      {order.createdDate}
-                    </time> */}
                     <time dateTime={new Date(order.createdAt).toISOString()}>
                       {new Date(order.createdAt).toLocaleDateString(undefined, {
                         year: 'numeric',
@@ -95,68 +88,6 @@ export default async function OrdersRoute() {
 
                     {/* Mobile Popup Menu */}
                     <MobilePopupMenu orderNumber={order.orderId} />
-
-                    {/* <Menu
-                      as="div"
-                      className="relative flex justify-end lg:hidden"
-                    >
-                      <div className="flex items-center">
-                        <Menu.Button className="-m-2 flex items-center p-2 text-gray-400 hover:text-gray-500">
-                          <span className="sr-only">
-                            Options for order {order.number}
-                          </span>
-                          <EllipsisVerticalIcon
-                            className="h-6 w-6"
-                            aria-hidden="true"
-                          />
-                        </Menu.Button>
-                      </div>
-
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-bottom-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <div className="py-1">
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href={order.href}
-                                  className={classNames(
-                                    active
-                                      ? 'bg-gray-100 text-gray-900'
-                                      : 'text-gray-700',
-                                    'block px-4 py-2 text-sm',
-                                  )}
-                                >
-                                  View
-                                </a>
-                              )}
-                            </Menu.Item>
-                            <Menu.Item>
-                              {({ active }) => (
-                                <a
-                                  href={order.invoiceHref}
-                                  className={classNames(
-                                    active
-                                      ? 'bg-gray-100 text-gray-900'
-                                      : 'text-gray-700',
-                                    'block px-4 py-2 text-sm',
-                                  )}
-                                >
-                                  Invoice
-                                </a>
-                              )}
-                            </Menu.Item>
-                          </div>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu> */}
 
                     {/* View Order & View Invoice Buttons */}
                     {/* <div className="hidden lg:col-span-2 lg:flex lg:items-center lg:justify-end lg:space-x-4">
@@ -218,10 +149,6 @@ export default async function OrdersRoute() {
                             </p>
                           </div>
                         </div>
-
-                        {/* Crafting */}
-                        {/* Shipped */}
-                        {/* Delivered */}
 
                         <div className="mt-6 sm:flex sm:justify-between">
                           <div className="flex items-center">
