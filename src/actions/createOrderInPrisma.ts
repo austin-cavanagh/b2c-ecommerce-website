@@ -3,14 +3,25 @@ import 'server-only';
 
 import { CartItem } from '@prisma/client';
 import { prisma } from '@/prisma/prisma';
+import { getServerSession } from 'next-auth';
+import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 export async function createOrderInPrisma(
-  userId: number,
-  cartId: number,
   paymentProvider: string,
   deliveryMethod: string,
 ) {
   try {
+    const session = (await getServerSession(authOptions)) as ExtendSession;
+
+    // Check if session and session.user are defined
+    if (!session.user?.userId || !session.user.cartId) {
+      console.error('createOrderInPrisma: Session or user data is undefined');
+      throw new Error('Unauthorized: Session or user data is missing');
+    }
+
+    // Now it's safe to assume session.user exists
+    const { userId, cartId } = session.user;
+
     // Get cart items with the users cart id
     const cart = await prisma.cartItem.findMany({
       where: {

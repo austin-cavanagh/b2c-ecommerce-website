@@ -6,6 +6,7 @@ import 'server-only';
 import { CartItemIds } from '@/components/cart/Cart';
 import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
+import { createOrderInPrisma } from './createOrderInPrisma';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -49,6 +50,9 @@ export async function createCheckoutSession(
   try {
     const session = await stripe.checkout.sessions.create(sessionConfig);
     sessionUrl = session.url;
+
+    // Store the incomplete order in the database
+    await createOrderInPrisma('Stripe', deliveryMethod);
   } catch (error) {
     if (
       typeof error === 'object' &&
