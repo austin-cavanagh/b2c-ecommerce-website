@@ -3,6 +3,8 @@ import 'server-only';
 
 import { prisma } from '@/prisma/prisma';
 import { redirect } from 'next/navigation';
+import { getServerSession } from 'next-auth';
+import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 type PayPalAddress = {
   country_code: string;
@@ -116,6 +118,9 @@ export async function updateOrder(
   providerOrderId: string,
   shippingAddress: ShippingAddress | undefined | null,
 ) {
+  const session: ExtendSession | null = await getServerSession(authOptions);
+  const cartId = session?.user?.cartId;
+
   try {
     // Begin a transaction to update both the order and its items atomically
     await prisma.$transaction(async prisma => {
@@ -137,6 +142,11 @@ export async function updateOrder(
           orderItemStatus: 'crafting',
         },
       });
+    });
+
+    // Clear the shopping cart after the transaction is successful
+    await prisma.cartItem.deleteMany({
+      where: { cartId },
     });
   } catch (error) {
     console.error(
