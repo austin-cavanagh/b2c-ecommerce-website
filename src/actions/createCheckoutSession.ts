@@ -6,7 +6,7 @@ import 'server-only';
 import { CartItemIds } from '@/components/cart/Cart';
 import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
-import { createOrderInPrisma } from './createOrderInPrisma';
+import { createOrderInPrisma } from './prisma/createOrder';
 import { getServerSession } from 'next-auth';
 import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
 

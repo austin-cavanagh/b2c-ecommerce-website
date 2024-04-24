@@ -5,6 +5,7 @@ import { CartItem } from '@prisma/client';
 import { prisma } from '@/prisma/prisma';
 import { getServerSession } from 'next-auth';
 import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { generateOrderId } from '@/functions/generateOrderId';
 
 export async function createOrderInPrisma(
   paymentProvider: string,
@@ -36,13 +37,8 @@ export async function createOrderInPrisma(
       },
     });
 
-    // Create order id based on a 14 digit date with a random 4 digit number at the end
-    const timestamp = new Date()
-      .toISOString()
-      .replace(/[-:.T]/g, '')
-      .slice(0, 14);
-    const randomPart = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;
-    const orderId = `${timestamp}-${randomPart}`;
+    // Create a randomized orderId
+    const orderId = generateOrderId();
 
     // Calculate cost for tax, shipping, and items
     const taxCost: number = 0;

@@ -9,7 +9,7 @@ import {
   ExtendSession,
   authOptions,
 } from '../app/api/auth/[...nextauth]/route';
-import { createOrderInPrisma } from './createOrderInPrisma';
+import { createOrderInPrisma } from './prisma/createOrder';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
