@@ -10,7 +10,6 @@ import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { CartItem } from '@prisma/client';
 import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
 import { createPayPalOrder } from '@/actions/createPayPalOrder';
-import { updatePayPalOrder } from '@/actions/prisma/updateOrder';
 import { redirect } from 'next/navigation';
 
 // Renders errors or successfull transactions on the screen.
@@ -31,6 +30,13 @@ export type PayPalProps = {
 export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
   const deliveryMethodRef = useRef<string>(deliveryMethod);
   const cartRef = useRef<ExtendedCartItem[]>(cart);
+  const [completedOrder, setCompletedOrder] = useState(false);
+
+  useEffect(() => {
+    if (completedOrder) {
+      redirect('account/orders');
+    }
+  }, [completedOrder]);
 
   useEffect(() => {
     deliveryMethodRef.current = deliveryMethod;
@@ -106,17 +112,21 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
               } else {
                 // (3) Successful transaction -> Show confirmation or thank you message
                 // Or go to another URL:  actions.redirect('thank_you.html');
+
                 // updatePayPalOrder(orderData);
-                const transaction =
-                  orderData.purchase_units[0].payments.captures[0];
-                setMessage(
-                  `Transaction ${transaction.status}: ${transaction.id}. See console for all available details`,
-                );
-                console.log(
-                  'Capture result',
-                  orderData,
-                  JSON.stringify(orderData, null, 2),
-                );
+
+                // const transaction =
+                //   orderData.purchase_units[0].payments.captures[0];
+                // setMessage(
+                //   `Transaction ${transaction.status}: ${transaction.id}. See console for all available details`,
+                // );
+                // console.log(
+                //   'Capture result',
+                //   orderData,
+                //   JSON.stringify(orderData, null, 2),
+                // );
+
+                setCompletedOrder(true);
               }
             } catch (error) {
               console.error(error);
