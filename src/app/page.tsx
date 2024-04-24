@@ -67,7 +67,7 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <div className="bg-white">
+    <div className="">
       <main>
         <HeroParallax />
 

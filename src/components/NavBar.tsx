@@ -15,18 +15,14 @@ import ToggleThemeButton from './navbar/ToggleThemeButton';
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Products', href: '/products' },
-  // { name: 'About', href: '/about-me' },
   { name: 'Contact', href: '/contact' },
-  // { name: 'Shopping Cart', href: '/shopping-cart' },
-  // { name: 'Account Information', href: '/account-information' },
-  // { name: 'Sign In', href: '/sign-in' },
 ];
 
 function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="px-6 py-6 sm:p-6">
+    <header className="border-b border-gray-300 px-6 py-6 sm:p-6 dark:border-gray-700">
       {/* PC */}
       <nav
         className="flex items-center justify-between gap-x-6"
@@ -49,7 +45,7 @@ function NavBar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-base font-semibold leading-6 text-gray-900"
+                className="text-base font-semibold leading-6 text-gray-900 dark:text-white"
               >
                 {item.name}
               </Link>
