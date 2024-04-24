@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 import { ImageUrl, Product, ProductPrice } from '@prisma/client';
-import addToCart from '@/actions/addToCart';
+import addToCart from '@/actions/prisma/addToCart';
 import { ExtendedProduct } from '@/actions/getProduct';
 import { useSession } from 'next-auth/react';
 

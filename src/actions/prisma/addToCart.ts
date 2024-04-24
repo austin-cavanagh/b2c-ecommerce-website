@@ -59,7 +59,7 @@ export default async function addToCart(formData: FormData) {
   };
 
   try {
-    const newCartItem = await prisma.cartItem.create({
+    await prisma.cartItem.create({
       data: cartItem,
     });
 

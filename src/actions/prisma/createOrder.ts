@@ -12,10 +12,10 @@ export async function createOrderInPrisma(
   deliveryMethod: string,
 ) {
   try {
-    const session = (await getServerSession(authOptions)) as ExtendSession;
+    const session: ExtendSession | null = await getServerSession(authOptions);
 
     // Check if session and session.user are defined
-    if (!session.user?.userId || !session.user.cartId) {
+    if (!session?.user?.userId || !session.user.cartId) {
       console.error('createOrderInPrisma: Session or user data is undefined');
       throw new Error('Unauthorized: Session or user data is missing');
     }
@@ -37,6 +37,8 @@ export async function createOrderInPrisma(
       },
     });
 
+    console.log('CART:', cart);
+
     // Create a randomized orderId
     const orderId = generateOrderId();
 
@@ -46,8 +48,6 @@ export async function createOrderInPrisma(
     const itemsCost: number = cart.reduce((acc: number, item: CartItem) => {
       return acc + item.price;
     }, 0);
-
-    console.log('CART:', cart);
 
     // Prepare data for the order
     const orderData = {
@@ -69,6 +69,7 @@ export async function createOrderInPrisma(
       price: item.price,
       stripePriceId: item.stripePriceId,
       orderItemStatus: 'pending',
+      customizations: item.customizations || [],
     }));
 
     // Create order and order items in a transation
