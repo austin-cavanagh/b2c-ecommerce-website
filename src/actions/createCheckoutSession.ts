@@ -1,10 +1,10 @@
 // STRIPE DOCS - STRIPE HOSTED PAGE
 
 'use server';
-import { CartItemIds } from '@/components/cart/Cart';
-import { redirect } from 'next/navigation';
 import 'server-only';
 
+import { CartItemIds } from '@/components/cart/Cart';
+import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
