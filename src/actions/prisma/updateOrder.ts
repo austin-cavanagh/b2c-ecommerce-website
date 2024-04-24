@@ -101,15 +101,15 @@ type FlexibleAddress = {
 // shippingAddress
 // name
 
-type Address = {
+export type Address = {
   [key: string]: string;
 };
 
 export async function updateOrder(
   orderId: string,
   providerOrderId: string,
-  shippingAddress: Address | undefined,
-  name: string,
+  shippingAddress: Address | undefined | null,
+  name: string | undefined | null,
 ) {
   try {
     // const orderId = orderData.purchase_units[0].reference_id;
@@ -125,7 +125,7 @@ export async function updateOrder(
           paymentStatus: 'paid',
           providerOrderId: providerOrderId,
           craftingStarted: new Date(),
-          shippingAddress: shippingAddress,
+          shippingAddress: shippingAddress || undefined,
         },
       });
 

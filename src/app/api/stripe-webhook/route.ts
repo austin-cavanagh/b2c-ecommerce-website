@@ -1,5 +1,5 @@
 'use server';
-import { updateOrder } from '@/actions/prisma/updateOrder';
+import { Address, updateOrder } from '@/actions/prisma/updateOrder';
 import 'server-only';
 
 import Stripe from 'stripe';
@@ -54,18 +54,22 @@ export async function POST(request: Request, response: Response) {
       const orderId = '1234';
       const providerOrderId = checkoutSession.id;
       console.log('PROVIDER_ORDER_ID', providerOrderId);
-      const shippingAddress = checkoutSession.customer_details?.address;
+      const shippingAddress = checkoutSession.customer_details?.address as
+        | Address
+        | undefined
+        | null;
       console.log('SHIPPING_ADDRESS', shippingAddress);
-      const name = checkoutSession.customer_details?.name;
+      const name: string | undefined | null =
+        checkoutSession.customer_details?.name;
       console.log('NAME', name);
 
       await updateOrder(orderId, providerOrderId, shippingAddress, name);
 
       break;
-    case 'payment_intent.succeeded':
-      const paymentIntentSucceeded = event.data.object;
-      // Then define and call a function to handle the event payment_intent.succeeded
-      break;
+    // case 'payment_intent.succeeded':
+    //   const paymentIntentSucceeded = event.data.object;
+    //   // Then define and call a function to handle the event payment_intent.succeeded
+    //   break;
     default:
     //   console.log(`Unhandled event type ${event.type}`);
   }
