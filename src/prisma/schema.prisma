@@ -80,6 +80,7 @@ model Order {
   taxCost         Int
   shippingCost    Int
   totalCost       Int
+  deliveryMethod  String
   shippingAddress Json?
   craftingStarted DateTime?
   shippedAt       DateTime?
@@ -91,16 +92,15 @@ model Order {
 }
 
 model OrderItem {
-  id             Int     @id @default(autoincrement())
-  name           String
-  orderId        Int
-  productId      Int
-  price          Int
-  stripePriceId  String
-  orderStatus    String
-  deliveryMethod String
-  order          Order   @relation(fields: [orderId], references: [id])
-  product        Product @relation(fields: [productId], references: [id])
+  id              Int     @id @default(autoincrement())
+  name            String
+  orderId         Int
+  productId       Int
+  price           Int
+  stripePriceId   String
+  orderItemStatus String
+  order           Order   @relation(fields: [orderId], references: [id])
+  product         Product @relation(fields: [productId], references: [id])
 }
 
 model Product {

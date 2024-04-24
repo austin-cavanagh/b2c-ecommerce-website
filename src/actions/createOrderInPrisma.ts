@@ -49,6 +49,7 @@ export async function createOrderInPrisma(
       taxCost: taxCost,
       shippingCost: shippingCost,
       totalCost: itemsCost + shippingCost,
+      deliveryMethod: deliveryMethod,
     };
 
     // Prepare data for the order items
@@ -58,8 +59,7 @@ export async function createOrderInPrisma(
       productId: item.productId,
       price: item.price,
       stripePriceId: item.stripePriceId,
-      orderStatus: 'pending',
-      deliveryMethod: deliveryMethod,
+      orderItemStatus: 'pending',
     }));
 
     // Create order and order items in a transation

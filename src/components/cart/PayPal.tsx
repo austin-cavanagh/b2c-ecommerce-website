@@ -113,19 +113,7 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
 
                 const transaction =
                   orderData.purchase_units[0].payments.captures[0];
-
-                const orderId = orderData.purchase_units[0].reference_id;
-
-                const paymentProviderOrderId = orderData.id;
-                console.log('PROVIDER_ORDER_ID', paymentProviderOrderId);
-
-                const orderStatus =
-                  orderData.status === 'COMPLETED' ? 'processing' : 'pending';
-                console.log('ORDER_STATUS', orderStatus);
-
-                const paymentStatus =
-                  orderData.status === 'COMPLETED' ? 'paid' : 'pending';
-                console.log('PAYMENT_STATUS', paymentStatus);
+                console.log('TRANSACTION', transaction);
 
                 const shippingAddress = orderData.purchase_units[0].shipping;
                 console.log('SHIPPING_ADDRESS', shippingAddress);
@@ -138,6 +126,21 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
                   orderData,
                   JSON.stringify(orderData, null, 2),
                 );
+
+                // If the transaction is successful store the order data in prisma
+                const orderId = orderData.purchase_units[0].reference_id;
+                console.log('ORDER_ID', orderId);
+
+                const paymentProviderOrderId = orderData.id;
+                console.log('PROVIDER_ORDER_ID', paymentProviderOrderId);
+
+                const orderStatus =
+                  orderData.status === 'COMPLETED' ? 'paid' : 'pending';
+                console.log('ORDER_STATUS', orderStatus);
+
+                const paymentStatus =
+                  transaction.status === 'COMPLETED' ? 'paid' : 'pending';
+                console.log('PAYMENT_STATUS', paymentStatus);
               }
             } catch (error) {
               console.error(error);

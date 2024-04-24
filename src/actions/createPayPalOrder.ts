@@ -68,9 +68,6 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
     deliveryMethod,
   );
 
-  // CREATE ORDER IN PRISMA
-  // CREATE ORDER IN PRISMA
-
   // Calculate the cost of all items in the cart
   const itemsTotal = newOrderItems.reduce((acc, item) => {
     const itemPrice = item.price;
@@ -88,10 +85,6 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
   // Calculate the total price
   const totalCostString = ((itemsTotal + shippingCost) / 100).toFixed(2);
 
-  // CALCULATE COSTS
-  // CALCULATE COSTS
-  // CALCULATE COSTS
-
   // Create an array of items to pass to paypal for itemized checkout
   const itemsArray = newOrderItems.map(item => {
     return {
@@ -103,10 +96,6 @@ async function createOrder(cart: ExtendedCartItem[], deliveryMethod: string) {
       },
     };
   });
-
-  // CALCULATE COSTS
-  // CALCULATE COSTS
-  // CALCULATE COSTS
 
   const payload = {
     intent: 'CAPTURE',
