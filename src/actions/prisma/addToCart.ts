@@ -31,7 +31,10 @@ export default async function addToCart(formData: FormData) {
   const formObject = Object.fromEntries(formData);
   for (const [label, value] of Object.entries(formObject)) {
     if (!standardData.includes(label)) {
-      customizationOptions.push({ [label]: value as string });
+      customizationOptions.push({
+        label: label as string,
+        value: value as string,
+      });
     }
   }
 

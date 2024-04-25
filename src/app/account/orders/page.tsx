@@ -142,11 +142,14 @@ export default async function OrdersRoute() {
                                 ${(item.price / 100).toFixed(2)}
                               </p>
                             </div>
+
                             {/* Item Description */}
                             <p className="hidden text-gray-500 sm:mt-2 sm:block">
                               This is a placeholder because I have not decided
                               if I want the desctiption
                             </p>
+
+                            {/* Item Details Dropdown */}
                           </div>
                         </div>
 
