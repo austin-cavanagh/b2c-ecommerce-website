@@ -125,42 +125,12 @@ export default function Cart({ cart }: CartProps) {
                             </Link>
                           </h4>
 
-                          {/* BREAK INTO OWN FUNCTION */}
+                          {/* Item Details Dropdown */}
                           <ItemDetailsDropdown
                             itemId={item.id}
                             customizations={item.customizations}
                             dimensions={item.dimensions}
                           />
-
-                          {/* Item Details Dropdown */}
-                          {/* <div className="text-right">
-                            <button
-                              onClick={() => toggleCustomizations(item.id)}
-                              className="mt-2 flex items-center text-xs text-gray-500"
-                              aria-expanded={visibleCustomizations[item.id]}
-                            >
-                              {visibleCustomizations[item.id] ? (
-                                <ChevronDownIcon className="mr-2 h-4 w-4" />
-                              ) : (
-                                <ChevronUpIcon className="mr-2 h-4 w-4" />
-                              )}
-                              Details
-                            </button>
-                          </div> */}
-
-                          {/* Item Details List */}
-                          {/* {visibleCustomizations[item.id] ? (
-                            <ul className="ml-6 mt-1 space-y-1 text-xs text-gray-500">
-                              <li>{`- Dimensions: ${item.dimensions}`}</li>
-                              {item.customizations.map(
-                                (customization, index) => (
-                                  <li key={index}>
-                                    {`- ${customization.label}: ${customization.value}`}
-                                  </li>
-                                ),
-                              )}
-                            </ul>
-                          ) : null} */}
                         </div>
 
                         {/* Price */}

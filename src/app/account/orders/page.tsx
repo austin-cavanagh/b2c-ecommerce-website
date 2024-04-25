@@ -9,9 +9,15 @@ import {
 import { getOrders } from '@/actions/getOrders';
 import Link from 'next/link';
 import MobilePopupMenu from '@/components/orders/MobilePopupMenu';
+import {
+  Customization,
+  ItemDetailsDropdown,
+} from '@/components/cart/ItemDetailsDropdown';
 
 export default async function OrdersRoute() {
   const orders = await getOrders();
+
+  console.log('ORDERS', orders[0].orderItems[0]);
 
   return (
     <div className="">
@@ -150,6 +156,13 @@ export default async function OrdersRoute() {
                             </p>
 
                             {/* Item Details Dropdown */}
+                            <ItemDetailsDropdown
+                              itemId={item.id}
+                              customizations={
+                                item.customizations as Customization[]
+                              }
+                              dimensions={'10x10x10'}
+                            />
                           </div>
                         </div>
 

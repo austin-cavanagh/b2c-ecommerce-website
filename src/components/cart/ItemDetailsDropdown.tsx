@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 import { useState } from 'react';
 
@@ -12,8 +14,8 @@ export type Customization = {
 
 export type ItemDetailsDropdownProps = {
   itemId: number;
-  customizations: Customization[];
   dimensions: string;
+  customizations: Customization[];
 };
 
 export function ItemDetailsDropdown({
