@@ -55,10 +55,10 @@ async function main() {
   // await clearCartItems();
   // await clearProducts();
   // await clearUserData();
-  // await addProducts();
+  await addProducts();
   // await addCategories();
   // await clearCategories();
-  await clearOrders();
+  // await clearOrders();
 }
 
 async function clearUserData() {
@@ -70,93 +70,97 @@ async function clearUserData() {
 }
 
 async function addProducts() {
-  // console.log(productsData);
-  for (const product of productsData) {
-    // Find or create categories
-    const categoryIds = [];
+  try {
+    // console.log(productsData);
+    for (const product of productsData) {
+      // Find or create categories
+      const categoryIds = [];
 
-    // Create categories for products
-    for (const categoryName of product.categories) {
-      const category =
-        (await prisma.category.findUnique({
-          where: { name: categoryName },
-        })) ||
-        (await prisma.category.create({
-          data: { name: categoryName },
-        }));
-      categoryIds.push(category.id);
-    }
+      // Create categories for products
+      for (const categoryName of product.categories) {
+        const category =
+          (await prisma.category.findUnique({
+            where: { name: categoryName },
+          })) ||
+          (await prisma.category.create({
+            data: { name: categoryName },
+          }));
+        categoryIds.push(category.id);
+      }
 
-    // Create stripe product to get product id
-    const stripeProduct = await stripe.products.create({
-      name: product.name,
-      description: product.shortDescription,
-      images: [product.imageUrls[0].imageSrc],
-    });
-
-    // Initialize an array to hold price creation promises
-    let priceCreatePromises: Promise<PriceCreationResult>[] = [];
-
-    // Create a price id for each dimension we are offering for the product
-    // Assuming product.prices is an array where each item has dimension and price properties
-    product.prices.forEach((priceInfo: PriceInfo) => {
-      // Create a Stripe price for each product variant
-      const priceCreatePromise = stripe.prices
-        .create({
-          product: stripeProduct.id,
-          unit_amount: priceInfo.price,
-          currency: 'usd',
-        })
-        .then((stripePrice: { id: string }) => {
-          // Return an object containing the necessary price information
-          // Including the Stripe price ID and product dimension
-          return {
-            dimension: priceInfo.dimension,
-            price: priceInfo.price,
-            stripePriceId: stripePrice.id,
-          };
-        });
-
-      priceCreatePromises.push(priceCreatePromise);
-    });
-
-    // Wait for all Stripe prices to be created
-    const pricesWithStripeIds = await Promise.all(priceCreatePromises);
-
-    // Create products
-    const createdProduct = await prisma.product.create({
-      data: {
+      // Create stripe product to get product id
+      const stripeProduct = await stripe.products.create({
         name: product.name,
-        shortDescription: product.shortDescription,
-        longDescription: product.longDescription,
-        craftingTime: product.craftingTime,
-        customizationOptions: product.customizationOptions,
-        stripeId: stripeProduct.id,
-        prices: {
-          create: pricesWithStripeIds.map(price => ({
-            dimension: price.dimension,
-            price: price.price,
-            stripePriceId: price.stripePriceId,
-          })),
-        },
-        imageUrls: {
-          create: product.imageUrls.map((imageUrl: ImageUrlType) => ({
-            imageSrc: imageUrl.imageSrc,
-            imageAlt: imageUrl.imageAlt,
-          })),
-        },
-      },
-    });
+        description: product.shortDescription,
+        images: [product.imageUrls[0].imageSrc],
+      });
 
-    // Associate product with categories
-    for (const categoryId of categoryIds) {
-      await prisma.productCategory.create({
+      // Initialize an array to hold price creation promises
+      let priceCreatePromises: Promise<PriceCreationResult>[] = [];
+
+      // Create a price id for each dimension we are offering for the product
+      // Assuming product.prices is an array where each item has dimension and price properties
+      product.prices.forEach((priceInfo: PriceInfo) => {
+        // Create a Stripe price for each product variant
+        const priceCreatePromise = stripe.prices
+          .create({
+            product: stripeProduct.id,
+            unit_amount: priceInfo.price,
+            currency: 'usd',
+          })
+          .then((stripePrice: { id: string }) => {
+            // Return an object containing the necessary price information
+            // Including the Stripe price ID and product dimension
+            return {
+              dimension: priceInfo.dimension,
+              price: priceInfo.price,
+              stripePriceId: stripePrice.id,
+            };
+          });
+
+        priceCreatePromises.push(priceCreatePromise);
+      });
+
+      // Wait for all Stripe prices to be created
+      const pricesWithStripeIds = await Promise.all(priceCreatePromises);
+
+      // Create products
+      const createdProduct = await prisma.product.create({
         data: {
-          productId: createdProduct.id,
-          categoryId: categoryId,
+          name: product.name,
+          shortDescription: product.shortDescription,
+          longDescription: product.longDescription,
+          craftingTime: product.craftingTime,
+          customizationOptions: product.customizationOptions,
+          stripeId: stripeProduct.id,
+          prices: {
+            create: pricesWithStripeIds.map(price => ({
+              dimension: price.dimension,
+              price: price.price,
+              stripePriceId: price.stripePriceId,
+            })),
+          },
+          imageUrls: {
+            create: product.imageUrls.map((imageUrl: ImageUrlType) => ({
+              imageSrc: imageUrl.imageSrc,
+              imageAlt: imageUrl.imageAlt,
+            })),
+          },
         },
       });
+
+      // Associate product with categories
+      for (const categoryId of categoryIds) {
+        await prisma.productCategory.create({
+          data: {
+            productId: createdProduct.id,
+            categoryId: categoryId,
+          },
+        });
+      }
     }
+  } catch (error) {
+    console.error('ERROR IN SEED');
   }
 
   console.log('Added products');
@@ -185,8 +189,8 @@ async function clearProducts() {
         console.log(`Deactivated Stripe price with ID: ${price.id}`);
       }
 
-      await stripe.products.del(product.stripeId);
-      console.log(`Deleted Stripe product with ID: ${product.stripeId}`);
+      // await stripe.products.del(product.stripeId);
+      // console.log(`Deleted Stripe product with ID: ${product.stripeId}`);
     } catch (error) {
       console.error(
         `Error deleting Stripe product with ID: ${product.stripeId}`,
