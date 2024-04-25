@@ -4,6 +4,7 @@ import { getPageItems } from '@/actions/getPageItems';
 import { getProductsAction } from '@/actions/getProductsAction';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { ParallaxScrollGrid } from './ParallaxScrollGrid';
 
 type ProductType = {
   id: string;
@@ -73,9 +74,24 @@ export default function ProductsGrid() {
     return <div>Loading...</div>;
   }
 
+  const images = [
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+  ];
+
   return (
     <div className="">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      {/* <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
           Products
         </h2>
@@ -98,10 +114,8 @@ export default function ProductsGrid() {
                 <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
-                      {/* <a href={product.href}> */}
                       <span aria-hidden="true" className="absolute inset-0" />
                       {product.name}
-                      {/* </a> */}
                     </h3>
                     <p className="mt-1 text-sm text-gray-500">
                       {product.shortDescription}
@@ -115,11 +129,14 @@ export default function ProductsGrid() {
             </Link>
           ))}
         </div>
-      </div>
+      </div> */}
 
+      <ParallaxScrollGrid images={images} />
+
+      {/* Load Products Button */}
       <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button>
 
-      <nav
+      {/* <nav
         className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6"
         aria-label="Pagination"
       >
@@ -153,7 +170,7 @@ export default function ProductsGrid() {
             Next
           </button>
         </div>
-      </nav>
+      </nav> */}
     </div>
   );
 }
