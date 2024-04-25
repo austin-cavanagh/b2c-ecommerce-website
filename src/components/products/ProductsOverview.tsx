@@ -347,7 +347,7 @@ export default function ProductsOverview() {
           <ProductsGrid />
 
           {/* Pagination */}
-          <Pagination />
+          {/* <Pagination /> */}
         </main>
       </div>
     </div>

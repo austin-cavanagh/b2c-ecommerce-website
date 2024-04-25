@@ -1,27 +1,38 @@
 'use server';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import 'server-only';
 
-export async function getPageItems(page: number, limit: number) {
-  const offset = (page - 1) * limit;
+export async function getPageItems(pageNumber: number, itemsPerPage: number) {
+  const offset = (pageNumber - 1) * itemsPerPage;
 
   try {
     const products = await prisma.product.findMany({
       skip: offset,
-      take: limit,
+      take: itemsPerPage,
+      include: {
+        imageUrls: true, // Assuming you have a relation for imageUrls
+        prices: true, // Assuming you have a relation for prices
+        // Add other relations as needed
+      },
     });
+
     const totalProducts = await prisma.product.count();
 
     return {
       data: products,
-      currentPage: page,
-      totalPages: Math.ceil(totalProducts / limit),
+      pageNumber: pageNumber,
+      totalPages: Math.ceil(totalProducts / itemsPerPage),
       totalProducts: totalProducts,
     };
   } catch (error) {
-    console.error(
-      'getPageItems.ts: Error getting page items from the database:',
-      error,
-    );
-    throw new Error(error);
+    if (error instanceof PrismaClientKnownRequestError) {
+      // Handle specific known errors
+      console.error('Specific Prisma error:', error.message);
+      throw new Error(`Database error: ${error.message}`);
+    } else {
+      // Handle generic errors
+      console.error('getPageItems.ts: Unexpected error:', error);
+      throw new Error('An unexpected error occurred');
+    }
   }
 }
