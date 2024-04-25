@@ -23,34 +23,15 @@ export default function ProductsGrid() {
 
   useEffect(() => {
     async function getProductsData() {
-      // const productsData = await getProductsAction();
-
-      // console.log('PRODUCT_DATA', productsData);
-
-      // const pageItems = await getPageItems(1, 12);
-      // console.log('PAGE_ITEMS:', pageItems);
-
-      // setProducts(productsData);
-
-      // NEW
-      // const data = await getPageItems(pageNumber, itemsPerPage);
-
-      // setPageNumber(data.pageNumber);
-      // setTotalPages(data.totalPages);
-      // setTotalProducts(data.totalProducts);
-      // setProducts(data.data);
-
       updatePage(pageNumber);
     }
 
-    getProductsData(); // Correctly call the async function inside useEffect
+    getProductsData();
   }, []);
 
   // PAGINATION
   // PAGINATION
   // PAGINATION
-
-  // const totalPages = Math.ceil(100 / 8);
 
   const updatePage = async (newPageNumber: number) => {
     const data = await getPageItems(newPageNumber, itemsPerPage);
@@ -60,34 +41,16 @@ export default function ProductsGrid() {
     setProducts(data.data);
   };
 
-  const handlePrevious = async () => {
-    // const data = await getPageItems(pageNumber - 1, itemsPerPage);
-
-    // setPageNumber(data.pageNumber);
-    // setTotalPages(data.totalPages);
-    // setTotalProducts(data.totalProducts);
-    // setProducts(data.data);
-
-    // console.log('PREV_DATA:', data);
-
+  const handlePreviousPage = async () => {
     updatePage(pageNumber - 1);
   };
 
-  const handleNext = async () => {
-    // const data = await getPageItems(pageNumber + 1, itemsPerPage);
-
-    // setPageNumber(data.pageNumber);
-    // setTotalPages(data.totalPages);
-    // setTotalProducts(data.totalProducts);
-    // setProducts(data.data);
-
-    // console.log('NEXT_DATA:', data.data);
-
+  const handleNextPage = async () => {
     updatePage(pageNumber + 1);
   };
 
   if (!products.length) {
-    return <div>Loading...</div>; // Added loading state for better UX
+    return <div>Loading...</div>;
   }
 
   return (
@@ -146,7 +109,7 @@ export default function ProductsGrid() {
             </span>{' '}
             to{' '}
             <span className="font-medium">
-              {/* {Math.min(pageNumber * itemsPerPage, totalProducts)} */}
+              {Math.min(pageNumber * itemsPerPage, totalProducts || 0)}
             </span>{' '}
             of <span className="font-medium">{totalProducts}</span> results
           </p>
@@ -154,14 +117,14 @@ export default function ProductsGrid() {
 
         <div className="flex flex-1 justify-between sm:justify-end">
           <button
-            onClick={handlePrevious}
+            onClick={handlePreviousPage}
             disabled={pageNumber === 1}
             className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
           >
             Previous
           </button>
           <button
-            onClick={handleNext}
+            onClick={handleNextPage}
             disabled={pageNumber === totalPages}
             className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
           >
