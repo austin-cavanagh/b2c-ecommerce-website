@@ -74,6 +74,12 @@ export default function ProductsGrid() {
     return <div>Loading...</div>;
   }
 
+  const images1 = products.map(product => {
+    return product.imageUrls[0];
+  });
+
+  console.log(images1);
+
   const images = [
     'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
     'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
@@ -86,7 +92,7 @@ export default function ProductsGrid() {
     'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
     'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
     'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-    'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    // 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   ];
 
   return (
@@ -131,7 +137,7 @@ export default function ProductsGrid() {
         </div>
       </div> */}
 
-      <ParallaxScrollGrid images={images} />
+      <ParallaxScrollGrid images={images1} />
 
       {/* Load Products Button */}
       <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button>

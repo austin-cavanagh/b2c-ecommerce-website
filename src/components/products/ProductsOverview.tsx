@@ -57,7 +57,7 @@ export default function ProductsOverview() {
       <div>
         <main>
           {/* Heading */}
-          <div className="py-24 text-center">
+          <div className="pt-24 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               Crafts
             </h1>
@@ -67,7 +67,7 @@ export default function ProductsOverview() {
           </div>
 
           {/* Filters */}
-          <Filters />
+          {/* <Filters /> */}
 
           {/* Products Grid */}
           <ProductsGrid />

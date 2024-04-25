@@ -134,8 +134,8 @@ model ProductPrice {
 model ImageUrl {
   id        Int     @id @default(autoincrement())
   productId Int
-  imageSrc  String
-  imageAlt  String
+  src       String
+  alt       String
   product   Product @relation(fields: [productId], references: [id])
 }
 

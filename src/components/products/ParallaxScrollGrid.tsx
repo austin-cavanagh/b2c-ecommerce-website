@@ -1,15 +1,21 @@
 'use client';
+
 import { useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { cn } from '@/functions/cn';
 
+export type ImageObject = {
+  src: string;
+  alt: string;
+};
+
 export function ParallaxScrollGrid({
   images,
   className,
 }: {
-  images: string[];
+  images: ImageObject[];
   className?: string;
 }) {
   //   const gridRef = useRef<any>(null);
@@ -18,25 +24,38 @@ export function ParallaxScrollGrid({
   //     offset: ['start start', 'end start'], // remove this if your container is not fixed height
   //   });
 
+  console.log('IMAGES:', images);
+
   const { scrollYProgress } = useScroll(); // Using global scroll context
 
   const translateFirst = useTransform(scrollYProgress, [0, 1], [0, -200]);
   const translateSecond = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const translateThird = useTransform(scrollYProgress, [0, 1], [0, -200]);
 
-  const third = Math.ceil(images.length / 3);
-  const firstPart = images.slice(0, third);
-  const secondPart = images.slice(third, 2 * third);
-  const thirdPart = images.slice(2 * third);
+  // Calculate images per row
+  const baseCount = Math.floor(images.length / 3);
+  const extra = images.length % 3;
+
+  // Determine the number of images in each row
+  const firstPartCount = baseCount + (extra > 0 ? 1 : 0);
+  const secondPartCount = baseCount;
+  const thirdPartCount = baseCount + (extra > 1 ? 1 : 0);
+
+  const firstPart = images.slice(0, firstPartCount);
+  const secondPart = images.slice(
+    firstPartCount,
+    firstPartCount + secondPartCount,
+  );
+  const thirdPart = images.slice(firstPartCount + secondPartCount);
 
   return (
     <div className={cn('w-full overflow-hidden', className)}>
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-10 py-40 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 px-10 pt-24 md:grid-cols-2 lg:grid-cols-3">
         <div className="grid gap-10">
-          {firstPart.map((src, idx) => (
+          {firstPart.map((image, idx) => (
             <motion.div style={{ y: translateFirst }} key={idx}>
               <Image
-                src={src}
+                src={image.src}
                 height="400"
                 width="400"
                 alt="Image"
@@ -45,11 +64,11 @@ export function ParallaxScrollGrid({
             </motion.div>
           ))}
         </div>
-        <div className="grid gap-10">
-          {secondPart.map((src, idx) => (
+        <div className="space-y-10">
+          {secondPart.map((image, idx) => (
             <motion.div style={{ y: translateSecond }} key={idx}>
               <Image
-                src={src}
+                src={image.src}
                 height="400"
                 width="400"
                 alt="Image"
@@ -59,10 +78,10 @@ export function ParallaxScrollGrid({
           ))}
         </div>
         <div className="grid gap-10">
-          {thirdPart.map((src, idx) => (
+          {thirdPart.map((image, idx) => (
             <motion.div style={{ y: translateThird }} key={idx}>
               <Image
-                src={src}
+                src={image.src}
                 height="400"
                 width="400"
                 alt="Image"
