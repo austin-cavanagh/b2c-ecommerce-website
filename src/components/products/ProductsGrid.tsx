@@ -1,5 +1,6 @@
 'use client';
 
+import { getPageItems } from '@/actions/getPageItems';
 import { getProductsAction } from '@/actions/getProductsAction';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -18,6 +19,11 @@ export default function ProductsGrid() {
   useEffect(() => {
     async function getProductsData() {
       const productsData = await getProductsAction();
+
+      // (page, limit)
+      const pageItems = await getPageItems(4, 12);
+      console.log('PAGE_ITEMS:', pageItems);
+
       setProducts(productsData);
     }
 
