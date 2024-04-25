@@ -23,7 +23,8 @@ export default function ProductsGrid() {
 
   useEffect(() => {
     async function getProductsData() {
-      updatePage(pageNumber);
+      // updatePage(pageNumber);
+      handleLoadItems(pageNumber);
     }
 
     getProductsData();
@@ -32,6 +33,10 @@ export default function ProductsGrid() {
   // PAGINATION
   // PAGINATION
   // PAGINATION
+
+  // OLD SOLUTION
+  // OLD SOLUTION
+  // OLD SOLUTION
 
   const updatePage = async (newPageNumber: number) => {
     const data = await getPageItems(newPageNumber, itemsPerPage);
@@ -47,6 +52,21 @@ export default function ProductsGrid() {
 
   const handleNextPage = async () => {
     updatePage(pageNumber + 1);
+  };
+
+  // OLD SOLUTION
+  // OLD SOLUTION
+  // OLD SOLUTION
+
+  const handleLoadItems = async (newPageNumber: number) => {
+    const data = await getPageItems(newPageNumber, itemsPerPage);
+    const newProducts = data.data;
+
+    setProducts(products => {
+      return [...products, ...newProducts];
+    });
+    setPageNumber(newPageNumber);
+    setTotalProducts(data.totalProducts);
   };
 
   if (!products.length) {
@@ -96,6 +116,8 @@ export default function ProductsGrid() {
           ))}
         </div>
       </div>
+
+      <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button>
 
       <nav
         className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6"
