@@ -9,8 +9,8 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from '@heroicons/react/24/outline';
-import ToggleThemeButton from './navbar/ToggleThemeButton';
-import SignInButton from './SignInButton';
+import ToggleThemeButton from './ToggleThemeButton';
+import SignInButton from '../SignInButton';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -22,7 +22,7 @@ function NavBar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white px-6 py-6 sm:p-6 dark:border-gray-700">
+    <header className="px-6 py-6 sm:p-6 dark:border-gray-700">
       {/* PC */}
       <nav
         className="mx-auto flex max-w-5xl items-center justify-between"

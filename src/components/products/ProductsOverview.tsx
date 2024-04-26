@@ -55,13 +55,13 @@ export default async function ProductsOverview() {
   return (
     <div className="mx-auto w-full max-w-5xl">
       {/* Heading */}
-      <div className="pt-24 text-center">
+      <div className="py-14 text-center">
         <h1 className="text-4xl font-bold tracking-tight text-gray-900">
           Crafts
         </h1>
-        <p className="mx-auto mt-4 max-w-3xl text-base text-gray-500">
+        {/* <p className="mx-auto mt-4 max-w-3xl text-base text-gray-500">
           Thoughtfully designed objects for the workspace, home, and travel.
-        </p>
+        </p> */}
       </div>
 
       {/* Filters */}

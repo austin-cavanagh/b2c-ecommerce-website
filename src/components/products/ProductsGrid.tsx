@@ -5,8 +5,9 @@ import { getProductsAction } from '@/actions/getProductsAction';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { ParallaxScrollGrid } from './ParallaxScrollGrid';
+import { ProductCard } from './ProductCard';
 
-type ProductType = {
+export type ProductType = {
   id: string;
   name: string;
   shortDescription: string;
@@ -52,7 +53,7 @@ export default function ProductsGrid() {
 
   return (
     <div className="w-full">
-      <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {products.map(product => (
           <Link
             href={`/products/${product.name.toLocaleLowerCase()}`}
@@ -95,6 +96,9 @@ export default function ProductsGrid() {
                 </div> */}
             </div>
           </Link>
+        ))}
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
 
