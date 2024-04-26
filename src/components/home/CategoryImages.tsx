@@ -1,3 +1,7 @@
+'use client';
+
+import { useEffect } from 'react';
+
 const categoryImages = [
   {
     id: 1,
@@ -50,10 +54,18 @@ const categoryImages = [
 ];
 
 export default function CategoryImages() {
+  useEffect(() => {
+    // Set the CSS variable on the root element
+    document.documentElement.style.setProperty(
+      '--category-side-padding',
+      'calc(50vw - min(64rem, 100vw) / 2)',
+    );
+  }, []);
+
   return (
     <section aria-labelledby="favorites-heading">
-      <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div className="sm:flex sm:items-baseline sm:justify-between">
+      <div className="mx-auto py-24 sm:py-32">
+        <div className="mx-auto max-w-5xl sm:flex sm:items-baseline sm:justify-between">
           <h2
             id="favorites-heading"
             className="text-2xl font-bold tracking-tight text-gray-900"
@@ -69,22 +81,21 @@ export default function CategoryImages() {
           </a> */}
         </div>
 
-        {/* Category Cards */}
-        <div className="scrolling-touch scrollbar-hide -mx-4 mt-6 flex space-x-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-          {categoryImages.map((image, index) => (
-            <div key={index} className="min-w-[16rem] shrink-0">
-              <div className="group relative h-96 overflow-hidden rounded-lg shadow-lg hover:opacity-75">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="h-full w-full object-cover"
-                />
+        {/* Category Cards with large padding on the left */}
+        <div className="relative mt-6 overflow-hidden">
+          <div className="scrolling-touch scrollbar-hide flex space-x-4 overflow-x-auto px-[var(--category-side-padding)]">
+            {categoryImages.map((image, index) => (
+              <div key={index} className="min-w-[16rem] shrink-0">
+                <div className="group relative h-[30rem] overflow-hidden rounded-lg shadow-lg hover:opacity-75">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
-              {/* <h3 className="mt-4 text-base font-semibold text-gray-900">
-                {image.name}
-              </h3> */}
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* Browse all imagse button - mobile */}

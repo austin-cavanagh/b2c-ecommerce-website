@@ -12,6 +12,9 @@ const config: Config = {
       width: {
         '22': '5.5rem',
       },
+      height: {
+        '120': '30rem',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
