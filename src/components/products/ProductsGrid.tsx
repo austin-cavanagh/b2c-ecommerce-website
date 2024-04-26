@@ -15,7 +15,7 @@ type ProductType = {
 };
 
 export default function ProductsGrid() {
-  const itemsPerPage = 12;
+  const itemsPerPage = 32;
 
   const [products, setProducts] = useState<ProductType[]>([]);
   const [totalPages, setTotalPages] = useState<number>();
@@ -39,21 +39,21 @@ export default function ProductsGrid() {
   // OLD SOLUTION
   // OLD SOLUTION
 
-  const updatePage = async (newPageNumber: number) => {
-    const data = await getPageItems(newPageNumber, itemsPerPage);
-    setPageNumber(data.pageNumber);
-    setTotalPages(data.totalPages);
-    setTotalProducts(data.totalProducts);
-    setProducts(data.data);
-  };
+  // const updatePage = async (newPageNumber: number) => {
+  //   const data = await getPageItems(newPageNumber, itemsPerPage);
+  //   setPageNumber(data.pageNumber);
+  //   setTotalPages(data.totalPages);
+  //   setTotalProducts(data.totalProducts);
+  //   setProducts(data.data);
+  // };
 
-  const handlePreviousPage = async () => {
-    updatePage(pageNumber - 1);
-  };
+  // const handlePreviousPage = async () => {
+  //   updatePage(pageNumber - 1);
+  // };
 
-  const handleNextPage = async () => {
-    updatePage(pageNumber + 1);
-  };
+  // const handleNextPage = async () => {
+  //   updatePage(pageNumber + 1);
+  // };
 
   // OLD SOLUTION
   // OLD SOLUTION
@@ -80,29 +80,14 @@ export default function ProductsGrid() {
 
   console.log(images);
 
-  // const images = [
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  //   // 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-  // ];
-
   return (
     <div className="">
-      {/* <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+      <div className="py-16 sm:py-24">
+        {/* <h2 className="text-2xl font-bold tracking-tight text-gray-900">
           Products
-        </h2>
+        </h2> */}
 
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-6">
           {products.map(product => (
             <Link
               href={`/products/${product.name.toLocaleLowerCase()}`}
@@ -110,14 +95,14 @@ export default function ProductsGrid() {
               key={product.id}
             >
               <div key={product.id} className="group relative">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded bg-gray-200 shadow-xl lg:aspect-none group-hover:opacity-75 lg:h-80">
                   <img
-                    src={product.imageUrls[0].imageSrc}
-                    alt={product.imageUrls[0].imageAlt}
+                    src={product.imageUrls[0].src}
+                    alt={product.imageUrls[0].alt}
                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                   />
                 </div>
-                <div className="mt-4 flex justify-between">
+                {/* <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
                       <span aria-hidden="true" className="absolute inset-0" />
@@ -130,17 +115,17 @@ export default function ProductsGrid() {
                   <p className="text-sm font-medium text-gray-900">
                     ${product.prices[0].price / 100}
                   </p>
-                </div>
+                </div> */}
               </div>
             </Link>
           ))}
         </div>
-      </div> */}
+      </div>
 
-      <ParallaxScrollGrid images={images} />
+      {/* <ParallaxScrollGrid images={images} /> */}
 
       {/* Load Products Button */}
-      <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button>
+      {/* <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button> */}
 
       {/* <nav
         className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6"

@@ -1,4 +1,4 @@
-'use client';
+'use server';
 
 import { Fragment, useState } from 'react';
 import { Menu, Popover, Transition } from '@headlessui/react';
@@ -51,11 +51,11 @@ const products = [
   },
 ];
 
-export default function ProductsOverview() {
+export default async function ProductsOverview() {
   return (
     <div className="">
       <div>
-        <main>
+        <main className="max-w-6xl">
           {/* Heading */}
           <div className="pt-24 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">

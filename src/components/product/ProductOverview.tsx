@@ -1,18 +1,11 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
-import { Disclosure, RadioGroup, Tab } from '@headlessui/react';
-import {
-  ExclamationCircleIcon,
-  HeartIcon,
-  MinusIcon,
-  PlusIcon,
-} from '@heroicons/react/24/outline';
+import {  useState } from 'react';
+import { RadioGroup, Tab } from '@headlessui/react';
 
-import { ImageUrl, Product, ProductPrice } from '@prisma/client';
+
 import addToCart from '@/actions/prisma/addToCart';
 import { ExtendedProduct } from '@/actions/getProduct';
-import { useSession } from 'next-auth/react';
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(' ');
@@ -25,10 +18,7 @@ export default function ProductOverview({
 }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
-  // console.log(product);
-
-  // const session = useSession();
-  // console.log(session);
+\
 
   return (
     <div className="bg-white">
@@ -46,10 +36,10 @@ export default function ProductOverview({
                   >
                     {({ selected }) => (
                       <>
-                        <span className="sr-only">{image.imageAlt}</span>
+                        <span className="sr-only">{image.alt}</span>
                         <span className="absolute inset-0 overflow-hidden rounded-md">
                           <img
-                            src={image.imageSrc}
+                            src={image.src}
                             alt=""
                             className="h-full w-full object-cover object-center"
                           />
@@ -72,8 +62,8 @@ export default function ProductOverview({
               {product.imageUrls.map((image, index) => (
                 <Tab.Panel key={index}>
                   <img
-                    src={image.imageSrc}
-                    alt={image.imageAlt}
+                    src={image.src}
+                    alt={image.src}
                     className="h-full w-full object-cover object-center sm:rounded-lg"
                   />
                 </Tab.Panel>

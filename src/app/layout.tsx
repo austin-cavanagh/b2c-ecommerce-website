@@ -21,7 +21,7 @@ function RootLayout({
 }>) {
   return (
     <html lang="en" className="" suppressHydrationWarning>
-      <body className={`${inter.className} bg-[#f7f9fd] dark:bg-gray-900`}>
+      <body className={`${inter.className} bg-[#f9f8fb] dark:bg-gray-900`}>
         <Providers>
           <div className="mx-auto flex min-h-screen flex-col">
             <NavBar />
