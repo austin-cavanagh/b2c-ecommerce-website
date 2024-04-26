@@ -84,8 +84,12 @@ export default function ProductsGrid() {
           </Link>
         ))} */}
 
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+        {products.map((product, index) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            index={index % 3} // This ensures that index is 0, 1, or 2 in each row of 3 columns
+          />
         ))}
       </div>
 
