@@ -54,7 +54,8 @@ export default function ProductsGrid() {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-        {products.map(product => (
+        {/* NOT ANIMATED */}
+        {/* {products.map(product => (
           <Link
             href={`/products/${product.name.toLocaleLowerCase()}`}
             className="text-base font-semibold leading-6 text-gray-900"
@@ -79,24 +80,10 @@ export default function ProductsGrid() {
                   </p>
                 </div>
               </div>
-
-              {/* <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm text-gray-700">
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {product.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">
-                      {product.shortDescription}
-                    </p>
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">
-                    ${product.prices[0].price / 100}
-                  </p>
-                </div> */}
             </div>
           </Link>
-        ))}
+        ))} */}
+
         {products.map(product => (
           <ProductCard key={product.id} product={product} />
         ))}

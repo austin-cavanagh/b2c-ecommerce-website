@@ -17,9 +17,9 @@ export function ProductCard({ product }: { product: ProductType }) {
     >
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, translateY: 100 }}
-        animate={inView ? { opacity: 1, translateY: 0 } : {}}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        initial={{ opacity: 0, y: 50 }} // Starts at 50 pixels down and invisible
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Ends at original position and fully visible
+        transition={{ duration: 0.5, ease: 'easeOut' }} // Duration of 0.5 seconds with an 'easeOut' easing
         className="group relative transform cursor-pointer overflow-hidden rounded-lg shadow-xl"
       >
         <div
