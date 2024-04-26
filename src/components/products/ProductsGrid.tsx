@@ -15,7 +15,7 @@ type ProductType = {
 };
 
 export default function ProductsGrid() {
-  const itemsPerPage = 32;
+  const itemsPerPage = 33;
 
   const [products, setProducts] = useState<ProductType[]>([]);
   const [totalPages, setTotalPages] = useState<number>();
@@ -30,34 +30,6 @@ export default function ProductsGrid() {
 
     getProductsData();
   }, []);
-
-  // PAGINATION
-  // PAGINATION
-  // PAGINATION
-
-  // OLD SOLUTION
-  // OLD SOLUTION
-  // OLD SOLUTION
-
-  // const updatePage = async (newPageNumber: number) => {
-  //   const data = await getPageItems(newPageNumber, itemsPerPage);
-  //   setPageNumber(data.pageNumber);
-  //   setTotalPages(data.totalPages);
-  //   setTotalProducts(data.totalProducts);
-  //   setProducts(data.data);
-  // };
-
-  // const handlePreviousPage = async () => {
-  //   updatePage(pageNumber - 1);
-  // };
-
-  // const handleNextPage = async () => {
-  //   updatePage(pageNumber + 1);
-  // };
-
-  // OLD SOLUTION
-  // OLD SOLUTION
-  // OLD SOLUTION
 
   const handleLoadItems = async (newPageNumber: number) => {
     const data = await getPageItems(newPageNumber, itemsPerPage);
@@ -78,31 +50,24 @@ export default function ProductsGrid() {
     return product.imageUrls[0];
   });
 
-  console.log(images);
-
   return (
-    <div className="">
-      <div className="py-16 sm:py-24">
-        {/* <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          Products
-        </h2> */}
-
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-6">
-          {products.map(product => (
-            <Link
-              href={`/products/${product.name.toLocaleLowerCase()}`}
-              className="text-base font-semibold leading-6 text-gray-900"
-              key={product.id}
-            >
-              <div key={product.id} className="group relative">
-                <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded bg-gray-200 shadow-xl lg:aspect-none group-hover:opacity-75 lg:h-80">
-                  <img
-                    src={product.imageUrls[0].src}
-                    alt={product.imageUrls[0].alt}
-                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                  />
-                </div>
-                {/* <div className="mt-4 flex justify-between">
+    <div className="w-full">
+      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-6">
+        {products.map(product => (
+          <Link
+            href={`/products/${product.name.toLocaleLowerCase()}`}
+            className="text-base font-semibold leading-6 text-gray-900"
+            key={product.id}
+          >
+            <div key={product.id} className="group relative">
+              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded bg-gray-200 shadow-xl group-hover:opacity-75">
+                <img
+                  src={product.imageUrls[0].src}
+                  alt={product.imageUrls[0].alt}
+                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                />
+              </div>
+              {/* <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
                       <span aria-hidden="true" className="absolute inset-0" />
@@ -116,10 +81,9 @@ export default function ProductsGrid() {
                     ${product.prices[0].price / 100}
                   </p>
                 </div> */}
-              </div>
-            </Link>
-          ))}
-        </div>
+            </div>
+          </Link>
+        ))}
       </div>
 
       {/* <ParallaxScrollGrid images={images} /> */}
