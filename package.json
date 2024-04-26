@@ -37,7 +37,8 @@
     "react-dom": "^18",
     "server-only": "^0.0.1",
     "stripe": "^14.20.0",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

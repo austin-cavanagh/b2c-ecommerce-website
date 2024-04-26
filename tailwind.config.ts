@@ -23,6 +23,8 @@ const config: Config = {
     require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
+    // Remember to uninstall this
+    // require('tailwind-scrollbar-hide'),
   ],
 };
 export default config;

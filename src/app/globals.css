@@ -20,3 +20,14 @@
   transform: rotate(360deg) scale(0);
   opacity: 0;
 }
+
+/* Removing Scroll Bar */
+/* styles/globals.css */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}

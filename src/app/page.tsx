@@ -3,6 +3,7 @@
 import HeroParallax from '@/components/home/HeroParallax';
 import Hero from '@/components/home/Hero';
 import { getServerSession } from 'next-auth';
+import CategoryImages from '@/components/home/CategoryImages';
 
 const testimonials = [
   {
@@ -25,37 +26,6 @@ const testimonials = [
   },
 ];
 
-const favorites = [
-  {
-    id: 1,
-    name: 'Black Basic Tee',
-    price: '$32',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-01.jpg',
-    imageAlt: "Model wearing women's black cotton crewneck tee.",
-  },
-  {
-    id: 2,
-    name: 'Off-White Basic Tee',
-    price: '$32',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-02.jpg',
-    imageAlt: "Model wearing women's off-white cotton crewneck tee.",
-  },
-  {
-    id: 3,
-    name: 'Mountains Artwork Tee',
-    price: '$36',
-    href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-03.jpg',
-    imageAlt:
-      "Model wearing women's burgundy red crewneck artwork tee with small white triangle overlapping larger black triangle.",
-  },
-];
-
 // function classNames(...classes) {
 //   return classes.filter(Boolean).join(' ');
 // }
@@ -69,10 +39,10 @@ export default async function Home() {
   return (
     <div className="">
       <main className="">
-        <HeroParallax />
+        {/* <HeroParallax /> */}
 
         {/* Category Section */}
-        <section aria-labelledby="category-heading" className="">
+        {/* <section aria-labelledby="category-heading" className="">
           <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="sm:flex sm:items-baseline sm:justify-between">
               <h2
@@ -173,10 +143,10 @@ export default async function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Story Section */}
-        <section aria-labelledby="cause-heading">
+        {/* <section aria-labelledby="cause-heading">
           <div className="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
             <div className="absolute inset-0 overflow-hidden">
               <img
@@ -210,10 +180,10 @@ export default async function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Favorites Section */}
-        <section aria-labelledby="favorites-heading">
+        {/* <section aria-labelledby="favorites-heading">
           <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="sm:flex sm:items-baseline sm:justify-between">
               <h2
@@ -260,7 +230,8 @@ export default async function Home() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
+        <CategoryImages />
 
         {/* CTA Section */}
         {/* <section aria-labelledby="sale-heading">
