@@ -88,7 +88,7 @@ export default function ProductsGrid() {
           <ProductCard
             key={product.id}
             product={product}
-            index={index % 3} // This ensures that index is 0, 1, or 2 in each row of 3 columns
+            index={index} // This ensures that index is 0, 1, or 2 in each row of 3 columns
           />
         ))}
       </div>

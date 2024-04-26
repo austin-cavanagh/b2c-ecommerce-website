@@ -19,7 +19,7 @@ export function ProductCard({
   });
 
   // Each row starts 0.3s later, each column within a row adds 0.1s
-  const delay = row * 0.3 + column * 0.15;
+  const delay = row * 0.3 + column * 0.1;
 
   return (
     <Link
@@ -31,9 +31,9 @@ export function ProductCard({
         initial={{ opacity: 0, y: 50 }} // Starts at 50 pixels down and invisible
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Ends at original position and fully visible
         transition={{
-          duration: 0.5,
+          duration: 0.75,
           ease: 'easeOut',
-          delay: delay, // Staggered delay based on row and column
+          delay: row === (0 || 1) ? 0 : delay, // Staggered delay based on row and column
         }}
         className="group relative transform cursor-pointer overflow-hidden rounded-lg shadow-xl"
       >
