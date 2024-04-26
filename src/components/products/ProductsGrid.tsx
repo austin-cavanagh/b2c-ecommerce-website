@@ -52,21 +52,33 @@ export default function ProductsGrid() {
 
   return (
     <div className="w-full">
-      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-6">
+      <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {products.map(product => (
           <Link
             href={`/products/${product.name.toLocaleLowerCase()}`}
             className="text-base font-semibold leading-6 text-gray-900"
             key={product.id}
           >
-            <div key={product.id} className="group relative">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded bg-gray-200 shadow-xl group-hover:opacity-75">
+            <div
+              key={product.id}
+              className="group relative transform overflow-hidden rounded-lg shadow-xl transition duration-500 ease-in-out hover:scale-105"
+            >
+              <div className="aspect-h-1 aspect-w-1 w-full bg-gray-200 group-hover:opacity-75">
                 <img
                   src={product.imageUrls[0].src}
                   alt={product.imageUrls[0].alt}
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
+                <div className="p-6 text-center">
+                  <p className="text-xl font-bold text-white">{product.name}</p>
+                  <p className="mt-4 text-xl font-bold text-white">
+                    ${product.prices[0].price / 100}
+                  </p>
+                </div>
+              </div>
+
               {/* <div className="mt-4 flex justify-between">
                   <div>
                     <h3 className="text-sm text-gray-700">
@@ -90,42 +102,6 @@ export default function ProductsGrid() {
 
       {/* Load Products Button */}
       {/* <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button> */}
-
-      {/* <nav
-        className="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6"
-        aria-label="Pagination"
-      >
-        <div className="hidden sm:block">
-          <p className="text-sm text-gray-700">
-            Showing{' '}
-            <span className="font-medium">
-              {(pageNumber - 1) * itemsPerPage + 1}
-            </span>{' '}
-            to{' '}
-            <span className="font-medium">
-              {Math.min(pageNumber * itemsPerPage, totalProducts || 0)}
-            </span>{' '}
-            of <span className="font-medium">{totalProducts}</span> results
-          </p>
-        </div>
-
-        <div className="flex flex-1 justify-between sm:justify-end">
-          <button
-            onClick={handlePreviousPage}
-            disabled={pageNumber === 1}
-            className="relative inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
-          >
-            Previous
-          </button>
-          <button
-            onClick={handleNextPage}
-            disabled={pageNumber === totalPages}
-            className="relative ml-3 inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:outline-offset-0"
-          >
-            Next
-          </button>
-        </div>
-      </nav> */}
     </div>
   );
 }

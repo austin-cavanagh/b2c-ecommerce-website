@@ -1,8 +1,7 @@
 'use client';
 
-import {  useState } from 'react';
+import { useState } from 'react';
 import { RadioGroup, Tab } from '@headlessui/react';
-
 
 import addToCart from '@/actions/prisma/addToCart';
 import { ExtendedProduct } from '@/actions/getProduct';
@@ -17,8 +16,6 @@ export default function ProductOverview({
   product: ExtendedProduct;
 }) {
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
-
-\
 
   return (
     <div className="bg-white">

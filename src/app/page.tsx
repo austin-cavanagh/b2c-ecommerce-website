@@ -39,7 +39,7 @@ export default async function Home() {
   return (
     <div className="">
       <main className="">
-        {/* <HeroParallax /> */}
+        <HeroParallax />
 
         {/* Category Section */}
         {/* <section aria-labelledby="category-heading" className="">
