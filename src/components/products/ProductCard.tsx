@@ -31,9 +31,10 @@ export function ProductCard({
         initial={{ opacity: 0, y: 50 }} // Starts at 50 pixels down and invisible
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Ends at original position and fully visible
         transition={{
-          duration: 0.75,
+          duration: 0.7,
           ease: 'easeOut',
-          delay: row === (0 || 1) ? 0 : delay, // Staggered delay based on row and column
+          delay: 0,
+          // delay: row === (0 || 1) ? 0 : delay, // Staggered delay based on row and column
         }}
         className="group relative transform cursor-pointer overflow-hidden rounded-lg shadow-xl"
       >

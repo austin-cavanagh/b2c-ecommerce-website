@@ -27,8 +27,8 @@ export default async function CartRoute() {
           name: true,
           imageUrls: {
             select: {
-              imageSrc: true,
-              imageAlt: true,
+              src: true,
+              alt: true,
             },
           },
         },

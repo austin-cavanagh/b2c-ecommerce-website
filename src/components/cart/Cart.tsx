@@ -105,8 +105,8 @@ export default function Cart({ cart }: CartProps) {
                     >
                       <div className="flex-shrink-0">
                         <img
-                          src={item.product.imageUrls[0].imageSrc}
-                          alt={item.product.imageUrls[0].imageAlt}
+                          src={item.product.imageUrls[0].src}
+                          alt={item.product.imageUrls[0].alt}
                           className="h-24 w-24 rounded-md object-cover object-center sm:h-40 sm:w-40"
                         />
                       </div>
