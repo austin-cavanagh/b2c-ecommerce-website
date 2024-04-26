@@ -1,194 +1,164 @@
 export const firstRow = [
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
 ];
 
 export const secondRow = [
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
 ];
 
 export const thirdRow = [
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
   {
-    title: 'Teacher Sticky Note',
+    name: 'Teacher Sticky Note',
     link: 'http://localhost:3000/products/teacher%20sticky%20note',
-    thumbnail:
-      'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
   },
 ];
 
 export const products = [
   {
-    title: 'Moonbeam',
+    name: 'Moonbeam',
     link: 'https://gomoonbeam.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/moonbeam.png',
+    src: 'https://aceternity.com/images/products/srcs/new/moonbeam.png',
   },
   {
-    title: 'Cursor',
+    name: 'Cursor',
     link: 'https://cursor.so',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/cursor.png',
+    src: 'https://aceternity.com/images/products/srcs/new/cursor.png',
   },
   {
-    title: 'Rogue',
+    name: 'Rogue',
     link: 'https://userogue.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/rogue.png',
+    src: 'https://aceternity.com/images/products/srcs/new/rogue.png',
   },
 
   {
-    title: 'Editorially',
+    name: 'Editorially',
     link: 'https://editorially.org',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/editorially.png',
+    src: 'https://aceternity.com/images/products/srcs/new/editorially.png',
   },
   {
-    title: 'Editrix AI',
+    name: 'Editrix AI',
     link: 'https://editrix.ai',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/editrix.png',
+    src: 'https://aceternity.com/images/products/srcs/new/editrix.png',
   },
 
   {
-    title: 'Pixel Perfect',
+    name: 'Pixel Perfect',
     link: 'https://app.pixelperfect.quest',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/pixelperfect.png',
+    src: 'https://aceternity.com/images/products/srcs/new/pixelperfect.png',
   },
   {
-    title: 'Algochurn',
+    name: 'Algochurn',
     link: 'https://algochurn.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/algochurn.png',
+    src: 'https://aceternity.com/images/products/srcs/new/algochurn.png',
   },
   {
-    title: 'Aceternity UI',
+    name: 'Aceternity UI',
     link: 'https://ui.aceternity.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/aceternityui.png',
+    src: 'https://aceternity.com/images/products/srcs/new/aceternityui.png',
   },
   {
-    title: 'Tailwind Master Kit',
+    name: 'Tailwind Master Kit',
     link: 'https://tailwindmasterkit.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png',
+    src: 'https://aceternity.com/images/products/srcs/new/tailwindmasterkit.png',
   },
   {
-    title: 'SmartBridge',
+    name: 'SmartBridge',
     link: 'https://smartbridgetech.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/smartbridge.png',
+    src: 'https://aceternity.com/images/products/srcs/new/smartbridge.png',
   },
 
   {
-    title: 'Renderwork Studio',
+    name: 'Renderwork Studio',
     link: 'https://renderwork.studio',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/renderwork.png',
+    src: 'https://aceternity.com/images/products/srcs/new/renderwork.png',
   },
   {
-    title: 'Creme Digital',
+    name: 'Creme Digital',
     link: 'https://cremedigital.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/cremedigital.png',
+    src: 'https://aceternity.com/images/products/srcs/new/cremedigital.png',
   },
   {
-    title: 'Golden Bells Academy',
+    name: 'Golden Bells Academy',
     link: 'https://goldenbellsacademy.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png',
+    src: 'https://aceternity.com/images/products/srcs/new/goldenbellsacademy.png',
   },
   {
-    title: 'Invoker Labs',
+    name: 'Invoker Labs',
     link: 'https://invoker.lol',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/invoker.png',
+    src: 'https://aceternity.com/images/products/srcs/new/invoker.png',
   },
   {
-    title: 'E Free Invoice',
+    name: 'E Free Invoice',
     link: 'https://efreeinvoice.com',
-    thumbnail:
-      'https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png',
+    src: 'https://aceternity.com/images/products/srcs/new/efreeinvoice.png',
   },
 ];

@@ -68,7 +68,7 @@ export default async function Home() {
 
   return (
     <div className="">
-      <main>
+      <main className="">
         <HeroParallax />
 
         {/* Category Section */}
@@ -174,6 +174,7 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
         {/* Story Section */}
         <section aria-labelledby="cause-heading">
           <div className="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
@@ -210,6 +211,7 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
         {/* Favorites Section */}
         <section aria-labelledby="favorites-heading">
           <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -259,6 +261,7 @@ export default async function Home() {
             </div>
           </div>
         </section>
+
         {/* CTA Section */}
         {/* <section aria-labelledby="sale-heading">
           <div className="overflow-hidden pt-32 sm:pt-14">
@@ -338,6 +341,7 @@ export default async function Home() {
             </div>
           </div>
         </section> */}
+
         {/* Testimonials */}
         <section
           aria-labelledby="testimonial-heading"

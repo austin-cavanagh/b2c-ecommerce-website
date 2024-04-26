@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import {
   motion,
   useScroll,
@@ -12,9 +11,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { firstRow, secondRow, thirdRow } from '@/data/heroParallaxImages';
+import { useRef } from 'react';
 
 export default function HeroParallax() {
-  const ref = React.useRef(null);
+  const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
@@ -92,7 +92,7 @@ export const Header = () => {
   const { theme } = useTheme();
 
   return (
-    <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4 py-20 md:py-40">
+    <div className="relative left-0 top-0 mx-auto w-full max-w-5xl px-4 py-20 md:py-40">
       <h1
         className={`text-2xl font-bold md:text-7xl ${theme === 'dark' ? 'text-white' : 'text-black'}`}
       >
@@ -114,9 +114,9 @@ export const ProductCard = ({
   translate,
 }: {
   product: {
-    title: string;
+    name: string;
     link: string;
-    thumbnail: string;
+    src: string;
   };
   translate: MotionValue<number>;
 }) => {
@@ -128,7 +128,7 @@ export const ProductCard = ({
       whileHover={{
         y: -20,
       }}
-      key={product.title}
+      key={product.name}
       className="group/product relative h-96 w-[30rem] flex-shrink-0"
     >
       <Link
@@ -136,16 +136,16 @@ export const ProductCard = ({
         className="block group-hover/product:shadow-2xl "
       >
         <Image
-          src={product.thumbnail}
+          src={product.src}
           height="600"
           width="600"
           className="absolute inset-0 h-full w-full object-cover object-left-top"
-          alt={product.title}
+          alt={product.name}
         />
       </Link>
       <div className="pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-50"></div>
       <h2 className="absolute bottom-4 left-4 text-white opacity-0 group-hover/product:opacity-100">
-        {product.title}
+        {product.name}
       </h2>
     </motion.div>
   );
