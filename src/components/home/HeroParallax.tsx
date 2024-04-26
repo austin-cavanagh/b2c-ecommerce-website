@@ -39,11 +39,12 @@ export default function HeroParallax() {
     springConfig,
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
     springConfig,
   );
+
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-700, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [-600, 0]),
     springConfig,
   );
   return (
@@ -62,13 +63,13 @@ export default function HeroParallax() {
         }}
         className=""
       >
-        <motion.div className="mb-20 flex flex-row-reverse space-x-20 space-x-reverse">
+        <motion.div className="mb-10 flex flex-row-reverse space-x-10 space-x-reverse">
           {firstRow.map((product, index) => (
             <ProductCard product={product} translate={translateX} key={index} />
           ))}
         </motion.div>
 
-        <motion.div className="mb-20 flex  flex-row space-x-20 ">
+        <motion.div className="mb-10 flex  flex-row space-x-10 ">
           {secondRow.map((product, index) => (
             <ProductCard
               product={product}
@@ -78,11 +79,11 @@ export default function HeroParallax() {
           ))}
         </motion.div>
 
-        <motion.div className="flex flex-row-reverse space-x-20 space-x-reverse">
+        {/* <motion.div className="flex flex-row-reverse space-x-10 space-x-reverse">
           {thirdRow.map((product, index) => (
             <ProductCard product={product} translate={translateX} key={index} />
           ))}
-        </motion.div>
+        </motion.div> */}
       </motion.div>
     </div>
   );
@@ -109,17 +110,17 @@ export const Header = () => {
   );
 };
 
-export const ProductCard = ({
-  product,
-  translate,
-}: {
+export type ProductCardProps = {
   product: {
     name: string;
+    price: number;
     link: string;
     src: string;
   };
   translate: MotionValue<number>;
-}) => {
+};
+
+export const ProductCard = ({ product, translate }: ProductCardProps) => {
   return (
     <motion.div
       style={{
@@ -144,9 +145,12 @@ export const ProductCard = ({
         />
       </Link>
       <div className="pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-50"></div>
-      <h2 className="absolute bottom-4 left-4 text-white opacity-0 group-hover/product:opacity-100">
+      <h2 className="absolute bottom-4 left-4 text-xl font-bold text-white opacity-0 group-hover/product:opacity-100">
         {product.name}
       </h2>
+      <div className="absolute bottom-4 right-4  text-xl font-bold text-white opacity-0 group-hover/product:opacity-100">
+        ${product.price / 100}
+      </div>
     </motion.div>
   );
 };

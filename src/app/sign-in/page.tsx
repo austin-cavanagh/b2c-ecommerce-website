@@ -12,9 +12,6 @@ function SignIn() {
   const passwordRef = useRef<HTMLInputElement>(null);
   const [error, setError] = useState<string>('');
 
-  // const session = useSession();
-  // console.log(session);
-
   const handleGoogleClick = () => {
     signIn('google');
   };
@@ -40,20 +37,18 @@ function SignIn() {
     <main className="flex w-full flex-1 items-center justify-center px-6 py-6 sm:p-6">
       <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
+          {/* <img
             className="mx-auto h-10 w-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
-          />
+          /> */}
           <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-          <strong>{error}</strong>
-
-          <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
+          <div className="bg-white px-6 py-12 shadow-2xl sm:rounded-lg sm:px-12">
             <form
               className="space-y-6"
               action="#"
@@ -182,6 +177,9 @@ function SignIn() {
               </div>
             </div>
           </div>
+
+          {/* Temporary element to display the error message on the screen */}
+          <strong>{error}</strong>
 
           <p className="mt-10 text-center text-sm text-gray-500">
             Not a member?{' '}
