@@ -58,7 +58,7 @@ export function ParallaxScrollGrid({
                 src={image.src}
                 height="400"
                 width="400"
-                alt="Image"
+                alt={image.alt}
                 className="rounded-lg object-cover"
               />
             </motion.div>
@@ -71,7 +71,7 @@ export function ParallaxScrollGrid({
                 src={image.src}
                 height="400"
                 width="400"
-                alt="Image"
+                alt={image.alt}
                 className="rounded-lg object-cover"
               />
             </motion.div>
@@ -84,7 +84,7 @@ export function ParallaxScrollGrid({
                 src={image.src}
                 height="400"
                 width="400"
-                alt="Image"
+                alt={image.alt}
                 className="rounded-lg object-cover"
               />
             </motion.div>
