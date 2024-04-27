@@ -4,6 +4,7 @@ import HeroParallax from '@/components/home/HeroParallax';
 import Hero from '@/components/home/Hero';
 import { getServerSession } from 'next-auth';
 import CategoryImages from '@/components/home/CategoryImages';
+import CategoriesSection from '@/components/home/CategoriesSection';
 
 const testimonials = [
   {
@@ -26,10 +27,6 @@ const testimonials = [
   },
 ];
 
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(' ');
-// }
-
 export default async function Home() {
   // const [open, setOpen] = useState(false);
 
@@ -37,12 +34,13 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <div className="">
-      <main className="">
-        <HeroParallax />
+    <main className="flex w-full flex-1 items-center justify-center">
+      <CategoriesSection />
 
-        {/* Category Section */}
-        {/* <section aria-labelledby="category-heading" className="">
+      {/* <HeroParallax /> */}
+
+      {/* Category Section */}
+      {/* <section aria-labelledby="category-heading" className="">
           <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="sm:flex sm:items-baseline sm:justify-between">
               <h2
@@ -145,8 +143,8 @@ export default async function Home() {
           </div>
         </section> */}
 
-        {/* Story Section */}
-        {/* <section aria-labelledby="cause-heading">
+      {/* Story Section */}
+      {/* <section aria-labelledby="cause-heading">
           <div className="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
             <div className="absolute inset-0 overflow-hidden">
               <img
@@ -182,8 +180,8 @@ export default async function Home() {
           </div>
         </section> */}
 
-        {/* Favorites Section */}
-        {/* <section aria-labelledby="favorites-heading">
+      {/* Favorites Section */}
+      {/* <section aria-labelledby="favorites-heading">
           <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
             <div className="sm:flex sm:items-baseline sm:justify-between">
               <h2
@@ -231,10 +229,10 @@ export default async function Home() {
             </div>
           </div>
         </section> */}
-        <CategoryImages />
+      {/* <CategoryImages /> */}
 
-        {/* CTA Section */}
-        {/* <section aria-labelledby="sale-heading">
+      {/* CTA Section */}
+      {/* <section aria-labelledby="sale-heading">
           <div className="overflow-hidden pt-32 sm:pt-14">
             <div className="bg-gray-800">
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -313,8 +311,8 @@ export default async function Home() {
           </div>
         </section> */}
 
-        {/* Testimonials */}
-        <section
+      {/* Testimonials */}
+      {/* <section
           aria-labelledby="testimonial-heading"
           className="relative mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32"
         >
@@ -350,8 +348,7 @@ export default async function Home() {
               ))}
             </div>
           </div>
-        </section>
-      </main>
-    </div>
+        </section> */}
+    </main>
   );
 }
