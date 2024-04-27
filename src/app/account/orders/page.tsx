@@ -17,7 +17,7 @@ import {
 export default async function OrdersRoute() {
   const orders = await getOrders();
 
-  console.log('ORDERS', orders[0].orderItems[0]);
+  // console.log('ORDERS', orders[0].orderItems[0]);
 
   return (
     <div className="">

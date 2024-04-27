@@ -19,11 +19,7 @@ export default function StripeButton({
     });
 
     try {
-      const checkoutSessionUrl = await createCheckoutSession(
-        deliveryMethod.title,
-        cartItemIds,
-      );
-      console.log('checkoutSessionUrl', checkoutSessionUrl);
+      await createCheckoutSession(deliveryMethod.title, cartItemIds);
     } catch (error) {
       console.error(
         'StripeButton.tsx: Error creating a stripe checkout session',

@@ -30,8 +30,8 @@ export async function getOrders() {
                 imageUrls: {
                   take: 1, // Only take the first image
                   select: {
-                    imageSrc: true,
-                    imageAlt: true,
+                    src: true,
+                    alt: true,
                   },
                 },
               },
