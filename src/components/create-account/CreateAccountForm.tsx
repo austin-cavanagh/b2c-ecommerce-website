@@ -2,7 +2,7 @@
 
 import createAccount from '@/actions/createAccount';
 import { useFormState } from 'react-dom';
-import PasswordInput from './PasswordInput';
+import PasswordInput from '../PasswordInput';
 import { useSession } from 'next-auth/react';
 
 export default function CreateAccountForm() {

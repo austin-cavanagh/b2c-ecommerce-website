@@ -1,4 +1,4 @@
-import CreateAccountForm from '@/components/CreateAccountForm';
+import CreateAccountForm from '@/components/create-account/CreateAccountForm';
 import Link from 'next/link';
 
 export default function Register() {

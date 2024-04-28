@@ -1,4 +1,4 @@
-import CreateAccountForm from '@/components/CreateAccountForm';
+import CreateAccountForm from '@/components/create-account/CreateAccountForm';
 import NewPasswordForm from '@/components/NewPasswordForm';
 import PasswordInput from '@/components/PasswordInput';
 import Link from 'next/link';
