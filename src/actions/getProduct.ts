@@ -1,6 +1,5 @@
 'use server';
 
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
 import { ImageUrl, Prisma, Product, ProductPrice } from '@prisma/client';
 import { JsonArray, JsonValue } from '@prisma/client/runtime/library';

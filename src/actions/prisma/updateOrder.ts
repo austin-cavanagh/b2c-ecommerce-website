@@ -4,7 +4,8 @@ import 'server-only';
 import { prisma } from '@/prisma/prisma';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
-import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 type PayPalAddress = {
   country_code: string;

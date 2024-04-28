@@ -1,7 +1,7 @@
 'use server';
 import 'server-only';
 
-export async function handleResponse(response) {
+export async function handleResponse(response: Response) {
   try {
     const jsonResponse = await response.json();
     return {

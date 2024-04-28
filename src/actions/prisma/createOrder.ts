@@ -4,8 +4,9 @@ import 'server-only';
 import { CartItem } from '@prisma/client';
 import { prisma } from '@/prisma/prisma';
 import { getServerSession } from 'next-auth';
-import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 import { generateOrderId } from '@/functions/generateOrderId';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 export async function createOrderInPrisma(
   paymentProvider: string,

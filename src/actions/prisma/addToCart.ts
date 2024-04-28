@@ -4,8 +4,9 @@ import 'server-only';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { FormEvent } from 'react';
-import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 export default async function addToCart(formData: FormData) {
   const session: ExtendSession | null = await getServerSession(authOptions);
