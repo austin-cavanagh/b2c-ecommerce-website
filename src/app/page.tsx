@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center">
-      <HeroParallax />
+      {/* <HeroParallax /> */}
 
       <CategoriesSection />
 
@@ -210,10 +210,10 @@ export default async function Home() {
           </div>
         </section> */}
 
-      <CategoryImages />
+      {/* <CategoryImages /> */}
 
       {/* CTA Section */}
-      <section aria-labelledby="sale-heading w-full">
+      {/* <section aria-labelledby="sale-heading w-full">
         <div className="w-full overflow-hidden pt-32 sm:pt-14">
           <div className="bg-gray-800">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -290,7 +290,7 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Testimonials */}
       <TestimonialsSection />

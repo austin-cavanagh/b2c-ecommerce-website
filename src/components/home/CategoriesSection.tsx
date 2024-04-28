@@ -1,7 +1,5 @@
-'use server';
-import 'server-only';
-
 import { categoryImages } from '@/data/categoryImages';
+import Image from 'next/image';
 
 export default async function CategoriesSection() {
   return (
@@ -10,10 +8,14 @@ export default async function CategoriesSection() {
       <div className="grid grid-cols-2 gap-10">
         {categoryImages.map((category, index) => (
           <div key={index} className="group relative">
-            <img
+            <Image
               src={category.src}
               alt={category.alt}
-              className="h-auto w-full rounded-3xl object-cover"
+              layout="responsive"
+              width={300} // Equal width and height for a square aspect ratio
+              height={300} // Ensure these are equal for square images
+              className="rounded-3xl"
+              objectFit="cover" // This will ensure the image covers the area without distorting
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span className="text-xl font-semibold text-white">
