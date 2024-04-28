@@ -82,5 +82,3 @@ export async function POST(request: Request, response: Response) {
     status: 200,
   });
 }
-
-export async function handleCheckoutSessionCompleted() {}
