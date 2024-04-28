@@ -8,7 +8,8 @@ import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
 import { createOrderInPrisma } from './prisma/createOrder';
 import { getServerSession } from 'next-auth';
-import { ExtendSession, authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
