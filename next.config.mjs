@@ -8,6 +8,7 @@ const nextConfig = {
       'tailwindui.com',
     ],
   },
+  output: 'standalone',
 };
 
 export default nextConfig;
