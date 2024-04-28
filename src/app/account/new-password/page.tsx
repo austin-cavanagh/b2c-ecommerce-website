@@ -1,6 +1,6 @@
 import CreateAccountForm from '@/components/create-account/CreateAccountForm';
 import NewPasswordForm from '@/components/NewPasswordForm';
-import PasswordInput from '@/components/PasswordInput';
+import PasswordInput from '@/components/sign-in/PasswordInput';
 import Link from 'next/link';
 
 export default function newPassword() {

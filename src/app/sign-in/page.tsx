@@ -5,7 +5,7 @@ import signInAction from '@/actions/signInAction';
 import { useFormState } from 'react-dom';
 import { signIn, useSession } from 'next-auth/react';
 import { FormEvent, useRef, useState } from 'react';
-import PasswordInput from '@/components/PasswordInput';
+import PasswordInput from '@/components/sign-in/PasswordInput';
 
 function SignIn() {
   const emailRef = useRef<HTMLInputElement>(null);

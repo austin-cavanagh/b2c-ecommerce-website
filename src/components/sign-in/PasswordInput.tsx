@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 type PasswordInputProps = {
-  passwordRef?: HTMLInputElement;
+  passwordRef?: React.RefObject<HTMLInputElement>;
 };
 
 function PasswordInput({ passwordRef }: PasswordInputProps) {

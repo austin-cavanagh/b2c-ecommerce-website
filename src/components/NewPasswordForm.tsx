@@ -1,18 +1,16 @@
 'use client';
 
-import createAccount from '@/actions/createAccount';
 import { useFormState } from 'react-dom';
-import PasswordInput from './PasswordInput';
+import PasswordInput from './sign-in/PasswordInput';
 import { FormEvent, useRef } from 'react';
+import createAccount from '@/actions/createAccount';
 
 export default function NewPasswordForm() {
-  const [error, action] = useFormState(createAccount, { message: '' });
+  // const [error, action] = useFormState(createAccount, { message: '' });
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const haneleNewPassword = (event: FormEvent) => {
     event.preventDefault();
-
-    // function to update the password
   };
 
   return (
@@ -22,7 +20,7 @@ export default function NewPasswordForm() {
       method="POST"
       onSubmit={haneleNewPassword}
     >
-      <div>{error.message}</div>
+      {/* <div>{error.message}</div> */}
 
       <div>
         <label

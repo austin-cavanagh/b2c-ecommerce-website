@@ -34,7 +34,10 @@ export default function ProductsGrid() {
 
   const handleLoadItems = async (newPageNumber: number) => {
     const data = await getPageItems(newPageNumber, itemsPerPage);
-    const newProducts = data.data;
+    const newProducts = data.data.map(product => ({
+      ...product,
+      id: String(product.id),
+    }));
 
     setProducts(products => {
       return [...products, ...newProducts];
