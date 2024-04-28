@@ -1,7 +1,7 @@
 import { changePassword } from '@/actions/changePassword';
 import { deleteAccount } from '@/actions/deleteAccount';
 import { updatePersonalInformation } from '@/actions/updatePersonalInformation';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 import { getServerSession } from 'next-auth';
 
 export default async function SettingsRoute() {

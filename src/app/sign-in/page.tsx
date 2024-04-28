@@ -23,14 +23,14 @@ function SignIn() {
   const handleSignIn = async (event: FormEvent) => {
     event.preventDefault();
 
-    const error = await signIn('credentials', {
+    const result = await signIn('credentials', {
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
       redirect: false,
       callbackUrl: '/products',
     });
 
-    setError(error?.error);
+    setError(result?.error || 'An unexpected error occurred.');
   };
 
   return (

@@ -43,26 +43,20 @@ export async function POST(request: Request, response: Response) {
   switch (event.type) {
     case 'checkout.session.completed':
       const checkoutSession = event.data.object;
-      console.log('WTF', checkoutSession);
 
-      // const customerDetails = checkoutSession.customer_details;
-      // const totalAmount = checkoutSession.amount_total;
-
-      // if (checkoutSession.shipping_address_collection) {
-      //   // delivery
-      // } else {
-      //   // pickup
-      // }
+      // Ensuring metadata and orderId exist before proceeding
+      if (!checkoutSession.metadata || !checkoutSession.metadata.orderId) {
+        console.log('Metadata or orderId is missing');
+        return new Response('Metadata or orderId is missing', { status: 400 });
+      }
 
       // Update the incomplete order in the database with the completed transation details
       const orderId = checkoutSession.metadata.orderId;
       const providerOrderId = checkoutSession.id;
       // console.log('PROVIDER_ORDER_ID', providerOrderId);
 
-      const shippingAddress: ShippingAddress | null =
-        checkoutSession.shipping_details;
+      const shippingAddress: any = checkoutSession.shipping_details;
 
-      console.log('SHIPPING_ADDRESS', shippingAddress);
       const name: string | undefined | null =
         checkoutSession.customer_details?.name;
       // console.log('NAME', name);

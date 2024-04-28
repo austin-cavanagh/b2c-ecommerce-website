@@ -3,26 +3,26 @@
 'use server';
 import 'server-only';
 
-import { prisma } from '../prisma/prisma';
 import { redirect } from 'next/navigation';
 import sendEmailVerification from '@/functions/sendEmailVerification';
 import { randomUUID } from 'crypto';
+import { prisma } from '@/prisma/prisma';
 
 export default async function verifyEmail(id: string) {
   const intId = Number(id);
 
-  const user = await prisma.users.findUnique({
+  const user = await prisma.user.findUnique({
     where: {
       id: intId,
     },
   });
 
-  if (!user) return;
+  if (!user || !user.name || !user.email) return;
 
   const verificationToken = `${randomUUID()}${randomUUID()}`;
 
   // Create a new VerifyUserTokens entry
-  await prisma.verifyUserTokens.create({
+  await prisma.verifyUserToken.create({
     data: {
       userId: user.id,
       token: verificationToken,
@@ -30,6 +30,4 @@ export default async function verifyEmail(id: string) {
   });
 
   sendEmailVerification(user.name, user.email, verificationToken);
-
-  console.log('SENT');
 }

@@ -2,9 +2,9 @@
 import 'server-only';
 
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
 import { redirect } from 'next/navigation';
 import Cart from '@/components/cart/Cart';
+import { authOptions } from '../api/auth/[...nextauth]/authOptions';
 
 export default async function CartRoute() {
   const session: any = await getServerSession(authOptions);

@@ -1,7 +1,6 @@
 // 'use client';
 
 import HeroParallax from '@/components/home/HeroParallax';
-import Hero from '@/components/home/Hero';
 import { getServerSession } from 'next-auth';
 import CategoryImages from '@/components/home/CategoryImages';
 import CategoriesSection from '@/components/home/CategoriesSection';
