@@ -42,7 +42,7 @@ export const categoryImages = [
   {
     name: 'Romantic',
     link: '',
-    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/category-images/romantic-1.jpeg',
+    src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/category-images/romantic-2.jpeg',
     alt: '',
   },
 ];
