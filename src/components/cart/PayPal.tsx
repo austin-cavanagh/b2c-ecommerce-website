@@ -7,8 +7,7 @@ import {
   ReactPayPalScriptOptions,
 } from '@paypal/react-paypal-js';
 import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
-import { CartItem } from '@prisma/client';
-import { DeliveryMethod, ExtendedCartItem } from '@/components/cart/Cart';
+import { ExtendedCartItem } from '@/components/cart/Cart';
 import { createPayPalOrder } from '@/actions/createPayPalOrder';
 import { redirect } from 'next/navigation';
 

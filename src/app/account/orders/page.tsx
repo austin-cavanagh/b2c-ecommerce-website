@@ -17,8 +17,6 @@ import {
 export default async function OrdersRoute() {
   const orders = await getOrders();
 
-  // console.log('ORDERS', orders[0].orderItems[0]);
-
   return (
     <div className="">
       <div className="py-16 sm:py-24">
@@ -128,8 +126,8 @@ export default async function OrdersRoute() {
                             className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200 sm:h-40 sm:w-40"
                           >
                             <img
-                              src={item.product.imageUrls[0].imageSrc}
-                              alt={item.product.imageUrls[0].imageAlt}
+                              src={item.product.imageUrls[0].src}
+                              alt={item.product.imageUrls[0].alt}
                               className="h-full w-full object-cover object-center"
                             />
                           </Link>
