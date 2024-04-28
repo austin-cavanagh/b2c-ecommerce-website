@@ -30,7 +30,7 @@ export default function ProductsGrid() {
     }
 
     getProductsData();
-  }, []);
+  }, [pageNumber]);
 
   const handleLoadItems = async (newPageNumber: number) => {
     const data = await getPageItems(newPageNumber, itemsPerPage);
