@@ -5,10 +5,8 @@ import { RadioGroup, Tab } from '@headlessui/react';
 
 import addToCart from '@/actions/prisma/addToCart';
 import { ExtendedProduct } from '@/actions/getProduct';
-
-function classNames(...classes: string[]): string {
-  return classes.filter(Boolean).join(' ');
-}
+import { classNames } from '@/functions/classNames';
+import Image from 'next/image';
 
 export default function ProductOverview({
   product,
@@ -35,11 +33,7 @@ export default function ProductOverview({
                       <>
                         <span className="sr-only">{image.alt}</span>
                         <span className="absolute inset-0 overflow-hidden rounded-md">
-                          <img
-                            src={image.src}
-                            alt=""
-                            className="h-full w-full object-cover object-center"
-                          />
+                          <Image src={image.src} alt="" fill />
                         </span>
                         <span
                           className={classNames(
@@ -58,11 +52,7 @@ export default function ProductOverview({
             <Tab.Panels className="aspect-h-1 aspect-w-1 w-full">
               {product.imageUrls.map((image, index) => (
                 <Tab.Panel key={index}>
-                  <img
-                    src={image.src}
-                    alt={image.src}
-                    className="h-full w-full object-cover object-center sm:rounded-lg"
-                  />
+                  <Image src={image.src} alt={image.src} fill />
                 </Tab.Panel>
               ))}
             </Tab.Panels>
