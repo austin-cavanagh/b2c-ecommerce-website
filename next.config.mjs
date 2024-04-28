@@ -5,6 +5,7 @@ const nextConfig = {
     domains: [
       'aceternity.com',
       'ecommerce-website-product-images.s3.us-west-1.amazonaws.com',
+      'tailwindui.com',
     ],
   },
 };

@@ -13,6 +13,7 @@ import {
   Customization,
   ItemDetailsDropdown,
 } from '@/components/cart/ItemDetailsDropdown';
+import Image from 'next/image';
 
 export default async function OrdersRoute() {
   const orders = await getOrders();
@@ -123,12 +124,12 @@ export default async function OrdersRoute() {
                         <div className="flex items-center sm:items-start">
                           <Link
                             href={`/products/${item.name.toLocaleLowerCase()}`}
-                            className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200 sm:h-40 sm:w-40"
+                            className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200 sm:h-40 sm:w-40"
                           >
-                            <img
+                            <Image
                               src={item.product.imageUrls[0].src}
                               alt={item.product.imageUrls[0].alt}
-                              className="h-full w-full object-cover object-center"
+                              fill
                             />
                           </Link>
 

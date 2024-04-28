@@ -210,7 +210,7 @@ export default async function Home() {
           </div>
         </section> */}
 
-      {/* <CategoryImages /> */}
+      <CategoryImages />
 
       {/* CTA Section */}
       {/* <section aria-labelledby="sale-heading w-full">

@@ -1,6 +1,7 @@
 import { useInView } from 'react-intersection-observer';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function ProductCard({
   product,
@@ -39,10 +40,12 @@ export function ProductCard({
         className="group relative transform cursor-pointer overflow-hidden rounded-lg shadow-xl"
       >
         <div className="aspect-h-1 aspect-w-1 w-full bg-gray-200 group-hover:opacity-75">
-          <img
+          <Image
             src={product.imageUrls[0].src}
             alt={product.imageUrls[0].alt}
             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+            layout="fill" // Make the image take up the whole container
+            objectFit="cover" // Maintains the aspect ratio
           />
         </div>
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">

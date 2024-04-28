@@ -15,7 +15,6 @@ export default async function CategoriesSection() {
               width={300} // Equal width and height for a square aspect ratio
               height={300} // Ensure these are equal for square images
               className="rounded-3xl"
-              objectFit="cover" // This will ensure the image covers the area without distorting
             />
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               <span className="text-xl font-semibold text-white">

@@ -14,6 +14,7 @@ import Link from 'next/link';
 import PayPal from '@/components/cart/PayPal';
 import StripeButton from './StripeButton';
 import { ItemDetailsDropdown } from './ItemDetailsDropdown';
+import Image from 'next/image';
 
 export type DeliveryMethod = {
   id: number;
@@ -103,11 +104,12 @@ export default function Cart({ cart }: CartProps) {
                       href={`/products/${item.product.name}`}
                       className="font-medium text-gray-700 hover:text-gray-800"
                     >
-                      <div className="flex-shrink-0">
-                        <img
+                      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md sm:h-40 sm:w-40">
+                        <Image
                           src={item.product.imageUrls[0].src}
                           alt={item.product.imageUrls[0].alt}
-                          className="h-24 w-24 rounded-md object-cover object-center sm:h-40 sm:w-40"
+                          className="object-cover object-center"
+                          fill
                         />
                       </div>
                     </Link>

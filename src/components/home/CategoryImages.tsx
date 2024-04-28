@@ -88,10 +88,11 @@ export default function CategoryImages() {
             {categoryImages.map((image, index) => (
               <div key={index} className="min-w-[16rem] shrink-0">
                 <div className="group relative h-[30rem] overflow-hidden rounded-lg shadow-lg hover:opacity-75">
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.alt}
                     className="h-full w-full object-cover"
+                    fill
                   />
                 </div>
               </div>
