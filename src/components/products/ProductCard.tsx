@@ -44,8 +44,9 @@ export function ProductCard({
             src={product.imageUrls[0].src}
             alt={product.imageUrls[0].alt}
             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-            layout="fill" // Make the image take up the whole container
-            objectFit="cover" // Maintains the aspect ratio
+            fill
+            // layout="fill" // Make the image take up the whole container
+            // objectFit="cover" // Maintains the aspect ratio
           />
         </div>
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">

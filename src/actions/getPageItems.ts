@@ -1,4 +1,5 @@
 'use server';
+import { prisma } from '@/prisma/prisma';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import 'server-only';
 
