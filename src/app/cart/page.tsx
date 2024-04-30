@@ -3,8 +3,9 @@ import 'server-only';
 
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import Cart from '@/components/cart/Cart';
+import Cart, { ExtendedCartItem } from '@/components/cart/Cart';
 import { authOptions } from '../api/auth/[...nextauth]/authOptions';
+import { prisma } from '@/prisma/prisma';
 
 export default async function CartRoute() {
   const session: any = await getServerSession(authOptions);
@@ -38,7 +39,7 @@ export default async function CartRoute() {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center px-6 py-6 sm:p-6">
-      <Cart cart={cart} />
+      <Cart cart={cart as ExtendedCartItem[]} />
     </main>
   );
 }
