@@ -1,8 +1,8 @@
 import { setEnvVariables } from './functions/setEnvVariables';
 
-export function register() {
+export async function register() {
   try {
-    setEnvVariables();
+    await setEnvVariables();
   } catch (error) {
     console.error('instrumentation.ts:', error);
   }

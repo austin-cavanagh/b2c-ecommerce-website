@@ -1,5 +1,5 @@
 // 'use server';
-// import 'server-only';
+import 'server-only';
 
 import { Account, NextAuthOptions, User } from 'next-auth';
 import NextAuth from 'next-auth/next';

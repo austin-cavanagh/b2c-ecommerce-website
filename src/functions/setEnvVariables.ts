@@ -23,7 +23,15 @@ export async function setEnvVariables() {
     const secret = JSON.parse(response.SecretString);
 
     // Set environment variables
-    Object.keys(secret).forEach(key => {
+    Object.keys(secret).forEach((key, value) => {
+      // console.log('KEY:', key);
+      // console.log('VALUE:', secret[key]);
+      // if (key === 'NEXTAUTH_URL') {
+      //   process.env[key] = 'http://localhost:3000';
+      // } else {
+      //   process.env[key] = secret[key];
+      // }
+
       process.env[key] = secret[key];
     });
 
