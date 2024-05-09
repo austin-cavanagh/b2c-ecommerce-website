@@ -45,17 +45,17 @@
 
 ![Screenshot displaying an overview of the solar system](/assets/screenshots/about.png)
 
-Welcome to my portfolio, designed as an interactive solar system to reflect my interest in space and talents as a developer.
+This eCommerce website was created for my mom's home crafts business, providing her a platform to showcase and sell her handmade products. Through building this site, I've deepened my understanding of authentication systems, integrated payment solutions, and utalized AWS for hosting and managing web applications.
 
 ### Highlights:
 
-- **3D Solar System**: Explore a detailed 3D environment showcasing each planet in our solar system
-- **Responsive Design**: Ensures a seamless and visually consistent experience across all devices
-- **Dynamic Interactivity**: Engage with intuitive elements that respond to your interactions
+- **Secure Sign-In Options**: Choose between OAuth (Google or Facebook) and traditional email / password
+- **Personalized Orders**: Detailed customization of orders during checkout
+- **Stripe and PayPal Checkout**: Secure and versatile payment options to adhere to customer preferences
 
 <br>
 
-I hope you enjoy exploring my portfilio as much as I enjoyed creating it!
+I hope the site provides you with an welcoming and enjoyable shopping experience.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
