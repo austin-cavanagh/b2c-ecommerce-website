@@ -204,7 +204,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Austin Cavanagh - [GitHub](https://github.com/austin-cavanagh) - [LinkedIn](https://www.linkedin.com/in/austincavanagh/) - austin.cavanagh.cs@gmail.com
+Austin Cavanagh - <a href="https://github.com/austin-cavanagh" target="_blank">GitHub</a> - <a href="https://www.linkedin.com/in/austincavanagh/" target="_blank">LinkedIn</a> - austin.cavanagh.cs@gmail.com
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
