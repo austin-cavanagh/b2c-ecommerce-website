@@ -6,15 +6,11 @@
 
   <h3 align="center">B2C eCommerce Website</h3>
 
-<a href="https://craftsbyjules.org" target="_blank"><strong>Visit Website »</strong></a>
+<a href="https://craftsbyjules.org" target="_blank"><strong>Visit Online Store »</strong></a>
 
-<br />
-
-<!-- <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+<a href="https://github.com/austin-cavanagh/b2c-ecommerce-website/issues/new?assignees=&labels=&projects=&template=bug-report-%F0%9F%90%9D.md&title=">Report Bug</a>
 ·
-<a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-·
-<a href="https://github.com/othneildrew/Best-README-Template/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a> -->
+<a href="https://github.com/austin-cavanagh/b2c-ecommerce-website/issues/new?assignees=&labels=&projects=&template=feature-request-%F0%9F%9A%80.md&title=">Request Feature</a>
 
   </p>
 </div>
