@@ -66,6 +66,7 @@ export default function Navbar({ session }: NavbarProps) {
           </button>
         </div>
 
+        {/* Displays Based on User Signed In */}
         {!session ? (
           <div className="hidden space-x-3 lg:flex lg:flex-1 lg:justify-end">
             <button
@@ -149,21 +150,34 @@ export default function Navbar({ session }: NavbarProps) {
                   </Link>
                 ))}
               </div>
-              <div className="py-6">
-                <button
-                  onClick={() => signIn()}
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </button>
-                <Link
-                  href={'/create-account'}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Sign up
-                </Link>
-              </div>
+
+              {/* Displays Based on User Signed In */}
+              {!session ? (
+                <div className="py-6">
+                  <button
+                    onClick={() => signIn()}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Log in
+                  </button>
+                  <Link
+                    href={'/create-account'}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Sign up
+                  </Link>
+                </div>
+              ) : (
+                <div className="py-6">
+                  <button
+                    onClick={() => signOut()}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >
+                    Sign out
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </Dialog.Panel>
