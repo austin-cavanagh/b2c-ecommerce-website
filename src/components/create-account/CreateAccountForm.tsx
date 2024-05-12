@@ -13,7 +13,7 @@ export default function CreateAccountForm() {
 
   return (
     // method="POST" <- look into what this was
-    <form className="space-y-6" action={createAccount}>
+    <form className="space-y-5" action={createAccount}>
       {/* <div>{error.message}</div> */}
 
       <div>
@@ -30,7 +30,7 @@ export default function CreateAccountForm() {
             type="text"
             autoComplete="name"
             required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-lg border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
           />
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function CreateAccountForm() {
             type="email"
             autoComplete="email"
             required
-            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            className="block w-full rounded-lg border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
           />
         </div>
       </div>
@@ -64,12 +64,12 @@ export default function CreateAccountForm() {
         <PasswordInput />
       </div>
 
-      <div>
+      <div className="pt-2">
         <button
           type="submit"
-          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="bg-primary flex w-full justify-center rounded-full px-3 py-2 text-base font-semibold leading-6 text-white shadow-sm hover:brightness-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
-          Create account
+          Sign up
         </button>
       </div>
     </form>

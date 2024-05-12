@@ -20,7 +20,7 @@ function PasswordInput({ passwordRef }: PasswordInputProps) {
         autoComplete="current-password"
         required
         ref={passwordRef}
-        className="focus:ring-primary block w-full rounded-md border-0 py-1.5 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
+        className="block w-full rounded-lg border-0 py-1.5 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
       />
       <button
         type="button"
@@ -34,7 +34,7 @@ function PasswordInput({ passwordRef }: PasswordInputProps) {
             xmlns="http://www.w3.org/2000/svg"
             transform="matrix(1, 0, 0, -1, 0, 0)"
             stroke="#9CA3AF"
-            className="h-5 w-5"
+            className="h-4 w-4"
           >
             {/* Eye Closed */}
             <g strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -49,7 +49,7 @@ function PasswordInput({ passwordRef }: PasswordInputProps) {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
+            className="h-4 w-4"
           >
             {/* Eye Open */}
             <g

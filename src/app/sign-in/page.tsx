@@ -35,7 +35,7 @@ function SignIn() {
 
   return (
     <main className="flex h-full w-full flex-1 items-center justify-center px-6 py-6 sm:p-6">
-      <div className="w-full max-w-96">
+      <div className="w-full sm:max-w-[480px]">
         <div className="rounded-3xl bg-white px-6 py-10 shadow-2xl sm:px-12">
           <h2 className="mb-4 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
             Log in
