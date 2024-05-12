@@ -58,15 +58,23 @@ export default function Example() {
             </a>
           ))}
         </div>
-        <div className="hidden space-x-10 lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="font-semibold leading-6 text-gray-900">
+        <div className="hidden space-x-2 lg:flex lg:flex-1 lg:justify-end">
+          <a
+            href="#"
+            className="rounded-full bg-[#e9e9e9] px-4 py-3 font-semibold leading-6 text-[#111111]"
+          >
             Log in
           </a>
-          <a href="#" className="font-semibold leading-6 text-gray-900">
+          <a
+            href="#"
+            className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+          >
             Sign up
           </a>
         </div>
       </nav>
+
+      {/* Mobile View */}
       <Dialog
         className="lg:hidden"
         open={mobileMenuOpen}

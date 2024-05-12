@@ -9,6 +9,9 @@ const config: Config = {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        primary: '#e60022',
+      },
       width: {
         '22': '5.5rem',
       },
