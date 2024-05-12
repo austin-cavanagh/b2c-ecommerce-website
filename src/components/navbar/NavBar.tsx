@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { UserIcon, ShoppingCartIcon } from '@heroicons/react/20/solid';
 
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 
 const navigation = [
@@ -174,7 +174,7 @@ export default function Navbar({ session }: NavbarProps) {
                     onClick={() => signOut()}
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
-                    Sign out
+                    Sign
                   </button>
                 </div>
               )}
