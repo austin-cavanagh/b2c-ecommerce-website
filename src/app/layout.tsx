@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import NavBar from '../components/navbar/NavBar';
 import Providers from './providers';
 import Footer from '@/components/footer/Footer';
-import NewNavBar from '@/components/navbar/NewNavBar';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]/authOptions';
+import Navbar from '@/components/navbar/Navbar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,18 +16,19 @@ export const metadata: Metadata = {
 
 // I had the max width set to max-w-7xl and sm:px-6 lg:px-8
 
-function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="en" className="" suppressHydrationWarning>
       <body className={`${inter.className} bg-[#f9f8fb] dark:bg-gray-900`}>
         <Providers>
           <div className="mx-auto flex min-h-screen flex-col">
-            <NavBar />
-            <NewNavBar />
+            <Navbar session={session} />
             {children}
             <Footer />
           </div>
@@ -35,5 +37,3 @@ function RootLayout({
     </html>
   );
 }
-
-export default RootLayout;

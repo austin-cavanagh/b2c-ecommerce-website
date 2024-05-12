@@ -2,46 +2,45 @@
 
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import {
-  Bars3Icon,
-  XMarkIcon,
-  ShoppingCartIcon,
-  UserIcon,
-} from '@heroicons/react/24/outline';
-import ToggleThemeButton from './ToggleThemeButton';
-import SignInButton from '../SignInButton';
+import { UserIcon, ShoppingCartIcon } from '@heroicons/react/20/solid';
+// import { UserIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
+
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { redirect, useRouter } from 'next/navigation';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Products', href: '/products' },
+  { name: 'Crafts', href: '/products' },
   { name: 'Contact', href: '/contact' },
 ];
 
-function NavBar() {
+export default function Navbar({ session }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  console.log('SESSION:', session);
+
   return (
-    <header className="px-6 py-6 sm:p-6 dark:border-gray-700">
-      {/* PC */}
+    <header className="">
       <nav
-        className="mx-auto flex max-w-5xl items-center justify-between"
+        className="mx-auto flex max-w-6xl items-center justify-between p-6 lg:px-8"
         aria-label="Global"
       >
-        {/* Left Navbar */}
-        <div className="flex items-center space-x-8">
-          <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              {/* <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              /> */}
-            </a>
-          </div>
+        <div className="flex items-center">
+          <a href="/" className="-m-1.5 flex items-center p-1.5">
+            <span className="sr-only">Crafts by Jules logo</span>
+            <img
+              className="h-9 w-auto"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD40lEQVR4nO2Y72tbVRjHz4bOH/SF4I8moi+m4Ju91I3mJs01apc8p92cYMV/wLG0zZotTTfyYndbsTbnhOreKBPBJl27NllqV6VzkyXLOQM7KIiigiIizi5dBWEDV8q0R07N1Zpdm7S9STq4X3je5N77nOdznud77iUIWbJkydKGV++VPQ/HLjfvpgwoZfg85fA95fCbDMJglnCYIgy/F2U+VRPaZrQR1Me92yjDxwnHXxGGFynHoryAKzEGz9S6ftQ9po51pdzi2KdNgpRd/D9xtT/ntRvl1bLqPYTBG5RBhnD4lTK4SRn+gTAYjfHmvW9nX37IFABNoM2BU8r8vg8bROewS2iTLwnKYDUQ7xbnPDHpu48wfKHEc/OU4/djuZ1PrhuiK62elAB6SJCeC01lARAGPxXnIwx6VrEB84RDv/TfmgEiaa/dP/AvgB4Hk42iN+stAYCvGwD8sspRFDIPZb5X1wwRHHHOFgPI8McdIjLhkTttvDCHT5bnEQJtohzfLlkwx6Lns50ictYjgiMu0Z5QRGhUjSOBNq0JoCvt/sAIQI/9Q05x/M6xuk0YOItzUQZf/F/hb2a8IjLuEYFTyn+7nXKfQ+tR6GzTVqMxKo7wGbfou+RbKj7KfXuNclGOXysaD3Fk8kVxYMRlmLNjULmlJVu3oPUqeNo1UwpARlvcId7K+uT4TL3z+a765Tm06ZYHKcNHCMM3ejNecegjVbQnHCvmO5x270dm6FD6+Ug5ADKil/DVpR1mwOSZL5/v581PEY6/kb9HcyDK6Wjnadcdp9i61DnsvFFq0Y5BZUG+wCiH/BJEDodlJwiHHwvGng6PeU6UyuOPNyyGx9XnTAU4PKa2ysQrLdyVcl+U98YY7CnM+RxleKhQfE7LqvcHhpSeUgChVGMSVULdafWYf8B4btsTykIo3fSYfmTqI7P0HcXg9+jl3Y/La/sSjtdXKj447Px5zUdmOQqPv+A5ONr4ZUdCWZAwbXHHn8HRxu+6U85ty++jHI4Sg8+KA8mGB9oSjpuGxQ85Z0Pn/96EmotyAP24jDJoWX4tMKA8HRxxfdsWd/zhH2hYDAwqt0JJ9xnd9BtCNLdrqw4gTyF0t0n7unWLDtA39coT6G4ULQCcnH72XrRRlN1RJyoZyAIoIasDO2o9QtvrLlaqC5ntdRlUDeWhvuUatgszI4/rm1G1dB0/ajMbYM77iOHfMBXTDLZfMw0AbDNVLb4A8LF5HbBNVB8A7EdNBNCqDmCmkfPVNHAljDxXbQObamSogYHNNbJtonYAphjZVn0Dm2nkfC0MbKaR52plYEuWLFlCZugvyIar3mjBGL4AAAAASUVORK5CYII="
+              alt=""
+            />
+          </a>
+          {/* <span className="text-primary ml-1 text-[20px] font-semibold">
+            Crafts by Jules
+          </span> */}
 
-          <div className="hidden lg:flex lg:gap-x-12">
+          <div className="ml-8 hidden lg:flex lg:gap-x-8">
             {navigation.map(item => (
               <Link
                 key={item.name}
@@ -54,7 +53,8 @@ function NavBar() {
           </div>
         </div>
 
-        {/* <div className="flex lg:hidden">
+        {/* Button on Mobile */}
+        <div className="flex lg:hidden">
           <button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -63,93 +63,111 @@ function NavBar() {
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
           </button>
-        </div> */}
+        </div>
 
-        {/* Right Navbar */}
-        <div className="flex items-center justify-center space-x-6">
-          <div className="">
-            <Link href={'/cart'} className="flex">
-              <ShoppingCartIcon
-                className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                aria-hidden="true"
-              />
-              <span className="ml-2 text-base font-medium text-gray-700 group-hover:text-gray-800">
-                0
-              </span>
-              <span className="sr-only">items in cart, view bag</span>
+        {!session ? (
+          <div className="hidden space-x-3 lg:flex lg:flex-1 lg:justify-end">
+            <button
+              onClick={() => signIn()}
+              className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+            >
+              Log in
+            </button>
+            <Link
+              href={'/create-account'}
+              className="rounded-full bg-[#e9e9e9] px-4 py-3 font-semibold leading-6 text-[#111111]"
+            >
+              Sign up
             </Link>
           </div>
+        ) : (
+          <div className="hidden items-center space-x-4 lg:flex lg:justify-end">
+            <Link href={'/cart'} className="flex">
+              <ShoppingCartIcon
+                className="h-6 w-6 flex-shrink-0 text-[#767676] group-hover:text-gray-500"
+                aria-hidden="true"
+              />
 
-          <span
-            className="mx-1 h-6 w-px bg-gray-200 lg:mx-1"
-            aria-hidden="true"
-          />
+              <span className="sr-only">items in cart, view bag</span>
+            </Link>
 
-          {/* <div className="flex">
-          <a href="#" className="-m-2 p-2 text-gray-400 hover:text-gray-500">
-            <span className="sr-only">Account</span>
-            <UserIcon className="h-6 w-6" aria-hidden="true" />
-          </a>
+            <Link
+              href={'/account/settings'}
+              className="-m-2 p-2 text-[#767676] hover:text-gray-500"
+            >
+              <span className="sr-only">Account</span>
+              <UserIcon className="h-6 w-6" aria-hidden="true" />
+            </Link>
+
+            <button
+              onClick={() => signOut({ redirect: false })}
+              className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+            >
+              Sign out
+            </button>
+          </div>
+        )}
+
+        {/* Signed Out View */}
+        {/* <div className="hidden space-x-3 lg:flex lg:flex-1 lg:justify-end">
+          <button
+            onClick={() => signIn()}
+            className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+          >
+            Log in
+          </button>
+          <Link
+            href={'/create-account'}
+            className="rounded-full bg-[#e9e9e9] px-4 py-3 font-semibold leading-6 text-[#111111]"
+          >
+            Sign up
+          </Link>
         </div> */}
+
+        {/* Signed In View */}
+        {/* <div className="hidden items-center space-x-4 lg:flex lg:justify-end">
+          <Link href={'/cart'} className="flex">
+            <ShoppingCartIcon
+              className="h-6 w-6 flex-shrink-0 text-[#767676] group-hover:text-gray-500"
+              aria-hidden="true"
+            />
+
+            <span className="sr-only">items in cart, view bag</span>
+          </Link>
 
           <Link
             href={'/account/settings'}
-            className="-m-2 p-2 text-gray-400 hover:text-gray-500"
+            className="-m-2 p-2 text-[#767676] hover:text-gray-500"
           >
             <span className="sr-only">Account</span>
             <UserIcon className="h-6 w-6" aria-hidden="true" />
           </Link>
 
-          {/* <a
-          href="#"
-          className="hidden lg:block lg:text-base lg:font-semibold lg:leading-6 lg:text-gray-900"
-        >
-          Log in
-        </a> */}
-
-          {/* <Link
-          href={'/sign-in'}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Sign In
-        </Link> */}
-
-          {/* <button
-          onClick={() => signOut()}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Sign Out
-        </button> */}
-
-          <SignInButton />
-
-          <ToggleThemeButton />
-        </div>
+          <button
+            onClick={() => signOut({ redirect: false })}
+            className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+          >
+            Sign out
+          </button>
+        </div> */}
       </nav>
 
-      {/* Mobile */}
+      {/* Mobile View */}
       <Dialog
-        as="div"
         className="lg:hidden"
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
       >
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="flex items-center gap-x-6">
+          <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              {/* <img
+              <img
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
-              /> */}
-            </a>
-            <a
-              href="#"
-              className="ml-auto rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign up
+              />
             </a>
             <button
               type="button"
@@ -188,5 +206,3 @@ function NavBar() {
     </header>
   );
 }
-
-export default NavBar;
