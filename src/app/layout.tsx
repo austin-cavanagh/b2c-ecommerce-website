@@ -4,6 +4,7 @@ import './globals.css';
 import NavBar from '../components/navbar/NavBar';
 import Providers from './providers';
 import Footer from '@/components/footer/Footer';
+import NewNavBar from '@/components/navbar/NewNavBar';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,6 +26,7 @@ function RootLayout({
         <Providers>
           <div className="mx-auto flex min-h-screen flex-col">
             <NavBar />
+            <NewNavBar />
             {children}
             <Footer />
           </div>

@@ -11,9 +11,6 @@
     "prisma:generate": "prisma generate --schema src/prisma/schema.prisma",
     "prisma:seed": "ts-node src/prisma/seed.ts"
   },
-  "prisma": {
-    "seed": "ts-node src/prisma/seed.ts"
-  },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.565.0",
     "@aws-sdk/client-ses": "^3.515.0",

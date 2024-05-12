@@ -45,12 +45,12 @@
 
 ![Screenshot displaying an overview of the solar system](/assets/screenshots/about.png)
 
-This eCommerce website was created for my mom's home crafts business, providing her a platform to showcase and sell her handmade products. Through building this site, I've deepened my understanding of authentication systems, integrated payment solutions, and utalized AWS for hosting and managing web applications.
+This eCommerce website was created for my mom's home crafts business, providing her a platform to showcase and sell her handmade products. Through building this site, I've deepened my understanding of authentication systems, integrated payments, and AWS for hosting and managing web applications.
 
 ### Highlights:
 
 - **Secure Sign-In Options**: Choose between OAuth (Google or Facebook) and traditional email / password
-- **Personalized Orders**: Detailed customization of orders during checkout
+- **Hosting with AWS**: Hosted on Amazon Web Services to enable scalability, security, and performance
 - **Stripe and PayPal Checkout**: Secure and versatile payment options to adhere to customer preferences
 
 <br>
@@ -94,11 +94,11 @@ I hope the site provides you with an welcoming and enjoyable shopping experience
 
 ## Getting Started
 
-This section provides instructions on how to get a local copy of the portfolio website up and running.
+This section provides instructions on how to get a local copy of the website up and running.
 
 ### Prerequisites
 
-Before installing the project, make sure you have the following tools installed:
+Before installing, make sure you have the following tools installed:
 
 - **Node.js**: The runtime environment for executing JavaScript code server-side. You can download it from [Node.js official website](https://nodejs.org/en/download/).
 
@@ -116,14 +116,14 @@ To get a local copy up and running follow these simple steps.
    Begin by cloning the repository to your local machine:
 
    ```sh
-   git clone https://github.com/your_username/portfolio.git
+   git clone https://github.com/austin-cavanagh/b2c-ecommerce-website.git
    ```
 
 2. **Navigate to the project directory**
    Enter directory after cloning:
 
    ```sh
-   cd portfolio
+   cd b2c-ecommerce-website
    ```
 
 3. **Install dependencies**
@@ -147,10 +147,10 @@ To get a local copy up and running follow these simple steps.
    npm run build
    ```
 
-   After building, preview the production build by running:
+   After building, you can preview the production build locally by running:
 
    ```sh
-   npm run preview
+   npm start
    ```
 
 6. **Happy coding!**
