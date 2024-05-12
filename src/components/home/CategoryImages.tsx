@@ -83,7 +83,7 @@ export default function CategoryImages() {
         </div>
 
         {/* Category Cards with large padding on the left */}
-        <div className="relative mt-6 overflow-hidden">
+        {/* <div className="relative mt-6 overflow-hidden">
           <div className="scrolling-touch scrollbar-hide flex space-x-4 overflow-x-auto px-[var(--category-side-padding)]">
             {categoryImages.map((image, index) => (
               <div key={index} className="min-w-[16rem] shrink-0">
@@ -98,7 +98,7 @@ export default function CategoryImages() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Browse all imagse button - mobile */}
         {/* <div className="mt-6 sm:hidden">

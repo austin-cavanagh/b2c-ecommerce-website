@@ -1,14 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { UserIcon, ShoppingCartIcon } from '@heroicons/react/20/solid';
-// import { UserIcon, ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 import { signIn, signOut, useSession } from 'next-auth/react';
-import { redirect, useRouter } from 'next/navigation';
+import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 
 const navigation = [
   { name: 'Home', href: '/' },
@@ -16,10 +15,12 @@ const navigation = [
   { name: 'Contact', href: '/contact' },
 ];
 
-export default function Navbar({ session }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+type NavbarProps = {
+  session: ExtendSession | null;
+};
 
-  console.log('SESSION:', session);
+export default function Navbar({ session }: NavbarProps) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="">
@@ -107,51 +108,7 @@ export default function Navbar({ session }) {
             </button>
           </div>
         )}
-
-        {/* Signed Out View */}
-        {/* <div className="hidden space-x-3 lg:flex lg:flex-1 lg:justify-end">
-          <button
-            onClick={() => signIn()}
-            className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
-          >
-            Log in
-          </button>
-          <Link
-            href={'/create-account'}
-            className="rounded-full bg-[#e9e9e9] px-4 py-3 font-semibold leading-6 text-[#111111]"
-          >
-            Sign up
-          </Link>
-        </div> */}
-
-        {/* Signed In View */}
-        {/* <div className="hidden items-center space-x-4 lg:flex lg:justify-end">
-          <Link href={'/cart'} className="flex">
-            <ShoppingCartIcon
-              className="h-6 w-6 flex-shrink-0 text-[#767676] group-hover:text-gray-500"
-              aria-hidden="true"
-            />
-
-            <span className="sr-only">items in cart, view bag</span>
-          </Link>
-
-          <Link
-            href={'/account/settings'}
-            className="-m-2 p-2 text-[#767676] hover:text-gray-500"
-          >
-            <span className="sr-only">Account</span>
-            <UserIcon className="h-6 w-6" aria-hidden="true" />
-          </Link>
-
-          <button
-            onClick={() => signOut({ redirect: false })}
-            className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
-          >
-            Sign out
-          </button>
-        </div> */}
       </nav>
-
       {/* Mobile View */}
       <Dialog
         className="lg:hidden"
@@ -182,22 +139,30 @@ export default function Navbar({ session }) {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {navigation.map(item => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
+                <button
+                  onClick={() => signIn()}
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </button>
+                <Link
+                  href={'/create-account'}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Sign up
+                </Link>
               </div>
             </div>
           </div>
