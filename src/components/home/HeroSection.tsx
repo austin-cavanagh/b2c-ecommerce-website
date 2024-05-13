@@ -8,7 +8,12 @@ export default function HeroSection() {
 
   return (
     <section className="mt-72 text-center">
-      <div className="mx-auto w-screen">
+      <div className="mx-auto w-screen overflow-hidden p-12">
+        <div className="absolute left-0 right-0 top-1/2 mx-auto w-full text-2xl font-bold text-white">
+          <h2 className="whitespace-nowrap text-6xl font-semibold text-gray-900">
+            Crafts by Jules
+          </h2>
+        </div>
         <div className="flex justify-center space-x-4">
           <motion.div
             className="flex flex-col space-y-4"
