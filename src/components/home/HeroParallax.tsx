@@ -10,7 +10,7 @@ import {
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { firstRow, secondRow, thirdRow } from '@/data/heroParallaxImages';
+import { firstRow, secondRow } from '@/data/heroParallaxImages';
 import { useRef } from 'react';
 
 export default function HeroParallax() {
@@ -23,11 +23,11 @@ export default function HeroParallax() {
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [300, 1000]),
+    useTransform(scrollYProgress, [0, 1], [200, 900]),
     springConfig,
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -500]),
+    useTransform(scrollYProgress, [0, 1], [0, -700]),
     springConfig,
   );
   const rotateX = useSpring(
@@ -44,7 +44,7 @@ export default function HeroParallax() {
   );
 
   const translateY = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [-600, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [-600, 100]),
     springConfig,
   );
 
@@ -70,7 +70,7 @@ export default function HeroParallax() {
           ))}
         </motion.div>
 
-        <motion.div className="mb-8 flex  flex-row space-x-8 ">
+        <motion.div className="flex flex-row space-x-8 pb-16">
           {secondRow.map((product, index) => (
             <ProductCard
               product={product}
@@ -98,7 +98,8 @@ export const Header = () => {
       <h1
         className={`text-2xl font-bold md:text-7xl ${theme === 'dark' ? 'text-white' : 'text-black'}`}
       >
-        The Ultimate <br /> development studio
+        {/* Crafts <br /> by Jules */}
+        Crafts <br /> by Jules
       </h1>
       <p
         className={`mt-8 max-w-2xl text-base md:text-xl ${theme === 'dark' ? 'text-neutral-200' : 'text-black'}`}
@@ -131,11 +132,11 @@ export const ProductCard = ({ product, translate }: ProductCardProps) => {
         y: -20,
       }}
       key={product.name}
-      className="group/product relative h-96 w-[30rem] flex-shrink-0"
+      className="group/product relative h-96 w-96 flex-shrink-0 overflow-hidden rounded-3xl"
     >
       <Link
         href={product.link}
-        className="block group-hover/product:shadow-2xl "
+        className="block group-hover/product:shadow-2xl"
       >
         <Image
           src={product.src}
