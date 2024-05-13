@@ -28,6 +28,9 @@ export default function HeroSection() {
               key={index}
               className="flex flex-col space-y-4"
               style={{ y: calculateOffset(offset, speedMultipliers[index]) }}
+              initial={{ y: '100vh', opacity: 0 }}
+              animate={{ y: 0 }}
+              transition={{ type: 'spring', stiffness: 100, damping: 10 }}
             >
               <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
               <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
