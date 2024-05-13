@@ -8,8 +8,8 @@ export default function HeroSection() {
 
   return (
     <section className="mt-72 text-center">
-      <div className="mx-auto w-screen overflow-hidden">
-        <div className="flex justify-center space-x-4 pt-12">
+      <div className="mx-auto w-screen">
+        <div className="flex justify-center space-x-4">
           <motion.div
             className="flex flex-col space-y-4"
             initial={{ y: '100vh' }}
