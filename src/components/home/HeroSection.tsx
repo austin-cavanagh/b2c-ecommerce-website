@@ -15,9 +15,9 @@ export default function HeroSection() {
   const offsets = [0, 100, 200, 300, 200, 100, 0]; // Initial offsets for the animation
 
   return (
-    <section className="mt-72 text-center">
+    <section className="mb-40 mt-60 text-center">
       {/* Remember to remove the mb here */}
-      <div className="mx-auto mb-96 w-screen overflow-hidden p-12">
+      <div className="mx-auto w-screen p-12">
         <div className="flex justify-center space-x-4">
           {offsets.map((offset, index) => (
             <motion.div

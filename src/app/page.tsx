@@ -19,7 +19,7 @@ export default async function Home() {
 
       {/* <HeroParallax /> */}
 
-      {/* <CategoriesSection /> */}
+      <CategoriesSection />
 
       {/* Category Section */}
       {/* <section aria-labelledby="category-heading" className="">
