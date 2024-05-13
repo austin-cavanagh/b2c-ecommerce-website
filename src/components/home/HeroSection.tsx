@@ -17,7 +17,7 @@ export default function HeroSection() {
 
   // Array of starting Y offsets for each column when the page loads
   const offsets = [0, 100, 200, 300, 200, 100, 0]; // Initial offsets for the animation
-  const speedMultipliers = [1.5, 2, 2.25, 2.25, 2.25, 2, 1.5]; // Speed multipliers for each column
+  const speedMultipliers = [1.5, 1.9, 2.3, 2.7, 2.3, 1.9, 1.5]; // Speed multipliers for each column
 
   return (
     <section className="mb-40 mt-60 text-center">
