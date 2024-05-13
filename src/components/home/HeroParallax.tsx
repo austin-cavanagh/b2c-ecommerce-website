@@ -23,11 +23,11 @@ export default function HeroParallax() {
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [300, 1000]),
     springConfig,
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, -500]),
     springConfig,
   );
   const rotateX = useSpring(
@@ -39,7 +39,7 @@ export default function HeroParallax() {
     springConfig,
   );
   const rotateZ = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    useTransform(scrollYProgress, [0, 0.2], [12, 0]),
     springConfig,
   );
 
@@ -47,6 +47,7 @@ export default function HeroParallax() {
     useTransform(scrollYProgress, [0, 0.2], [-600, 0]),
     springConfig,
   );
+
   return (
     <div
       ref={ref}
@@ -63,13 +64,13 @@ export default function HeroParallax() {
         }}
         className=""
       >
-        <motion.div className="mb-10 flex flex-row-reverse space-x-10 space-x-reverse">
+        <motion.div className="mb-8 flex flex-row-reverse space-x-8 space-x-reverse">
           {firstRow.map((product, index) => (
             <ProductCard product={product} translate={translateX} key={index} />
           ))}
         </motion.div>
 
-        <motion.div className="mb-10 flex  flex-row space-x-10 ">
+        <motion.div className="mb-8 flex  flex-row space-x-8 ">
           {secondRow.map((product, index) => (
             <ProductCard
               product={product}
