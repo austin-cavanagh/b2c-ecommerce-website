@@ -21,7 +21,7 @@ export default function HeroSection() {
 
   return (
     <section className="mb-40 mt-60 text-center">
-      <div className="mx-auto w-screen p-12">
+      <div className="relative mx-auto w-screen p-12">
         <div className="flex justify-center space-x-4">
           {offsets.map((offset, index) => (
             <motion.div

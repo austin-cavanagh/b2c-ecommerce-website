@@ -14,12 +14,14 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-start">
+    <main className="flex w-full flex-1 flex-col items-center justify-start overflow-hidden">
       <HeroSection />
 
       {/* <HeroParallax /> */}
 
       <CategoriesSection />
+
+      {/* <CategoriesSection /> */}
 
       {/* Category Section */}
       {/* <section aria-labelledby="category-heading" className="">
