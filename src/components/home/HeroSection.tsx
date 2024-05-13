@@ -1,107 +1,34 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
 export default function HeroSection() {
-  const baseDelay = 0.3;
-  const delayIncrement = 0.2;
+  const { scrollY } = useViewportScroll(); // This hook provides the current scroll distance in pixels
+
+  // Function to calculate dynamic Y offsets based on scroll distance
+  const calculateOffset = baseOffset => {
+    // Adjusting initial and final y positions based on scroll distance
+    return useTransform(scrollY, [0, 500], [baseOffset, 0]); // Adjust 500 to the scroll distance that completes the animation
+  };
+
+  // Array of starting Y offsets for each column when the page loads
+  const offsets = [0, 100, 200, 300, 200, 100, 0]; // Initial offsets for the animation
 
   return (
     <section className="mt-72 text-center">
-      <div className="mx-auto w-screen overflow-hidden p-12">
-        <div className="absolute left-0 right-0 top-1/2 mx-auto w-full text-2xl font-bold text-white">
-          <h2 className="whitespace-nowrap text-6xl font-semibold text-gray-900">
-            Crafts by Jules
-          </h2>
-        </div>
+      {/* Remember to remove the mb here */}
+      <div className="mx-auto mb-96 w-screen overflow-hidden p-12">
         <div className="flex justify-center space-x-4">
-          <motion.div
-            className="flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{ delay: baseDelay, type: 'spring', stiffness: 50 }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
-          <motion.div
-            className="mt-32 flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: baseDelay + delayIncrement,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
-          <motion.div
-            className="mt-64 flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: baseDelay + 2 * delayIncrement,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
-          <motion.div
-            className="mt-96 flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: baseDelay + 3 * delayIncrement,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
-          <motion.div
-            className="mt-64 flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: baseDelay + 4 * delayIncrement,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
-          <motion.div
-            className="mt-32 flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: baseDelay + 5 * delayIncrement,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
-          <motion.div
-            className="flex flex-col space-y-4"
-            initial={{ y: '100vh' }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: baseDelay + 6 * delayIncrement,
-              type: 'spring',
-              stiffness: 50,
-            }}
-          >
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-            <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
-          </motion.div>
+          {offsets.map((offset, index) => (
+            <motion.div
+              key={index}
+              className="flex flex-col space-y-4"
+              style={{ y: calculateOffset(offset) }}
+            >
+              <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
+              <div className="block h-80 w-56 rounded-3xl bg-indigo-700"></div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

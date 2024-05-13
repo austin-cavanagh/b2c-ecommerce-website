@@ -25,7 +25,7 @@ export default function Navbar({ session }: NavbarProps) {
   return (
     <header className="">
       <nav
-        className="mx-auto flex max-w-6xl items-center justify-between p-6 shadow-md"
+        className="mx-auto flex max-w-6xl items-center justify-between p-6"
         aria-label="Global"
       >
         <div className="flex items-center">
