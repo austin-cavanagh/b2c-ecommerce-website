@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth';
 import CategoryImages from '@/components/home/CategoryImages';
 import CategoriesSection from '@/components/home/CategoriesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
+import HeroSection from '@/components/home/HeroSection';
 
 export default async function Home() {
   // const [open, setOpen] = useState(false);
@@ -13,10 +14,12 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center">
-      <HeroParallax />
+    <main className="flex w-full flex-1 flex-col items-center justify-start">
+      <HeroSection />
 
-      <CategoriesSection />
+      {/* <HeroParallax /> */}
+
+      {/* <CategoriesSection /> */}
 
       {/* Category Section */}
       {/* <section aria-labelledby="category-heading" className="">
@@ -209,7 +212,7 @@ export default async function Home() {
           </div>
         </section> */}
 
-      <CategoryImages />
+      {/* <CategoryImages /> */}
 
       {/* CTA Section */}
       {/* <section aria-labelledby="sale-heading w-full">
@@ -292,7 +295,7 @@ export default async function Home() {
       </section> */}
 
       {/* Testimonials */}
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
     </main>
   );
 }

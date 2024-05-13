@@ -11,7 +11,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { firstRow, secondRow } from '@/data/heroParallaxImages';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function HeroParallax() {
   const ref = useRef(null);
@@ -48,13 +48,14 @@ export default function HeroParallax() {
     springConfig,
   );
 
+  console.log(scrollYProgress);
+
   return (
     <div
       ref={ref}
       className="relative flex flex-col self-auto overflow-hidden py-10 antialiased [perspective:1000px] [transform-style:preserve-3d]"
     >
-      <Header />
-
+      <Header />\
       <motion.div
         style={{
           rotateX,
