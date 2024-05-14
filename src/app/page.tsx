@@ -32,6 +32,8 @@ export default async function Home() {
 
       {/* <CategoriesSection /> */}
 
+      {/* <CategoryImages /> */}
+
       {/* Category Section */}
       {/* <section aria-labelledby="category-heading" className="">
         <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
@@ -222,8 +224,6 @@ export default async function Home() {
             </div>
           </div>
         </section> */}
-
-      {/* <CategoryImages /> */}
 
       {/* CTA Section */}
       {/* <section aria-labelledby="sale-heading w-full">
