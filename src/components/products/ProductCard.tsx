@@ -16,7 +16,7 @@ export function ProductCard({
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.5, // Adjust this value according to your needs
+    threshold: 0.05, // Adjust this value according to your needs
   });
 
   // Each row starts 0.3s later, each column within a row adds 0.1s
@@ -32,14 +32,15 @@ export function ProductCard({
         initial={{ opacity: 0, y: 50 }} // Starts at 50 pixels down and invisible
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Ends at original position and fully visible
         transition={{
-          duration: 0.7,
+          duration: 0.5,
           ease: 'easeOut',
           delay: 0,
           // delay: row === (0 || 1) ? 0 : delay, // Staggered delay based on row and column
         }}
-        className="group relative transform cursor-pointer overflow-hidden rounded-lg shadow-xl"
+        whileHover={{ scale: 1.05 }} // Grow in size on hover
+        className="group relative transform cursor-pointer overflow-hidden rounded-3xl shadow-xl"
       >
-        <div className="aspect-h-1 aspect-w-1 w-full bg-gray-200 group-hover:opacity-75">
+        <div className="aspect-h-1 aspect-w-1 w-full bg-gray-200">
           <Image
             src={product.imageUrls[0].src}
             alt={product.imageUrls[0].alt}
@@ -49,14 +50,14 @@ export function ProductCard({
             // objectFit="cover" // Maintains the aspect ratio
           />
         </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
+        {/* <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60 opacity-0 transition duration-300 ease-in-out group-hover:opacity-100">
           <div className="p-6 text-center">
-            <p className="text-xl font-bold text-white">{product.name}</p>
+            <p className="text-xl font-semibold text-white">{product.name}</p>
             <p className="mt-4 text-xl font-bold text-white">
               ${product.prices[0].price / 100}
             </p>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </Link>
   );

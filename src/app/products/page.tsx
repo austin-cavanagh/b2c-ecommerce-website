@@ -1,5 +1,4 @@
 import ProductsOverview from '@/components/products/ProductsOverview';
-import ProductsGrid from '../../components/products/ProductsGrid';
 
 export default async function Products() {
   return (

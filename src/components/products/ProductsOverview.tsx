@@ -7,6 +7,7 @@ import { classNames } from '@/functions/classNames';
 import ProductsGrid from '@/components/products/ProductsGrid';
 import Pagination from './Pagination';
 import Filters from './Filters';
+import { ParallaxScrollGrid } from './ParallaxScrollGrid';
 
 const products = [
   {
@@ -56,8 +57,8 @@ export default async function ProductsOverview() {
     <div className="mx-auto w-full max-w-5xl">
       {/* Heading */}
       <div className="py-14 text-center">
-        <h1 className="text-4xl text-5xl font-bold tracking-tight text-gray-900">
-          Crafts
+        <h1 className="text-4xl text-5xl font-semibold tracking-tight text-gray-900">
+          Products
         </h1>
 
         {/* <p className="mx-auto mt-4 max-w-3xl text-base text-gray-500">
@@ -70,6 +71,8 @@ export default async function ProductsOverview() {
 
       {/* Products Grid */}
       <ProductsGrid />
+
+      {/* <ParallaxScrollGrid /> */}
     </div>
   );
 }

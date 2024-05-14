@@ -11,7 +11,7 @@ import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Crafts', href: '/products' },
+  { name: 'Products', href: '/products' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -71,7 +71,7 @@ export default function Navbar({ session }: NavbarProps) {
           <div className="hidden space-x-3 lg:flex lg:flex-1 lg:justify-end">
             <button
               onClick={() => signIn()}
-              className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+              className="rounded-full bg-primary px-4 py-3 font-semibold leading-6 text-white"
             >
               Log in
             </button>
@@ -103,7 +103,7 @@ export default function Navbar({ session }: NavbarProps) {
 
             <button
               onClick={() => signOut({ redirect: false })}
-              className="bg-primary rounded-full px-4 py-3 font-semibold leading-6 text-white"
+              className="rounded-full bg-primary px-4 py-3 font-semibold leading-6 text-white"
             >
               Sign out
             </button>
