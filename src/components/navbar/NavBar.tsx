@@ -37,7 +37,7 @@ export default function Navbar({ session }: NavbarProps) {
               alt=""
             />
           </a>
-          {/* <span className="text-primary ml-1 text-[20px] font-semibold">
+          {/* <span className="ml-1 text-[20px] font-semibold text-primary">
             Crafts by Jules
           </span> */}
 

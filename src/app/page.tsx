@@ -6,6 +6,8 @@ import CategoryImages from '@/components/home/CategoryImages';
 import CategoriesSection from '@/components/home/CategoriesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import HeroSection from '@/components/home/HeroSection';
+import NewCategories from '@/components/home/NewCategories';
+import StarCategories from '@/components/home/StarCategories';
 
 export default async function Home() {
   // const [open, setOpen] = useState(false);
@@ -14,12 +16,16 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-start overflow-hidden">
-      <HeroSection />
+    <main className="flex w-full flex-1 flex-col items-center justify-center overflow-hidden">
+      {/* <NewCategories /> */}
+
+      <StarCategories />
+
+      {/* <HeroSection /> */}
 
       {/* <HeroParallax /> */}
 
-      <CategoriesSection />
+      {/* <CategoriesSection /> */}
 
       {/* <CategoriesSection /> */}
 
