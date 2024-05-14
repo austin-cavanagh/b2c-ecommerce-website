@@ -15,6 +15,9 @@ export default function HeroSection() {
     );
   };
 
+  // Transform for opacity of the title based on scroll position
+  const titleOpacity = useTransform(scrollY, [0, 70], [1, 0]);
+
   // Array of starting Y offsets for each column when the page loads
   const offsets = [0, 100, 200, 300, 200, 100, 0]; // Initial offsets for the animation
   const speedMultipliers = [1.5, 1.9, 2.3, 2.7, 2.3, 1.9, 1.5]; // Speed multipliers for each column
@@ -22,6 +25,12 @@ export default function HeroSection() {
   return (
     <section className="mb-40 mt-60 text-center">
       <div className="relative mx-auto w-screen p-12">
+        <motion.h1
+          className="absolute left-1/2 top-0 mt-10 -translate-x-1/2 transform text-6xl font-semibold"
+          style={{ opacity: titleOpacity }}
+        >
+          Crafts by Jules
+        </motion.h1>
         <div className="flex justify-center space-x-4">
           {offsets.map((offset, index) => (
             <motion.div
