@@ -16,7 +16,7 @@ export default function ProductOverview({
   const [selectedSize, setSelectedSize] = useState(product.prices[0]);
 
   return (
-    <div className="bg-white">
+    <div className="">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           {/* Image gallery */}
@@ -37,7 +37,7 @@ export default function ProductOverview({
                         </span>
                         <span
                           className={classNames(
-                            selected ? 'ring-indigo-500' : 'ring-transparent',
+                            selected ? 'ring-primary' : 'ring-transparent',
                             'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2',
                           )}
                           aria-hidden="true"
@@ -109,13 +109,11 @@ export default function ProductOverview({
                         className={({ active, checked }) =>
                           classNames(
                             'cursor-pointer focus:outline-none',
-                            active
-                              ? 'ring-2 ring-indigo-500 ring-offset-2'
-                              : '',
+                            active ? 'ring-2 ring-primary ring-offset-2' : '',
                             checked
-                              ? 'border-transparent bg-indigo-600 text-white hover:bg-indigo-700'
+                              ? 'border-transparent bg-primary text-white hover:brightness-90'
                               : 'border-gray-200 bg-white text-gray-900 hover:bg-gray-50',
-                            'flex items-center justify-center rounded-md border px-3 py-3 text-sm font-medium sm:flex-1',
+                            'flex items-center justify-center rounded-full border px-3 py-3 text-sm font-medium sm:flex-1',
                           )
                         }
                       >
@@ -188,7 +186,7 @@ export default function ProductOverview({
                             type="text"
                             name={option.label}
                             id={option.label}
-                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-300 sm:text-sm sm:leading-6"
                             placeholder={option.description}
                             aria-describedby={`${option.label}-description`}
                           />
@@ -238,7 +236,7 @@ export default function ProductOverview({
               <div className="mt-10 flex">
                 <button
                   type="submit"
-                  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+                  className="flex max-w-xs flex-1 items-center justify-center rounded-full border border-transparent bg-primary px-8 py-3 text-base font-medium text-white hover:brightness-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                 >
                   Add to cart
                 </button>
