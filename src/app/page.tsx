@@ -8,6 +8,7 @@ import TestimonialsSection from '@/components/home/TestimonialsSection';
 import HeroSection from '@/components/home/HeroSection';
 import NewCategories from '@/components/home/NewCategories';
 import StarCategories from '@/components/home/StarCategories';
+import Favorites from '@/components/home/Favorites';
 
 export default async function Home() {
   // const [open, setOpen] = useState(false);
@@ -19,7 +20,9 @@ export default async function Home() {
     <main className="flex w-full flex-1 flex-col items-center justify-center overflow-hidden">
       {/* <NewCategories /> */}
 
-      <StarCategories />
+      {/* <StarCategories /> */}
+
+      <Favorites />
 
       {/* <HeroSection /> */}
 
