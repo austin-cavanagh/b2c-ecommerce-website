@@ -16,7 +16,7 @@ export function ProductCard({
 
   const [ref, inView] = useInView({
     triggerOnce: true,
-    threshold: 0.05, // Adjust this value according to your needs
+    threshold: 0.01, // Adjust this value according to your needs
   });
 
   // Each row starts 0.3s later, each column within a row adds 0.1s
@@ -32,13 +32,13 @@ export function ProductCard({
         initial={{ opacity: 0, y: 50 }} // Starts at 50 pixels down and invisible
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} // Ends at original position and fully visible
         transition={{
-          duration: 0.5,
+          duration: 0.4,
           ease: 'easeOut',
           delay: 0,
           // delay: row === (0 || 1) ? 0 : delay, // Staggered delay based on row and column
         }}
         whileHover={{ scale: 1.05 }} // Grow in size on hover
-        className="group relative transform cursor-pointer overflow-hidden rounded-3xl shadow-xl"
+        className="group relative transform cursor-pointer overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl"
       >
         <div className="aspect-h-1 aspect-w-1 w-full bg-gray-200">
           <Image

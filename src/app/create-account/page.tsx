@@ -17,7 +17,7 @@ export default function Register() {
   return (
     <main className="flex w-full flex-1 items-center justify-center px-6 py-6 sm:p-6">
       <div className="sm:mx-auto sm:w-full sm:max-w-[480px]">
-        <div className="bg-white px-6 py-10 shadow sm:rounded-3xl sm:px-12">
+        <div className="bg-white px-6 py-10 shadow-2xl sm:rounded-3xl sm:px-12">
           <h2 className="mb-4 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
             Sign up
           </h2>
@@ -106,7 +106,7 @@ export default function Register() {
             Already have an account?{' '}
             <Link
               href="/sign-in"
-              className="hover:text-primary font-semibold leading-6 text-gray-900"
+              className="font-semibold leading-6 text-gray-900 hover:text-primary"
             >
               Log in
             </Link>

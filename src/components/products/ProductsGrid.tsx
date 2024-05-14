@@ -47,7 +47,8 @@ export default function ProductsGrid() {
   };
 
   if (!products.length) {
-    return <div>Loading...</div>;
+    return <></>;
+    // return <div>Loading...</div>;
   }
 
   const images = products.map(product => {
@@ -56,7 +57,7 @@ export default function ProductsGrid() {
 
   return (
     <div className="w-full">
-      <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mb-10 grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product, index) => (
           <ProductCard
             key={product.id}

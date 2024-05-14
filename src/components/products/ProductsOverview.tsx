@@ -54,9 +54,9 @@ const products = [
 
 export default async function ProductsOverview() {
   return (
-    <div className="mx-auto w-full max-w-5xl">
+    <div className="mx-auto w-full max-w-5xl ">
       {/* Heading */}
-      <div className="py-14 text-center">
+      <div className="pb-14 text-center">
         <h1 className="text-4xl text-5xl font-semibold tracking-tight text-gray-900">
           Products
         </h1>
