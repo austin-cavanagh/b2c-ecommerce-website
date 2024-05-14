@@ -90,7 +90,7 @@ function SignIn() {
             <div>
               <button
                 type="submit"
-                className="bg-primary focus-visible:outline-primary mt-6 flex w-full justify-center rounded-full px-3 py-2 text-base font-semibold leading-6 text-white shadow-sm hover:brightness-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+                className="mt-6 flex w-full justify-center rounded-full bg-primary px-3 py-2 text-base font-semibold leading-6 text-white shadow-sm hover:brightness-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 Log in
               </button>
@@ -179,7 +179,7 @@ function SignIn() {
             Not a member?{' '}
             <Link
               href="/create-account"
-              className="hover:text-primary font-semibold leading-6 text-gray-900"
+              className="font-semibold leading-6 text-gray-900 hover:text-primary"
             >
               Sign up
             </Link>
