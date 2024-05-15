@@ -1,6 +1,28 @@
+'use client';
+
+import { useTransform, useViewportScroll, motion } from 'framer-motion';
+
 export default function NewCategories() {
+  const { scrollY } = useViewportScroll();
+
+  // Define scroll points for the appearance and disappearance of the section
+  const startFadeIn = 300; // Start appearing at 200px scroll position
+  const endFadeIn = 500; // Fully visible at 400px scroll position
+  const startFadeOut = 800; // Start disappearing at 800px scroll position
+  const endFadeOut = 1000; // Fully invisible at 1000px scroll position
+
+  // Transform for opacity based on scroll position
+  const opacity = useTransform(
+    scrollY,
+    [startFadeIn, endFadeIn, startFadeOut, endFadeOut],
+    [0, 1, 1, 0],
+  );
+
   return (
-    <div className="flex items-center justify-center space-x-24">
+    <motion.div
+      className="flex items-center justify-center space-x-24"
+      style={{ opacity }}
+    >
       <div className="flex items-start justify-center">
         <div className="flex flex-col items-end space-y-6">
           <div className="mr-10 h-48 w-48 rounded-[60px] bg-indigo-800"></div>
@@ -13,6 +35,6 @@ export default function NewCategories() {
         </div>
       </div>
       <div className="text-5xl font-semibold">Categories</div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 
 import HeroParallax from '@/components/home/HeroParallax';
 import { getServerSession } from 'next-auth';
@@ -17,14 +17,14 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center">
-      {/* <HeroSection /> */}
+    <main className="flex w-full flex-1 flex-col items-center justify-center overflow-hidden">
+      <HeroSection />
 
       <NewCategories />
 
-      {/* <StarCategories /> */}
+      <Favorites />
 
-      {/* <Favorites /> */}
+      {/* <StarCategories /> */}
 
       {/* <HeroParallax /> */}
 

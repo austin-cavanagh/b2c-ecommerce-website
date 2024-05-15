@@ -23,14 +23,15 @@ export default function HeroSection() {
   const speedMultipliers = [1.5, 1.9, 2.3, 2.7, 2.3, 1.9, 1.5]; // Speed multipliers for each column
 
   return (
-    <section className="mb-40 mt-60 text-center">
-      <div className="relative mx-auto w-screen p-12">
-        <motion.h1
+    <section className="translate-y-96 text-center">
+      <div className="relative mx-auto w-screen pt-0">
+        {/* <h2>test</h2> */}
+        {/* <motion.h1
           className="absolute left-1/2 top-0 mt-10 -translate-x-1/2 transform text-6xl font-semibold"
           style={{ opacity: titleOpacity }}
         >
           Crafts by Jules
-        </motion.h1>
+        </motion.h1> */}
         <div className="flex justify-center space-x-4">
           {offsets.map((offset, index) => (
             <motion.div
