@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 
 import HeroParallax from '@/components/home/HeroParallax';
 import { getServerSession } from 'next-auth';
@@ -18,12 +18,13 @@ export default async function Home() {
 
   return (
     <main className="flex w-full flex-1 flex-col items-center justify-center">
-      {/* <NewCategories /> */}
-
-      {/* <StarCategories /> */}
       {/* <HeroSection /> */}
 
-      <Favorites />
+      <NewCategories />
+
+      {/* <StarCategories /> */}
+
+      {/* <Favorites /> */}
 
       {/* <HeroParallax /> */}
 

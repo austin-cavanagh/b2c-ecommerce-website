@@ -1,6 +1,6 @@
 export default function NewCategories() {
   return (
-    <div className="flex items-center justify-center space-x-40">
+    <div className="flex items-center justify-center space-x-24">
       <div className="flex items-start justify-center">
         <div className="flex flex-col items-end space-y-6">
           <div className="mr-10 h-48 w-48 rounded-[60px] bg-indigo-800"></div>
