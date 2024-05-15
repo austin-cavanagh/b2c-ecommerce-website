@@ -24,14 +24,14 @@ export default function HeroSection() {
 
   return (
     <section className="translate-y-96 text-center">
+      <motion.h1
+        className="absolute -top-10 left-1/2  -translate-x-1/2 transform text-6xl font-semibold text-gray-900"
+        style={{ opacity: titleOpacity }}
+      >
+        Crafts by Jules
+      </motion.h1>
+
       <div className="relative mx-auto w-screen pt-0">
-        {/* <h2>test</h2> */}
-        {/* <motion.h1
-          className="absolute left-1/2 top-0 mt-10 -translate-x-1/2 transform text-6xl font-semibold"
-          style={{ opacity: titleOpacity }}
-        >
-          Crafts by Jules
-        </motion.h1> */}
         <div className="flex justify-center space-x-4">
           {offsets.map((offset, index) => (
             <motion.div
