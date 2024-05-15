@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+
 import familyImage from '../../data/categories-images/family-1.jpeg';
 import sportsImage from '../../data/categories-images/sports-1.jpeg';
 import romanticImage from '../../data/categories-images/romantic-1.jpeg';
