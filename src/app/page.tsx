@@ -20,11 +20,10 @@ export default async function Home() {
     <main className="flex w-full flex-1 flex-col items-center justify-center">
       {/* <NewCategories /> */}
 
-      <StarCategories />
+      {/* <StarCategories /> */}
+      {/* <HeroSection /> */}
 
       <Favorites />
-
-      {/* <HeroSection /> */}
 
       {/* <HeroParallax /> */}
 
