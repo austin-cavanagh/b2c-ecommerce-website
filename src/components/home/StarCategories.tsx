@@ -1,6 +1,6 @@
 export default function StarCategories() {
   return (
-    <div className="flex items-center justify-center space-x-24">
+    <div className="my-40 flex items-center justify-center space-x-24">
       <h2 className="text-5xl font-semibold text-gray-900">Favorites</h2>
 
       <div className="flex items-center justify-center space-x-6">
