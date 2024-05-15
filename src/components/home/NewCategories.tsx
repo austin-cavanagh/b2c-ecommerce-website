@@ -2,21 +2,24 @@
 
 import { useTransform, useViewportScroll, motion } from 'framer-motion';
 
+import sportsImage from '../../data/categories-images/sports-1.jpeg';
+// import sportsImage from '../../data/categories-images/sports-2.jpeg';
+
+import romanticImage from '../../data/categories-images/romantic-1.jpeg';
+// import romanticImage from '../../data/categories-images/romantic-2.jpeg';
+
+import familyImage from '../../data/categories-images/family-1.jpeg';
+
+// import holidaysImage from '../../data/categories-images/holidays-1.jpeg';
+
+import seasonsImage from '../../data/categories-images/seasons-1.jpeg';
+// import seasonsImage from '../../data/categories-images/seasons-2.jpeg';
+
+import ornamentsImage from '../../data/categories-images/ornaments.jpeg';
+import Image from 'next/image';
+
 export default function NewCategories() {
   const { scrollY } = useViewportScroll();
-
-  //   // Define scroll points for the appearance and disappearance of the section
-  //   const startFadeIn = 300; // Start appearing at 200px scroll position
-  //   const endFadeIn = 500; // Fully visible at 400px scroll position
-  //   const startFadeOut = 800; // Start disappearing at 800px scroll position
-  //   const endFadeOut = 1000; // Fully invisible at 1000px scroll position
-
-  //   // Transform for opacity based on scroll position
-  //   const opacity = useTransform(
-  //     scrollY,
-  //     [startFadeIn, endFadeIn, startFadeOut, endFadeOut],
-  //     [0, 1, 1, 0],
-  //   );
 
   // Define scroll points for the appearance of the section
   const startFadeIn = 300; // Start appearing at 300px scroll position
@@ -32,7 +35,15 @@ export default function NewCategories() {
     >
       <div className="flex items-start justify-center">
         <div className="flex flex-col items-end space-y-6">
-          <div className="mr-10 h-48 w-48 rounded-[60px] bg-indigo-800"></div>
+          {/* <div className="mr-10 h-48 w-48 rounded-[60px] bg-indigo-800"></div> */}
+          <div className="relative mr-10 h-48 w-48 overflow-hidden rounded-[60px]">
+            <Image
+              src={sportsImage}
+              alt="Sports"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
           <div className="mr-8 h-40 w-40 rounded-[60px] bg-indigo-600"></div>
           <div className="mr-12 h-52 w-52 rounded-[60px] bg-indigo-300"></div>
         </div>

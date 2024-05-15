@@ -16,7 +16,7 @@ export default function HeroSection() {
   };
 
   // Transform for opacity of the title based on scroll position
-  const titleOpacity = useTransform(scrollY, [0, 70], [1, 0]);
+  const titleOpacity = useTransform(scrollY, [0, 80], [1, 0]);
 
   // Array of starting Y offsets for each column when the page loads
   const offsets = [0, 100, 200, 300, 200, 100, 0]; // Initial offsets for the animation
@@ -25,7 +25,7 @@ export default function HeroSection() {
   return (
     <section className="translate-y-96 text-center">
       <motion.h1
-        className="absolute -top-10 left-1/2  -translate-x-1/2 transform text-6xl font-semibold text-gray-900"
+        className="absolute -top-14 left-1/2  -translate-x-1/2 transform text-6xl font-semibold text-gray-900"
         style={{ opacity: titleOpacity }}
       >
         Crafts by Jules
