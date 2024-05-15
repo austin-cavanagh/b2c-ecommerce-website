@@ -5,18 +5,25 @@ import { useTransform, useViewportScroll, motion } from 'framer-motion';
 export default function NewCategories() {
   const { scrollY } = useViewportScroll();
 
-  // Define scroll points for the appearance and disappearance of the section
-  const startFadeIn = 300; // Start appearing at 200px scroll position
-  const endFadeIn = 500; // Fully visible at 400px scroll position
-  const startFadeOut = 800; // Start disappearing at 800px scroll position
-  const endFadeOut = 1000; // Fully invisible at 1000px scroll position
+  //   // Define scroll points for the appearance and disappearance of the section
+  //   const startFadeIn = 300; // Start appearing at 200px scroll position
+  //   const endFadeIn = 500; // Fully visible at 400px scroll position
+  //   const startFadeOut = 800; // Start disappearing at 800px scroll position
+  //   const endFadeOut = 1000; // Fully invisible at 1000px scroll position
+
+  //   // Transform for opacity based on scroll position
+  //   const opacity = useTransform(
+  //     scrollY,
+  //     [startFadeIn, endFadeIn, startFadeOut, endFadeOut],
+  //     [0, 1, 1, 0],
+  //   );
+
+  // Define scroll points for the appearance of the section
+  const startFadeIn = 300; // Start appearing at 300px scroll position
+  const endFadeIn = 500; // Fully visible at 500px scroll position
 
   // Transform for opacity based on scroll position
-  const opacity = useTransform(
-    scrollY,
-    [startFadeIn, endFadeIn, startFadeOut, endFadeOut],
-    [0, 1, 1, 0],
-  );
+  const opacity = useTransform(scrollY, [startFadeIn, endFadeIn], [0, 1]);
 
   return (
     <motion.div
@@ -34,7 +41,7 @@ export default function NewCategories() {
           <div className="h-64 w-64 rounded-[60px] bg-indigo-600"></div>
         </div>
       </div>
-      <div className="text-5xl font-semibold">Categories</div>
+      <h2 className="text-5xl font-semibold">Categories</h2>
     </motion.div>
   );
 }
