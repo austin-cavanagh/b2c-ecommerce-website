@@ -10,6 +10,7 @@ import ornamentsImage from '../../data/categories-images/ornaments.jpeg';
 
 const growthSize = 1.03; // Variable to determine the size of the growth on hover
 const animationDuration = 0.3; // Variable to control the speed of the animation
+const boxShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)';
 
 export default function StarCategories() {
   return (
@@ -22,7 +23,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
@@ -37,7 +38,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
@@ -54,7 +55,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
@@ -69,7 +70,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
@@ -84,7 +85,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
@@ -101,7 +102,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
@@ -116,7 +117,7 @@ export default function StarCategories() {
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
-              boxShadow: '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+              boxShadow: boxShadow,
             }}
           >
             <Image
