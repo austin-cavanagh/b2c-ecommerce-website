@@ -8,11 +8,11 @@ export default function HeroSection() {
   // Function to calculate dynamic Y offsets based on scroll distance and speed multiplier
   const calculateOffset = (baseOffset: number, speedMultiplier: number) => {
     // Adjusting initial and final y positions based on scroll distance and speed multiplier
-    return useTransform(
-      scrollY,
-      [0, 500],
-      [baseOffset, baseOffset - 500 * speedMultiplier],
-    );
+    // return useTransform(
+    //   scrollY,
+    //   [0, 500],
+    //   [baseOffset, baseOffset - 500 * speedMultiplier],
+    // );
   };
 
   // Array of starting Y offsets for each column when the page loads
