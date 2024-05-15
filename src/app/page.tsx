@@ -17,10 +17,10 @@ export default async function Home() {
   // console.log('SERVER COMPONENT SESSION', session);
 
   return (
-    <main className="flex w-full flex-1 flex-col items-center justify-center overflow-hidden">
+    <main className="flex w-full flex-1 flex-col items-center justify-center">
       {/* <NewCategories /> */}
 
-      {/* <StarCategories /> */}
+      <StarCategories />
 
       <Favorites />
 
