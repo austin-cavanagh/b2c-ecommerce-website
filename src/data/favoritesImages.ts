@@ -10,8 +10,8 @@
 // Baseball Team Ornament
 // 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-ornament-1.jpeg'
 
-// Barbie Sign
-//  'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/barbie-sign-1.jpeg'
+// Newborn Sign
+// 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-1.jpeg'
 
 //
 //
@@ -32,8 +32,8 @@
 // Named Ornament
 // 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-ornament-1.jpeg'
 
-// Newborn Sign
-// 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-1.jpeg'
+// Barbie Sign
+//  'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/barbie-sign-1.jpeg'
 
 // No Soliciting Sign
 // 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/no-soliciting-sign-1.jpeg'

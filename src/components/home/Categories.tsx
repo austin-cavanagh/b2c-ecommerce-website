@@ -95,7 +95,7 @@ export default function NewCategories() {
             }}
           >
             <Image
-              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/barbie-sign-1.jpeg"
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-1.jpeg"
               alt="Romantic"
               layout="fill"
               objectFit="cover"

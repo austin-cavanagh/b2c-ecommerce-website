@@ -3,12 +3,6 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-import familyImage from '../../data/categories-images/family-1.jpeg';
-import sportsImage from '../../data/categories-images/sports-1.jpeg';
-import romanticImage from '../../data/categories-images/romantic-1.jpeg';
-import seasonsImage from '../../data/categories-images/seasons-1.jpeg';
-import ornamentsImage from '../../data/categories-images/ornaments.jpeg';
-
 const growthSize = 1.03;
 const animationDuration = 0.3;
 const boxShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)';
@@ -28,7 +22,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={sportsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baby-name-sign-1.jpeg"
               alt="Sports"
               layout="fill"
               objectFit="cover"
@@ -43,7 +37,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={romanticImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-1.jpeg"
               alt="Romantic"
               layout="fill"
               objectFit="cover"
@@ -60,7 +54,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={familyImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-kitty-sign-1.jpeg"
               alt="Family"
               layout="fill"
               objectFit="cover"
@@ -75,7 +69,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={seasonsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mom-puzzle-sign-1.jpeg"
               alt="Seasons"
               layout="fill"
               objectFit="cover"
@@ -90,7 +84,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={ornamentsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-ornament-1.jpeg"
               alt="Ornaments"
               layout="fill"
               objectFit="cover"
@@ -107,7 +101,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={familyImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/barbie-sign-1.jpeg"
               alt="Family"
               layout="fill"
               objectFit="cover"
@@ -122,7 +116,7 @@ export default function StarCategories() {
             }}
           >
             <Image
-              src={sportsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/no-soliciting-sign-1.jpeg"
               alt="Sports"
               layout="fill"
               objectFit="cover"
