@@ -726,10 +726,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-
-  //
-  //
-  //
   // Hello Spring Sign
   {
     name: 'Hello Spring Sign',
@@ -750,7 +746,7 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-spring-sign-1.jpeg',
         alt: 'Description',
       },
     ],
@@ -780,7 +776,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mickey-orniment-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mickey-orniment-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mickey-orniment-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -810,7 +814,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mom-puzzle-sign-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mom-puzzle-sign-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mom-puzzle-sign-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -840,7 +852,11 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mummy-decoration-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mummy-decoration-2.jpeg',
         alt: 'Description',
       },
     ],
@@ -870,7 +886,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/name-plate-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/name-plate-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/name-plate-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -900,7 +924,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -930,7 +962,49 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-ornament-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-ornament-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-ornament-3.jpeg',
+        alt: 'Description',
+      },
+    ],
+
+    customizationOptions: [],
+    categories: [],
+    shortDescription: 'HIDE SHORT DESCRIPTION',
+    craftingTime: 0,
+  },
+  // Newborn Sign
+  {
+    name: 'Newborn Sign',
+    longDescription: ``,
+    prices: [
+      {
+        dimension: '10x10',
+        price: 1000,
+      },
+      {
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    imageUrls: [
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-2.jpeg',
         alt: 'Description',
       },
     ],
@@ -960,7 +1034,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/nfl-team-sign-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/nfl-team-sign-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/nfl-team-sign-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -990,7 +1072,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/no-soliciting-sign-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/no-soliciting-sign-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/no-soliciting-sign-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -1020,7 +1110,7 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/soccer-name-sign-1.jpeg',
         alt: 'Description',
       },
     ],
@@ -1050,7 +1140,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-1.jpg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-2.jpg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-3.jpg',
         alt: 'Description',
       },
     ],
@@ -1080,7 +1178,11 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/star-wars-earings-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/star-wars-earings-2.jpeg',
         alt: 'Description',
       },
     ],
@@ -1110,7 +1212,7 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/sweethearts-family-display-1.jpeg',
         alt: 'Description',
       },
     ],
@@ -1140,7 +1242,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tassle-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tassle-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tassle-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -1170,7 +1280,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tooth-fairy-sign-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tooth-fairy-sign-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tooth-fairy-sign-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -1200,7 +1318,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tree-stump-ornament-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tree-stump-ornament-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/tree-stump-ornament-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -1230,7 +1356,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/vase-holder-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/vase-holder-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/vase-holder-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -1260,7 +1394,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: '',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/you-complete-me-earings-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/you-complete-me-earings-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/you-complete-me-earings-3.jpeg',
         alt: 'Description',
       },
     ],
