@@ -16,7 +16,7 @@ export type ProductType = {
 };
 
 export default function ProductsGrid() {
-  const itemsPerPage = 33;
+  const itemsPerPage = 39;
 
   const [products, setProducts] = useState<ProductType[]>([]);
   const [totalPages, setTotalPages] = useState<number>();
@@ -38,6 +38,8 @@ export default function ProductsGrid() {
       ...product,
       id: String(product.id),
     }));
+
+    console.log('NEW_PRODUCTS:', newProducts);
 
     setProducts(products => {
       return [...products, ...newProducts];
@@ -66,8 +68,6 @@ export default function ProductsGrid() {
           />
         ))}
       </div>
-
-      {/* <ParallaxScrollGrid images={images} /> */}
 
       {/* Load Products Button */}
       {/* <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button> */}

@@ -3,13 +3,6 @@
 import { useTransform, useViewportScroll, motion } from 'framer-motion';
 import Image from 'next/image';
 
-import sportsImage from '../../data/categories-images/sports-2.jpeg';
-import romanticImage from '../../data/categories-images/romantic-1.jpeg';
-import familyImage from '../../data/categories-images/family-1.jpeg';
-import holidaysImage from '../../data/categories-images/holidays-1.jpeg';
-import seasonsImage from '../../data/categories-images/seasons-2.jpeg';
-import ornamentsImage from '../../data/categories-images/ornaments.jpeg';
-
 const growthSize = 1.03; // Variable to determine the size of the growth on hover
 const animationDuration = 0.3; // Variable to control the speed of the animation
 const hoverShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)'; // Shadow for 2xl
@@ -40,7 +33,7 @@ export default function NewCategories() {
             }}
           >
             <Image
-              src={familyImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/grinch-christmas-ornament-1.jpeg"
               alt="Family"
               layout="fill"
               objectFit="cover"
@@ -55,7 +48,7 @@ export default function NewCategories() {
             }}
           >
             <Image
-              src={ornamentsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mickey-orniment-1.jpeg"
               alt="Ornaments"
               layout="fill"
               objectFit="cover"
@@ -70,7 +63,7 @@ export default function NewCategories() {
             }}
           >
             <Image
-              src={sportsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-ornament-1.jpeg"
               alt="Sports"
               layout="fill"
               objectFit="cover"
@@ -87,7 +80,7 @@ export default function NewCategories() {
             }}
           >
             <Image
-              src={seasonsImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-fall-sign-1.jpeg"
               alt="Seasons"
               layout="fill"
               objectFit="cover"
@@ -102,7 +95,7 @@ export default function NewCategories() {
             }}
           >
             <Image
-              src={romanticImage}
+              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/barbie-sign-1.jpeg"
               alt="Romantic"
               layout="fill"
               objectFit="cover"

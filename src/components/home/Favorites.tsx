@@ -9,8 +9,8 @@ import romanticImage from '../../data/categories-images/romantic-1.jpeg';
 import seasonsImage from '../../data/categories-images/seasons-1.jpeg';
 import ornamentsImage from '../../data/categories-images/ornaments.jpeg';
 
-const growthSize = 1.03; // Variable to determine the size of the growth on hover
-const animationDuration = 0.3; // Variable to control the speed of the animation
+const growthSize = 1.03;
+const animationDuration = 0.3;
 const boxShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)';
 
 export default function StarCategories() {
