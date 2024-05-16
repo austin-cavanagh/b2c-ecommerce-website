@@ -159,11 +159,11 @@ async function addProducts() {
         });
       }
     }
-  } catch (error) {
-    console.error('ERROR IN SEED');
-  }
 
-  console.log('Added products');
+    console.log('Added products');
+  } catch (error) {
+    console.error('Error adding products:', error);
+  }
 }
 
 async function clearProducts() {

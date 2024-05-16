@@ -7,7 +7,7 @@
 //   },
 // ],
 
-// Teacher Sticky Note
+// Football Sign
 
 const products = [
   // American Flag Sign
@@ -402,7 +402,7 @@ const products = [
   },
   // Faith and Freedom Sign
   {
-    name: 'Faith and Freedom Sign',
+    name: 'Faith And Freedom Sign',
     longDescription: ``,
     prices: [
       {
@@ -472,9 +472,47 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Fourth of July Piece
+  // Football Sign
   {
-    name: 'Fourth of July Piece',
+    name: 'Football Sign',
+    longDescription: ``,
+    prices: [
+      {
+        dimension: '10x10',
+        price: 1000,
+      },
+      {
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    imageUrls: [
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-3.jpeg',
+        alt: 'Description',
+      },
+    ],
+
+    customizationOptions: [],
+    categories: [],
+    shortDescription: 'HIDE SHORT DESCRIPTION',
+    craftingTime: 0,
+  },
+  // Fourth Of July Piece
+  {
+    name: 'Fourth Of July Piece',
     longDescription: ``,
     prices: [
       {
@@ -708,11 +746,11 @@ const products = [
     ],
     imageUrls: [
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-kitty-sign-3.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-kitty-sign-1.jpeg',
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-kitty-sign-3.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-kitty-sign-2.jpeg',
         alt: 'Description',
       },
       {
@@ -1014,44 +1052,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // NFL Team Sign
-  {
-    name: 'NFL Team Football Sign',
-    longDescription: ``,
-    prices: [
-      {
-        dimension: '10x10',
-        price: 1000,
-      },
-      {
-        dimension: '15x15',
-        price: 2000,
-      },
-      {
-        dimension: '20x20',
-        price: 3000,
-      },
-    ],
-    imageUrls: [
-      {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/nfl-team-sign-1.jpeg',
-        alt: 'Description',
-      },
-      {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/nfl-team-sign-2.jpeg',
-        alt: 'Description',
-      },
-      {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/nfl-team-sign-3.jpeg',
-        alt: 'Description',
-      },
-    ],
-
-    customizationOptions: [],
-    categories: [],
-    shortDescription: 'HIDE SHORT DESCRIPTION',
-    craftingTime: 0,
-  },
   // No Soliciting Sign
   {
     name: 'No Soliciting Sign',
@@ -1144,11 +1144,11 @@ const products = [
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-2.jpg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-2.jpeg',
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-3.jpg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-3.jpeg',
         alt: 'Description',
       },
     ],
