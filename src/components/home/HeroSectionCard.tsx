@@ -3,12 +3,12 @@
 import Image, { StaticImageData } from 'next/image';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
-interface HeroSectionCardProps {
+type HeroSectionCardProps = {
   baseOffset: number;
   speedMultiplier: number;
   image: StaticImageData;
   nextImage: StaticImageData;
-}
+};
 
 export default function HeroSectionCard({
   baseOffset,
