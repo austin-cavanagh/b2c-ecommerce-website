@@ -28,11 +28,11 @@ export default function HeroSectionCard({
   );
 
   return (
-    <motion.div className="flex flex-col space-y-4" style={{ y }}>
-      <div className="relative h-80 w-56 overflow-hidden rounded-3xl shadow-xl">
+    <motion.div className="flex flex-col space-y-5" style={{ y }}>
+      <div className="relative h-80 w-56 overflow-hidden rounded-[50px] shadow-xl">
         <Image src={image} alt={alt} layout="fill" objectFit="cover" />
       </div>
-      <div className="relative h-80 w-56 overflow-hidden rounded-3xl shadow-xl">
+      <div className="relative h-80 w-56 overflow-hidden rounded-[50px] shadow-xl">
         <Image src={nextImage} alt={nextAlt} layout="fill" objectFit="cover" />
       </div>
     </motion.div>

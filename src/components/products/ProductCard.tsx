@@ -38,7 +38,7 @@ export function ProductCard({
           // delay: row === (0 || 1) ? 0 : delay, // Staggered delay based on row and column
         }}
         whileHover={{ scale: 1.05 }} // Grow in size on hover
-        className="group relative transform cursor-pointer overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl"
+        className="group relative transform cursor-pointer overflow-hidden rounded-[50px] shadow-xl hover:shadow-2xl"
       >
         <div className="aspect-h-1 aspect-w-1 w-full bg-gray-200">
           <Image

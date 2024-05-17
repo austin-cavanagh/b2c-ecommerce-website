@@ -132,7 +132,7 @@ export default function HeroSection() {
       </motion.h1>
 
       <div className="relative mx-auto w-screen pt-0">
-        <div className="flex justify-center space-x-4">
+        <div className="flex justify-center space-x-5">
           {offsets.map((offset, index) => (
             <HeroSectionCard
               key={index}

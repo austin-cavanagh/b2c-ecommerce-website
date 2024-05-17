@@ -25,7 +25,7 @@ export default function NewCategories() {
       <div className="flex items-start justify-center">
         <div className="flex flex-col items-end space-y-6">
           <motion.div
-            className="relative mr-10 h-48 w-48 cursor-pointer overflow-hidden rounded-[60px] shadow-xl"
+            className="relative mr-10 h-48 w-48 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
@@ -40,7 +40,7 @@ export default function NewCategories() {
             />
           </motion.div>
           <motion.div
-            className="relative mr-8 h-40 w-40 cursor-pointer overflow-hidden rounded-[60px] shadow-xl"
+            className="relative mr-8 h-40 w-40 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
@@ -55,7 +55,7 @@ export default function NewCategories() {
             />
           </motion.div>
           <motion.div
-            className="relative mr-12 h-52 w-52 cursor-pointer overflow-hidden rounded-[60px] shadow-xl"
+            className="relative mr-12 h-52 w-52 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
@@ -72,7 +72,7 @@ export default function NewCategories() {
         </div>
         <div className="space-y-6">
           <motion.div
-            className="relative ml-2 h-80 w-80 cursor-pointer overflow-hidden rounded-[60px] shadow-xl"
+            className="relative ml-2 h-80 w-80 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
@@ -87,7 +87,7 @@ export default function NewCategories() {
             />
           </motion.div>
           <motion.div
-            className="relative h-64 w-64 cursor-pointer overflow-hidden rounded-[60px] shadow-xl"
+            className="relative h-64 w-64 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
             whileHover={{
               scale: growthSize,
               transition: { duration: animationDuration },
