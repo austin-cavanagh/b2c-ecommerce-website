@@ -102,7 +102,7 @@ function Footer() {
         {/* Copywrite */}
         <div className="md:order-0 mt-8 md:mt-0">
           <p className="text-center text-sm leading-5 text-gray-500">
-            &copy; {new Date().getFullYear()} Cavanagh Woodcrafts. All rights
+            &copy; {new Date().getFullYear()} Crafts by Jules. All rights
             reserved.
           </p>
         </div>
