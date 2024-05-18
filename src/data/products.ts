@@ -13,7 +13,7 @@ const products = [
   // American Flag Sign
   {
     name: 'American Flag Sign',
-    longDescription: ``,
+    longDescription: `Show your patriotism with this stunning decoration, a vibrant and durable addition perfect for any space.`,
     prices: [
       {
         dimension: '10x10',
@@ -43,7 +43,7 @@ const products = [
   // Baby Name Sign
   {
     name: 'Baby Name Sign',
-    longDescription: ``,
+    longDescription: `Welcome your little one with a charming, personalized sign that adds warmth and love to any nursery. This beautifully crafted keepsake commemorates your baby's name.`,
     prices: [
       {
         dimension: '10x10',
@@ -77,7 +77,7 @@ const products = [
   // Barbie Sign
   {
     name: 'Barbie Sign',
-    longDescription: ``,
+    longDescription: `Brighten up any room with this stylish piece, featuring iconic designs and colors that capture the essence of Barbie.`,
     prices: [
       {
         dimension: '10x10',
@@ -107,7 +107,7 @@ const products = [
   // Baseball Team Ornament
   {
     name: 'Baseball Team Ornament',
-    longDescription: ``,
+    longDescription: `Celebrate your favorite team with this beautifully crafted keepsake, perfect for any fan.`,
     prices: [
       {
         dimension: '10x10',
@@ -142,10 +142,11 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Baseball Team Sign
+
+  // Football Sign
   {
-    name: 'Baseball Team Sign',
-    longDescription: ``,
+    name: 'Football Sign',
+    longDescription: `Elevate your space with this bold decoration, showcasing your passion for the game.`,
     prices: [
       {
         dimension: '10x10',
@@ -162,15 +163,54 @@ const products = [
     ],
     imageUrls: [
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-2.jpeg',
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-2.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-1.jpeg',
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-3.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-3.jpeg',
+        alt: 'Description',
+      },
+    ],
+
+    customizationOptions: [],
+    categories: [],
+    shortDescription: 'HIDE SHORT DESCRIPTION',
+    craftingTime: 0,
+  },
+
+  // Named Keychain
+  {
+    name: 'Named Keychain',
+    longDescription: `Keep your keys stylishly organized with this personalized accessory, a practical and unique addition for everyday use.`,
+    prices: [
+      {
+        dimension: '10x10',
+        price: 1000,
+      },
+      {
+        dimension: '15x15',
+        price: 2000,
+      },
+      {
+        dimension: '20x20',
+        price: 3000,
+      },
+    ],
+    imageUrls: [
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-1.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-2.jpeg',
+        alt: 'Description',
+      },
+      {
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -183,7 +223,7 @@ const products = [
   // Be Mine Sign
   {
     name: 'Be Mine Sign',
-    longDescription: ``,
+    longDescription: `Express your love with this charming decoration, perfect for adding a romantic touch to any space.`,
     prices: [
       {
         dimension: '10x10',
@@ -221,7 +261,7 @@ const products = [
   // Bear Cutout
   {
     name: 'Bear Cutout',
-    longDescription: ``,
+    longDescription: `Enhance your decor with this adorable cutout, a cute and whimsical addition to any room.`,
     prices: [
       {
         dimension: '10x10',
@@ -259,7 +299,7 @@ const products = [
   // Book Stand
   {
     name: 'Book Stand',
-    longDescription: ``,
+    longDescription: `Keep your favorite reads organized and easily accessible with this elegant and functional accessory.`,
     prices: [
       {
         dimension: '10x10',
@@ -297,7 +337,7 @@ const products = [
   // College Baseball Sign
   {
     name: 'College Baseball Sign',
-    longDescription: ``,
+    longDescription: `Show your school spirit with this bold decoration, perfect for any college baseball fan.`,
     prices: [
       {
         dimension: '10x10',
@@ -331,7 +371,7 @@ const products = [
   // Cutting Board
   {
     name: 'Cutting Board',
-    longDescription: ``,
+    longDescription: `Make meal prep a breeze with this durable and stylish kitchen essential, perfect for everyday use.`,
     prices: [
       {
         dimension: '10x10',
@@ -369,7 +409,7 @@ const products = [
   // Easter Display
   {
     name: 'Easter Display',
-    longDescription: ``,
+    longDescription: `Celebrate the season with this festive decoration, adding a cheerful touch to your home for Easter.`,
     prices: [
       {
         dimension: '10x10',
@@ -403,7 +443,7 @@ const products = [
   // Faith and Freedom Sign
   {
     name: 'Faith And Freedom Sign',
-    longDescription: ``,
+    longDescription: `Celebrate your values with this inspiring decoration, a perfect reminder of faith and freedom for any space.`,
     prices: [
       {
         dimension: '10x10',
@@ -437,7 +477,7 @@ const products = [
   // Family Name Sign
   {
     name: 'Family Name Sign',
-    longDescription: ``,
+    longDescription: `Add a personal touch to your home with this elegant piece, showcasing your family name in a stylish design.`,
     prices: [
       {
         dimension: '10x10',
@@ -472,10 +512,10 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Football Sign
+  // Baseball Team Sign
   {
-    name: 'Football Sign',
-    longDescription: ``,
+    name: 'Baseball Team Sign',
+    longDescription: `Show your team pride with this bold decoration, perfect for any baseball fan's space.`,
     prices: [
       {
         dimension: '10x10',
@@ -492,15 +532,15 @@ const products = [
     ],
     imageUrls: [
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-1.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.jpeg',
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-2.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-2.jpeg',
         alt: 'Description',
       },
       {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-3.jpeg',
+        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-3.jpeg',
         alt: 'Description',
       },
     ],
@@ -513,7 +553,7 @@ const products = [
   // Fourth Of July Piece
   {
     name: 'Fourth Of July Piece',
-    longDescription: ``,
+    longDescription: `Commemorate Independence Day with this festive decoration, adding a patriotic touch to your celebrations.`,
     prices: [
       {
         dimension: '10x10',
@@ -547,7 +587,7 @@ const products = [
   // Gas Money Ornament
   {
     name: 'Gas Money Ornament',
-    longDescription: ``,
+    longDescription: `Bring a smile to your tree with this quirky and fun ornament, perfect for adding humor to your holiday decor.`,
     prices: [
       {
         dimension: '10x10',
@@ -581,7 +621,7 @@ const products = [
   // Graduation Sign
   {
     name: 'Graduation Sign',
-    longDescription: ``,
+    longDescription: `Celebrate a milestone with this congratulatory decoration, perfect for honoring your graduate's achievements.`,
     prices: [
       {
         dimension: '10x10',
@@ -619,7 +659,7 @@ const products = [
   // Grinch Christmas Ornaments
   {
     name: 'Grinch Christmas Ornaments',
-    longDescription: ``,
+    longDescription: `Add a touch of whimsy to your holiday decor with these playful ornaments, capturing the spirit of the Grinch.`,
     prices: [
       {
         dimension: '10x10',
@@ -657,7 +697,7 @@ const products = [
   // Grinch Ornament
   {
     name: 'Grinch Ornament',
-    longDescription: ``,
+    longDescription: `Bring some holiday cheer with this fun and festive ornament, inspired by the beloved Grinch character.`,
     prices: [
       {
         dimension: '10x10',
@@ -691,7 +731,7 @@ const products = [
   // Hello Fall Sign
   {
     name: 'Hello Fall Sign',
-    longDescription: ``,
+    longDescription: `Welcome the autumn season with this warm and inviting decoration, perfect for adding a cozy touch to your home.`,
     prices: [
       {
         dimension: '10x10',
@@ -729,7 +769,7 @@ const products = [
   // Hello Kitty Sign
   {
     name: 'Hello Kitty Sign',
-    longDescription: ``,
+    longDescription: `Add a touch of cuteness to any room with this delightful decoration, featuring the beloved Hello Kitty.`,
     prices: [
       {
         dimension: '10x10',
@@ -767,7 +807,7 @@ const products = [
   // Hello Spring Sign
   {
     name: 'Hello Spring Sign',
-    longDescription: ``,
+    longDescription: `Welcome the new season with this cheerful decoration, perfect for adding a fresh and vibrant touch to your space.`,
     prices: [
       {
         dimension: '10x10',
@@ -797,7 +837,7 @@ const products = [
   // Mickey Ornament
   {
     name: 'Mickey Ornament',
-    longDescription: ``,
+    longDescription: `Celebrate the magic of Disney with this charming ornament, featuring the iconic Mickey Mouse.`,
     prices: [
       {
         dimension: '10x10',
@@ -835,7 +875,7 @@ const products = [
   // Mom Puzzle Sign
   {
     name: 'Mom Puzzle Sign',
-    longDescription: ``,
+    longDescription: `Show your love and appreciation with this heartwarming decoration, a perfect tribute to any mom.`,
     prices: [
       {
         dimension: '10x10',
@@ -873,7 +913,7 @@ const products = [
   // Mummy Decoration
   {
     name: 'Mummy Decoration',
-    longDescription: ``,
+    longDescription: `Add a spooky touch to your Halloween decor with this fun and eerie decoration.`,
     prices: [
       {
         dimension: '10x10',
@@ -907,7 +947,7 @@ const products = [
   // Name Plate
   {
     name: 'Name Plate',
-    longDescription: ``,
+    longDescription: `Personalize your space with this elegant accessory, featuring a custom name design.`,
     prices: [
       {
         dimension: '10x10',
@@ -942,48 +982,10 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Named Keychain
-  {
-    name: 'Named Keychain',
-    longDescription: ``,
-    prices: [
-      {
-        dimension: '10x10',
-        price: 1000,
-      },
-      {
-        dimension: '15x15',
-        price: 2000,
-      },
-      {
-        dimension: '20x20',
-        price: 3000,
-      },
-    ],
-    imageUrls: [
-      {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-1.jpeg',
-        alt: 'Description',
-      },
-      {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-2.jpeg',
-        alt: 'Description',
-      },
-      {
-        src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-keychain-3.jpeg',
-        alt: 'Description',
-      },
-    ],
-
-    customizationOptions: [],
-    categories: [],
-    shortDescription: 'HIDE SHORT DESCRIPTION',
-    craftingTime: 0,
-  },
   // Named Ornament
   {
     name: 'Named Ornament',
-    longDescription: ``,
+    longDescription: `Make your holiday tree unique with this personalized ornament, featuring a custom name design.`,
     prices: [
       {
         dimension: '10x10',
@@ -1021,7 +1023,7 @@ const products = [
   // Newborn Sign
   {
     name: 'Newborn Sign',
-    longDescription: ``,
+    longDescription: `Celebrate the arrival of your little one with this charming decoration, perfect for welcoming a new baby.`,
     prices: [
       {
         dimension: '10x10',
@@ -1055,7 +1057,7 @@ const products = [
   // No Soliciting Sign
   {
     name: 'No Soliciting Sign',
-    longDescription: ``,
+    longDescription: `Politely inform visitors with this stylish and clear decoration, perfect for any entrance.`,
     prices: [
       {
         dimension: '10x10',
@@ -1090,10 +1092,11 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
+
   // Soccer Name Sign
   {
     name: 'Soccer Name Sign',
-    longDescription: ``,
+    longDescription: `Showcase your passion for soccer with this personalized decoration, perfect for any player's room or fan space.`,
     prices: [
       {
         dimension: '10x10',
@@ -1123,7 +1126,7 @@ const products = [
   // Stanley Cup Name Plate
   {
     name: 'Stanley Cup Name Plate',
-    longDescription: ``,
+    longDescription: `Custom name plate, a must-have for any Stanley Cup enthusiast.`,
     prices: [
       {
         dimension: '10x10',
@@ -1158,10 +1161,10 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Star Wars Earings
+  // Star Wars Earrings
   {
-    name: 'Star Wars Earings',
-    longDescription: ``,
+    name: 'Star Wars Earrings',
+    longDescription: `Add a touch of the galaxy to your style with these unique and eye-catching earrings, perfect for any Star Wars fan.`,
     prices: [
       {
         dimension: '10x10',
@@ -1195,7 +1198,7 @@ const products = [
   // Sweethearts Family Display
   {
     name: 'Sweethearts Family Display',
-    longDescription: ``,
+    longDescription: `Honor your loved ones with this heartwarming display, a beautiful addition to any family home.`,
     prices: [
       {
         dimension: '10x10',
@@ -1222,10 +1225,10 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Tassle
+  // Tassel
   {
-    name: 'Tassle',
-    longDescription: ``,
+    name: 'Tassel',
+    longDescription: `Add a touch of elegance to your decor or accessories with this stylish and versatile tassel.`,
     prices: [
       {
         dimension: '10x10',
@@ -1263,7 +1266,7 @@ const products = [
   // Tooth Fairy Sign
   {
     name: 'Tooth Fairy Sign',
-    longDescription: ``,
+    longDescription: `Create a magical experience for your child with this charming sign, perfect for the Tooth Fairy's visit.`,
     prices: [
       {
         dimension: '10x10',
@@ -1301,7 +1304,7 @@ const products = [
   // Tree Stump Ornament
   {
     name: 'Tree Stump Ornament',
-    longDescription: ``,
+    longDescription: `Bring a rustic touch to your holiday decor with this charming ornament, crafted to resemble a tree stump.`,
     prices: [
       {
         dimension: '10x10',
@@ -1339,7 +1342,7 @@ const products = [
   // Vase Holder
   {
     name: 'Vase Holder',
-    longDescription: ``,
+    longDescription: `Display your flowers in style with this elegant holder, a perfect addition to any home decor.`,
     prices: [
       {
         dimension: '10x10',
@@ -1374,10 +1377,10 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // You Complete Me Earings
+  // You Complete Me Earrings
   {
-    name: 'You Complete Me Earings',
-    longDescription: ``,
+    name: 'You Complete Me Earrings',
+    longDescription: `Express your love and connection with these charming earrings, symbolizing how you complete each other.`,
     prices: [
       {
         dimension: '10x10',
@@ -1413,2107 +1416,5 @@ const products = [
     craftingTime: 0,
   },
 ];
-
-// const products = [
-//   // Teacher Pencil Sign
-//   {
-//     name: 'Teacher Pencil Sign',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Teacher Sticky Note
-//   {
-//     name: 'Teacher Sticky Note',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Stanley Name Plates
-//   {
-//     name: 'Stanley Name Plates',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Baseball Sign
-//   {
-//     name: 'Custom Baseball Sign',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Basketball Sign
-//   {
-//     name: 'Custom Basketball Sign',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Baseball Team Sign
-//   {
-//     name: 'Baseball Team Sign',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Basketball Team Sign
-//   {
-//     name: 'Basketball Team Sign',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Circle Cutting Board
-//   {
-//     name: 'Circle Cutting Board',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-
-//   // FAKE PRODUCTS 1
-//   // FAKE PRODUCTS 1
-//   // FAKE PRODUCTS 1
-
-//   // Teacher Pencil Sign
-//   {
-//     name: 'Teacher Pencil Sign 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Teacher Sticky Note
-//   {
-//     name: 'Teacher Sticky Note 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Stanley Name Plates
-//   {
-//     name: 'Stanley Name Plates 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Baseball Sign
-//   {
-//     name: 'Custom Baseball Sign 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Basketball Sign
-//   {
-//     name: 'Custom Basketball Sign 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Baseball Team Sign
-//   {
-//     name: 'Baseball Team Sign 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Basketball Team Sign
-//   {
-//     name: 'Basketball Team Sign 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Circle Cutting Board
-//   {
-//     name: 'Circle Cutting Board 1',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-
-//   // FAKE PRODUCTS 2
-//   // FAKE PRODUCTS 2
-//   // FAKE PRODUCTS 2
-
-//   // Teacher Pencil Sign
-//   {
-//     name: 'Teacher Pencil Sign 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Teacher Sticky Note
-//   {
-//     name: 'Teacher Sticky Note 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Stanley Name Plates
-//   {
-//     name: 'Stanley Name Plates 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Baseball Sign
-//   {
-//     name: 'Custom Baseball Sign 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Basketball Sign
-//   {
-//     name: 'Custom Basketball Sign 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Baseball Team Sign
-//   {
-//     name: 'Baseball Team Sign 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Basketball Team Sign
-//   {
-//     name: 'Basketball Team Sign 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Circle Cutting Board
-//   {
-//     name: 'Circle Cutting Board 2',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // FAKE PRODUCTS 3
-//   // FAKE PRODUCTS 3
-//   // FAKE PRODUCTS 3
-
-//   // Teacher Pencil Sign
-//   {
-//     name: 'Teacher Pencil Sign 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Teacher Sticky Note
-//   {
-//     name: 'Teacher Sticky Note 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Stanley Name Plates
-//   {
-//     name: 'Stanley Name Plates 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Baseball Sign
-//   {
-//     name: 'Custom Baseball Sign 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Basketball Sign
-//   {
-//     name: 'Custom Basketball Sign 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Baseball Team Sign
-//   {
-//     name: 'Baseball Team Sign 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Basketball Team Sign
-//   {
-//     name: 'Basketball Team Sign 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Circle Cutting Board
-//   {
-//     name: 'Circle Cutting Board 3',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-
-//   // FAKE PRODUCTS 4
-//   // FAKE PRODUCTS 4
-//   // FAKE PRODUCTS 4
-
-//   // Teacher Pencil Sign
-//   {
-//     name: 'Teacher Pencil Sign 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-pencil-sign-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Teacher Sticky Note
-//   {
-//     name: 'Teacher Sticky Note 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/teacher-sticky-note-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Stanley Name Plates
-//   {
-//     name: 'Stanley Name Plates 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-name-plate-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Baseball Sign
-//   {
-//     name: 'Custom Baseball Sign 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-baseball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Custom Basketball Sign
-//   {
-//     name: 'Custom Basketball Sign 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/custom-basketball-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Baseball Team Sign
-//   {
-//     name: 'Baseball Team Sign 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Basketball Team Sign
-//   {
-//     name: 'Basketball Team Sign 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/basketball-team-sign-1.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-//   // Circle Cutting Board
-//   {
-//     name: 'Circle Cutting Board 4',
-//     shortDescription: 'Short Description how long is',
-//     longDescription: `This cute pencil is a great way to show your appreciation to your child's teacher. Sign is made with maple plywood 1/8". The name is laser cut 1/8". The flowers are silk, off white.`,
-//     categories: ['Teacher', 'Signs', 'Kitchen'],
-//     craftingTime: 14,
-//     customizationOptions: [
-//       {
-//         label: 'Background Color',
-//         description: 'Choose from available colors: Red, Blue, Green',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name Color',
-//         description: 'Specify the size of the sign',
-//         inputType: 'dropdown',
-//         choices: ['Red', 'Blue', 'Green'],
-//       },
-//       {
-//         label: 'Name',
-//         description: 'Add a personalized message or name',
-//         inputType: 'textfield',
-//         maxLength: 20,
-//       },
-//     ],
-//     prices: [
-//       {
-//         dimension: '12x12',
-//         price: 1000,
-//       },
-//       {
-//         dimension: '15x15',
-//         price: 2000,
-//       },
-//       {
-//         dimension: '20x20',
-//         price: 3000,
-//       },
-//     ],
-//     imageUrls: [
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-1.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-2.JPG',
-//         alt: 'Description',
-//       },
-//       {
-//         src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/board-1-3.JPG',
-//         alt: 'Description',
-//       },
-//     ],
-//   },
-// ];
 
 module.exports = { products };
