@@ -83,16 +83,20 @@ export default function Cart({ cart }: CartProps) {
 
   return (
     <div className="w-full">
-      <div className="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+      <h2 className="mx-auto mb-5 text-center text-5xl font-semibold text-gray-900">
+        Cart
+      </h2>
+
+      <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Checkout</h2>
 
         {/* <form className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16"> */}
         <div className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16">
           {/* Order summary */}
           <div className="mt-10 lg:col-span-3 lg:mt-0">
-            <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
+            {/* <h2 className="text-lg font-medium text-gray-900">Order summary</h2> */}
 
-            <div className="mt-5 rounded-lg border border-gray-200 bg-white shadow-sm">
+            <div className="mt-5 rounded-[40px] border border-gray-200 bg-white shadow-sm">
               {/* Cart Items */}
               <h3 className="sr-only">Items in your cart</h3>
               <ul role="list" className="divide-y divide-gray-200">
@@ -104,7 +108,7 @@ export default function Cart({ cart }: CartProps) {
                       href={`/products/${item.product.name}`}
                       className="font-medium text-gray-700 hover:text-gray-800"
                     >
-                      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-md sm:h-40 sm:w-40">
+                      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-[40px] sm:h-40 sm:w-40">
                         <Image
                           src={item.product.imageUrls[0].src}
                           alt={item.product.imageUrls[0].alt}
@@ -178,9 +182,9 @@ export default function Cart({ cart }: CartProps) {
             {/* Delivery Mehtod */}
             <div className="">
               <RadioGroup value={deliveryMethod} onChange={setDeliveryMethod}>
-                <RadioGroup.Label className="text-lg font-medium text-gray-900">
+                {/* <RadioGroup.Label className="text-lg font-medium text-gray-900">
                   Delivery method
-                </RadioGroup.Label>
+                </RadioGroup.Label> */}
                 <div className="mt-5 space-y-4">
                   {deliveryMethods.map(method => (
                     <RadioGroup.Option
@@ -189,9 +193,9 @@ export default function Cart({ cart }: CartProps) {
                       className={({ active }) =>
                         classNames(
                           active
-                            ? 'border-indigo-600 ring-2 ring-indigo-600'
+                            ? 'border-primary ring-2 ring-primary'
                             : 'border-gray-300',
-                          'relative block cursor-pointer rounded-lg border bg-white px-6 py-4 shadow-sm focus:outline-none sm:flex sm:justify-between',
+                          'relative block cursor-pointer rounded-[30px] border bg-white px-6 py-4 shadow-sm focus:outline-none sm:flex sm:justify-between',
                         )
                       }
                     >
@@ -218,10 +222,8 @@ export default function Cart({ cart }: CartProps) {
                           <span
                             className={classNames(
                               active ? 'border' : 'border-2',
-                              checked
-                                ? 'border-indigo-600'
-                                : 'border-transparent',
-                              'pointer-events-none absolute -inset-px rounded-lg',
+                              checked ? 'border-primary' : 'border-transparent',
+                              'pointer-events-none absolute -inset-px rounded-3xl',
                             )}
                             aria-hidden="true"
                           />
@@ -234,11 +236,11 @@ export default function Cart({ cart }: CartProps) {
             </div>
 
             {/* Payment */}
-            <div className="mt-10 border-t border-gray-200 pt-10">
-              <h2 className="text-lg font-medium text-gray-900">Payment</h2>
+            <div className="mt-0 pt-8">
+              {/* <h2 className="text-lg font-medium text-gray-900">Payment</h2> */}
 
               {/* Gray Line To Seperate Checkout */}
-              {/* <div className="relative">
+              <div className="relative">
                 <div
                   className="absolute inset-0 flex items-center"
                   aria-hidden="true"
@@ -246,11 +248,12 @@ export default function Cart({ cart }: CartProps) {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center">
-                  <span className="bg-white px-2 text-sm text-gray-500">
+                  <span className="bg-[#f9f8fb] px-2 text-sm text-gray-900">
                     Checkout with
                   </span>
+                  {/* <span className="px-6 text-gray-900">OR</span> */}
                 </div>
-              </div> */}
+              </div>
 
               <StripeButton cart={cart} deliveryMethod={deliveryMethod} />
 
