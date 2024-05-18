@@ -142,7 +142,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-
   // Football Sign
   {
     name: 'Football Sign',
@@ -181,7 +180,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-
   // Named Keychain
   {
     name: 'Named Keychain',

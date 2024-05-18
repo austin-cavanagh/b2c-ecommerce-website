@@ -6,7 +6,7 @@ export default function RemoveFromCartButton({ itemId }: { itemId: number }) {
   return (
     <button
       type="button"
-      className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+      className="text-sm font-medium text-primary hover:brightness-90"
       onClick={async () => {
         await removeFromCart(itemId);
       }}

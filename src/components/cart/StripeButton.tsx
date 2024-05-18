@@ -31,7 +31,7 @@ export default function StripeButton({
     <div className="mt-5">
       <button
         onClick={handleStripeCheckout}
-        className="flex w-full items-center justify-center rounded-md border border-transparent bg-[#635bff] text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+        className="flex w-full items-center justify-center rounded-full border border-transparent bg-[#635bff] text-base font-medium text-white shadow-sm hover:brightness-95 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
       >
         <div className="w-22">
           <svg

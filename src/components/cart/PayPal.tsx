@@ -60,7 +60,7 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
       <PayPalScriptProvider options={initialOptions}>
         <PayPalButtons
           style={{
-            shape: 'rect',
+            shape: 'pill',
             layout: 'vertical',
           }}
           createOrder={async () => {
