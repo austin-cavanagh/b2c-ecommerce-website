@@ -1,6 +1,6 @@
 'use client';
 
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
 type HeroSectionCardProps = {

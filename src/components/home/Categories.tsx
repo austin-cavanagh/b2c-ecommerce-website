@@ -7,7 +7,7 @@ const growthSize = 1.03; // Variable to determine the size of the growth on hove
 const animationDuration = 0.3; // Variable to control the speed of the animation
 const hoverShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)'; // Shadow for 2xl
 
-export default function NewCategories() {
+export default function CategoriesSection() {
   const { scrollY } = useViewportScroll();
 
   // Define scroll points for the appearance of the section
