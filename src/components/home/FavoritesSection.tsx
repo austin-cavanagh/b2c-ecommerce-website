@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Define how the hover animation reacts to the mouse hovering over it
+// Define how the hover animation reacts to the cursor hovering over it
 const growthSize = 1.03;
 const animationDuration = 0.3;
 const boxShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)';

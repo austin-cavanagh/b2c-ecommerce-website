@@ -2,10 +2,17 @@
 
 import { useTransform, useViewportScroll, motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
+// Define how the hover animation reacts to the cursor hovering over it
 const growthSize = 1.03; // Variable to determine the size of the growth on hover
 const animationDuration = 0.3; // Variable to control the speed of the animation
 const hoverShadow = '0 25px 50px -12px rgb(0 0 0 / 0.25)'; // Shadow for 2xl
+const whileHoverObject = {
+  scale: growthSize,
+  transition: { duration: animationDuration },
+  boxShadow: hoverShadow,
+};
 
 export default function CategoriesSection() {
   const { scrollY } = useViewportScroll();
@@ -23,29 +30,24 @@ export default function CategoriesSection() {
       style={{ opacity }}
     >
       <div className="flex items-start justify-center">
+        {/* First Column */}
         <div className="flex flex-col items-end space-y-6">
           <motion.div
             className="relative mr-10 h-48 w-48 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
-            whileHover={{
-              scale: growthSize,
-              transition: { duration: animationDuration },
-              boxShadow: hoverShadow,
-            }}
+            whileHover={whileHoverObject}
           >
-            <Image
-              src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/grinch-christmas-ornament-1.jpeg"
-              alt="Family"
-              layout="fill"
-              objectFit="cover"
-            />
+            <Link href={'/products/grinch%20christmas%20ornaments'}>
+              <Image
+                src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/grinch-christmas-ornament-1.jpeg"
+                alt="Family"
+                layout="fill"
+                objectFit="cover"
+              />
+            </Link>
           </motion.div>
           <motion.div
             className="relative mr-8 h-40 w-40 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
-            whileHover={{
-              scale: growthSize,
-              transition: { duration: animationDuration },
-              boxShadow: hoverShadow,
-            }}
+            whileHover={whileHoverObject}
           >
             <Image
               src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mickey-orniment-1.jpeg"
@@ -56,11 +58,7 @@ export default function CategoriesSection() {
           </motion.div>
           <motion.div
             className="relative mr-12 h-52 w-52 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
-            whileHover={{
-              scale: growthSize,
-              transition: { duration: animationDuration },
-              boxShadow: hoverShadow,
-            }}
+            whileHover={whileHoverObject}
           >
             <Image
               src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-ornament-1.jpeg"
@@ -70,14 +68,12 @@ export default function CategoriesSection() {
             />
           </motion.div>
         </div>
+
+        {/* Second Column */}
         <div className="space-y-6">
           <motion.div
             className="relative ml-2 h-80 w-80 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
-            whileHover={{
-              scale: growthSize,
-              transition: { duration: animationDuration },
-              boxShadow: hoverShadow,
-            }}
+            whileHover={whileHoverObject}
           >
             <Image
               src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-fall-sign-1.jpeg"
@@ -88,11 +84,7 @@ export default function CategoriesSection() {
           </motion.div>
           <motion.div
             className="relative h-64 w-64 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
-            whileHover={{
-              scale: growthSize,
-              transition: { duration: animationDuration },
-              boxShadow: hoverShadow,
-            }}
+            whileHover={whileHoverObject}
           >
             <Image
               src="https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-1.jpeg"
