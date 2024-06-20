@@ -3,7 +3,7 @@ import 'server-only';
 
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
-import { updateOrder } from '../prisma/updateOrder';
+import { updateOrder } from '../cart/updateOrder';
 
 const base = 'https://api-m.sandbox.paypal.com';
 

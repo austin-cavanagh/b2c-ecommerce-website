@@ -3,10 +3,9 @@
 'use server';
 import 'server-only';
 
-import { CartItemIds } from '@/components/cart/Cart';
 import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
-import { createOrderInPrisma } from '../prisma/createOrder';
+import { createOrderInPrisma } from '../cart/createOrder';
 import { getServerSession } from 'next-auth';
 import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
@@ -18,9 +17,14 @@ interface CustomSessionConfig extends Stripe.Checkout.SessionCreateParams {
   shipping_options?: Stripe.Checkout.SessionCreateParams.ShippingOption[];
 }
 
+type CartItemIdsType = {
+  productId: number;
+  stripePriceId: string;
+};
+
 export async function createCheckoutSession(
   deliveryMethod: string,
-  cartItemIds: CartItemIds[],
+  cartItemIds: CartItemIdsType[],
 ) {
   const session = (await getServerSession(authOptions)) as
     | ExtendSession

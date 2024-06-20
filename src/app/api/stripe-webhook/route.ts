@@ -3,7 +3,7 @@ import {
   Address,
   ShippingAddress,
   updateOrder,
-} from '@/actions/prisma/updateOrder';
+} from '@/actions/cart/updateOrder';
 import 'server-only';
 
 import Stripe from 'stripe';

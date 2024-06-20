@@ -6,7 +6,7 @@ import { handleResponse } from '@/functions/handleResponse';
 import { ExtendedCartItem } from '@/components/cart/Cart';
 import { getServerSession } from 'next-auth';
 import { ExtendSession } from '../../app/api/auth/[...nextauth]/route';
-import { createOrderInPrisma } from '../prisma/createOrder';
+import { createOrderInPrisma } from '../cart/createOrder';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
 
 const base = 'https://api-m.sandbox.paypal.com';
