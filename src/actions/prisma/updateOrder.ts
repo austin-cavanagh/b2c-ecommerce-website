@@ -2,7 +2,6 @@
 import 'server-only';
 
 import { prisma } from '@/prisma/prisma';
-import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
@@ -20,12 +19,6 @@ type PayPalName = {
   full_name?: string;
   given_name?: string;
   surname?: string;
-  [key: string]: any; // Adding index signature
-};
-
-type PayPalShipping = {
-  name: PayPalName;
-  address: PayPalAddress | undefined;
   [key: string]: any; // Adding index signature
 };
 
@@ -61,48 +54,12 @@ type PayPalPayment = {
   captures: PayPalCapture[];
 };
 
-type PayPalPurchaseUnit = {
-  reference_id: string;
-  shipping?: PayPalShipping;
-  payments: PayPalPayment;
-};
-
 type PayPalPayer = {
   name: PayPalName;
   email_address: string;
   payer_id: string;
   address: PayPalAddress;
 };
-
-type PayPalOrder = {
-  id: string;
-  status: string;
-  payment_source: {
-    paypal: {
-      email_address: string;
-      account_id: string;
-      account_status: string;
-      name: PayPalName;
-      address: PayPalAddress;
-    };
-  };
-  purchase_units: PayPalPurchaseUnit[];
-  payer: PayPalPayer;
-  links: Array<{
-    href: string;
-    rel: string;
-    method: string;
-  }>;
-};
-
-type FlexibleAddress = {
-  [key: string]: string | null;
-};
-
-// orderId
-// providerOrderId
-// shippingAddress
-// name
 
 export type Address = {
   [key: string]: string;

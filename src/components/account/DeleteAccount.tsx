@@ -1,6 +1,6 @@
 // Feature not yet functional
 
-import { deleteAccount } from '@/actions/deleteAccount';
+import { deleteAccount } from '@/actions/account/deleteAccount';
 
 export default function DeleteAccount() {
   return (

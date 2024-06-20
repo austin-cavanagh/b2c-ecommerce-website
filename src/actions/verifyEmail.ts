@@ -3,7 +3,6 @@
 'use server';
 import 'server-only';
 
-import { redirect } from 'next/navigation';
 import sendEmailVerification from '@/functions/sendEmailVerification';
 import { randomUUID } from 'crypto';
 import { prisma } from '@/prisma/prisma';

@@ -1,6 +1,6 @@
 // Feature not yet functional
 
-import { changePassword } from '@/actions/changePassword';
+import { changePassword } from '@/actions/account/changePassword';
 
 export default function ChangePassword() {
   return (

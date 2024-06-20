@@ -1,6 +1,6 @@
 // Feature not yet functional
 
-import { updatePersonalInformation } from '@/actions/updatePersonalInformation';
+import { updatePersonalInformation } from '@/actions/account/updatePersonalInformation';
 
 type PersonalInformationProps = {
   fullName: string;

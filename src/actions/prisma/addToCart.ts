@@ -3,7 +3,6 @@ import 'server-only';
 
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { FormEvent } from 'react';
 import { ExtendSession } from '@/app/api/auth/[...nextauth]/route';
 import { prisma } from '@/prisma/prisma';
 import { authOptions } from '@/app/api/auth/[...nextauth]/authOptions';
@@ -23,8 +22,6 @@ export default async function addToCart(formData: FormData) {
   ];
 
   const productId = formData.get('size[productId]') as string;
-  // const price = formData.get('size[price]') as string;
-  // const stripePriceId = formData.get('size[stripePriceId]') as string;
   const dimensions = formData.get('size[dimension]') as string;
 
   // Format the customers chosen customizaion options

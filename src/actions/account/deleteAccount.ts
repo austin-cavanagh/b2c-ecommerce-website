@@ -1,3 +1,5 @@
+// Not functional yet but is connected to the button in the DeleteAccount.tsx component
+
 'use server';
 import 'server-only';
 

@@ -6,10 +6,11 @@ import {
   PayPalButtons,
   ReactPayPalScriptOptions,
 } from '@paypal/react-paypal-js';
-import { capturePayPalOrder } from '@/actions/capturePayPalOrder';
 import { ExtendedCartItem } from '@/components/cart/Cart';
-import { createPayPalOrder } from '@/actions/createPayPalOrder';
 import { redirect } from 'next/navigation';
+
+import { capturePayPalOrder } from '@/actions/payPal/capturePayPalOrder';
+import { createPayPalOrder } from '@/actions/payPal/createPayPalOrder';
 
 // Renders errors or successfull transactions on the screen.
 function Message({ content }: { content: string }) {

@@ -3,8 +3,7 @@ import 'server-only';
 
 import { generateAccessToken } from '@/functions/generateAccessToken';
 import { handleResponse } from '@/functions/handleResponse';
-import { prisma } from '@/prisma/prisma';
-import { updateOrder } from './prisma/updateOrder';
+import { updateOrder } from '../prisma/updateOrder';
 
 const base = 'https://api-m.sandbox.paypal.com';
 
@@ -18,11 +17,7 @@ export async function capturePayPalOrder(orderID: string) {
       jsonResponse.status === 'COMPLETED' &&
       jsonResponse.purchase_units[0].payments.captures[0].status === 'COMPLETED'
     ) {
-      // orderId: string,
-      // providerOrderId: string,
-      // shippingAddress: ShippingAddress | undefined | null,
-
-      console.log('jsonResponse', jsonResponse);
+      // console.log('jsonResponse', jsonResponse);
 
       const orderId = jsonResponse.purchase_units[0].reference_id;
       const providerId = jsonResponse.id;
