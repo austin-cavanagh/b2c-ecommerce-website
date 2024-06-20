@@ -1,10 +1,7 @@
 'use client';
 
 import { getPageItems } from '@/actions/getPageItems';
-import { getProductsAction } from '@/actions/getProductsAction';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { ParallaxScrollGrid } from './ParallaxScrollGrid';
 import { ProductCard } from './ProductCard';
 
 export type ProductType = {
@@ -19,19 +16,16 @@ export default function ProductsGrid() {
   const itemsPerPage = 39;
 
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [totalPages, setTotalPages] = useState<number>();
-  const [totalProducts, setTotalProducts] = useState<number>();
   const [pageNumber, setPageNumber] = useState(1);
 
   useEffect(() => {
     async function getProductsData() {
-      // updatePage(pageNumber);
       handleLoadItems(pageNumber);
     }
-
     getProductsData();
   }, [pageNumber]);
 
+  // Function to get products
   const handleLoadItems = async (newPageNumber: number) => {
     const data = await getPageItems(newPageNumber, itemsPerPage);
     const newProducts = data.data.map(product => ({
@@ -45,17 +39,12 @@ export default function ProductsGrid() {
       return [...products, ...newProducts];
     });
     setPageNumber(newPageNumber);
-    setTotalProducts(data.totalProducts);
   };
 
+  // Render a fragment prior to the products loading in
   if (!products.length) {
     return <></>;
-    // return <div>Loading...</div>;
   }
-
-  const images = products.map(product => {
-    return product.imageUrls[0];
-  });
 
   return (
     <div className="w-full">
@@ -68,9 +57,6 @@ export default function ProductsGrid() {
           />
         ))}
       </div>
-
-      {/* Load Products Button */}
-      {/* <button onClick={() => handleLoadItems(pageNumber + 1)}>Load more</button> */}
     </div>
   );
 }
