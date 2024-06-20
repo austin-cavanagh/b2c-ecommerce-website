@@ -1,21 +1,15 @@
 'use client';
 
 import createAccount from '@/actions/createAccount';
-import { useFormState } from 'react-dom';
 import PasswordInput from '../sign-in/PasswordInput';
 import { useSession } from 'next-auth/react';
 
 export default function CreateAccountForm() {
-  // const [error, action] = useFormState(createAccount, { message: '' });
-
   const session = useSession();
   console.log(session);
 
   return (
-    // method="POST" <- look into what this was
     <form className="space-y-5" action={createAccount}>
-      {/* <div>{error.message}</div> */}
-
       <div>
         <label
           htmlFor="name"
@@ -67,7 +61,7 @@ export default function CreateAccountForm() {
       <div className="pt-2">
         <button
           type="submit"
-          className="bg-primary flex w-full justify-center rounded-full px-3 py-2 text-base font-semibold leading-6 text-white shadow-sm hover:brightness-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="flex w-full justify-center rounded-full bg-primary px-3 py-2 text-base font-semibold leading-6 text-white shadow-sm hover:brightness-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Sign up
         </button>

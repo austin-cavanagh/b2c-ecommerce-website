@@ -1,20 +1,11 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ClockIcon,
-} from '@heroicons/react/20/solid';
-import RemoveFromCartButton from './RemoveFromCartButton';
 import { CartItem, ImageUrl, Product } from '@prisma/client';
 import { classNames } from '@/functions/classNames';
-import Link from 'next/link';
-import PayPal from '@/components/cart/PayPal';
-import StripeButton from './StripeButton';
-import { ItemDetailsDropdown } from './ItemDetailsDropdown';
-import Image from 'next/image';
+import CheckoutButtons from './CheckoutButtons';
+import OrderSummary from './OrderSummary';
 
 export type DeliveryMethod = {
   id: number;
@@ -37,11 +28,6 @@ const deliveryMethods: DeliveryMethod[] = [
   },
 ];
 
-export type CartItemIds = {
-  productId: number;
-  stripePriceId: string;
-};
-
 export type Customization = {
   label: string;
   value: string;
@@ -60,26 +46,8 @@ export type CartProps = {
   cart: ExtendedCartItem[];
 };
 
-export type VisibleCustomizations = {
-  [key: number]: boolean;
-};
-
 export default function Cart({ cart }: CartProps) {
   const [deliveryMethod, setDeliveryMethod] = useState(deliveryMethods[0]);
-
-  const subtotal = cart.reduce((total: number, item) => {
-    return total + item.price;
-  }, 0);
-
-  const [visibleCustomizations, setVisibleCustomizations] =
-    useState<VisibleCustomizations>({});
-
-  const toggleCustomizations = (itemId: number) => {
-    setVisibleCustomizations(prev => ({
-      ...prev,
-      [itemId]: !prev[itemId],
-    }));
-  };
 
   return (
     <div className="w-full">
@@ -90,101 +58,15 @@ export default function Cart({ cart }: CartProps) {
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Checkout</h2>
 
-        {/* <form className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16"> */}
         <div className="lg:grid lg:grid-cols-5 lg:gap-x-12 xl:gap-x-16">
           {/* Order summary */}
-          <div className="mt-10 lg:col-span-3 lg:mt-0">
-            {/* <h2 className="text-lg font-medium text-gray-900">Order summary</h2> */}
-
-            <div className="mt-5 rounded-[40px] border border-gray-200 bg-white shadow-sm">
-              {/* Cart Items */}
-              <h3 className="sr-only">Items in your cart</h3>
-              <ul role="list" className="divide-y divide-gray-200">
-                {cart.map(item => (
-                  <li key={item.id} className="flex px-4 py-6 sm:px-6">
-                    {/* Image */}
-
-                    <Link
-                      href={`/products/${item.product.name}`}
-                      className="font-medium text-gray-700 hover:text-gray-800"
-                    >
-                      <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-[40px] sm:h-40 sm:w-40">
-                        <Image
-                          src={item.product.imageUrls[0].src}
-                          alt={item.product.imageUrls[0].alt}
-                          className="object-cover object-center"
-                          fill
-                        />
-                      </div>
-                    </Link>
-
-                    <div className="ml-6 flex flex-1 flex-col">
-                      <div className="flex">
-                        <div className="min-w-0 flex-1">
-                          {/* Item Name */}
-                          <h4 className="text-sm">
-                            <Link
-                              href={`/products/${item.product.name}`}
-                              className="font-medium text-gray-700 hover:text-gray-800"
-                            >
-                              {item.product.name}
-                            </Link>
-                          </h4>
-
-                          {/* Item Details Dropdown */}
-                          <ItemDetailsDropdown
-                            itemId={item.id}
-                            customizations={item.customizations}
-                            dimensions={item.dimensions}
-                          />
-                        </div>
-
-                        {/* Price */}
-                        <p className="mt-1 text-sm font-medium text-gray-900">
-                          ${(item.price / 100).toFixed(2)}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-1 items-end justify-between pt-2">
-                        {/* Crafting Time */}
-                        <p className="flex items-center space-x-2 text-sm text-gray-700">
-                          <ClockIcon
-                            className="h-5 w-5 flex-shrink-0 text-gray-300"
-                            aria-hidden="true"
-                          />
-                          <span>{`10 days`}</span>
-                        </p>
-
-                        {/* Remove Item Button */}
-                        <RemoveFromCartButton itemId={item.id} />
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              <dl className="space-y-2 border-t border-gray-200 px-4 py-6 sm:px-6">
-                <div className="flex items-center justify-between">
-                  <dt className="text-base font-medium">Subtotal</dt>
-                  <dd className="text-base font-medium text-gray-900">
-                    ${(subtotal / 100).toFixed(2)}
-                  </dd>
-                </div>
-                {/* <p className="text-gray-500">
-                  Taxes and shipping will be calculated at checkout
-                </p> */}
-              </dl>
-            </div>
-          </div>
+          <OrderSummary cart={cart} />
 
           {/* Right Side */}
           <div className="lg:col-span-2">
             {/* Delivery Mehtod */}
             <div className="">
               <RadioGroup value={deliveryMethod} onChange={setDeliveryMethod}>
-                {/* <RadioGroup.Label className="text-lg font-medium text-gray-900">
-                  Delivery method
-                </RadioGroup.Label> */}
                 <div className="mt-5 space-y-4">
                   {deliveryMethods.map(method => (
                     <RadioGroup.Option
@@ -235,35 +117,10 @@ export default function Cart({ cart }: CartProps) {
               </RadioGroup>
             </div>
 
-            {/* Payment */}
-            <div className="mt-0 pt-8">
-              {/* <h2 className="text-lg font-medium text-gray-900">Payment</h2> */}
-
-              {/* Gray Line To Seperate Checkout */}
-              <div className="relative">
-                <div
-                  className="absolute inset-0 flex items-center"
-                  aria-hidden="true"
-                >
-                  <div className="w-full border-t border-gray-300" />
-                </div>
-                <div className="relative flex justify-center">
-                  <span className="bg-[#f9f8fb] px-2 text-sm text-gray-900">
-                    Checkout with
-                  </span>
-                  {/* <span className="px-6 text-gray-900">OR</span> */}
-                </div>
-              </div>
-
-              <StripeButton cart={cart} deliveryMethod={deliveryMethod} />
-
-              <div className="mt-4">
-                <PayPal cart={cart} deliveryMethod={deliveryMethod.title} />
-              </div>
-            </div>
+            {/* Checkout Section */}
+            <CheckoutButtons cart={cart} deliveryMethod={deliveryMethod} />
           </div>
         </div>
-        {/* </form> */}
       </div>
     </div>
   );

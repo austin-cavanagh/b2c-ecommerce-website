@@ -7,15 +7,8 @@ export default async function ContactForm() {
         <h2 className="text-5xl font-semibold tracking-tight text-gray-900">
           Contact Me
         </h2>
-        {/* <p className="mt-2 mt-4 text-lg leading-8 text-gray-600">
-          Send me a message if you have any questions or special requests
-        </p> */}
       </div>
-      <form
-        action={sendContactEmail}
-        // method="POST"
-        className="mx-auto mt-8 max-w-xl"
-      >
+      <form action={sendContactEmail} className="mx-auto mt-8 max-w-xl">
         <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label

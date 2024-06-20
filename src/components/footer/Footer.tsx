@@ -1,42 +1,10 @@
-const footerNavigation = {
-  products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
-    { name: 'Accessories', href: '#' },
-  ],
-  customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' },
-  ],
-  company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
-  ],
-  legal: [
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Return Policy', href: '#' },
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Shipping Policy', href: '#' },
-  ],
-  bottomLinks: [
-    { name: 'Accessibility', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-  ],
-};
+const bottomLinks = [
+  { name: 'Accessibility', href: '#' },
+  { name: 'Privacy', href: '#' },
+  { name: 'Terms & Conditions', href: '#' },
+];
 
-const navigation: {
+const socialMediaIcons: {
   name: string;
   href: string;
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
@@ -109,7 +77,7 @@ function Footer() {
 
         {/* Social Media Icons */}
         <div className="md:order-0 flex justify-center space-x-6">
-          {navigation.map(item => (
+          {socialMediaIcons.map(item => (
             <a
               key={item.name}
               href={item.href}
@@ -125,7 +93,7 @@ function Footer() {
 
         {/* Accessibility - Privacy - Terms */}
         <div className="flex space-x-8 pl-6">
-          {footerNavigation.bottomLinks.map(item => (
+          {bottomLinks.map(item => (
             <a
               key={item.name}
               href={item.href}

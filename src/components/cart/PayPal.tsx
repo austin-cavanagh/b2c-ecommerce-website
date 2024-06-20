@@ -135,29 +135,6 @@ export default function PayPal({ cart, deliveryMethod }: PayPalProps) {
             }
           }}
         />
-
-        {/* <PayPalButtons
-          style={{ layout: 'vertical', color: 'gold' }}
-          fundingSource="paypal"
-          createOrder={(data, actions) => {
-            // Create order logic for PayPal
-          }}
-          onApprove={(data, actions) => {
-            // Handle approval for PayPal
-          }}
-        /> */}
-
-        {/* Venmo Button */}
-        {/* <PayPalButtons
-          style={{ layout: 'vertical', color: 'blue' }}
-          fundingSource="venmo"
-          createOrder={(data, actions) => {
-            // Create order logic for Venmo
-          }}
-          onApprove={(data, actions) => {
-            // Handle approval for Venmo
-          }}
-        /> */}
       </PayPalScriptProvider>
       <Message content={message} />
     </div>

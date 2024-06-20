@@ -1,9 +1,14 @@
 import { createCheckoutSession } from '@/actions/createCheckoutSession';
-import { CartItemIds, DeliveryMethod, ExtendedCartItem } from './Cart';
+import { DeliveryMethod, ExtendedCartItem } from './Cart';
 
 export type StripeButtonProps = {
   cart: ExtendedCartItem[];
   deliveryMethod: DeliveryMethod;
+};
+
+type CartItemIds = {
+  productId: number;
+  stripePriceId: string;
 };
 
 export default function StripeButton({
@@ -36,8 +41,6 @@ export default function StripeButton({
         <div className="w-22">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            // width="120"
-            // height="60"
             fillRule="evenodd"
             fill="white"
             viewBox="0 0 120 60"
