@@ -3,7 +3,7 @@
 'use client';
 
 import { useFormState } from 'react-dom';
-import PasswordInput from './sign-in/PasswordInput';
+import PasswordInput from '../sign-in/PasswordInput';
 import { FormEvent, useRef } from 'react';
 import createAccount from '@/actions/create-account/createAccount';
 

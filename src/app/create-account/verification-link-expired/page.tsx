@@ -1,4 +1,4 @@
-import ResendEmailButton from '@/components/ResendEmailButton';
+import ResendEmailButton from '@/components/create-account/ResendEmailButton';
 
 export default function VerificationTokenExpired() {
   return (

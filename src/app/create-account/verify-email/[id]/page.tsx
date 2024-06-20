@@ -2,7 +2,7 @@
 
 import emailsInLastMinute from '@/functions/emailsInLastMinute';
 import { prisma } from '../../../../prisma/prisma';
-import ResendEmailButton from '@/components/ResendEmailButton';
+import ResendEmailButton from '@/components/create-account/ResendEmailButton';
 
 export default async function VerifyEmail({
   params,
