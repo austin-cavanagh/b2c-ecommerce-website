@@ -6,7 +6,6 @@ import Footer from '@/components/footer/Footer';
 import { getServerSession } from 'next-auth';
 import { authOptions } from './api/auth/[...nextauth]/authOptions';
 import Navbar from '@/components/navbar/Navbar';
-import Head from 'next/head';
 
 const inter = Inter({ subsets: ['latin'] });
 

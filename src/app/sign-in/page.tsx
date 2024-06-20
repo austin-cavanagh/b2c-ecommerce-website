@@ -1,9 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import signInAction from '@/actions/signInAction';
-import { useFormState } from 'react-dom';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import { FormEvent, useRef, useState } from 'react';
 import PasswordInput from '@/components/sign-in/PasswordInput';
 
@@ -75,14 +73,15 @@ function SignIn() {
                 >
                   Password
                 </label>
+                {/* Forgot password button - not yet implemented */}
                 {/* <div className="text-sm">
-                    <a
-                      href="#"
-                      className="font-semibold text-indigo-600 hover:text-indigo-500"
-                    >
-                      Forgot password?
-                    </a>
-                  </div> */}
+                  <a
+                    href="#"
+                    className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  >
+                    Forgot password?
+                  </a>
+                </div> */}
               </div>
               <PasswordInput passwordRef={passwordRef} />
             </div>
