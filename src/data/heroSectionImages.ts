@@ -1,93 +1,65 @@
+// Images for the hero section on the home route
+
 type ImageType = {
-  name: string;
-  link: string;
   src: string;
   alt: string;
 };
 
 export const heroSectionImages: ImageType[] = [
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-kitty-sign-1.jpeg',
-    alt: '',
+    alt: 'Hello kitty sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/hello-fall-sign-1.jpeg',
-    alt: '',
+    alt: 'Hello fall sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mickey-orniment-1.jpeg',
-    alt: '',
+    alt: 'Mickey orniment',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baseball-team-ornament-1.jpeg',
-    alt: '',
+    alt: 'Baseball team ornament',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/football-sign-1.jpeg',
-    alt: '',
+    alt: 'Football sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/baby-name-sign-1.jpeg',
-    alt: '',
+    alt: 'Baby name sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/barbie-sign-1.jpeg',
-    alt: '',
+    alt: 'Barbie sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/grinch-christmas-ornament-1.jpeg',
-    alt: '',
+    alt: 'Grinch christmas ornament',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/mom-puzzle-sign-1.jpeg',
-    alt: '',
+    alt: 'Puzzle sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/named-ornament-1.jpeg',
-    alt: '',
+    alt: 'Named ornament',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/newborn-sign-1.jpeg',
-    alt: '',
+    alt: 'Newborn sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/stanley-cup-name-plate-1.jpg',
-    alt: '',
+    alt: 'Stanley cup name plate',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/no-soliciting-sign-1.jpeg',
-    alt: '',
+    alt: 'No soliciting sign',
   },
   {
-    name: '',
-    link: '',
     src: 'https://ecommerce-website-product-images.s3.us-west-1.amazonaws.com/be-mine-sign-1.jpeg',
-    alt: '',
+    alt: 'Be mine sign',
   },
 ];

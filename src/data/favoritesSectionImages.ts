@@ -1,3 +1,5 @@
+// Images for the favorites section on the home route
+
 type ImageType = {
   src: string;
   alt: string;

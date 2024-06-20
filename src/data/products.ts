@@ -1,16 +1,6 @@
-// customizationOptions: [
-//   {
-//     label: 'Background Color',
-//     description: 'Choose from available colors: Red, Blue, Green',
-//     inputType: 'dropdown',
-//     choices: ['Red', 'Blue', 'Green'],
-//   },
-// ],
-
-// Football Sign
+// Product data used to seed the postgres database
 
 const products = [
-  // American Flag Sign
   {
     name: 'American Flag Sign',
     longDescription: `Show your patriotism with this stunning decoration, a vibrant and durable addition perfect for any space.`,
@@ -40,7 +30,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Baby Name Sign
   {
     name: 'Baby Name Sign',
     longDescription: `Welcome your little one with a charming, personalized sign that adds warmth and love to any nursery. This beautifully crafted keepsake commemorates your baby's name.`,
@@ -74,7 +63,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Barbie Sign
   {
     name: 'Barbie Sign',
     longDescription: `Brighten up any room with this stylish piece, featuring iconic designs and colors that capture the essence of Barbie.`,
@@ -104,7 +92,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Baseball Team Ornament
   {
     name: 'Baseball Team Ornament',
     longDescription: `Celebrate your favorite team with this beautifully crafted keepsake, perfect for any fan.`,
@@ -142,7 +129,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Football Sign
   {
     name: 'Football Sign',
     longDescription: `Elevate your space with this bold decoration, showcasing your passion for the game.`,
@@ -180,7 +166,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Named Keychain
   {
     name: 'Named Keychain',
     longDescription: `Keep your keys stylishly organized with this personalized accessory, a practical and unique addition for everyday use.`,
@@ -218,7 +203,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Be Mine Sign
   {
     name: 'Be Mine Sign',
     longDescription: `Express your love with this charming decoration, perfect for adding a romantic touch to any space.`,
@@ -256,7 +240,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Bear Cutout
   {
     name: 'Bear Cutout',
     longDescription: `Enhance your decor with this adorable cutout, a cute and whimsical addition to any room.`,
@@ -294,7 +277,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Book Stand
   {
     name: 'Book Stand',
     longDescription: `Keep your favorite reads organized and easily accessible with this elegant and functional accessory.`,
@@ -332,7 +314,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // College Baseball Sign
   {
     name: 'College Baseball Sign',
     longDescription: `Show your school spirit with this bold decoration, perfect for any college baseball fan.`,
@@ -366,7 +347,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Cutting Board
   {
     name: 'Cutting Board',
     longDescription: `Make meal prep a breeze with this durable and stylish kitchen essential, perfect for everyday use.`,
@@ -404,7 +384,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Easter Display
   {
     name: 'Easter Display',
     longDescription: `Celebrate the season with this festive decoration, adding a cheerful touch to your home for Easter.`,
@@ -438,7 +417,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Faith and Freedom Sign
   {
     name: 'Faith And Freedom Sign',
     longDescription: `Celebrate your values with this inspiring decoration, a perfect reminder of faith and freedom for any space.`,
@@ -472,7 +450,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Family Name Sign
   {
     name: 'Family Name Sign',
     longDescription: `Add a personal touch to your home with this elegant piece, showcasing your family name in a stylish design.`,
@@ -510,7 +487,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Baseball Team Sign
   {
     name: 'Baseball Team Sign',
     longDescription: `Show your team pride with this bold decoration, perfect for any baseball fan's space.`,
@@ -548,7 +524,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Fourth Of July Piece
   {
     name: 'Fourth Of July Piece',
     longDescription: `Commemorate Independence Day with this festive decoration, adding a patriotic touch to your celebrations.`,
@@ -582,7 +557,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Gas Money Ornament
   {
     name: 'Gas Money Ornament',
     longDescription: `Bring a smile to your tree with this quirky and fun ornament, perfect for adding humor to your holiday decor.`,
@@ -616,7 +590,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Graduation Sign
   {
     name: 'Graduation Sign',
     longDescription: `Celebrate a milestone with this congratulatory decoration, perfect for honoring your graduate's achievements.`,
@@ -654,7 +627,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Grinch Christmas Ornaments
   {
     name: 'Grinch Christmas Ornaments',
     longDescription: `Add a touch of whimsy to your holiday decor with these playful ornaments, capturing the spirit of the Grinch.`,
@@ -692,7 +664,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Grinch Ornament
   {
     name: 'Grinch Ornament',
     longDescription: `Bring some holiday cheer with this fun and festive ornament, inspired by the beloved Grinch character.`,
@@ -726,7 +697,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Hello Fall Sign
   {
     name: 'Hello Fall Sign',
     longDescription: `Welcome the autumn season with this warm and inviting decoration, perfect for adding a cozy touch to your home.`,
@@ -764,7 +734,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Hello Kitty Sign
   {
     name: 'Hello Kitty Sign',
     longDescription: `Add a touch of cuteness to any room with this delightful decoration, featuring the beloved Hello Kitty.`,
@@ -802,7 +771,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Hello Spring Sign
   {
     name: 'Hello Spring Sign',
     longDescription: `Welcome the new season with this cheerful decoration, perfect for adding a fresh and vibrant touch to your space.`,
@@ -832,7 +800,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Mickey Ornament
   {
     name: 'Mickey Ornament',
     longDescription: `Celebrate the magic of Disney with this charming ornament, featuring the iconic Mickey Mouse.`,
@@ -870,7 +837,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Mom Puzzle Sign
   {
     name: 'Mom Puzzle Sign',
     longDescription: `Show your love and appreciation with this heartwarming decoration, a perfect tribute to any mom.`,
@@ -908,7 +874,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Mummy Decoration
   {
     name: 'Mummy Decoration',
     longDescription: `Add a spooky touch to your Halloween decor with this fun and eerie decoration.`,
@@ -942,7 +907,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Name Plate
   {
     name: 'Name Plate',
     longDescription: `Personalize your space with this elegant accessory, featuring a custom name design.`,
@@ -980,7 +944,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Named Ornament
   {
     name: 'Named Ornament',
     longDescription: `Make your holiday tree unique with this personalized ornament, featuring a custom name design.`,
@@ -1018,7 +981,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Newborn Sign
   {
     name: 'Newborn Sign',
     longDescription: `Celebrate the arrival of your little one with this charming decoration, perfect for welcoming a new baby.`,
@@ -1052,7 +1014,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // No Soliciting Sign
   {
     name: 'No Soliciting Sign',
     longDescription: `Politely inform visitors with this stylish and clear decoration, perfect for any entrance.`,
@@ -1091,7 +1052,6 @@ const products = [
     craftingTime: 0,
   },
 
-  // Soccer Name Sign
   {
     name: 'Soccer Name Sign',
     longDescription: `Showcase your passion for soccer with this personalized decoration, perfect for any player's room or fan space.`,
@@ -1121,7 +1081,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Stanley Cup Name Plate
   {
     name: 'Stanley Cup Name Plate',
     longDescription: `Custom name plate, a must-have for any Stanley Cup enthusiast.`,
@@ -1159,7 +1118,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Star Wars Earrings
   {
     name: 'Star Wars Earrings',
     longDescription: `Add a touch of the galaxy to your style with these unique and eye-catching earrings, perfect for any Star Wars fan.`,
@@ -1193,7 +1151,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Sweethearts Family Display
   {
     name: 'Sweethearts Family Display',
     longDescription: `Honor your loved ones with this heartwarming display, a beautiful addition to any family home.`,
@@ -1223,7 +1180,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Tassel
   {
     name: 'Tassel',
     longDescription: `Add a touch of elegance to your decor or accessories with this stylish and versatile tassel.`,
@@ -1261,7 +1217,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Tooth Fairy Sign
   {
     name: 'Tooth Fairy Sign',
     longDescription: `Create a magical experience for your child with this charming sign, perfect for the Tooth Fairy's visit.`,
@@ -1299,7 +1254,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Tree Stump Ornament
   {
     name: 'Tree Stump Ornament',
     longDescription: `Bring a rustic touch to your holiday decor with this charming ornament, crafted to resemble a tree stump.`,
@@ -1337,7 +1291,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // Vase Holder
   {
     name: 'Vase Holder',
     longDescription: `Display your flowers in style with this elegant holder, a perfect addition to any home decor.`,
@@ -1375,7 +1328,6 @@ const products = [
     shortDescription: 'HIDE SHORT DESCRIPTION',
     craftingTime: 0,
   },
-  // You Complete Me Earrings
   {
     name: 'You Complete Me Earrings',
     longDescription: `Express your love and connection with these charming earrings, symbolizing how you complete each other.`,

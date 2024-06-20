@@ -36,14 +36,6 @@ async function login(email: string, password: string) {
     const verified = user.verified;
     const picture = user.picture;
 
-    // const userData = {
-    //   email: email,
-    //   id: user.id,
-    //   name: user.name,
-    //   cardId: user.cartId
-
-    // }
-
     return {
       email,
       id,
