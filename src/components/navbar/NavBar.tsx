@@ -29,6 +29,7 @@ export default function Navbar({ session }: NavbarProps) {
         aria-label="Global"
       >
         <div className="flex items-center">
+          {/* Plant Icon */}
           <a href="/" className="-m-1.5 flex items-center p-1.5">
             <span className="sr-only">Crafts by Jules logo</span>
             <img
@@ -37,10 +38,8 @@ export default function Navbar({ session }: NavbarProps) {
               alt=""
             />
           </a>
-          {/* <span className="ml-1 text-[20px] font-semibold text-primary">
-            Crafts by Jules
-          </span> */}
 
+          {/* Home - Products - Contact - Navigation */}
           <div className="ml-8 hidden lg:flex lg:gap-x-8">
             {navigation.map(item => (
               <Link
@@ -110,6 +109,7 @@ export default function Navbar({ session }: NavbarProps) {
           </div>
         )}
       </nav>
+
       {/* Mobile View */}
       <Dialog
         className="lg:hidden"
