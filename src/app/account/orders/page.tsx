@@ -8,7 +8,7 @@ import {
   CheckCircleIcon,
   EllipsisHorizontalCircleIcon,
 } from '@heroicons/react/20/solid';
-import { getOrders } from '@/actions/getOrders';
+import { getOrders } from '@/actions/account/getOrders';
 import Link from 'next/link';
 import MobilePopupMenu from '@/components/orders/MobilePopupMenu';
 import {

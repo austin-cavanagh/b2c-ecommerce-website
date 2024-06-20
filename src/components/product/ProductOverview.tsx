@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { RadioGroup } from '@headlessui/react';
 import addToCart from '@/actions/prisma/addToCart';
-import { ExtendedProduct } from '@/actions/getProduct';
+import { ExtendedProduct } from '@/actions/product/getProduct';
 import { classNames } from '@/functions/classNames';
 import CustomizationsSection from './CustomizationsSection';
 import ProductImages from './ProductImages';

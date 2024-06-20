@@ -5,7 +5,7 @@
 import { useFormState } from 'react-dom';
 import PasswordInput from './sign-in/PasswordInput';
 import { FormEvent, useRef } from 'react';
-import createAccount from '@/actions/createAccount';
+import createAccount from '@/actions/create-account/createAccount';
 
 export default function NewPasswordForm() {
   const passwordRef = useRef<HTMLInputElement>(null);

@@ -1,4 +1,4 @@
-import { ExtendedProduct } from '@/actions/getProduct';
+import { ExtendedProduct } from '@/actions/product/getProduct';
 
 type ProductDescriptionProps = {
   product: ExtendedProduct;

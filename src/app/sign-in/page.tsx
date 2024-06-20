@@ -119,9 +119,9 @@ function SignIn() {
                 >
                   <g
                     fill="#ffffff"
-                    fill-rule="nonzero"
+                    fillRule="nonzero"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     stroke-linecap="butt"
                     stroke-linejoin="miter"
                     stroke-miterlimit="10"

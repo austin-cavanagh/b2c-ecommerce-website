@@ -1,6 +1,6 @@
 'use client';
 
-import createAccount from '@/actions/createAccount';
+import createAccount from '@/actions/create-account/createAccount';
 import PasswordInput from '../sign-in/PasswordInput';
 import { useSession } from 'next-auth/react';
 

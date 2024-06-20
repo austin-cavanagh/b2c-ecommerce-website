@@ -1,6 +1,6 @@
 'use client';
 
-import { getPageItems } from '@/actions/getPageItems';
+import { getPageItems } from '@/actions/products/getPageItems';
 import { useEffect, useState } from 'react';
 import { ProductCard } from './ProductCard';
 

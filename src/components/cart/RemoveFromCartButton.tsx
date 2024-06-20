@@ -1,6 +1,6 @@
 'use client';
 
-import { removeFromCart } from '@/actions/removeFromCart';
+import { removeFromCart } from '@/actions/cart/removeFromCart';
 
 export default function RemoveFromCartButton({ itemId }: { itemId: number }) {
   return (

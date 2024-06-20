@@ -3,7 +3,7 @@
 'use client';
 
 import { useState } from 'react';
-import verifyEmail from '@/actions/verifyEmail';
+import verifyEmail from '@/actions/create-account/verifyEmail';
 
 export default function ResendEmailButton({
   id,

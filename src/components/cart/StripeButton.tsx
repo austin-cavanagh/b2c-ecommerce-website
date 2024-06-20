@@ -1,4 +1,4 @@
-import { createCheckoutSession } from '@/actions/createCheckoutSession';
+import { createCheckoutSession } from '@/actions/stripe/createCheckoutSession';
 import { DeliveryMethod, ExtendedCartItem } from './Cart';
 
 export type StripeButtonProps = {

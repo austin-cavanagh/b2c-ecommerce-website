@@ -1,9 +1,7 @@
 'use server';
 
 import { prisma } from '@/prisma/prisma';
-import { ImageUrl, Prisma, Product, ProductPrice } from '@prisma/client';
-import { JsonArray, JsonValue } from '@prisma/client/runtime/library';
-import { getServerSession } from 'next-auth';
+import { ImageUrl, Product, ProductPrice } from '@prisma/client';
 import 'server-only';
 
 export type CustomizationOption = {
@@ -30,10 +28,6 @@ function capitalizeWords(str: string) {
 
 export default async function getProduct(params: { product: string }) {
   const productName = capitalizeWords(decodeURIComponent(params.product));
-
-  // const session = await getServerSession(authOptions);
-  // console.log('SERVER ACTION SESSION', session);
-  // console.log('SERVER ACTION SESSION', { authenticated: !!session });
 
   try {
     const productData = await prisma.product.findUnique({

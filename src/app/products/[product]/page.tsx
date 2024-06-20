@@ -1,4 +1,4 @@
-import getProduct, { ExtendedProduct } from '@/actions/getProduct';
+import getProduct, { ExtendedProduct } from '@/actions/product/getProduct';
 import ProductOverview from '@/components/product/ProductOverview';
 
 export default async function ProductRoute({

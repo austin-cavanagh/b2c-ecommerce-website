@@ -1,4 +1,4 @@
-import sendContactEmail from '@/actions/sendContactEmail';
+import sendContactEmail from '@/actions/contact/sendContactEmail';
 
 export default async function ContactForm() {
   return (

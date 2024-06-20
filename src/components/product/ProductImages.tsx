@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { RadioGroup, Tab } from '@headlessui/react';
-import { ExtendedProduct } from '@/actions/getProduct';
+import { Tab } from '@headlessui/react';
+import { ExtendedProduct } from '@/actions/product/getProduct';
 import { classNames } from '@/functions/classNames';
 
 type ProductImagesProps = {
