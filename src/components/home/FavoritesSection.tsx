@@ -26,11 +26,12 @@ export default function FavoritesSection() {
       <div className="flex items-center justify-center space-x-6">
         {/* First Column */}
         <div className="space-y-6">
-          {firstColumnImages.map(image => {
+          {firstColumnImages.map((image, index) => {
             return (
               <motion.div
                 className="relative h-52 w-52 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
                 whileHover={whileHoverObject}
+                key={index}
               >
                 <Link href={image.link}>
                   <Image
@@ -47,11 +48,12 @@ export default function FavoritesSection() {
 
         {/* Second Column */}
         <div className="space-y-6">
-          {secondColumnImages.map(image => {
+          {secondColumnImages.map((image, index) => {
             return (
               <motion.div
                 className="relative h-52 w-52 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
                 whileHover={whileHoverObject}
+                key={index}
               >
                 <Link href={image.link}>
                   <Image
@@ -68,11 +70,12 @@ export default function FavoritesSection() {
 
         {/* Third Column */}
         <div className="space-y-6">
-          {thirdColumnImages.map(image => {
+          {thirdColumnImages.map((image, index) => {
             return (
               <motion.div
                 className="relative h-52 w-52 cursor-pointer overflow-hidden rounded-[50px] shadow-xl"
                 whileHover={whileHoverObject}
+                key={index}
               >
                 <Link href={image.link}>
                   <Image
