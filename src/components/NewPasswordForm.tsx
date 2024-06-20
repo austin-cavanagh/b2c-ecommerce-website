@@ -1,3 +1,5 @@
+// Not yet implemented
+
 'use client';
 
 import { useFormState } from 'react-dom';
@@ -6,7 +8,6 @@ import { FormEvent, useRef } from 'react';
 import createAccount from '@/actions/createAccount';
 
 export default function NewPasswordForm() {
-  // const [error, action] = useFormState(createAccount, { message: '' });
   const passwordRef = useRef<HTMLInputElement>(null);
 
   const haneleNewPassword = (event: FormEvent) => {

@@ -1,3 +1,5 @@
+// Own component because it required state to hide and unhide the text inside
+
 import React, { useState } from 'react';
 
 type PasswordInputProps = {

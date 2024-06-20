@@ -1,3 +1,5 @@
+// Placeholder - feature not added yet
+
 export default function IntegrationsRoute() {
   return (
     <div className="divide-y divide-white/5">

@@ -1,10 +1,5 @@
-import AccountInformation from '@/components/account/AccountInformation';
+// Unused route - kept because i am using /account/settings
 
 export default function AccountRoute() {
-  return (
-    // <main className="flex w-full flex-1 px-6 py-6 sm:p-6">
-    //   <AccountInformation />
-    // </main>
-    <></>
-  );
+  return <></>;
 }
