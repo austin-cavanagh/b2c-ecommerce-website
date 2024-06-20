@@ -64,12 +64,14 @@ export async function POST(request: Request, response: Response) {
       await updateOrder(orderId, providerOrderId, shippingAddress);
 
       break;
+
     // case 'payment_intent.succeeded':
     //   const paymentIntentSucceeded = event.data.object;
     //   // Then define and call a function to handle the event payment_intent.succeeded
     //   break;
+
     default:
-    //   console.log(`Unhandled event type ${event.type}`);
+      console.log(`Unhandled event type ${event.type}`);
   }
 
   return new Response('Success!', {

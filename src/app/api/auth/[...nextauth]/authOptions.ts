@@ -1,3 +1,5 @@
+// Handles authentication through email, google oauth, and facebook oauth
+
 // 'use server';
 import 'server-only';
 
@@ -45,10 +47,6 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials) {
-        // console.log('AUTHORIZE');
-
-        // console.log('CREDENTIALS', credentials);
-
         if (!credentials) {
           return null;
         }
@@ -57,7 +55,6 @@ export const authOptions: NextAuthOptions = {
 
         try {
           const user = await login(email, password);
-          // console.log('AUTHORIZE', user);
           return user;
         } catch (err) {
           console.error(err);
@@ -69,16 +66,10 @@ export const authOptions: NextAuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
-      // console.log('SIGNIN CALLBACK');
-
       // Email sign in
       if (account?.provider === 'credentials') {
-        // console.log('EMAIL SIGNIN');
         return true;
       }
-
-      // console.log('USER', user);
-      // console.log('ACCOUNT', account);
 
       const dbUser = await prisma.user.findUnique({
         where: {
@@ -233,37 +224,13 @@ export const authOptions: NextAuthOptions = {
     },
 
     async redirect({ url, baseUrl }) {
-      // console.log('REDIRECT CALLBACK');
-
-      // console.log('URL', url);
-      // console.log('BASEURL', baseUrl);
-
       return baseUrl;
     },
 
     // The arguments user, account, profile and isNewUser are only passed the first time this
     // callback is called on a new session, after the user signs in. In subsequent calls, only
     // token will be available
-    async jwt({
-      token,
-      user,
-      // account,
-      // profile,
-    }: {
-      token: ExtendJWT;
-      user: ExtendUser;
-      // account: Account;
-      // profile?: Profile;
-    }) {
-      // console.log('JWT CALLBACK');
-
-      // console.log('JWT - TOKEN', token);
-      // console.log('JWT - USER', user);
-      // console.log('JWT - ACCOUNT', account);
-      // console.log('JWT - PROFILE', profile);
-
-      // const provider = account.provider;
-
+    async jwt({ token, user }: { token: ExtendJWT; user: ExtendUser }) {
       // User, account, and profile are only returned at the start of the session
       if (user) {
         token.userId = Number(user.id);
@@ -285,22 +252,12 @@ export const authOptions: NextAuthOptions = {
       session: ExtendSession;
       token: ExtendJWT;
     }) {
-      // console.log('SESSION CALLBACK');
-
-      // console.log('SESSION BEFORE - SESSION', session);
-      // console.log('SESSION - TOKEN', token);
-      // console.log('SESSION - USER', user);
-
       if (session.user) {
         session.user.name = token.name;
         session.user.email = token.email;
-        // session.user.image = token.picture;
         session.user.userId = token.userId;
         session.user.cartId = token.cartId;
-        // session.user.verified = token.verified;
       }
-
-      // console.log('SESSION AFTER - SESSION', session);
 
       return session;
     },
