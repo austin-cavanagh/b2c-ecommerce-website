@@ -43,9 +43,9 @@
 
 ## Overview
 
-![Screenshot displaying an overview of the solar system](/assets/screenshots/about.png)
+<!-- ![Screenshot displaying an overview of the solar system](/assets/screenshots/about.png) -->
 
-This eCommerce website was created for my mom's home crafts business, providing her a platform to showcase and sell her handmade products. Through building this site, I've deepened my understanding of authentication systems, integrated payments, and AWS for hosting and managing web applications.
+This eCommerce website was created for a home crafts business. Through building this site, I've deepened my understanding of authentication systems, integrated payments, and AWS for hosting and managing web applications.
 
 ### Highlights:
 
